@@ -1,6 +1,6 @@
-# Project name
+# De urgenta - Android app
 
-[![GitHub contributors](https://img.shields.io/github/contributors/code4romania/standard-repo-template.svg?style=for-the-badge)](https://github.com/code4romania/standard-repo-template/graphs/contributors) [![GitHub last commit](https://img.shields.io/github/last-commit/code4romania/standard-repo-template.svg?style=for-the-badge)](https://github.com/code4romania/standard-repo-template/commits/master) [![License: MPL 2.0](https://img.shields.io/badge/license-MPL%202.0-brightgreen.svg?style=for-the-badge)](https://opensource.org/licenses/MPL-2.0)
+[![GitHub contributors](https://img.shields.io/github/contributors/code4romania/de-urgenta-android.svg?style=for-the-badge)](https://github.com/code4romania/de-urgenta-android/graphs/contributors) [![GitHub last commit](https://img.shields.io/github/last-commit/code4romania/de-urgenta-android.svg?style=for-the-badge)](https://github.com/code4romania/de-urgenta-android/commits/master) [![License: MPL 2.0](https://img.shields.io/badge/license-MPL%202.0-brightgreen.svg?style=for-the-badge)](https://opensource.org/licenses/MPL-2.0)
 
 De Urgență [was prototyped](https://civiclabs.ro/ro/solutions/stay-together) in [Code for Romania](https://code4.ro/ro)'s research project, [Civic Labs](https://civiclabs.ro/ro).
 
@@ -37,7 +37,7 @@ Adroid
 [Android repo](https://github.com/code4romania/de-urgenta-android)   
 [iOS repo](https://github.com/code4romania/de-urgenta-ios)   
 [Web app - frontend](https://github.com/code4romania/de-urgenta-client)   
-Web app - backend   
+[Web app - backend](https://github.com/code4romania/de-urgenta-backend)  
 
 ## Deployment
 
