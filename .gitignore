@@ -1,0 +1,35 @@
+
+\.gradle/
+
+\.idea/
+
+\app/build/
+
+app/app.iml
+
+build/
+
+Vote Monitor.iml
+
+google-services.json
+
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+fastlane/readme.md
+
+/local.properties
+/.DS_Store
+app/.DS_Store
+
+app/src/.DS_Store
+
+app/src/main/.DS_Store
+
+app/src/main/assets/.DS_Store
+
+app/src/main/assets/fonts/.DS_Store
+
+app/src/main/res/.DS_Store

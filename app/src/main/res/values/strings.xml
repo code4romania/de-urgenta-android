@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">De urgenta</string>
+
+    <!-- General -->
+    <string name="loading_label">Loading…</string>
+
+    <!--    Permissions-->
+    <string name="permission_permanently_denied_title">Permission needed</string>
+    <string name="permission_permanently_denied_msg">To use this function, you have to change the app permissions. Please open the Settings menu and grant access to the requested permissions.</string>
+    <string name="permission_permanently_denied_settings_button">Settings</string>
+
+    <string name="permission_denied_title">Permission needed</string>
+    <string name="permission_denied_msg">To use this function we need your permission to access the storage.</string>
+    <string name="permission_denied_ok_button">OK</string>
+    <string name="permission_denied_cancel_button">Cancel</string>
+
+    <!-- Errors -->
+    <string name="error_generic">Something went wrong!</string>
+
+</resources>

@@ -8,46 +8,38 @@ The application aims to inform citizens about how to react to the first critical
 
 It also aims to build healthy habits that become ingrained with time, so that, when the critical moment arrives, each person knows what the key first steps to keeping themselves safe are. 
 
-[See the project live](insert_link_here)
-
-[Contributing](#contributing) | [Repos and projects](#repos-and-projects) | [Deployment](#deployment) | [Feedback](#feedback) | [License](#license) | [About Code4Ro](#about-code4ro)
+[Contributing](#contributing) | [Built with](#built-with) | [Repos and projects](#repos-and-projects) | [Feedback](#feedback) | [License](#license) | [About Code4Ro](#about-code4ro)
 
 ## Contributing
 
 This project is built by amazing volunteers and you can be one of them! Here's a list of ways in [which you can contribute to this project](https://github.com/code4romania/.github/blob/master/CONTRIBUTING.md). If you want to make any change to this repository, please **make a fork first**.
 
-Help us out by testing this project in the [staging environment](INSERT_LINK_HERE). If you see something that doesn't quite work the way you expect it to, open an Issue. Make sure to describe what you _expect to happen_ and _what is actually happening_ in detail.
+Help us out by testing this project. If you see something that doesn't quite work the way you expect it to, open an Issue. Make sure to describe what you _expect to happen_ and _what is actually happening_ in detail.
 
 If you would like to suggest new functionality, open an Issue and mark it as a __[Feature request]__. Please be specific about why you think this functionality will be of use. If you can, please include some visual description of what you would like the UI to look like, if you are suggesting new UI elements. 
 
-### Programming languages
+## Built with
 
-Kotlin
+* Android Studio 4.1
+* Android SDK 30
+* Kotlin
+* RxJava, Retrofit2
+* [Koin](https://insert-koin.io/)
+* [Room](https://developer.android.com/reference/android/arch/persistence/room/RoomDatabase) database
+* Firebase crashlytics, analytics & push notifications
 
-### Platforms
+Uses [Fastlane](https://fastlane.tools/) for automating builds & releases.
 
-Adroid
+Uses the MVVM architectural pattern.
 
-### Package managers
-
-### Database technology & provider
+Swagger docs for the API are available [here](#).
 
 ## Repos and projects
 
 [Android repo](https://github.com/code4romania/de-urgenta-android)   
 [iOS repo](https://github.com/code4romania/de-urgenta-ios)   
 [Web app - frontend](https://github.com/code4romania/de-urgenta-client)   
-[Web app - backend](https://github.com/code4romania/de-urgenta-backend)  
-
-## Deployment
-
-Guide users through getting your code up and running on their own system. In this section you can talk about:
-1. Installation process
-2. Software dependencies
-3. Latest releases
-4. API references
-
-Describe and show how to build your code and run the tests.
+[Web app - backend](https://github.com/code4romania/de-urgenta-backend)
 
 ## Feedback
 
