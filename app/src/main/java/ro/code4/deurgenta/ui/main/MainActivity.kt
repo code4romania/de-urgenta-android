@@ -35,7 +35,6 @@ class MainActivity : BaseActivity<MainViewModel>() {
 
         navController = findNavController(R.id.nav_host_fragment)
 
-        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
         // This needs to be set after `setupWithNavController`
