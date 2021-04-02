@@ -1,6 +1,10 @@
 package ro.code4.deurgenta.ui.register
 
 import android.os.Bundle
+import android.text.Html
+import android.text.method.LinkMovementMethod
+import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_register.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.ui.base.BaseAnalyticsActivity
@@ -15,6 +19,23 @@ class RegisterActivity : BaseAnalyticsActivity<RegisterViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+        clickListenersSetup()
+    }
+
+    private fun clickListenersSetup() {
+        termsAndConditionsSetup()
+    }
+
+    private fun termsAndConditionsSetup() {
+        var termsLink = "https://www.google.com"
+
+        termsCheckBox.text = "";
+        termsTextView.text = Html.fromHtml("Accept <a href='$termsLink'>terms and conditions</a>");
+        termsTextView.isClickable = true;
+        termsTextView.movementMethod = LinkMovementMethod.getInstance();
+
     }
 
 }

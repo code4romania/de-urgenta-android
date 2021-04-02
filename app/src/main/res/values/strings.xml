@@ -25,4 +25,13 @@
     <string name="title_login" translatable="false">Did you make your plan in case of an emergency?</string>
     <string name="subtitle_login" translatable="false">Let\'s do it together!</string>
 
+    <!-- Register screen -->
+    <string name="register_title" translatable="false">Create your account</string>
+    <string name="register_label_first_name" translatable="false">First name</string>
+    <string name="register_label_last_name" translatable="false">Last name</string>
+    <string name="register_label_email" translatable="false">Email</string>
+    <string name="register_label_password" translatable="false">Password</string>
+    <string name="register_terms" translatable="false">Accept <a href='google.com'>terms and conditions</a></string>
+    <string name="register_submit_button" translatable="false">Submit</string>
+
 </resources>

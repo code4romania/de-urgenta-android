@@ -4,4 +4,7 @@
     <color name="colorPrimaryLight">#ffffff</color>
 
     <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="border">#D1D5DB</color>
+    <color name="transparent"></color>
 </resources>
