@@ -9,6 +9,7 @@ import ro.code4.deurgenta.helper.hasCompletedOnboarding
 import ro.code4.deurgenta.repositories.Repository
 import ro.code4.deurgenta.ui.base.BaseViewModel
 import ro.code4.deurgenta.ui.main.MainActivity
+import ro.code4.deurgenta.ui.onboarding.OnboardingActivity
 import ro.code4.deurgenta.ui.register.RegisterActivity
 
 class LoginViewModel : BaseViewModel() {
@@ -23,7 +24,7 @@ class LoginViewModel : BaseViewModel() {
     fun login() {
         val nextActivity = when (sharedPreferences.hasCompletedOnboarding()) {
             true -> MainActivity::class.java
-            false -> RegisterActivity::class.java
+            false -> OnboardingActivity::class.java
         }
         loginLiveData.postValue(Result.Success(nextActivity))
     }
