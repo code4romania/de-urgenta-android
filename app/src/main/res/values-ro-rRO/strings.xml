@@ -19,4 +19,10 @@
     <!-- Errors -->
     <string name="error_generic">A apărut o problemă!</string>
 
+    <!-- Login screen -->
+<!--    Tu ți-ai făcut planul în caz de urgență?-->
+    <string name="button_signup" translatable="false">Inscrie-te acum</string>
+    <string name="button_login" translatable="false">Autentifica-te</string>
+    <string name="title_login" translatable="false">Tu ți-ai făcut planul în caz de urgență?</string>
+    <string name="subtitle_login" translatable="false">Hai sa il facem impreuna!</string>
 </resources>

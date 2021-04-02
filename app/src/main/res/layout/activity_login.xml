@@ -25,6 +25,7 @@
     <TextView
         android:id="@+id/title"
         style="@style/Text.Heading"
+        android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin"
@@ -33,7 +34,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/xxbig_margin"
-        android:text="Tu ti-ai facut planul in caz de urgenta?" />
+        android:text="@string/title_login" />
 
 
     <TextView
@@ -47,7 +48,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/xxbig_margin"
-        android:text="Hai sa il facem impreuna!" />
+        android:text="@string/subtitle_login" />
 
 
     <com.google.android.material.button.MaterialButton
