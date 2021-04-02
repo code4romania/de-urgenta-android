@@ -29,10 +29,10 @@ class RegisterActivity : BaseAnalyticsActivity<RegisterViewModel>() {
     }
 
     private fun termsAndConditionsSetup() {
-        var termsLink = "https://www.google.com"
+        val htmlString = getString(R.string.register_terms)
 
         termsCheckBox.text = "";
-        termsTextView.text = Html.fromHtml("Accept <a href='$termsLink'>terms and conditions</a>");
+        termsTextView.text = Html.fromHtml(htmlString);
         termsTextView.isClickable = true;
         termsTextView.movementMethod = LinkMovementMethod.getInstance();
 
