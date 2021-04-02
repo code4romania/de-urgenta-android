@@ -20,10 +20,10 @@
     <string name="error_generic">A apărut o problemă!</string>
 
     <!-- Login screen -->
-    <string name="button_signup" translatable="false">Inscrie-te acum</string>
-    <string name="button_login" translatable="false">Autentifica-te</string>
-    <string name="title_login" translatable="false">Tu ți-ai făcut planul în caz de urgență?</string>
-    <string name="subtitle_login" translatable="false">Hai sa il facem impreuna!</string>
+    <string name="login_button_signup" translatable="false">Înscrie-te acum</string>
+    <string name="login_button_login" translatable="false">Autentifică-te</string>
+    <string name="login_title" translatable="false">Tu ți-ai făcut planul în caz de urgență?</string>
+    <string name="login_subtitle" translatable="false">Hai să îl facem împreună!</string>
 
    <!-- Register -->
     <string name="register_title" translatable="false">Creeaza-ti contul</string>
@@ -34,8 +34,4 @@
     <string name="register_terms" translatable="false">Sunt de acord cu termenii si conditiile acestei aplicatii De Urgenta. BRRRRR.</string>
     <string name="register_submit_button" translatable="false">Mai departe</string>
 
-    <string name="login_button_signup" translatable="false">Înscrie-te acum</string>
-    <string name="login_button_login" translatable="false">Autentifică-te</string>
-    <string name="login_title" translatable="false">Tu ți-ai făcut planul în caz de urgență?</string>
-    <string name="login_subtitle" translatable="false">Hai să îl facem împreună!</string>
 </resources>
