@@ -14,7 +14,7 @@
         android:drawableEnd="@drawable/ic_arrow_right"
         android:gravity="center_vertical"
         android:padding="@dimen/big_margin"
-        android:text="Adrese si trasee"
+        android:text="@string/home_menu_item_address"
         android:textStyle="bold"/>
 
     <TextView
@@ -26,7 +26,7 @@
         android:drawableEnd="@drawable/ic_arrow_right"
         android:gravity="center_vertical"
         android:padding="@dimen/big_margin"
-        android:text="Grupul de urgenta"
+        android:text="@string/home_menu_item_group"
         android:textStyle="bold"/>
 
     <TextView
@@ -38,7 +38,7 @@
         android:drawableEnd="@drawable/ic_arrow_right"
         android:gravity="center_vertical"
         android:padding="@dimen/big_margin"
-        android:text="Rucsacul de urgenta"
+        android:text="@string/home_menu_item_backpack"
         android:textStyle="bold"/>
 
     <TextView
@@ -50,7 +50,7 @@
         android:drawableEnd="@drawable/ic_arrow_right"
         android:gravity="center_vertical"
         android:padding="@dimen/big_margin"
-        android:text="Cursuri si info utile"
+        android:text="@string/home_menu_item_courses"
         android:textStyle="bold"/>
 
 </LinearLayout>

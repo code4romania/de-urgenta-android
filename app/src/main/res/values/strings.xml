@@ -19,4 +19,13 @@
     <!-- Errors -->
     <string name="error_generic">Something went wrong!</string>
 
+    <!-- Home -->
+    <string name="home_title">De Urgență</string>
+    <string name="home_header_title">Bine ai revenit.</string>
+    <string name="home_header_description">This is a small text to welcome the user back in the app and excite him to do something to be more prepared.</string>
+    <string name="home_menu_item_address">Adrese și trasee</string>
+    <string name="home_menu_item_group">Grupul de urgență</string>
+    <string name="home_menu_item_backpack">Rucsacul de urgență</string>
+    <string name="home_menu_item_courses">Cursuri și info utile</string>
+
 </resources>
