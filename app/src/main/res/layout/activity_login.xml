@@ -34,7 +34,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/xxbig_margin"
-        android:text="@string/title_login" />
+        android:text="@string/login_title" />
 
 
     <TextView
@@ -48,7 +48,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/xxbig_margin"
-        android:text="@string/subtitle_login" />
+        android:text="@string/login_subtitle" />
 
 
     <com.google.android.material.button.MaterialButton
@@ -65,7 +65,7 @@
             android:layout_marginBottom="@dimen/big_margin"
             android:layout_marginStart="@dimen/small_margin"
             android:layout_marginEnd="@dimen/small_margin"
-            android:text="@string/button_signup" />
+            android:text="@string/login_button_signup" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/loginButton"
@@ -76,6 +76,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="@string/button_login"/>
+        android:text="@string/login_button_login"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
