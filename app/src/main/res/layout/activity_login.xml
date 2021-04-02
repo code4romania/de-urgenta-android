@@ -51,6 +51,20 @@
 
 
     <com.google.android.material.button.MaterialButton
+            android:id="@+id/signupButton"
+            style="@style/Text.Signup"
+            android:layout_width="match_parent"
+            android:paddingTop="@dimen/margin"
+            android:paddingBottom="@dimen/margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/loginButton"
+            android:layout_marginBottom="@dimen/big_margin"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginEnd="@dimen/small_margin"
+            android:text="@string/button_signup" />
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/loginButton"
         style="@style/Text"
         android:layout_width="wrap_content"
@@ -59,6 +73,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="Autentifica-te"/>
+        android:text="@string/button_login"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

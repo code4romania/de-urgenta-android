@@ -24,6 +24,13 @@
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
 
+    <style name="Text.Signup">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:backgroundTint">@color/colorPrimaryLight</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
     <style name="Text.Heading">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">32sp</item>
