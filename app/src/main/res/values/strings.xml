@@ -20,9 +20,9 @@
     <string name="error_generic">Something went wrong!</string>
 
     <!-- Login screen -->
-    <string name="button_signup" translatable="false">Sign up</string>
-    <string name="button_login" translatable="false">Authenticate</string>
-    <string name="title_login" translatable="false">Did you make your plan in case of an emergency?</string>
-    <string name="subtitle_login" translatable="false">Let\'s do it together!</string>
+    <string name="login_button_signup" translatable="false">Sign up</string>
+    <string name="login_button_login" translatable="false">Authenticate</string>
+    <string name="login_title" translatable="false">Did you make your plan in case of an emergency?</string>
+    <string name="login_subtitle" translatable="false">Let\'s do it together!</string>
 
 </resources>
