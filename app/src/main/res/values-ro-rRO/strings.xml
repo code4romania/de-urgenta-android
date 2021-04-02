@@ -100,16 +100,36 @@
     <string name="edit_backpack_item_error_quantity_value">"Introdu un numar pentru cantitate!"</string>
 
     <!-- Configure account -->
-    <string name="item_description_configure_account">Configureaza-ti contul.</string>
-    <string name="create_your_account">Configureaza-ti contul.</string>
-    <string name="create_your_group">Configureaza-ti grupul.</string>
+    <string name="configure_addresses">Configureaza adresele</string>
+    <string name="create_your_account">Creaza-ti contul</string>
+    <string name="create_your_group">Configureaza-ti grupul</string>
     <string name="save_address">Salveaza adresa</string>
     <string name="enter_your_address">Introdu adresa</string>
-    <string name="make_your_emergency_backpack">Fa-ti rucascul de urgenta.</string>
+    <string name="make_your_emergency_backpack">Fa-ti rucascul de urgenta</string>
     <string name="learn_to_give_firstaid">Invata sa dai primul ajutor.</string>
     <string name="locate_me">Localizeaza-ma</string>
     <string name="search_hint">Introdu adresa</string>
-    <string name="add_your_own_address">Adauga adresa ta</string>
-    <string name="permission_rationale">Location permission is needed for core functionality.</string>
+
+    <string name="add_home_address">Adauga-ti adresa de domiciliu</string>
+
+    <string name="title_home_address">Adresa de domiciliu.</string>
+    <string name="add_new_address">Adauga o adresa noua.</string>
+    <string name="set_meeting_point">Seteaza punct de intalnire.</string>
+    <string name="add_another_address_description">Adaugă alte adrese relevante cum ar fi cea de la birou, de la sala de sport,
+        de la alt loc pe care îl vizitezi cel puțin săptămânal.
+        Poți adăuga până la cinci adrese. După acest pas, vei putea să îți selectezi un punct de întâlnire
+        și vei putea vedea traseele dintre adresele tale și aceasta.
+    </string>
+    <string name="configure_another_address_header">Configureaza alta adresa.</string>
+    <string name="save_home_address">Adresa ta de domiciliu a fost salvata cu success.</string>
+
+    <!-- Permissions -->
+    <string name="permission_rationale">Localizarea necesitate permisiune deoarece este functionalitatea de baza.</string>
+
+    <!-- Map and location related  -->
+    <string name="map_not_initialized">Map not initialized</string>
+    <string name="operation_in_progress">Operatiune in desfasurare.</string>
+    <string name="no_results_found">Niciun rezultat gasit.</string>
+    <string name="more_results_found">Mai multe rezultate gasite. Te rog baga o adresa unica.</string>
 
 </resources>

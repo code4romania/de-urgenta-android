@@ -56,8 +56,6 @@ open class PermissionManager(private val activity: Activity, private val fragmen
     }
 
     companion object {
-        private const val TAG = "PermissionManager"
-
         @JvmStatic
         val PERMISSION_REQUEST = 320
 

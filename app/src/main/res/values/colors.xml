@@ -12,4 +12,5 @@
     <color name="gray_800">#1F2937</color>
     <color name="gray_200">#c1c1c1</color>
     <color name="green_400">#34D399</color>
+    <color name="md_red_200">#EF9A9A</color>
 </resources>

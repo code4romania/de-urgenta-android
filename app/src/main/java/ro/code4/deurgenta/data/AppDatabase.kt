@@ -8,16 +8,20 @@ import androidx.room.TypeConverters
 import ro.code4.deurgenta.data.dao.AddressDao
 import ro.code4.deurgenta.data.dao.BackpackDao
 import ro.code4.deurgenta.data.helper.DateConverter
-import ro.code4.deurgenta.data.model.Address
 import ro.code4.deurgenta.data.model.Backpack
 import ro.code4.deurgenta.data.model.BackpackItem
 import ro.code4.deurgenta.data.model.BackpackItemConverters
+import ro.code4.deurgenta.data.model.MapAddress
 
 @Database(
-    entities = [Address::class, Backpack::class, BackpackItem::class],
-    version = 1
+    entities = [Backpack::class, BackpackItem::class, MapAddress::class],
+    version = 3
 )
-@TypeConverters(DateConverter::class, BackpackItemConverters::class)
+@TypeConverters(
+    DateConverter::class,
+    BackpackItemConverters::class,
+    MapAddress.MapAddressConverters::class
+)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun addressDao(): AddressDao
 

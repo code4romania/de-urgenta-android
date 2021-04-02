@@ -1,6 +1,22 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    ext.kotlin_version = '1.4.32'
+
+    ext {
+        kotlin_version = "1.4.32"
+        retrofitVersion = '2.9.0'
+        navigationVersion = "2.3.4"
+        koinVersion = '2.0.1'
+        parcelerVersion = "1.1.13"
+        roomVersion = '2.2.6'
+        firebaseAnalyticsVersion = '18.0.2'
+        firebaseCrashlyticsVersion = '17.4.1'
+        firebaseMessagingVersion = "20.2.0"
+        firebaseConfigVersion = "19.1.4"
+        adapterDelegatesVersion = "4.2.0"
+        glideVersion = "4.9.0"
+        navigationVersion = "2.3.4"
+    }
+
     repositories {
         google()
         jcenter()
@@ -13,6 +29,8 @@ buildscript {
         classpath 'com.google.firebase:firebase-crashlytics-gradle:2.5.2'
         classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.0"
         // NOTE: Do not place your application dependencies here; they belong
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
+
         // in the individual module build.gradle files
     }
 }

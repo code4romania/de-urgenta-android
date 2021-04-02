@@ -9,11 +9,41 @@
         android:name="ro.code4.deurgenta.ui.address.ConfigureAddressFragment"
         android:label="@string/configure_addresses">
 
+        <!-- Launch Configure addresses Navigation Graph -->
+        <action
+            android:id="@+id/action_navigate_save_address"
+            app:destination="@id/navigate_save_address">
+
+            <argument
+                android:name="mapAddress"
+                app:argType="ro.code4.deurgenta.data.model.MapAddress" />
+        </action>
+
         <!-- Action back to destination which launched into this graph -->
         <action
             android:id="@+id/back_to_configure_profile"
             app:popUpTo="@id/configure_account"
             app:popUpToInclusive="false">
+
+            <argument
+                android:name="configured"
+                android:defaultValue="false"
+                app:argType="boolean" />
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigate_save_address"
+        android:name="ro.code4.deurgenta.ui.address.SaveAddressFragment"
+        android:label="@string/configure_addresses_save_address">
+
+        <!-- Action back to destination which launched into this graph -->
+        <action
+            android:id="@+id/back_to_configure_profile"
+            app:destination="@id/configure_account"
+            app:popUpTo="@id/configure_account"
+            app:popUpToInclusive="true">
 
             <argument
                 android:name="configured"

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="locateMeCallback"
+            type="ro.code4.deurgenta.interfaces.ViewCallback" />
+
+        <variable
+            name="saveAddressCallback"
+            type="ro.code4.deurgenta.interfaces.ViewCallback" />
+
+        <variable
+            name="toolbarTitle"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.onboarding.OnboardingActivity"
+        tools:ignore="MergeRootFrame">
+
+        <include
+            android:id="@+id/appbar_search"
+            layout="@layout/layout_address_appbar_search"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:toolbarMessage="@{toolbarTitle}" />
+
+        <include
+            android:id="@+id/map_view_layout"
+            layout="@layout/layout_mapview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appbar_search"
+            app:locateMeCallback="@{locateMeCallback}"
+            app:saveAddressCallback="@{saveAddressCallback}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

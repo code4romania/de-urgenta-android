@@ -3,6 +3,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'org.sonarqube'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+
 // TODO: Uncomment this to enable Firebase Crashlytics
 // apply plugin: 'com.google.firebase.crashlytics'
 
@@ -37,6 +39,8 @@ android {
             }
         }
         vectorDrawables.useSupportLibrary = true
+
+        ndkVersion = "21.1.6352462"
     }
 
     buildFeatures {
@@ -93,20 +97,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-}
-
-ext {
-    retrofitVersion = '2.9.0'
-    navigationVersion = "2.3.4"
-    koinVersion = '2.0.1'
-    parcelerVersion = "1.1.13"
-    roomVersion = '2.2.6'
-    firebaseAnalyticsVersion = '18.0.2'
-    firebaseCrashlyticsVersion = '17.4.1'
-    firebaseMessagingVersion = "20.2.0"
-    firebaseConfigVersion = "19.1.4"
-    adapterDelegatesVersion = "4.2.0"
-    glideVersion = "4.9.0"
+    ndkVersion '20.0.5594570'
 }
 
 dependencies {

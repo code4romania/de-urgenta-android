@@ -21,6 +21,9 @@ import ro.code4.deurgenta.BuildConfig.DEBUG
 import ro.code4.deurgenta.data.AppDatabase
 import ro.code4.deurgenta.helper.getToken
 import ro.code4.deurgenta.repositories.Repository
+import ro.code4.deurgenta.ui.address.ConfigureAddressFragment
+import ro.code4.deurgenta.ui.address.ConfigureAddressViewModel
+import ro.code4.deurgenta.ui.address.SaveAddressViewModel
 import ro.code4.deurgenta.ui.backpack.edit.EditBackpackItemViewModel
 import ro.code4.deurgenta.ui.backpack.items.BackpackItemsViewModel
 import ro.code4.deurgenta.ui.backpack.main.BackpackDetailsViewModel
@@ -111,7 +114,10 @@ val viewModelsModule = module {
     viewModel { BackpackDetailsViewModel() }
     viewModel { BackpackItemsViewModel(get()) }
     viewModel { EditBackpackItemViewModel(get()) }
+    viewModel { ConfigureAddressViewModel(get())}
+    viewModel { SaveAddressViewModel(get())}
     viewModel { HomeViewModel() }
+
 }
 
 val analyticsModule = module {

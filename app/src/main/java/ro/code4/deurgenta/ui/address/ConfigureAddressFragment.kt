@@ -1,51 +1,51 @@
 package ro.code4.deurgenta.ui.address
 
-import android.Manifest
+import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.SearchManager
 import android.content.Intent
 import android.content.IntentSender
-import android.content.pm.PackageManager
+import android.database.MatrixCursor
 import android.os.Bundle
-import android.util.Log
+import android.provider.BaseColumns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CursorAdapter
 import android.widget.SearchView
+import android.widget.SimpleCursorAdapter
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.common.api.ResolvableApiException
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.here.sdk.mapview.*
-import kotlinx.android.synthetic.main.onboarding_configure_addresses.view.*
+import com.here.sdk.mapview.MapView
+import com.here.sdk.search.Suggestion
+import kotlinx.android.synthetic.main.layout_mapview.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import ro.code4.deurgenta.R
-import ro.code4.deurgenta.databinding.OnboardingConfigureAddressesBinding
+import ro.code4.deurgenta.data.model.MapAddressType
+import ro.code4.deurgenta.databinding.FragmentConfigureAddressBinding
 import ro.code4.deurgenta.helper.*
-import ro.code4.deurgenta.interfaces.LocateMeCallback
-import ro.code4.deurgenta.interfaces.SaveProgressCallback
-import ro.code4.deurgenta.ui.base.ViewModelFragment
-import java.util.*
+import ro.code4.deurgenta.interfaces.ViewCallback
+import ro.code4.deurgenta.ui.base.PermissionsViewModelFragment
 
 @SuppressLint("LongLogTag")
-class ConfigureAddressFragment : ViewModelFragment<ConfigureAddressViewModel>(),
-    PermissionManager.PermissionListener,
-    PermissionUiCallback {
+class ConfigureAddressFragment : PermissionsViewModelFragment<ConfigureAddressViewModel>() {
 
     override val layout: Int
-        get() = R.layout.onboarding_configure_addresses
+        get() = R.layout.fragment_configure_address
 
     override val screenName: Int
         get() = R.string.configure_addresses
 
     override val viewModel: ConfigureAddressViewModel by viewModel()
     private lateinit var mapView: MapView
-    private lateinit var permissionsUtils: PermissionManager
-
-    private lateinit var mapViewUtils: MapViewUtils
-
-    lateinit var viewBinding: OnboardingConfigureAddressesBinding
+    private var mapViewUtils: MapViewUtils? = null
+    lateinit var viewBinding: FragmentConfigureAddressBinding
+    var mapAddressType: MapAddressType = MapAddressType.HOME
+    private var loadingAnimator: ObjectAnimator? = null
+    private fun searchView() = viewBinding.appbarSearch.querySearch
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,165 +60,232 @@ class ConfigureAddressFragment : ViewModelFragment<ConfigureAddressViewModel>(),
         super.onViewCreated(view, savedInstanceState)
 
         viewBinding.lifecycleOwner = viewLifecycleOwner
-        viewBinding.appbar.toolbar.setOnClickListener {
+        viewBinding.appbarSearch.toolbarSearch.setOnClickListener {
             findNavController().navigate(R.id.back_to_configure_profile)
         }
-    }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        mapView = viewBinding.mapView
+        viewModel.saveResult().observe(viewLifecycleOwner, { result ->
+            result.handle(onSuccess = {
+                val direction =
+                    ConfigureAddressFragmentDirections.actionNavigateSaveAddress(mapAddress = it!!)
+                findNavController().navigate(direction)
+            })
+        })
+
+        arguments?.let { bundle ->
+            bundle.getParcelable<MapAddressType>("mapAddressType")?.let { it ->
+                mapAddressType = it
+            }
+        }
+
+        arguments?.let { bundle ->
+            bundle.getInt("titleResourceId").let { resId ->
+                viewBinding.toolbarTitle = getString(resId)
+            }
+        }
+
+        mapView = viewBinding.mapViewLayout.mapView
         mapView.onCreate(savedInstanceState)
-        permissionsUtils = PermissionManager(requireActivity(), this)
         mapViewUtils = MapViewUtils(mapView, requireActivity(), mapViewCallback)
 
-        initMapButtonCallbacks()
-    }
+        initCallbacks()
+        initSearchView()
 
-    private fun initMapButtonCallbacks() {
-        viewBinding.appbar.query_search.apply {
-            setOnQueryTextListener(onQueryTextListener(this@apply))
-        }
-
-        viewBinding.saveCallback = object : SaveProgressCallback {
-            override fun save() {
-                Log.d(TAG, "save address")
-            }
-        }
-
-        viewBinding.locateMeCallback = object : LocateMeCallback {
-            override fun locateMe() {
-                mapViewUtils.loadLastKnownLocation(true)
-            }
-        }
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        if (requestCode == PermissionManager.PERMISSION_REQUEST && grantResults.isNotEmpty()) {
-            if (grantResults.all { it == PackageManager.PERMISSION_GRANTED } && grantResults.size == permissions.size) {
-                onPermissionsGranted()
-            } else {
-                checkDeniedPermissions(permissions, grantResults)
-            }
-        }
-    }
-
-    private fun checkDeniedPermissions(permissions: Array<out String>, grantResults: IntArray) {
-        val permanentlyDenied = permissions.filterIndexed { index, s ->
-            grantResults[index] == PackageManager.PERMISSION_DENIED
-                    && !permissionsUtils.checkShouldShowRequestPermissionsRationale(s)
-        }
-
-
-        if (permanentlyDenied.isNotEmpty()) {
-            showPermissionRationale(requireActivity(), true, this)
-        } else {
-            val denied = permissions.filterIndexed { index, s ->
-                grantResults[index] == PackageManager.PERMISSION_DENIED
-                        && permissionsUtils.checkShouldShowRequestPermissionsRationale(s)
-            }
-            if (denied.isNotEmpty()) {
-                showPermissionRationale(requireActivity(), true, this)
-            }
-        }
-    }
-
-    private val mapViewCallback = object : MapViewUtils.MapViewCallback {
-        override fun onError(error: MapViewUtils.MapDataError) {
-            if (error.errorType == MapViewUtils.MapErrorType.PERMISSION_ERROR) {
-                try {
-                    // shows the permission request settings dialog.
-                    val rae = error.exception as ResolvableApiException
-                    startIntentSenderForResult(rae.resolution.intentSender, PermissionManager.PERMISSION_CHECK_SETTINGS)
-                } catch (sie: IntentSender.SendIntentException) {
-                    Log.i(TAG, "PendingIntent unable to execute request.")
-                }
-            } else {
-                Toast.makeText(requireContext(), error.errorMessage, Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        override fun onSuggestionError(error: String) {
-            Log.d(TAG, "error loading autosuggestion results:$error")
-        }
-
-        override fun onSuccess() {
-            updateSaveButtonVisibility(View.VISIBLE)
-        }
-
-        override fun onSuccessSuggest(suggest: String) {
-            Log.d(TAG, "autosuggestion text.$suggest")
-        }
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            onBackPressedCallback()
+        )
     }
 
     override fun onResume() {
         super.onResume()
-        if (permissionsUtils.hasPermissions(Manifest.permission.ACCESS_FINE_LOCATION)) {
-            mapViewUtils.onResume()
-        } else {
-            permissionsUtils.checkPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION))
-        }
+        mapViewUtils?.onResume()
     }
 
-    override fun onStop() {
-        super.onStop()
-        mapViewUtils.onPause()
-    }
-
-    private fun onQueryTextListener(view: View): SearchView.OnQueryTextListener {
-        return object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String): Boolean {
-                hideSoftInput(view)
-                mapViewUtils.searchOnMap(query, MapViewUtils.SearchType.STANDARD)
-                return true
-            }
-
-            override fun onQueryTextChange(queryString: String): Boolean {
-                // Hack
-                if (queryString.isNullOrEmpty()) {
-                    updateSaveButtonVisibility(View.GONE)
-                }
-                mapViewUtils.searchOnMap(queryString, MapViewUtils.SearchType.AUTOSUGGEST)
-                return true
-            }
-        }
+    override fun onPause() {
+        super.onPause()
+        mapViewUtils?.onPause()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         when (requestCode) {
             PermissionManager.PERMISSION_CHECK_SETTINGS -> when (resultCode) {
                 Activity.RESULT_OK -> {
-                    Log.i(TAG, "User agreed to make required location settings changes.")
-                    mapViewUtils.startLocationUpdates()
+                    logI("User agreed to make required location settings changes.", TAG)
+                    mapViewUtils?.startLocationUpdates()
                 }
                 Activity.RESULT_CANCELED -> {
-                    Log.i(TAG, "User chose not to make required location settings changes.")
+                    logI("User chose not to make required location settings changes.", TAG)
                 }
             }
         }
     }
 
-    override fun onDialogCallback() {
-        permissionsUtils.checkPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION))
+    private fun initCallbacks() {
+        viewBinding.saveAddressCallback = object : ViewCallback {
+            override fun call() {
+                findNavController().navigate(R.id.save_address)
+            }
+        }
+
+        viewBinding.locateMeCallback = object : ViewCallback {
+            override fun call() {
+                searchView().clearFocus()
+                setQuery("", false)
+                mapViewUtils?.loadLastKnownLocation(true)
+            }
+        }
+    }
+
+    private fun initSearchView() {
+
+        searchView().setOnQueryTextListener(
+            object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String): Boolean {
+                    view?.let { hideSoftInput(it) }
+                    mapViewUtils?.searchOnMap(query, MapViewUtils.SearchType.STANDARD)
+                    return true
+                }
+
+                override fun onQueryTextChange(queryString: String): Boolean {
+                    // Hack
+                    if (queryString.isNullOrEmpty()) {
+                        updateSaveButtonVisibility(View.GONE)
+                    }
+                    mapViewUtils?.searchOnMap(queryString, MapViewUtils.SearchType.AUTOSUGGEST)
+                    return true
+                }
+            }
+        )
+
+        val cursorAdapter = initSearchViewAdapter()
+
+        searchView().suggestionsAdapter = cursorAdapter
+        searchView().setOnSuggestionListener(onSuggestionListener())
+    }
+
+    private fun initSearchViewAdapter(): CursorAdapter {
+        val from = arrayOf(SearchManager.SUGGEST_COLUMN_TEXT_1)
+        val to = intArrayOf(R.id.item_label)
+
+        return SimpleCursorAdapter(
+            context,
+            R.layout.layout_search_item,
+            null,
+            from,
+            to,
+            CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER
+        )
+    }
+
+    private fun onSuggestionListener() =
+        object : SearchView.OnSuggestionListener {
+            override fun onSuggestionSelect(position: Int): Boolean {
+                return true
+            }
+
+            override fun onSuggestionClick(position: Int): Boolean {
+                val cursor = searchView().suggestionsAdapter.cursor
+                cursor.moveToPosition(position)
+                val selection =
+                    cursor.getString(cursor.getColumnIndex(SearchManager.SUGGEST_COLUMN_TEXT_1))
+                setQuery(selection, true)
+                return true
+            }
+        }
+
+    private val mapViewCallback = object : MapViewUtils.MapViewCallback {
+
+        override fun onLoaded() {
+            setAsLoading(false)
+        }
+
+        override fun onLoading() {
+            setAsLoading(true)
+        }
+
+        override fun onError(error: MapViewUtils.MapDataError) {
+            if (loadingAnimator?.isRunning == true) {
+                setAsLoading(false)
+            }
+            if (error.errorType == MapViewUtils.MapErrorType.PERMISSION_ERROR) {
+                try {
+                    // shows the permission request settings dialog.
+                    val rae = error.exception as ResolvableApiException
+                    startIntentSenderForResult(
+                        rae.resolution.intentSender,
+                        PermissionManager.PERMISSION_CHECK_SETTINGS
+                    )
+                } catch (sie: IntentSender.SendIntentException) {
+                    logI(TAG, "PendingIntent unable to execute request.")
+                }
+            } else {
+                Toast.makeText(requireContext(), getString(error.errorStringId), Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
+
+        override fun onSuggestError(errorMessage: String) {
+            logD("error loading autosuggestion results:$errorMessage", TAG)
+        }
+
+        override fun onSearchSuccess() {
+            updateSaveButtonVisibility(View.VISIBLE)
+        }
+
+        override fun onSuggestSuccess(query: String, suggestions: List<Suggestion>) {
+            val cursor = MatrixCursor(arrayOf(BaseColumns._ID, SearchManager.SUGGEST_COLUMN_TEXT_1))
+            query.let {
+                suggestions.forEachIndexed { index, suggestion ->
+                    logD("autosuggestion text.$suggestion", TAG)
+                    if (suggestion.place?.title?.contains(query, true) == true) {
+                        cursor.addRow(arrayOf(index, suggestion.place?.title))
+                    }
+                }
+            }
+
+            searchView().suggestionsAdapter.changeCursor(cursor)
+        }
     }
 
     override fun onPermissionsGranted() {
-        Log.d(TAG, "permission granted.")
-        mapViewUtils.startLocationUpdates()
+        logD("permission granted.", TAG)
+        mapViewUtils?.startLocationUpdates()
     }
 
     override fun onPermissionDenied() {
-        Log.e(TAG, "Permissions denied by user, return back to the configure profile.")
+        logE("Permissions denied by user, return back to the configure profile.", TAG)
         // todo if permission was denied before notify the user, maybe one changes its mind.
         findNavController().navigate(R.id.configure_account)
     }
 
     private fun updateSaveButtonVisibility(flag: Int) {
-        viewBinding.buttonSaveAddress.visibility = flag
+        viewBinding.mapViewLayout.saveAddress.visibility = flag
+        viewBinding.mapViewLayout.saveAddress.setOnClickListener {
+            mapViewUtils?.getCurrentAddress()
+                ?.let { mapAddress ->
+                    mapAddress.type = mapAddressType
+                    viewModel.saveAddress(mapAddress)
+                }
+        }
+    }
+
+    fun setQuery(query: String, submit: Boolean) {
+        searchView().setQuery(query, submit)
+    }
+
+    private fun setAsLoading(isLoading: Boolean) {
+        mapLoadingIndicator?.visibility = if (isLoading) View.VISIBLE else View.GONE
+        if (isLoading) {
+            loadingAnimator?.cancel()
+            loadingAnimator = mapLoadingIndicator.setToRotateIndefinitely()
+            loadingAnimator?.start()
+        }
+    }
+
+    override fun handleOnBackPressedInternal() {
+        val directions = ConfigureAddressFragmentDirections.backToConfigureProfile()
+        findNavController().navigate(directions)
     }
 
     companion object {

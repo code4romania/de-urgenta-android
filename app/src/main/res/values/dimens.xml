@@ -13,17 +13,13 @@
 
     <!-- Text sizes-->
     <dimen name="text_size_big">20sp</dimen>
-    <dimen name="text_size_medium">16sp</dimen>
+    <dimen name="text_size">16sp</dimen>
     <dimen name="text_size_xxbig">40sp</dimen>
     <dimen name="text_size_xbig">32sp</dimen>
 
-    <!-- Picture width and height -->
-    <dimen name="picture_size_width_big">64dp</dimen>
-    <dimen name="picture_size_height_big">64dp</dimen>
-
-    <dimen name="picture_size_width_medium">32dp</dimen>
-    <dimen name="picture_size_height_medium">32dp</dimen>
-    <dimen name="padding_xxsmall">4dp</dimen>
-    <dimen name="padding_small">8dp</dimen>
+    <!-- Padding -->
+    <dimen name="padding_small">4dp</dimen>
+    <dimen name="padding_medium">8dp</dimen>
+    <dimen name="padding">12dp</dimen>
 
 </resources>

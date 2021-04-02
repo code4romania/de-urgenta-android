@@ -7,19 +7,19 @@
 
         <variable
             name="callbackAddresses"
-            type="ro.code4.deurgenta.interfaces.ConfigureCallback" />
+            type="ro.code4.deurgenta.interfaces.ViewCallback" />
 
     </data>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:layout_marginBottom="@dimen/big_margin">
+        android:layout_marginBottom="@dimen/big_margin"
+        android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="0dp">
 
             <LinearLayout
                 android:id="@+id/content_header"
@@ -75,8 +75,8 @@
                     android:id="@+id/configure_address"
                     style="@style/MenuTextView"
                     android:background="?android:attr/selectableItemBackground"
-                    android:onClick="@{() -> callbackAddresses.configure()}"
-                    android:padding="@dimen/padding_small"
+                    android:onClick="@{() -> callbackAddresses.call()}"
+                    android:padding="12dp"
                     android:text="@string/configure_addresses"
                     android:textAppearance="@style/Text.OptionItem"
                     app:drawableStartCompat="@drawable/ic_map" />
@@ -86,7 +86,7 @@
                     style="@style/MenuTextView"
                     android:background="?android:attr/selectableItemBackground"
 
-                    android:padding="@dimen/padding_small"
+                    android:padding="@dimen/padding"
                     android:text="@string/create_your_group"
                     android:textAppearance="@style/Text.OptionItem"
                     app:drawableStartCompat="@drawable/ic_group" />
@@ -96,7 +96,7 @@
                     style="@style/MenuTextView"
                     android:background="?android:attr/selectableItemBackground"
 
-                    android:padding="@dimen/padding_small"
+                    android:padding="@dimen/padding"
                     android:text="@string/make_your_emergency_backpack"
                     android:textAppearance="@style/Text.OptionItem"
                     app:drawableStartCompat="@drawable/ic_shopping_bag" />
@@ -106,7 +106,7 @@
                     style="@style/MenuTextView"
                     android:background="?android:attr/selectableItemBackground"
 
-                    android:padding="@dimen/padding_small"
+                    android:padding="12dp"
                     android:text="@string/learn_to_give_firstaid"
                     android:textAppearance="@style/Text.OptionItem"
                     app:drawableStartCompat="@drawable/ic_plus" />
@@ -114,5 +114,4 @@
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
 </layout>

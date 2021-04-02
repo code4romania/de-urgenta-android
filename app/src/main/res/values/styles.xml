@@ -61,6 +61,11 @@
         <item name="lineHeight">26sp</item>
     </style>
 
+    <style name="Text.Content">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/gray_200</item>
+    </style>
+
     <style name="Text.MenuList">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/gray_800</item>
@@ -88,6 +93,15 @@
         <item name="android:backgroundTint">@color/colorPrimary</item>
         <item name="rippleColor">@color/white</item>
         <item name="strokeWidth">0dp</item>
+    </style>
+
+    <style name="NoCaps.Button.WhiteRed" parent="Signup.Button.Simple">
+        <item name="android:backgroundTint">@color/md_red_200</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="NoCaps.Button.Simple" parent="Signup.Button.Simple">
+        <item name="textAllCaps">false</item>
     </style>
 
     <style name="NavigationView" parent="Widget.Design.NavigationView">

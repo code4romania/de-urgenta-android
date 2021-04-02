@@ -9,19 +9,17 @@
         android:name="ro.code4.deurgenta.ui.account.ConfigureAccountFragment"
         android:label="fragment_configure_profile">
         <action
-            android:id="@+id/navigate_to_configure_address"
-            app:destination="@id/configure_addresses" />
-    </fragment>
+            android:id="@+id/action_configure_address"
+            app:destination="@id/configure_addresses">
 
-    <fragment
-        android:id="@+id/configure_addresses"
-        android:name="ro.code4.deurgenta.ui.address.ConfigureAddressFragment"
-        android:label="fragment_configure_addresses">
+            <argument
+                android:name="mapAddressType"
+                app:argType="ro.code4.deurgenta.data.model.MapAddressType" />
 
-        <!-- Launch Configure addresses Navigation Graph -->
-        <action
-            android:id="@+id/configure_new_address"
-            app:destination="@id/configure_new_address" />
+            <argument
+                android:name="titleResourceId"
+                app:argType="integer" />
+        </action>
     </fragment>
 
     <include app:graph="@navigation/configure_addresses" />

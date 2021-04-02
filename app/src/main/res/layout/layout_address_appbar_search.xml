@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="toolbarMessage"
+            type="String" />
+    </data>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar_search"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent"
+            app:navigationIcon="@drawable/ic_close_white"
+            app:title="@{toolbarMessage}"
+            app:titleTextColor="@color/white" />
+
+        <SearchView
+            android:id="@+id/query_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin"
+            android:background="@drawable/white_rounded"
+            android:iconifiedByDefault="false"
+            android:layoutDirection="rtl"
+            android:queryBackground="@color/transparent"
+            android:queryHint="@string/search_hint"
+
+            tools:targetApi="lollipop_mr1" />
+    </com.google.android.material.appbar.AppBarLayout>
+</layout>
