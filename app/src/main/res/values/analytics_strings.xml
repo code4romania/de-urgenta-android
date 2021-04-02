@@ -2,4 +2,5 @@
     <string name="analytics_title_splash" translatable="false">Splash screen</string>
     <string name="analytics_title_onboarding" translatable="false">Onboarding</string>
     <string name="analytics_title_login" translatable="false">Login</string>
+    <string name="analytics_title_home" translatable="false">Home</string>
 </resources>

@@ -35,12 +35,20 @@ class MainActivity : BaseActivity<MainViewModel>() {
 
         navController = findNavController(R.id.nav_host_fragment)
 
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.nav_home,
+            ), drawerLayout
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
         // This needs to be set after `setupWithNavController`
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_menu)
 
-        navView.setCheckedItem(R.id.nav_test)
+        navView.setCheckedItem(R.id.nav_home)
 
         viewModel.onLogoutLiveData().observe(this, Observer {
             startActivityWithoutTrace(LoginActivity::class.java)
