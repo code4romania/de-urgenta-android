@@ -120,3 +120,8 @@ fun ImageView.setToRotateIndefinitely(): ObjectAnimator =
         interpolator = LinearInterpolator()
         repeatMode = ObjectAnimator.RESTART
     }
+
+fun hideSoftInput(view: View) {
+    val imm = view.context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    imm.hideSoftInputFromWindow(view.windowToken, 0)
+}

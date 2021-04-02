@@ -108,4 +108,17 @@
     <string name="edit_backpack_item_error_quantity">Please provide a quantity</string>
     <string name="edit_backpack_item_error_quantity_value">"Please enter a valid number quantity!"</string>
 
+    <!-- Configure account -->
+    <string name="configure_addresses" translatable="false">Configure Addresses</string>
+    <string name="item_description_configure_account">Configure your account</string>
+    <string name="create_your_account">Configure your account</string>
+    <string name="save_address">Save Address</string>
+    <string name="create_your_group">Create your group</string>
+    <string name="enter_your_address">Enter your address</string>
+    <string name="make_your_emergency_backpack">Make your emergency backpack</string>
+    <string name="learn_to_give_firstaid">Learn how to give first aid</string>
+    <string name="locate_me">Locate me</string>
+    <string name="search_hint">enter your address</string>
+    <string name="add_your_own_address">Add your own address</string>
+
 </resources>

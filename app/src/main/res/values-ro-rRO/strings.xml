@@ -99,4 +99,16 @@
     <string name="edit_backpack_item_error_quantity">Introdu cantitatea produsului!</string>
     <string name="edit_backpack_item_error_quantity_value">"Introdu un numar pentru cantitate!"</string>
 
+    <!-- Configure account -->
+    <string name="item_description_configure_account">Configureaza-ti contul.</string>
+    <string name="create_your_account">Configureaza-ti contul.</string>
+    <string name="create_your_group">Configureaza-ti grupul.</string>
+    <string name="save_address">Salveaza adresa</string>
+    <string name="enter_your_address">Introdu adresa</string>
+    <string name="make_your_emergency_backpack">Fa-ti rucascul de urgenta.</string>
+    <string name="learn_to_give_firstaid">Invata sa dai primul ajutor.</string>
+    <string name="locate_me">Localizeaza-ma</string>
+    <string name="search_hint">Introdu adresa</string>
+    <string name="add_your_own_address">Adauga adresa ta</string>
+
 </resources>

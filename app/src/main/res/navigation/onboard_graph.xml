@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/onboard_graph.xml"
+    app:startDestination="@id/configure_account">
+
+    <fragment
+        android:id="@+id/configure_account"
+        android:name="ro.code4.deurgenta.ui.account.ConfigureAccountFragment"
+        android:label="fragment_configure_profile">
+        <action
+            android:id="@+id/navigate_to_configure_address"
+            app:destination="@id/configure_addresses" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/configure_addresses"
+        android:name="ro.code4.deurgenta.ui.address.ConfigureAddressFragment"
+        android:label="fragment_configure_addresses">
+
+        <!-- Launch Configure addresses Navigation Graph -->
+        <action
+            android:id="@+id/configure_new_address"
+            app:destination="@id/configure_new_address" />
+    </fragment>
+
+    <include app:graph="@navigation/configure_addresses" />
+
+</navigation>

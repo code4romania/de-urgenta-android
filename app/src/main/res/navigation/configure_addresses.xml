@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/configure_addresses"
+    app:startDestination="@id/create_addresses">
+
+    <fragment
+        android:id="@+id/create_addresses"
+        android:name="ro.code4.deurgenta.ui.address.ConfigureAddressFragment"
+        android:label="@string/configure_addresses">
+
+        <!-- Action back to destination which launched into this graph -->
+        <action
+            android:id="@+id/back_to_configure_profile"
+            app:popUpTo="@id/configure_account"
+            app:popUpToInclusive="false">
+
+            <argument
+                android:name="configured"
+                android:defaultValue="false"
+                app:argType="boolean" />
+        </action>
+
+    </fragment>
+
+</navigation>

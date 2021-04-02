@@ -17,11 +17,15 @@ class LoginFormViewModel : BaseViewModel() {
     fun loggedIn(): LiveData<Result<Class<*>>> = loginLiveData
 
 
-    fun login() {
+    fun login2() {
         val nextActivity = when (sharedPreferences.hasCompletedOnboarding()) {
             true -> MainActivity::class.java
             false -> OnboardingActivity::class.java
         }
         loginLiveData.postValue(Result.Success(nextActivity))
+    }
+
+    fun login() {
+        loginLiveData.postValue(Result.Success(OnboardingActivity::class.java))
     }
 }

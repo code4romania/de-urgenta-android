@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ro.code4.deurgenta.interfaces.Layout
-import ro.code4.deurgenta.interfaces.ViewModelSetter
 
 abstract class ViewModelFragment<out T : BaseViewModel> : BaseAnalyticsFragment(), Layout,
     ViewModelSetter<T> {
