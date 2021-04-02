@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/home_menu_address"
+        style="@style/Text.MenuList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_map"
+        android:drawableEnd="@drawable/ic_arrow_right"
+        android:gravity="center_vertical"
+        android:padding="@dimen/big_margin"
+        android:text="Adrese si trasee"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/home_menu_group"
+        style="@style/Text.MenuList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_group"
+        android:drawableEnd="@drawable/ic_arrow_right"
+        android:gravity="center_vertical"
+        android:padding="@dimen/big_margin"
+        android:text="Grupul de urgenta"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/home_menu_bagpack"
+        style="@style/Text.MenuList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_shopping_bag"
+        android:drawableEnd="@drawable/ic_arrow_right"
+        android:gravity="center_vertical"
+        android:padding="@dimen/big_margin"
+        android:text="Rucsacul de urgenta"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/home_menu_courses"
+        style="@style/Text.MenuList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_plus"
+        android:drawableEnd="@drawable/ic_arrow_right"
+        android:gravity="center_vertical"
+        android:padding="@dimen/big_margin"
+        android:text="Cursuri si info utile"
+        android:textStyle="bold"/>
+
+</LinearLayout>

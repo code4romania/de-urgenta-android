@@ -40,6 +40,12 @@
         <item name="lineHeight">26sp</item>
     </style>
 
+    <style name="Text.MenuList">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/gray_800</item>
+        <item name="lineHeight">24sp</item>
+    </style>
+
     <style name="NavigationView" parent="Widget.Design.NavigationView">
         <item name="itemTextAppearance">@style/Text.Big</item>
         <item name="itemIconTint">@color/colorPrimary</item>

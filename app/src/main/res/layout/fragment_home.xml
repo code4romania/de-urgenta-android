@@ -23,7 +23,7 @@
             app:srcCompat="@drawable/logo_red" />
 
         <TextView
-            android:id="@+id/title_text_view"
+            android:id="@+id/home_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -35,7 +35,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/home_header_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -50,7 +50,7 @@
         app:layout_constraintTop_toBottomOf="@+id/content_header" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/home_header_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -60,6 +60,16 @@
         android:text="This is a small text to welcome the user back in the app and excite him to do something to be more prepared. "
         style="@style/Text.Paragraph"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"/>
+        app:layout_constraintTop_toBottomOf="@+id/home_header_title"/>
+
+    <include
+        layout="@layout/home_menu_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_header_description" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
