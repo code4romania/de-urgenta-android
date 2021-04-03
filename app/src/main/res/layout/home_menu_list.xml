@@ -1,56 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/home_menu_address"
-        style="@style/Text.MenuList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/MenuTextView"
+        android:background="?android:attr/selectableItemBackground"
+        android:textAppearance="@style/Text.MenuList"
         android:drawableStart="@drawable/ic_map"
-        android:drawableEnd="@drawable/ic_arrow_right"
-        android:gravity="center_vertical"
-        android:padding="@dimen/big_margin"
-        android:text="@string/home_menu_item_address"
-        android:textStyle="bold"/>
+        android:text="@string/home_menu_item_address"/>
 
     <TextView
         android:id="@+id/home_menu_group"
-        style="@style/Text.MenuList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        style="@style/MenuTextView"
+        android:textAppearance="@style/Text.MenuList"
         android:drawableStart="@drawable/ic_group"
-        android:drawableEnd="@drawable/ic_arrow_right"
-        android:gravity="center_vertical"
-        android:padding="@dimen/big_margin"
-        android:text="@string/home_menu_item_group"
-        android:textStyle="bold"/>
+        android:text="@string/home_menu_item_group"/>
 
     <TextView
         android:id="@+id/home_menu_bagpack"
-        style="@style/Text.MenuList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/MenuTextView"
+        android:background="?android:attr/selectableItemBackground"
+        android:textAppearance="@style/Text.MenuList"
         android:drawableStart="@drawable/ic_shopping_bag"
-        android:drawableEnd="@drawable/ic_arrow_right"
-        android:gravity="center_vertical"
-        android:padding="@dimen/big_margin"
-        android:text="@string/home_menu_item_backpack"
-        android:textStyle="bold"/>
+        android:text="@string/home_menu_item_backpack"/>
 
     <TextView
         android:id="@+id/home_menu_courses"
-        style="@style/Text.MenuList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/MenuTextView"
+        android:background="?android:attr/selectableItemBackground"
+        android:textAppearance="@style/Text.MenuList"
         android:drawableStart="@drawable/ic_plus"
-        android:drawableEnd="@drawable/ic_arrow_right"
-        android:gravity="center_vertical"
-        android:padding="@dimen/big_margin"
-        android:text="@string/home_menu_item_courses"
-        android:textStyle="bold"/>
+        android:text="@string/home_menu_item_courses"/>
 
 </LinearLayout>
