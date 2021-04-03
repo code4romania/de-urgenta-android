@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/xxbig_margin">
+
+        <LinearLayout
+            android:id="@+id/content_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start|fill_horizontal">
+
+            <ImageView
+                android:id="@+id/logo_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/big_margin"
+                app:srcCompat="@drawable/logo_red" />
+
+            <TextView
+                android:id="@+id/home_title"
+                style="@style/Text.Heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/big_margin"
+                android:text="@string/home_title"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/home_header_title"
+            style="@style/Text.Big"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/big_margin"
+            android:layout_marginTop="@dimen/margin"
+            android:layout_marginEnd="@dimen/big_margin"
+            android:text="@string/home_header_title"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/home_header_description"
+            style="@style/Text.Paragraph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/big_margin"
+            android:layout_marginTop="@dimen/margin"
+            android:layout_marginEnd="@dimen/big_margin"
+            android:text="@string/home_header_description" />
+
+        <include
+            layout="@layout/home_menu_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin" />
+
+    </LinearLayout>
+</ScrollView>
