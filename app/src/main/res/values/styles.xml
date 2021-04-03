@@ -43,6 +43,7 @@
     <style name="Text.MenuList">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/gray_800</item>
+        <item name="android:textStyle">bold</item>
         <item name="lineHeight">24sp</item>
     </style>
 
@@ -55,6 +56,18 @@
         <item name="itemPadding">@dimen/margin</item>
         <item name="itemIconSize">@dimen/small_icon_size</item>
         <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="MenuTextView" parent="Widget.AppCompat.TextView">
+        <item name="textAppearanceSubtitle1">@style/Text.MenuList</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawableEnd">@drawable/ic_arrow_right</item>
+        <item name="android:padding">@dimen/big_margin</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+
     </style>
 
 </resources>
