@@ -28,6 +28,9 @@ class LoginActivity : BaseAnalyticsActivity<LoginViewModel>() {
         loginButton.setOnClickListener {
             viewModel.login()
         }
+        signupButton.setOnClickListener {
+            viewModel.signup()
+        }
     }
 
     private fun loginUserObservable() {

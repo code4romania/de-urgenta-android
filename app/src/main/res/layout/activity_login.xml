@@ -25,6 +25,7 @@
     <TextView
         android:id="@+id/title"
         style="@style/Text.Heading"
+        android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin"
@@ -33,7 +34,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/xxbig_margin"
-        android:text="Tu ti-ai facut planul in caz de urgenta?" />
+        android:text="@string/login_title" />
 
 
     <TextView
@@ -47,8 +48,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/xxbig_margin"
-        android:text="Hai sa il facem impreuna!" />
+        android:text="@string/login_subtitle" />
 
+
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/signupButton"
+            style="@style/Text.Signup"
+            android:layout_width="match_parent"
+            android:paddingTop="@dimen/margin"
+            android:paddingBottom="@dimen/margin"
+
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/loginButton"
+            android:layout_marginBottom="@dimen/big_margin"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginEnd="@dimen/small_margin"
+            android:text="@string/login_button_signup" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/loginButton"
@@ -59,6 +76,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="Autentifica-te"/>
+        android:text="@string/login_button_login"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

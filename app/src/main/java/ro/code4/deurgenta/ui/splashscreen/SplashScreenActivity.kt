@@ -8,7 +8,7 @@ import ro.code4.deurgenta.helper.startActivityWithoutTrace
 import ro.code4.deurgenta.ui.base.BaseAnalyticsActivity
 import ro.code4.deurgenta.ui.login.LoginActivity
 import ro.code4.deurgenta.ui.main.MainActivity
-import ro.code4.deurgenta.ui.onboarding.OnboardingActivity
+import ro.code4.deurgenta.ui.register.RegisterActivity
 import ro.code4.deurgenta.widget.ProgressDialogFragment
 
 class SplashScreenActivity : BaseAnalyticsActivity<SplashScreenViewModel>() {
@@ -33,7 +33,7 @@ class SplashScreenActivity : BaseAnalyticsActivity<SplashScreenViewModel>() {
             progressDialog.dismiss()
             val activity = when {
                 loginStatus.isLoggedIn && loginStatus.onboardingCompleted -> MainActivity::class.java
-                loginStatus.isLoggedIn -> OnboardingActivity::class.java
+                loginStatus.isLoggedIn -> RegisterActivity::class.java
                 else -> LoginActivity::class.java
             }
 
