@@ -1,17 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="ro.code4.deurgenta.ui.register.RegisterActivity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center">
-    <TextView
-            android:id="@+id/home_title"
-            style="@style/Text.Heading"
+        android:background="@color/colorPrimaryLight"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+    <ImageView
+            android:id="@+id/mailImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="@dimen/big_margin"
-            android:text="Completed register fragment"
-            android:textColor="@color/colorPrimary"
-            android:textStyle="bold" />
-</ScrollView>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_mail"
+            android:layout_marginTop="@dimen/xbig_margin" />
+
+    <TextView
+            android:id="@+id/titleTextView"
+            style="@style/Text.Heading.Dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register_completed_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mailImageView"
+            android:layout_marginTop="@dimen/xbig_margin" />
+
+    <TextView
+            android:id="@+id/messageTextView"
+            style="@style/Text.Paragraph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register_completed_message"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/margin"
+            app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

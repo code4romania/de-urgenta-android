@@ -43,5 +43,7 @@
     <string name="register_terms_text" translatable="false">Sunt de acord cu {link} acestei aplicatii De Urgenta. BRRRRR.</string>
     <string name="register_terms_link_text" translatable="false">termenii si conditiile</string>
     <string name="register_submit_button" translatable="false">Mai departe ➔</string>
+    <string name="register_completed_title" translatable="false">Valideaza-ti contul</string>
+    <string name="register_completed_message" translatable="false">Un e-mail a fost trimis catre adresa pe care ti-ai facut contul bla bla te rugam sa apesi linkul pt validarea contului etc.</string>
 
 </resources>
