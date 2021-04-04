@@ -40,7 +40,8 @@
     <string name="register_label_last_name" translatable="false">Nume</string>
     <string name="register_label_email" translatable="false">E-mail</string>
     <string name="register_label_password" translatable="false">Parola</string>
-    <string name="register_terms" translatable="false">Sunt de acord cu termenii si conditiile acestei aplicatii De Urgenta. BRRRRR.</string>
+    <string name="register_terms_text" translatable="false">Sunt de acord cu {link} acestei aplicatii De Urgenta. BRRRRR.</string>
+    <string name="register_terms_link_text" translatable="false">termenii si conditiile</string>
     <string name="register_submit_button" translatable="false">Mai departe ➔</string>
 
 </resources>

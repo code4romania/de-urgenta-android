@@ -12,6 +12,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_register.*
+import ro.code4.deurgenta.BuildConfig.TERMS_AND_CONDITIONS
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.databinding.FragmentRegisterBinding
 import ro.code4.deurgenta.ui.base.ViewModelFragment
@@ -73,10 +74,11 @@ class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
     }
 
     private fun termsAndConditionsSetup() {
-        val htmlString = getString(R.string.register_terms)
-
-        termsCheckBox.text = "";
-        termsTextView.text = Html.fromHtml(htmlString);
+        val termsLink = TERMS_AND_CONDITIONS
+        val termsLinkText = getString(R.string.register_terms_link_text)
+        val termsLinkHtml = "<a href='$termsLink'>$termsLinkText</a>"
+        val termsText = getString(R.string.register_terms_text).replace("{link}", termsLinkHtml)
+        termsTextView.text = Html.fromHtml(termsText);
         termsTextView.isClickable = true;
         termsTextView.movementMethod = LinkMovementMethod.getInstance();
 

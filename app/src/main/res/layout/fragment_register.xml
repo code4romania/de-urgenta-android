@@ -127,15 +127,15 @@
             <CheckBox
                     android:id="@+id/termsCheckBox"
                     android:checked="@={viewmodel.termsAndConditions}"
-                    android:layout_width="wrap_content"
+                    android:layout_width="32dp"
+                    android:layout_marginStart="-4dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                     android:id="@+id/termsTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/register_terms" />
+                    android:layout_height="wrap_content" />
 
         </LinearLayout>
 
