@@ -3,14 +3,8 @@ package ro.code4.deurgenta.ui.login
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
 import com.facebook.CallbackManager
-import com.facebook.FacebookCallback
-import com.facebook.FacebookException
-import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -18,12 +12,15 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.willowtreeapps.signinwithapplebutton.SignInWithAppleConfiguration
 import com.willowtreeapps.signinwithapplebutton.SignInWithAppleResult
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_login.view.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
+import org.koin.android.ext.android.inject
 import ro.code4.deurgenta.R
-import ro.code4.deurgenta.ui.base.BaseAnalyticsFragment
+import ro.code4.deurgenta.helper.startActivityWithoutTrace
+import ro.code4.deurgenta.ui.base.ViewModelFragment
 
-class LoginFormFragment : BaseAnalyticsFragment() {
+class LoginFormFragment : ViewModelFragment<LoginFormViewModel>() {
 
     companion object {
         private const val RC_SIGN_IN = 7
@@ -36,22 +33,24 @@ class LoginFormFragment : BaseAnalyticsFragment() {
         scope = "name email"
     )
 
+    override val layout: Int
+        get() = R.layout.fragment_login
+    override val viewModel: LoginFormViewModel by inject()
 
     override val screenName: Int
         get() = R.string.login_fragment_name
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_login, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         callbackManager = CallbackManager.Factory.create()
-        view.facebook_login_button.fragment = this
 
-        view.loginButton.setOnClickListener {
+        view.close_btn.setOnClickListener {
+            activity?.onBackPressed()
+        }
 
+        view.login_btn.setOnClickListener {
+            viewModel.login()
         }
 
         view.google_login.setOnClickListener {
@@ -70,7 +69,7 @@ class LoginFormFragment : BaseAnalyticsFragment() {
         ) { result ->
             when (result) {
                 is SignInWithAppleResult.Success -> {
-                    //Handle success
+                    viewModel.login()
                 }
                 is SignInWithAppleResult.Failure -> {
                     // Handle failure
@@ -80,28 +79,29 @@ class LoginFormFragment : BaseAnalyticsFragment() {
                 }
             }
         }
-        return view
+
+        loginUserObservable()
+    }
+
+    private fun loginUserObservable() {
+        viewModel.loggedIn().observe(viewLifecycleOwner, {
+            it.handle(
+                onSuccess = { activity ->
+                    activity?.let(::startActivityWithoutTrace)
+                },
+                onFailure = { error ->
+                    showDefaultErrorSnackBar(loginButton)
+
+                    loginButton.isEnabled = true
+                }
+            )
+        })
     }
 
     private fun setFacebookLoginListener() {
         view?.facebook_login?.setOnClickListener {
-            view?.facebook_login_button?.performClick()
+            viewModel.login()
         }
-
-
-        // Callback registration
-        view?.facebook_login_button?.registerCallback(callbackManager, object :
-            FacebookCallback<LoginResult> {
-            override fun onSuccess(loginResult: LoginResult) {
-
-            }
-
-            override fun onCancel() {
-            }
-
-            override fun onError(exception: FacebookException) {
-            }
-        })
     }
 
     private fun handleGoogleLoginClick() {
@@ -130,7 +130,7 @@ class LoginFormFragment : BaseAnalyticsFragment() {
     private fun handleGoogleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
             val account = completedTask.getResult(ApiException::class.java)
-            // Signed in successfully, show authenticated UI.
+            viewModel.login()
         } catch (e: ApiException) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
