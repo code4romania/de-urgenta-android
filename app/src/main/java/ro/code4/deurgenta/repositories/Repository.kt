@@ -5,8 +5,10 @@ import org.koin.core.KoinComponent
 import org.koin.core.inject
 import retrofit2.Retrofit
 import ro.code4.deurgenta.data.AppDatabase
+import ro.code4.deurgenta.data.model.Register
 import ro.code4.deurgenta.data.model.User
 import ro.code4.deurgenta.data.model.response.LoginResponse
+import ro.code4.deurgenta.data.model.response.RegisterResponse
 import ro.code4.deurgenta.services.ApiInterface
 
 class Repository : KoinComponent {
@@ -23,5 +25,7 @@ class Repository : KoinComponent {
     }
 
     fun login(user: User): Observable<LoginResponse> = apiInterface.login(user)
+
+    fun register(data: Register): Observable<RegisterResponse> = apiInterface.register(data)
 }
 
