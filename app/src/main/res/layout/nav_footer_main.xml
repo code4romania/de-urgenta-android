@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimaryLight"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <TextView
+        android:id="@+id/nav_footer_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        android:layout_marginBottom="@dimen/small_margin"
+        style="@style/Text.Default"
+        android:text="Solutie proiectata, dezvoltata si administrata de" />
+
+    <ImageView
+        android:id="@+id/nav_footer_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginBottom="@dimen/small_margin"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/accessibility_logo"
+        android:src="@drawable/logo_code4" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/nav_footer_donate_button"
+        style="@style/Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        android:layout_marginBottom="@dimen/small_margin"
+        android:backgroundTint="@color/green_400"
+        android:textAllCaps="false"
+        android:text="Doneaza"/>
+
+</LinearLayout>
