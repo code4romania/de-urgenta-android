@@ -15,7 +15,7 @@
         android:layout_marginEnd="@dimen/margin"
         android:layout_marginBottom="@dimen/small_margin"
         style="@style/Text.Default"
-        android:text="Solutie proiectata, dezvoltata si administrata de" />
+        android:text="@string/nav_menu_footer_description" />
 
     <ImageView
         android:id="@+id/nav_footer_logo"
@@ -37,6 +37,6 @@
         android:layout_marginBottom="@dimen/small_margin"
         android:backgroundTint="@color/green_400"
         android:textAllCaps="false"
-        android:text="Doneaza"/>
+        android:text="@string/nav_menu_footer_donate_button_title"/>
 
 </LinearLayout>

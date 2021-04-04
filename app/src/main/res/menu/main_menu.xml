@@ -3,27 +3,27 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_item_address"
-            android:title="Adrese si trasee" />
+            android:title="@string/nav_menu_item_address" />
         <item
             android:id="@+id/nav_item_groups"
-            android:title="Grupuri de urgenta" />
+            android:title="@string/nav_menu_item_groups" />
         <item
             android:id="@+id/nav_item_backpack"
-            android:title="Rucsacul de urgenta" />
+            android:title="@string/nav_menu_item_backpack" />
         <item
             android:id="@+id/nav_item_courses"
-            android:title="Cursuri si informatii utile" />
+            android:title="@string/nav_menu_item_courses" />
         <item
             android:id="@+id/nav_item_profile"
-            android:title="Profilul meu" />
+            android:title="@string/nav_menu_item_profile" />
         <item
             android:id="@+id/nav_item_settings"
-            android:title="Setari" />
+            android:title="@string/nav_menu_item_settings" />
         <item
             android:id="@+id/nav_item_about"
-            android:title="Despre aplicatie" />
+            android:title="@string/nav_menu_item_about" />
         <item
             android:id="@+id/nav_item_logout"
-            android:title="Delogare" />
+            android:title="@string/nav_menu_item_logout" />
     </group>
 </menu>
