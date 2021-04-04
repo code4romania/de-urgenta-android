@@ -19,4 +19,28 @@
     <!-- Errors -->
     <string name="error_generic">A apărut o problemă!</string>
 
+    <!-- Home -->
+    <string name="home_title">De Urgență</string>
+    <string name="home_header_title">Bine ai revenit.</string>
+    <string name="home_header_description">This is a small text to welcome the user back in the app and excite him to do something to be more prepared.</string>
+    <string name="home_menu_item_address">Adrese și trasee</string>
+    <string name="home_menu_item_group">Grupul de urgență</string>
+    <string name="home_menu_item_backpack">Rucsacul de urgență</string>
+    <string name="home_menu_item_courses">Cursuri și info utile</string>
+
+    <!-- Login screen -->
+    <string name="login_button_signup" translatable="false">Înscrie-te acum</string>
+    <string name="login_button_login" translatable="false">Autentifică-te</string>
+    <string name="login_title" translatable="false">Tu ți-ai făcut planul în caz de urgență?</string>
+    <string name="login_subtitle" translatable="false">Hai să îl facem împreună!</string>
+
+   <!-- Register -->
+    <string name="register_title" translatable="false">Creeaza-ti contul</string>
+    <string name="register_label_first_name" translatable="false">Prenume</string>
+    <string name="register_label_last_name" translatable="false">Nume</string>
+    <string name="register_label_email" translatable="false">E-mail</string>
+    <string name="register_label_password" translatable="false">Parola</string>
+    <string name="register_terms" translatable="false">Sunt de acord cu termenii si conditiile acestei aplicatii De Urgenta. BRRRRR.</string>
+    <string name="register_submit_button" translatable="false">Mai departe</string>
+
 </resources>

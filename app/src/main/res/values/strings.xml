@@ -26,4 +26,28 @@
     <string name="login_button_text">Intra in contul tau</string>
     <string name="login_divider_text">sau</string>
 
+    <!-- Home -->
+    <string name="home_title">De Urgență</string>
+    <string name="home_header_title">Bine ai revenit.</string>
+    <string name="home_header_description">This is a small text to welcome the user back in the app and excite him to do something to be more prepared.</string>
+    <string name="home_menu_item_address">Adrese și trasee</string>
+    <string name="home_menu_item_group">Grupul de urgență</string>
+    <string name="home_menu_item_backpack">Rucsacul de urgență</string>
+    <string name="home_menu_item_courses">Cursuri și info utile</string>
+
+    <!-- Login screen -->
+    <string name="login_button_signup" translatable="false">Sign up</string>
+    <string name="login_button_login" translatable="false">Authenticate</string>
+    <string name="login_title" translatable="false">Did you make your plan in case of an emergency?</string>
+    <string name="login_subtitle" translatable="false">Let\'s do it together!</string>
+
+    <!-- Register screen -->
+    <string name="register_title" translatable="false">Create your account</string>
+    <string name="register_label_first_name" translatable="false">First name</string>
+    <string name="register_label_last_name" translatable="false">Last name</string>
+    <string name="register_label_email" translatable="false">Email</string>
+    <string name="register_label_password" translatable="false">Password</string>
+    <string name="register_terms" translatable="false">Accept <a href='google.com'>terms and conditions</a></string>
+    <string name="register_submit_button" translatable="false">Submit</string>
+
 </resources>
