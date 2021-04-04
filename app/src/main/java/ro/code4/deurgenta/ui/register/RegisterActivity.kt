@@ -1,7 +1,6 @@
 package ro.code4.deurgenta.ui.register
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
@@ -32,7 +31,7 @@ class RegisterActivity : BaseAnalyticsActivity<RegisterViewModel>() {
             }
         }
 
-        registerUserObservable()
+        registerObservables()
         clickListenersSetup()
 
     }
@@ -45,7 +44,7 @@ class RegisterActivity : BaseAnalyticsActivity<RegisterViewModel>() {
         }
     }
 
-    private fun registerUserObservable() {
+    private fun registerObservables() {
         viewModel.registered().observe(this, {
             it.handle(
                 onSuccess = {
@@ -56,6 +55,8 @@ class RegisterActivity : BaseAnalyticsActivity<RegisterViewModel>() {
                 }
             )
         })
+
+        viewModel.isSubmitEnabled.observe(this, {})
     }
 
     private fun showRegistrationCompletedFragment() {

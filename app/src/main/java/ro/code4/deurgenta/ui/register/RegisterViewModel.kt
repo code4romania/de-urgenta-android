@@ -1,7 +1,7 @@
 package ro.code4.deurgenta.ui.register
 
-import androidx.databinding.Bindable
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import io.reactivex.Observable
 import org.koin.core.inject
@@ -16,69 +16,50 @@ class RegisterViewModel : BaseViewModel() {
 
     private val repository: Repository by inject()
     private val registerLiveData = SingleLiveEvent<Result<Class<*>>>()
-    private val registerData = Register("", "", "", "")
-    private var _hasAgreedTerms = false
+    private val isFormCompleted = MutableLiveData(false)
 
-    var hasCompletedForm = MutableLiveData<Boolean>(false)
+    val firstName = MutableLiveData<String>("")
+    val lastName = MutableLiveData("")
+    val email = MutableLiveData("")
+    val password = MutableLiveData("")
+    val termsAndConditions = MutableLiveData(false)
 
 
-    var firstName: String
-        @Bindable
-        get() = registerData.firstName
-        set(value) {
-            registerData.firstName = value
-            checkFormCompleted()
-        }
+    val isRequestPending = MutableLiveData(false)
 
-    var lastName: String
-        @Bindable
-        get() = registerData.lastName
-        set(value) {
-            registerData.lastName = value
-            checkFormCompleted()
-        }
+    val isSubmitEnabled = MediatorLiveData<Boolean>()
 
-    var email: String
-        @Bindable
-        get() = registerData.email
-        set(value) {
-            registerData.email = value
-            checkFormCompleted()
-        }
-
-    var password: String
-        @Bindable
-        get() = registerData.password
-        set(value) {
-            registerData.password = value
-            checkFormCompleted()
-        }
-
-    var termsAgreed: Boolean
-        @Bindable
-        get() = _hasAgreedTerms
-        set(value) {
-            _hasAgreedTerms = value
-            checkFormCompleted()
-        }
-
+    init {
+        isSubmitEnabled.addSource(firstName) { checkFormCompleted() }
+        isSubmitEnabled.addSource(lastName) { checkFormCompleted() }
+        isSubmitEnabled.addSource(email) { checkFormCompleted() }
+        isSubmitEnabled.addSource(password) { checkFormCompleted() }
+        isSubmitEnabled.addSource(termsAndConditions) { checkFormCompleted() }
+        isSubmitEnabled.addSource(isFormCompleted) { checkSubmitEnabled() }
+        isSubmitEnabled.addSource(isRequestPending) { checkSubmitEnabled() }
+    }
 
     private fun checkFormCompleted() {
-        val isFormCompleted =
-            firstName.isNotEmpty() &&
-                    lastName.isNotEmpty() &&
-                    email.isNotEmpty() &&
-                    password.length > 4 &&
-                    termsAgreed
+        val isFormCompleted = firstName.value?.isNotEmpty() == true &&
+                lastName.value?.isNotEmpty() == true &&
+                email.value?.isNotEmpty() == true &&
+                password.value?.length!! > 4 &&
+                termsAndConditions.value == true
 
-        hasCompletedForm.postValue(isFormCompleted)
+        this.isFormCompleted.postValue(isFormCompleted)
+    }
+
+    private fun checkSubmitEnabled() {
+        var isEnabled = isFormCompleted.value == true && isRequestPending.value != true
+        isSubmitEnabled.postValue(isEnabled)
     }
 
     fun getRegisterData(): Register {
-        return registerData
+        return Register(firstName.value!!, lastName.value!!, email.value!!, password.value!!)
     }
 
     fun register(data: Register): Observable<RegisterResponse> {
+        isRequestPending.postValue(true)
         return repository.register(data)
     }
 
@@ -86,11 +67,25 @@ class RegisterViewModel : BaseViewModel() {
 
 
     fun onRegisterSuccess() {
+        isRequestPending.postValue(false)
         registerLiveData.postValue(Result.Success())
     }
 
     fun onRegisterFail(error: Throwable, message: String = "") {
+        isRequestPending.postValue(false)
         registerLiveData.postValue(Result.Failure(error, message))
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+
+        isSubmitEnabled.removeSource(firstName)
+        isSubmitEnabled.removeSource(lastName)
+        isSubmitEnabled.removeSource(email)
+        isSubmitEnabled.removeSource(password)
+        isSubmitEnabled.removeSource(termsAndConditions)
+        isSubmitEnabled.removeSource(isFormCompleted)
+        isSubmitEnabled.removeSource(isRequestPending)
     }
 
 }
