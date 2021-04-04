@@ -78,6 +78,7 @@
         <item name="android:padding">@dimen/big_margin</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
+    </style>
 
     <style name="Input">
     </style>
