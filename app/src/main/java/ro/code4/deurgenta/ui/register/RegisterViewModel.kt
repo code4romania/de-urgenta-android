@@ -1,7 +1,9 @@
 package ro.code4.deurgenta.ui.register
 
 import android.util.Log
+import androidx.databinding.Bindable
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import io.reactivex.Observable
 import org.koin.core.inject
 import ro.code4.deurgenta.data.model.Register
@@ -18,16 +20,74 @@ class RegisterViewModel : BaseViewModel() {
 
     private val registerLiveData = SingleLiveEvent<Result<Class<*>>>()
 
+    private val registerData = Register("", "", "", "")
+
+    private var _hasAgreedTerms = false
+    var hasCompletedForm = MutableLiveData<Boolean>(false)
+
+
+    var firstName: String
+        get() = registerData.firstName
+        set(value) {
+            registerData.firstName = value
+            checkFormCompleted()
+        }
+
+    var lastName: String
+        @Bindable
+        get() = registerData.lastName
+        set(value) {
+            registerData.lastName = value
+            checkFormCompleted()
+        }
+
+    var email: String
+        @Bindable
+        get() = registerData.email
+        set(value) {
+            registerData.email = value
+            checkFormCompleted()
+        }
+
+    var password: String
+        @Bindable
+        get() = registerData.password
+        set(value) {
+            registerData.password = value
+            checkFormCompleted()
+        }
+
+    var termsAgreed: Boolean
+        @Bindable
+        get() = _hasAgreedTerms
+        set(value) {
+            _hasAgreedTerms = value
+            checkFormCompleted()
+        }
+
+
+    private fun checkFormCompleted() {
+        val isFormCompleted = firstName.isNotEmpty() &&
+                lastName.isNotEmpty() &&
+                email.isNotEmpty() &&
+                password.length > 4 &&
+                termsAgreed
+
+        hasCompletedForm.postValue(isFormCompleted)
+    }
+
+    fun getRegisterData(): Register {
+        return registerData
+    }
+
     fun registered(): LiveData<Result<Class<*>>> = registerLiveData
 
     fun register(data: Register): Observable<RegisterResponse> {
-
-        Log.d("TEST", "SEND ${data.firstName} .to users.")
         return repository.register(data)
     }
 
     fun onRegisterSuccess() {
-        // TODO: change login activity with register success fragment
+        // TODO: change login activity with registered successfully fragment
         val nextActivity = LoginActivity::class.java
         registerLiveData.postValue(Result.Success(nextActivity))
     }
