@@ -59,9 +59,8 @@
     </style>
 
     <style name="NavigationView" parent="Widget.Design.NavigationView">
-        <item name="itemTextAppearance">@style/Text.Big</item>
+        <item name="itemTextAppearance">@style/Text.Paragraph</item>
         <item name="itemIconTint">@color/colorPrimary</item>
-        <item name="itemTextColor">@color/colorPrimary</item>
         <item name="itemHorizontalPadding">@dimen/xbig_margin</item>
         <item name="itemIconPadding">@dimen/margin</item>
         <item name="itemPadding">@dimen/margin</item>
