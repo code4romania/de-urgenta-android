@@ -46,4 +46,16 @@
     <string name="register_completed_title" translatable="false">Valideaza-ti contul</string>
     <string name="register_completed_message" translatable="false">Un e-mail a fost trimis catre adresa pe care ti-ai facut contul bla bla te rugam sa apesi linkul pt validarea contului etc.</string>
 
+    <!-- Nav menu screen -->
+    <string name="nav_menu_footer_donate_button_title">Donează</string>
+    <string name="nav_menu_footer_description">Soluție proiectată, dezvoltată și administrată de</string>
+    <string name="nav_menu_item_address">Adrese și trasee</string>
+    <string name="nav_menu_item_groups">Grupuri de urgență</string>
+    <string name="nav_menu_item_backpack">Rucsacul de urgență</string>
+    <string name="nav_menu_item_courses">Cursuri și informații utile</string>
+    <string name="nav_menu_item_profile">Profilul meu</string>
+    <string name="nav_menu_item_about">Despre aplicație</string>
+    <string name="nav_menu_item_settings">Setări</string>
+    <string name="nav_menu_item_logout">Delogare</string>
+
 </resources>
