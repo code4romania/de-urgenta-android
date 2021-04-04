@@ -1,6 +1,5 @@
 package ro.code4.deurgenta.ui.register
 
-import android.util.Log
 import androidx.databinding.Bindable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -12,21 +11,19 @@ import ro.code4.deurgenta.helper.Result
 import ro.code4.deurgenta.helper.SingleLiveEvent
 import ro.code4.deurgenta.repositories.Repository
 import ro.code4.deurgenta.ui.base.BaseViewModel
-import ro.code4.deurgenta.ui.login.LoginActivity
 
 class RegisterViewModel : BaseViewModel() {
 
     private val repository: Repository by inject()
-
     private val registerLiveData = SingleLiveEvent<Result<Class<*>>>()
-
     private val registerData = Register("", "", "", "")
-
     private var _hasAgreedTerms = false
+
     var hasCompletedForm = MutableLiveData<Boolean>(false)
 
 
     var firstName: String
+        @Bindable
         get() = registerData.firstName
         set(value) {
             registerData.firstName = value
@@ -67,11 +64,12 @@ class RegisterViewModel : BaseViewModel() {
 
 
     private fun checkFormCompleted() {
-        val isFormCompleted = firstName.isNotEmpty() &&
-                lastName.isNotEmpty() &&
-                email.isNotEmpty() &&
-                password.length > 4 &&
-                termsAgreed
+        val isFormCompleted =
+            firstName.isNotEmpty() &&
+                    lastName.isNotEmpty() &&
+                    email.isNotEmpty() &&
+                    password.length > 4 &&
+                    termsAgreed
 
         hasCompletedForm.postValue(isFormCompleted)
     }
@@ -80,16 +78,15 @@ class RegisterViewModel : BaseViewModel() {
         return registerData
     }
 
-    fun registered(): LiveData<Result<Class<*>>> = registerLiveData
-
     fun register(data: Register): Observable<RegisterResponse> {
         return repository.register(data)
     }
 
+    fun registered(): LiveData<Result<Class<*>>> = registerLiveData
+
+
     fun onRegisterSuccess() {
-        // TODO: change login activity with registered successfully fragment
-        val nextActivity = LoginActivity::class.java
-        registerLiveData.postValue(Result.Success(nextActivity))
+        registerLiveData.postValue(Result.Success())
     }
 
     fun onRegisterFail(error: Throwable, message: String = "") {
