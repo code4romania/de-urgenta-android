@@ -9,6 +9,7 @@ import ro.code4.deurgenta.data.model.Register
 import ro.code4.deurgenta.data.model.response.RegisterResponse
 import ro.code4.deurgenta.helper.Result
 import ro.code4.deurgenta.helper.SingleLiveEvent
+import ro.code4.deurgenta.helper.isValidEmail
 import ro.code4.deurgenta.repositories.Repository
 import ro.code4.deurgenta.ui.base.BaseViewModel
 
@@ -42,7 +43,7 @@ class RegisterViewModel : BaseViewModel() {
     private fun checkFormCompleted() {
         val isFormCompleted = firstName.value?.isNotEmpty() == true &&
                 lastName.value?.isNotEmpty() == true &&
-                email.value?.isNotEmpty() == true &&
+                email.value?.isValidEmail() == true &&
                 password.value?.length!! > 4 &&
                 termsAndConditions.value == true
 
