@@ -66,7 +66,6 @@ class RegisterViewModel : BaseViewModel() {
 
     fun registered(): LiveData<Result<Class<*>>> = registerLiveData
 
-
     fun onRegisterSuccess() {
         isRequestPending.postValue(false)
         registerLiveData.postValue(Result.Success())

@@ -12,24 +12,28 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_register.*
+import org.koin.android.ext.android.inject
 import ro.code4.deurgenta.BuildConfig.TERMS_AND_CONDITIONS
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.databinding.FragmentRegisterBinding
 import ro.code4.deurgenta.ui.base.ViewModelFragment
+import ro.code4.deurgenta.ui.login.LoginViewModel
 
 class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
     override val layout: Int
         get() = R.layout.fragment_register
     override val screenName: Int
         get() = R.string.analytics_title_register
-    override lateinit var viewModel: RegisterViewModel;
+
+    override val viewModel: RegisterViewModel by inject()
+    lateinit var authViewModel: LoginViewModel;
     var registerRequestDisposable: Disposable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel = activity?.run {
-            ViewModelProvider(this)[RegisterViewModel::class.java]
+        authViewModel = activity?.run {
+            ViewModelProvider(this)[LoginViewModel::class.java]
         } ?: throw Exception("Invalid Activity")
     }
 
@@ -74,8 +78,18 @@ class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
 
     }
 
-    private fun registerObservable(){
+    private fun registerObservable() {
         viewModel.isSubmitEnabled.observe(viewLifecycleOwner, {})
+        viewModel.registered().observe(viewLifecycleOwner, {
+            it.handle(
+                onSuccess = {
+                    authViewModel.onRegisterSuccess()
+                },
+                onFailure = { error ->
+                    authViewModel.onRegisterFail(error)
+                }
+            )
+        })
     }
 
     private fun termsAndConditionsSetup() {

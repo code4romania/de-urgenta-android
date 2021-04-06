@@ -17,8 +17,10 @@ class LoginViewModel : BaseViewModel() {
     private val sharedPreferences: SharedPreferences by inject()
 
     private val loginLiveData = SingleLiveEvent<Result<Class<*>>>()
+    private val registerLiveData = SingleLiveEvent<Result<Class<*>>>()
 
     fun loggedIn(): LiveData<Result<Class<*>>> = loginLiveData
+    fun registered(): LiveData<Result<Class<*>>> = registerLiveData
 
     fun login() {
         val nextActivity = when (sharedPreferences.hasCompletedOnboarding()) {
@@ -26,6 +28,14 @@ class LoginViewModel : BaseViewModel() {
             false -> OnboardingActivity::class.java
         }
         loginLiveData.postValue(Result.Success(nextActivity))
+    }
+
+    fun onRegisterSuccess() {
+        registerLiveData.postValue(Result.Success())
+    }
+
+    fun onRegisterFail(error: Throwable, message: String = "") {
+        registerLiveData.postValue(Result.Failure(error, message))
     }
 
 }
