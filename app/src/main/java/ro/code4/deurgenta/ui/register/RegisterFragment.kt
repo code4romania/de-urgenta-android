@@ -52,6 +52,7 @@ class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         clickListenersSetup()
+        registerObservable()
     }
 
     private fun clickListenersSetup() {
@@ -71,6 +72,10 @@ class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
 
         termsAndConditionsSetup()
 
+    }
+
+    private fun registerObservable(){
+        viewModel.isSubmitEnabled.observe(viewLifecycleOwner, {})
     }
 
     private fun termsAndConditionsSetup() {

@@ -55,8 +55,6 @@ class RegisterActivity : BaseAnalyticsActivity<RegisterViewModel>() {
                 }
             )
         })
-
-        viewModel.isSubmitEnabled.observe(this, {})
     }
 
     private fun showRegistrationCompletedFragment() {
