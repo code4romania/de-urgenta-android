@@ -49,22 +49,20 @@ class LoginActivity : BaseAnalyticsActivity<LoginViewModel>() {
     }
 
     private fun showRegistrationFormFragment() {
-        supportFragmentManager.commit {
-            replace<RegisterFragment>(R.id.login_container)
-            setCustomAnimations(R.anim.nav_default_enter_anim, R.anim.nav_default_exit_anim)
-            setReorderingAllowed(true)
-            addToBackStack(null)
-        }
+        supportFragmentManager.replaceFragment(
+            R.id.login_container,
+            RegisterFragment(),
+            tag = "registerFragment"
+        )
     }
 
     private fun showRegistrationCompletedFragment() {
         supportFragmentManager.popBackStack()
-        supportFragmentManager.commit {
-            replace<RegisterCompletedFragment>(R.id.login_container)
-            setCustomAnimations(R.anim.nav_default_enter_anim, R.anim.nav_default_exit_anim)
-            setReorderingAllowed(true)
-            addToBackStack(null)
-        }
+        supportFragmentManager.replaceFragment(
+            R.id.login_container,
+            RegisterCompletedFragment(),
+            tag = "registerFragmentCompleted"
+        )
     }
 
     private fun loginUserObservable() {
