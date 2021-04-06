@@ -1,10 +1,10 @@
 package ro.code4.deurgenta.ui.login
 
 import android.os.Bundle
-import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.activity_login.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import ro.code4.deurgenta.R
+import ro.code4.deurgenta.helper.replaceFragment
 import ro.code4.deurgenta.helper.startActivityWithoutTrace
 import ro.code4.deurgenta.ui.base.BaseAnalyticsActivity
 
@@ -26,25 +26,40 @@ class LoginActivity : BaseAnalyticsActivity<LoginViewModel>() {
 
     private fun clickListenersSetup() {
         loginButton.setOnClickListener {
-            viewModel.login()
+            showLoginFormFragment()
         }
         signupButton.setOnClickListener {
             viewModel.signup()
         }
     }
 
+    private fun showLoginFormFragment() {
+        supportFragmentManager.replaceFragment(
+            R.id.login_container,
+            LoginFormFragment()
+        )
+    }
+
     private fun loginUserObservable() {
-        viewModel.loggedIn().observe(this, Observer {
+        viewModel.loggedIn().observe(this, {
             it.handle(
                 onSuccess = { activity ->
-                     activity?.let(::startActivityWithoutTrace)
+                    activity?.let(::startActivityWithoutTrace)
                 },
-                onFailure = {error ->
+                onFailure = { error ->
                     showDefaultErrorSnackBar(loginButton)
 
                     loginButton.isEnabled = true
                 }
             )
         })
+    }
+
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount > 0) {
+            supportFragmentManager.popBackStack()
+        } else {
+            super.onBackPressed();
+        }
     }
 }
