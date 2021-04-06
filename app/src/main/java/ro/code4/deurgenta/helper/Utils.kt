@@ -23,6 +23,11 @@ fun Activity.startActivityWithoutTrace(activity: Class<*>) {
     finishAffinity()
 }
 
+fun Fragment.startActivityWithoutTrace(activity: Class<*>) {
+    startActivity(Intent(this.activity, activity))
+    this.activity?.finishAffinity()
+}
+
 fun FragmentManager.replaceFragment(
     @IdRes layoutRes: Int, fragment: Fragment,
     bundle: Bundle? = null,
@@ -53,7 +58,8 @@ fun Context.isOnline(): Boolean {
             val nc = cm.getNetworkCapabilities(n)
             //It will check for both wifi and cellular network
             return nc!!.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) || nc.hasTransport(
-                NetworkCapabilities.TRANSPORT_WIFI)
+                NetworkCapabilities.TRANSPORT_WIFI
+            )
         }
         return false
     } else {
@@ -82,8 +88,10 @@ fun collapseKeyboardIfFocusOutsideEditText(
             val srcCoordinates = IntArray(2)
             oldFocusedView.getLocationOnScreen(srcCoordinates)
 
-            val rect = Rect(srcCoordinates[0], srcCoordinates[1], srcCoordinates[0] +
-                    oldFocusedView.width, srcCoordinates[1] + oldFocusedView.height)
+            val rect = Rect(
+                srcCoordinates[0], srcCoordinates[1], srcCoordinates[0] +
+                        oldFocusedView.width, srcCoordinates[1] + oldFocusedView.height
+            )
 
             if (rect.contains(motionEvent.x.toInt(), motionEvent.y.toInt()))
                 return

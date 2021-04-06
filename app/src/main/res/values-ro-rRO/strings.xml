@@ -58,4 +58,6 @@
     <string name="nav_menu_item_settings">Setări</string>
     <string name="nav_menu_item_logout">Delogare</string>
 
+    <!-- Splashscreen -->
+    <string name="cd_logo">Sigla aplicației animată</string>
 </resources>

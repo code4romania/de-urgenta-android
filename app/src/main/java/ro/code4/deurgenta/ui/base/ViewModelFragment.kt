@@ -11,16 +11,23 @@ import ro.code4.deurgenta.interfaces.ViewModelSetter
 abstract class ViewModelFragment<out T : BaseViewModel> : BaseAnalyticsFragment(), Layout,
     ViewModelSetter<T> {
     lateinit var mContext: Context
+    lateinit var mActivity: BaseActivity<*>
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mContext = context
+        mActivity = activity as BaseActivity<*>
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(layout, container, false)
+    }
+
+    fun showDefaultErrorSnackBar(view: View) {
+        mActivity.showDefaultErrorSnackBar(view)
     }
 }

@@ -22,6 +22,7 @@ import ro.code4.deurgenta.data.AppDatabase
 import ro.code4.deurgenta.helper.getToken
 import ro.code4.deurgenta.repositories.Repository
 import ro.code4.deurgenta.ui.home.HomeViewModel
+import ro.code4.deurgenta.ui.login.LoginFormViewModel
 import ro.code4.deurgenta.ui.login.LoginViewModel
 import ro.code4.deurgenta.ui.main.MainViewModel
 import ro.code4.deurgenta.ui.onboarding.OnboardingViewModel
@@ -97,10 +98,11 @@ val dbModule = module {
 
 val viewModelsModule = module {
     viewModel { LoginViewModel() }
+    viewModel { LoginFormViewModel() }
     viewModel { RegisterViewModel() }
     viewModel { OnboardingViewModel() }
     viewModel { MainViewModel() }
-    viewModel { SplashScreenViewModel() }
+    viewModel { SplashScreenViewModel(get()) }
     viewModel { HomeViewModel() }
 }
 

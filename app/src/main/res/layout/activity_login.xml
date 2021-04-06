@@ -1,81 +1,69 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
     android:clipChildren="false"
+    android:id="@+id/login_container"
     android:clipToPadding="false"
-    android:padding="@dimen/margin"
     tools:context="ro.code4.deurgenta.ui.login.LoginActivity">
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:layout_marginTop="@dimen/margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_white"
-        tools:ignore="ContentDescription" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:padding="@dimen/margin">
 
-
-    <TextView
-        android:id="@+id/title"
-        style="@style/Text.Heading"
-        android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin"
-        android:layout_marginEnd="@dimen/margin"
-        app:layout_constraintTop_toBottomOf="@id/logo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="@dimen/xxbig_margin"
-        android:text="@string/login_title" />
-
-
-    <TextView
-        android:id="@+id/subtitle"
-        style="@style/Text.Big"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin"
-        android:layout_marginEnd="@dimen/margin"
-        app:layout_constraintTop_toBottomOf="@id/title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="@dimen/xxbig_margin"
-        android:text="@string/login_subtitle" />
-
-
-    <com.google.android.material.button.MaterialButton
-            android:id="@+id/signupButton"
-            style="@style/Text.Signup"
-            android:layout_width="match_parent"
-            android:paddingTop="@dimen/margin"
-            android:paddingBottom="@dimen/margin"
-
-            android:layout_height="0dp"
-            app:layout_constraintStart_toStartOf="parent"
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/xxbig_margin"
+            android:adjustViewBounds="true"
+            app:layout_constraintBottom_toTopOf="@+id/title"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/loginButton"
-            android:layout_marginBottom="@dimen/big_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/logo_white"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/Text.Heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/small_margin"
             android:layout_marginEnd="@dimen/small_margin"
-            android:text="@string/login_button_signup" />
+            android:layout_marginBottom="@dimen/xxbig_margin"
+            android:gravity="center"
+            android:text="@string/login_title"
+            app:layout_constraintBottom_toTopOf="@+id/signupButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/loginButton"
-        style="@style/Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/big_margin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:text="@string/login_button_login"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/signupButton"
+            style="@style/Signup.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginEnd="@dimen/small_margin"
+            android:layout_marginBottom="@dimen/big_margin"
+            android:text="@string/login_button_signup"
+            app:layout_constraintBottom_toTopOf="@+id/loginButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/loginButton"
+            style="@style/Signup.Button.Simple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/big_margin"
+            android:text="@string/login_button_login"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+  
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
