@@ -49,17 +49,20 @@ class LoginActivity : BaseAnalyticsActivity<LoginViewModel>() {
     }
 
     private fun showRegistrationFormFragment() {
-        supportFragmentManager.replaceFragment(
-            R.id.login_container,
-            RegisterFragment()
-        )
+        supportFragmentManager.commit {
+            replace<RegisterFragment>(R.id.login_container)
+            setReorderingAllowed(true)
+            addToBackStack(null)
+        }
     }
 
     private fun showRegistrationCompletedFragment() {
-        supportFragmentManager.replaceFragment(
-            R.id.login_container,
-            RegisterCompletedFragment()
-        )
+        supportFragmentManager.popBackStack()
+        supportFragmentManager.commit {
+            replace<RegisterCompletedFragment>(R.id.login_container)
+            setReorderingAllowed(true)
+            addToBackStack(null)
+        }
     }
 
     private fun loginUserObservable() {
