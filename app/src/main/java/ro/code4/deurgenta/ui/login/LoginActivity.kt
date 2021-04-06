@@ -51,6 +51,7 @@ class LoginActivity : BaseAnalyticsActivity<LoginViewModel>() {
     private fun showRegistrationFormFragment() {
         supportFragmentManager.commit {
             replace<RegisterFragment>(R.id.login_container)
+            setCustomAnimations(R.anim.nav_default_enter_anim, R.anim.nav_default_exit_anim)
             setReorderingAllowed(true)
             addToBackStack(null)
         }
@@ -60,6 +61,7 @@ class LoginActivity : BaseAnalyticsActivity<LoginViewModel>() {
         supportFragmentManager.popBackStack()
         supportFragmentManager.commit {
             replace<RegisterCompletedFragment>(R.id.login_container)
+            setCustomAnimations(R.anim.nav_default_enter_anim, R.anim.nav_default_exit_anim)
             setReorderingAllowed(true)
             addToBackStack(null)
         }
