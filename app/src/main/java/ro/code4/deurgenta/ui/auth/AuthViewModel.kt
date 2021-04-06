@@ -18,9 +18,13 @@ class AuthViewModel : BaseViewModel() {
 
     private val loginLiveData = SingleLiveEvent<Result<Class<*>>>()
     private val registerLiveData = SingleLiveEvent<Result<Class<*>>>()
+    private val loginNavigation = SingleLiveEvent<Result<Class<*>>>()
+    private val signupNavigation = SingleLiveEvent<Result<Class<*>>>()
 
     fun loggedIn(): LiveData<Result<Class<*>>> = loginLiveData
     fun registered(): LiveData<Result<Class<*>>> = registerLiveData
+    fun loginNavigation(): LiveData<Result<Class<*>>> = loginNavigation
+    fun signupNavigation(): LiveData<Result<Class<*>>> = signupNavigation
 
     fun login() {
         val nextActivity = when (sharedPreferences.hasCompletedOnboarding()) {
@@ -36,6 +40,14 @@ class AuthViewModel : BaseViewModel() {
 
     fun onRegisterFail(error: Throwable, message: String = "") {
         registerLiveData.postValue(Result.Failure(error, message))
+    }
+
+    fun onLoginClicked() {
+        loginNavigation.postValue(Result.Success())
+    }
+
+    fun onSignUpClicked() {
+        signupNavigation.postValue(Result.Success())
     }
 
 }

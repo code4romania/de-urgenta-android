@@ -2,6 +2,7 @@ package ro.code4.deurgenta.ui.auth
 
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_auth.*
+import kotlinx.android.synthetic.main.fragment_auth.*
 import kotlinx.android.synthetic.main.fragment_register.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import ro.code4.deurgenta.R
@@ -24,23 +25,23 @@ class AuthActivity : BaseAnalyticsActivity<AuthViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        clickListenersSetup()
+        showAuthFragment()
         loginUserObservable()
         registerObservables()
     }
 
-    private fun clickListenersSetup() {
-        loginButton.setOnClickListener {
-            showLoginFormFragment()
-        }
-        signupButton.setOnClickListener {
-            showRegistrationFormFragment()
-        }
+    private fun showAuthFragment() {
+        supportFragmentManager.replaceFragment(
+            R.id.auth_container,
+            AuthFragment(),
+            isPrimaryNavigationFragment = true,
+            tag = "authFragment"
+        )
     }
 
     private fun showLoginFormFragment() {
         supportFragmentManager.replaceFragment(
-            R.id.login_container,
+            R.id.auth_container,
             LoginFormFragment(),
             tag = "loginFragment"
         )
@@ -48,7 +49,7 @@ class AuthActivity : BaseAnalyticsActivity<AuthViewModel>() {
 
     private fun showRegistrationFormFragment() {
         supportFragmentManager.replaceFragment(
-            R.id.login_container,
+            R.id.auth_container,
             RegisterFragment(),
             tag = "registerFragment"
         )
@@ -57,22 +58,23 @@ class AuthActivity : BaseAnalyticsActivity<AuthViewModel>() {
     private fun showRegistrationCompletedFragment() {
         supportFragmentManager.popBackStack()
         supportFragmentManager.replaceFragment(
-            R.id.login_container,
+            R.id.auth_container,
             RegisterCompletedFragment(),
             tag = "registerFragmentCompleted"
         )
     }
 
     private fun loginUserObservable() {
+        viewModel.loginNavigation().observe(this, { showLoginFormFragment() })
+        viewModel.signupNavigation().observe(this, { showRegistrationFormFragment() })
+
         viewModel.loggedIn().observe(this, {
             it.handle(
                 onSuccess = { activity ->
                     activity?.let(::startActivityWithoutTrace)
                 },
                 onFailure = { error ->
-                    showDefaultErrorSnackBar(loginButton)
-
-                    loginButton.isEnabled = true
+                    showDefaultErrorSnackBar(auth_container)
                 }
             )
         })

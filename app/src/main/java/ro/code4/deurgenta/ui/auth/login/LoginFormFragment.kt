@@ -12,11 +12,9 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.willowtreeapps.signinwithapplebutton.SignInWithAppleConfiguration
 import com.willowtreeapps.signinwithapplebutton.SignInWithAppleResult
-import kotlinx.android.synthetic.main.activity_auth.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
 import org.koin.android.ext.android.inject
 import ro.code4.deurgenta.R
-import ro.code4.deurgenta.helper.startActivityWithoutTrace
 import ro.code4.deurgenta.ui.base.ViewModelFragment
 
 class LoginFormFragment : ViewModelFragment<LoginFormViewModel>() {
@@ -79,22 +77,6 @@ class LoginFormFragment : ViewModelFragment<LoginFormViewModel>() {
             }
         }
 
-        loginUserObservable()
-    }
-
-    private fun loginUserObservable() {
-        viewModel.loggedIn().observe(viewLifecycleOwner, {
-            it.handle(
-                onSuccess = { activity ->
-                    activity?.let(::startActivityWithoutTrace)
-                },
-                onFailure = { error ->
-                    showDefaultErrorSnackBar(loginButton)
-
-                    loginButton.isEnabled = true
-                }
-            )
-        })
     }
 
     private fun setFacebookLoginListener() {
