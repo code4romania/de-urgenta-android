@@ -11,7 +11,7 @@ import ro.code4.deurgenta.helper.startActivityWithoutTrace
 import ro.code4.deurgenta.ui.base.BaseAnalyticsActivity
 import ro.code4.deurgenta.ui.login.LoginActivity
 import ro.code4.deurgenta.ui.main.MainActivity
-import ro.code4.deurgenta.ui.register.RegisterActivity
+import ro.code4.deurgenta.ui.onboarding.OnboardingActivity
 
 class SplashScreenActivity : BaseAnalyticsActivity<SplashScreenViewModel>() {
 
@@ -38,7 +38,7 @@ class SplashScreenActivity : BaseAnalyticsActivity<SplashScreenViewModel>() {
         viewModel.loginStatus.observe(this) { loginStatus ->
             val activity = when {
                 loginStatus.isUserLoggedIn && loginStatus.onboardCompleted -> MainActivity::class.java
-                loginStatus.isUserLoggedIn -> RegisterActivity::class.java
+                loginStatus.isUserLoggedIn -> OnboardingActivity::class.java
                 else -> LoginActivity::class.java
             }
             startActivityWithoutTrace(activity)
