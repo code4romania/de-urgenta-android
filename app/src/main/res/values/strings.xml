@@ -50,4 +50,17 @@
     <string name="register_terms" translatable="false">Accept <a href='google.com'>terms and conditions</a></string>
     <string name="register_submit_button" translatable="false">Submit</string>
 
+    <!-- Nav menu screen -->
+    <string name="nav_menu_footer_donate_button_title">Donează</string>
+    <string name="nav_menu_footer_description">Soluție proiectată, dezvoltată și administrată de</string>
+    <string name="nav_menu_item_address">Adrese și trasee</string>
+    <string name="nav_menu_item_groups">Grupuri de urgență</string>
+    <string name="nav_menu_item_backpack">Rucsacul de urgență</string>
+    <string name="nav_menu_item_courses">Cursuri și informații utile</string>
+    <string name="nav_menu_item_profile">Profilul meu</string>
+    <string name="nav_menu_item_about">Despre aplicație</string>
+    <string name="nav_menu_item_settings">Setări</string>
+    <string name="nav_menu_item_logout">Delogare</string>
+
+    <string name="cd_logo">Animated application logo</string>
 </resources>

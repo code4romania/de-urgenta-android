@@ -102,7 +102,7 @@ val viewModelsModule = module {
     viewModel { RegisterViewModel() }
     viewModel { OnboardingViewModel() }
     viewModel { MainViewModel() }
-    viewModel { SplashScreenViewModel() }
+    viewModel { SplashScreenViewModel(get()) }
     viewModel { HomeViewModel() }
 }
 
