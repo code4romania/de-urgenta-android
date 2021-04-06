@@ -9,7 +9,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.helper.startActivityWithoutTrace
 import ro.code4.deurgenta.ui.base.BaseAnalyticsActivity
-import ro.code4.deurgenta.ui.login.LoginActivity
+import ro.code4.deurgenta.ui.auth.AuthActivity
 import ro.code4.deurgenta.ui.main.MainActivity
 import ro.code4.deurgenta.ui.onboarding.OnboardingActivity
 
@@ -39,7 +39,7 @@ class SplashScreenActivity : BaseAnalyticsActivity<SplashScreenViewModel>() {
             val activity = when {
                 loginStatus.isUserLoggedIn && loginStatus.onboardCompleted -> MainActivity::class.java
                 loginStatus.isUserLoggedIn -> OnboardingActivity::class.java
-                else -> LoginActivity::class.java
+                else -> AuthActivity::class.java
             }
             startActivityWithoutTrace(activity)
         }

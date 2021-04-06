@@ -1,24 +1,25 @@
-package ro.code4.deurgenta.ui.login
+package ro.code4.deurgenta.ui.auth
 
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_auth.*
 import kotlinx.android.synthetic.main.fragment_register.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.helper.replaceFragment
 import ro.code4.deurgenta.helper.startActivityWithoutTrace
 import ro.code4.deurgenta.ui.base.BaseAnalyticsActivity
-import ro.code4.deurgenta.ui.register.RegisterCompletedFragment
-import ro.code4.deurgenta.ui.register.RegisterFragment
+import ro.code4.deurgenta.ui.auth.login.LoginFormFragment
+import ro.code4.deurgenta.ui.auth.register.RegisterCompletedFragment
+import ro.code4.deurgenta.ui.auth.register.RegisterFragment
 
-class LoginActivity : BaseAnalyticsActivity<LoginViewModel>() {
+class AuthActivity : BaseAnalyticsActivity<AuthViewModel>() {
 
     override val layout: Int
-        get() = R.layout.activity_login
+        get() = R.layout.activity_auth
     override val screenName: Int
         get() = R.string.analytics_title_login
 
-    override val viewModel: LoginViewModel by viewModel()
+    override val viewModel: AuthViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

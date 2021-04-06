@@ -1,4 +1,4 @@
-package ro.code4.deurgenta.ui.register
+package ro.code4.deurgenta.ui.auth.register
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData

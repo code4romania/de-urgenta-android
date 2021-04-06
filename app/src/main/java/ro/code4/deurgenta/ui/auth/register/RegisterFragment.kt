@@ -1,4 +1,4 @@
-package ro.code4.deurgenta.ui.register
+package ro.code4.deurgenta.ui.auth.register
 
 import android.os.Bundle
 import android.text.Html
@@ -17,7 +17,7 @@ import ro.code4.deurgenta.BuildConfig.TERMS_AND_CONDITIONS
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.databinding.FragmentRegisterBinding
 import ro.code4.deurgenta.ui.base.ViewModelFragment
-import ro.code4.deurgenta.ui.login.LoginViewModel
+import ro.code4.deurgenta.ui.auth.AuthViewModel
 
 class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
     override val layout: Int
@@ -26,14 +26,14 @@ class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
         get() = R.string.analytics_title_register
 
     override val viewModel: RegisterViewModel by inject()
-    lateinit var authViewModel: LoginViewModel;
+    lateinit var authViewModel: AuthViewModel;
     var registerRequestDisposable: Disposable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         authViewModel = activity?.run {
-            ViewModelProvider(this)[LoginViewModel::class.java]
+            ViewModelProvider(this)[AuthViewModel::class.java]
         } ?: throw Exception("Invalid Activity")
     }
 

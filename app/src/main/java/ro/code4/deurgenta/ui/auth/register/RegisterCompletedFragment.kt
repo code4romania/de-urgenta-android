@@ -1,4 +1,4 @@
-package ro.code4.deurgenta.ui.register
+package ro.code4.deurgenta.ui.auth.register
 
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.ui.base.ViewModelFragment

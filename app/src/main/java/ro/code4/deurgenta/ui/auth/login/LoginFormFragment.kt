@@ -1,4 +1,4 @@
-package ro.code4.deurgenta.ui.login
+package ro.code4.deurgenta.ui.auth.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,8 +12,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.willowtreeapps.signinwithapplebutton.SignInWithAppleConfiguration
 import com.willowtreeapps.signinwithapplebutton.SignInWithAppleResult
-import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_login.view.*
+import kotlinx.android.synthetic.main.activity_auth.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
 import org.koin.android.ext.android.inject
 import ro.code4.deurgenta.R
