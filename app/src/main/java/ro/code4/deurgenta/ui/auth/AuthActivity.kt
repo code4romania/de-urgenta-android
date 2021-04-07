@@ -25,7 +25,10 @@ class AuthActivity : BaseAnalyticsActivity<AuthViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        showAuthFragment()
+        if (savedInstanceState == null) {
+            showAuthFragment()
+        }
+
         loginUserObservable()
         registerObservables()
     }
