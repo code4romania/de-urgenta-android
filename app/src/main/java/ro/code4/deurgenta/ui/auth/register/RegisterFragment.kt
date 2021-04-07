@@ -16,8 +16,11 @@ import org.koin.android.ext.android.inject
 import ro.code4.deurgenta.BuildConfig.TERMS_AND_CONDITIONS
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.databinding.FragmentRegisterBinding
+import ro.code4.deurgenta.helper.hasCompletedOnboarding
 import ro.code4.deurgenta.ui.base.ViewModelFragment
 import ro.code4.deurgenta.ui.auth.AuthViewModel
+import ro.code4.deurgenta.ui.main.MainActivity
+import ro.code4.deurgenta.ui.onboarding.OnboardingActivity
 
 class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
     override val layout: Int
@@ -36,7 +39,6 @@ class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
             ViewModelProvider(this)[AuthViewModel::class.java]
         } ?: throw Exception("Invalid Activity")
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,20 +63,42 @@ class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
 
     private fun clickListenersSetup() {
         submitButton.setOnClickListener {
-            val registerData = viewModel.getRegisterData()
-            registerRequestDisposable = viewModel
-                .register(registerData)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    viewModel.onRegisterSuccess()
-                }, {
-                    val errorMessage = getString(R.string.error_generic)
-                    viewModel.onRegisterFail(it, errorMessage)
-                })
+            val isFormValid = viewModel.checkFormValid()
+            if (isFormValid) {
+                val registerData = viewModel.getRegisterData()
+                registerRequestDisposable = viewModel
+                    .register(registerData)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe({
+                        viewModel.onRegisterSuccess()
+                    }, {
+                        val errorMessage = getString(R.string.error_generic)
+                        viewModel.onRegisterFail(it, errorMessage)
+                    })
+            } else {
+                showFormErrors()
+            }
+
         }
 
         termsAndConditionsSetup()
+
+    }
+
+    private fun showFormErrors() {
+
+        val firstNameError = viewModel.getFirstNameError()
+        val lastNameError = viewModel.getLastNameError()
+        val emailError = viewModel.getEmailError()
+        val passwordError = viewModel.getPasswordError()
+        val termsError = viewModel.getTermsError()
+
+        if (!termsError.isNullOrBlank()) termsCheckBox.error = termsError
+        if (!passwordError.isNullOrBlank()) passwordEditText.error = passwordError
+        if (!emailError.isNullOrBlank()) emailEditText.error = emailError
+        if (!lastNameError.isNullOrBlank()) lastNameEditText.error = lastNameError
+        if (!firstNameError.isNullOrBlank()) firstNameEditText.error = firstNameError
 
     }
 
@@ -101,6 +125,9 @@ class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
         termsTextView.isClickable = true;
         termsTextView.movementMethod = LinkMovementMethod.getInstance();
 
+        termsCheckBox.setOnClickListener {
+            termsCheckBox.error = null
+        }
     }
 
     override fun onDestroyView() {

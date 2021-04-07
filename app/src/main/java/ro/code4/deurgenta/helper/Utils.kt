@@ -75,6 +75,8 @@ fun <T> String.fromJson(gson: Gson, clazz: Class<T>): T {
 
 fun String.isValidEmail() = !isNullOrEmpty() && Patterns.EMAIL_ADDRESS.matcher(this).matches()
 
+fun String?.isEmptyField() = isNullOrBlank()
+
 /*
  *  Hide software keyboard if user taps outside the EditText
  *  use inside override fun dispatchTouchEvent()
