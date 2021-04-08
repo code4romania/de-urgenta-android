@@ -4,11 +4,12 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
-import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import org.koin.core.inject
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.data.model.Register
-import ro.code4.deurgenta.data.model.response.RegisterResponse
 import ro.code4.deurgenta.helper.Result
 import ro.code4.deurgenta.helper.isEmptyField
 import ro.code4.deurgenta.helper.SingleLiveEvent
@@ -21,6 +22,9 @@ class RegisterViewModel : BaseViewModel() {
     private val app: Application by inject()
     private val repository: Repository by inject()
     private val registerLiveData = SingleLiveEvent<Result<Class<*>>>()
+    private val formValidLiveData = SingleLiveEvent<Boolean>()
+
+    private val compositeDisposable = CompositeDisposable()
 
     val firstName = MutableLiveData<String>("")
     val lastName = MutableLiveData("")
@@ -30,35 +34,53 @@ class RegisterViewModel : BaseViewModel() {
 
 
     val isRequestPending = MutableLiveData(false)
-
     val isSubmitEnabled = MediatorLiveData<Boolean>()
 
     init {
         isSubmitEnabled.addSource(isRequestPending) { checkSubmitEnabled() }
     }
 
-    fun getRegisterData(): Register {
+    private fun getRegisterData(): Register {
         return Register(firstName.value!!, lastName.value!!, email.value!!, password.value!!)
     }
 
-    fun register(data: Register): Observable<RegisterResponse> {
+    fun register() {
+        val isFormValid = checkFormValid()
+
+        if (!isFormValid) {
+            formValidLiveData.postValue(false)
+            return
+        }
+
+        formValidLiveData.postValue(true)
         isRequestPending.postValue(true)
-        return repository.register(data)
+        val data = getRegisterData()
+        compositeDisposable.add(
+            repository.register(data)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    onRegisterSuccess()
+                }, {
+                    onRegisterFail(it)
+                })
+        )
     }
 
     fun registered(): LiveData<Result<Class<*>>> = registerLiveData
+    fun formValid(): LiveData<Boolean> = formValidLiveData
 
-    fun onRegisterSuccess() {
+    private fun onRegisterSuccess() {
         isRequestPending.postValue(false)
         registerLiveData.postValue(Result.Success())
     }
 
-    fun onRegisterFail(error: Throwable, message: String = "") {
+    private fun onRegisterFail(error: Throwable, message: String = "") {
         isRequestPending.postValue(false)
         registerLiveData.postValue(Result.Failure(error, message))
     }
 
-    fun checkFormValid(): Boolean {
+    private fun checkFormValid(): Boolean {
         return getFirstNameError() == null &&
                 getLastNameError() == null &&
                 getEmailError() == null &&
@@ -115,6 +137,7 @@ class RegisterViewModel : BaseViewModel() {
     override fun onCleared() {
         super.onCleared()
 
+        compositeDisposable.clear()
         isSubmitEnabled.removeSource(isRequestPending)
     }
 

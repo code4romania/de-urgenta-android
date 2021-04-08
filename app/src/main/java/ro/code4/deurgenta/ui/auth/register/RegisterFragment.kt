@@ -63,23 +63,7 @@ class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
 
     private fun clickListenersSetup() {
         submitButton.setOnClickListener {
-            val isFormValid = viewModel.checkFormValid()
-            if (isFormValid) {
-                val registerData = viewModel.getRegisterData()
-                registerRequestDisposable = viewModel
-                    .register(registerData)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe({
-                        viewModel.onRegisterSuccess()
-                    }, {
-                        val errorMessage = getString(R.string.error_generic)
-                        viewModel.onRegisterFail(it, errorMessage)
-                    })
-            } else {
-                showFormErrors()
-            }
-
+            viewModel.register()
         }
 
         termsAndConditionsSetup()
@@ -104,6 +88,13 @@ class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
 
     private fun registerObservable() {
         viewModel.isSubmitEnabled.observe(viewLifecycleOwner, {})
+
+        viewModel.formValid().observe(viewLifecycleOwner, {
+            if (!it) {
+                showFormErrors()
+            }
+        })
+
         viewModel.registered().observe(viewLifecycleOwner, {
             it.handle(
                 onSuccess = {
