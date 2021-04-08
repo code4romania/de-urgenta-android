@@ -6,16 +6,22 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import ro.code4.deurgenta.data.dao.AddressDao
+import ro.code4.deurgenta.data.dao.BackpackDao
 import ro.code4.deurgenta.data.helper.DateConverter
 import ro.code4.deurgenta.data.model.Address
+import ro.code4.deurgenta.data.model.Backpack
+import ro.code4.deurgenta.data.model.BackpackItem
+import ro.code4.deurgenta.data.model.BackpackItemConverters
 
 @Database(
-    entities = [Address::class],
+    entities = [Address::class, Backpack::class, BackpackItem::class],
     version = 1
 )
-@TypeConverters(DateConverter::class)
+@TypeConverters(DateConverter::class, BackpackItemConverters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun addressDao(): AddressDao
+
+    abstract fun backpackDao(): BackpackDao
 
     companion object {
         @JvmStatic

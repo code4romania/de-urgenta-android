@@ -21,6 +21,10 @@ import ro.code4.deurgenta.BuildConfig.DEBUG
 import ro.code4.deurgenta.data.AppDatabase
 import ro.code4.deurgenta.helper.getToken
 import ro.code4.deurgenta.repositories.Repository
+import ro.code4.deurgenta.ui.backpack.edit.EditBackpackItemViewModel
+import ro.code4.deurgenta.ui.backpack.items.BackpackItemsViewModel
+import ro.code4.deurgenta.ui.backpack.main.BackpackDetailsViewModel
+import ro.code4.deurgenta.ui.backpack.main.BackpacksViewModel
 import ro.code4.deurgenta.ui.home.HomeViewModel
 import ro.code4.deurgenta.ui.login.LoginFormViewModel
 import ro.code4.deurgenta.ui.login.LoginViewModel
@@ -103,6 +107,10 @@ val viewModelsModule = module {
     viewModel { OnboardingViewModel() }
     viewModel { MainViewModel() }
     viewModel { SplashScreenViewModel(get()) }
+    viewModel { BackpacksViewModel(get()) }
+    viewModel { BackpackDetailsViewModel() }
+    viewModel { BackpackItemsViewModel(get()) }
+    viewModel { EditBackpackItemViewModel(get()) }
     viewModel { HomeViewModel() }
 }
 
