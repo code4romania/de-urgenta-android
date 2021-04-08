@@ -8,19 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_register.*
 import org.koin.android.ext.android.inject
 import ro.code4.deurgenta.BuildConfig.TERMS_AND_CONDITIONS
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.databinding.FragmentRegisterBinding
-import ro.code4.deurgenta.helper.hasCompletedOnboarding
 import ro.code4.deurgenta.ui.base.ViewModelFragment
 import ro.code4.deurgenta.ui.auth.AuthViewModel
-import ro.code4.deurgenta.ui.main.MainActivity
-import ro.code4.deurgenta.ui.onboarding.OnboardingActivity
 
 class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
     override val layout: Int

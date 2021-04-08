@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import org.koin.core.inject
 import ro.code4.deurgenta.R
@@ -24,7 +23,6 @@ class RegisterViewModel : BaseViewModel() {
     private val registerLiveData = SingleLiveEvent<Result<Class<*>>>()
     private val formValidLiveData = SingleLiveEvent<Boolean>()
 
-    private val compositeDisposable = CompositeDisposable()
 
     val firstName = MutableLiveData<String>("")
     val lastName = MutableLiveData("")
@@ -54,9 +52,11 @@ class RegisterViewModel : BaseViewModel() {
 
         formValidLiveData.postValue(true)
         isRequestPending.postValue(true)
-        val data = getRegisterData()
-        compositeDisposable.add(
-            repository.register(data)
+
+        val formData = getRegisterData()
+
+        disposables.add(
+            repository.register(formData)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
@@ -65,6 +65,7 @@ class RegisterViewModel : BaseViewModel() {
                     onRegisterFail(it)
                 })
         )
+
     }
 
     fun registered(): LiveData<Result<Class<*>>> = registerLiveData
@@ -136,8 +137,6 @@ class RegisterViewModel : BaseViewModel() {
 
     override fun onCleared() {
         super.onCleared()
-
-        compositeDisposable.clear()
         isSubmitEnabled.removeSource(isRequestPending)
     }
 
