@@ -9,5 +9,6 @@
     <color name="transparent"></color>
 
     <color name="gray_800">#1F2937</color>
+    <color name="gray_200">#c1c1c1</color>
     <color name="green_400">#34D399</color>
 </resources>

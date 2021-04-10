@@ -70,4 +70,42 @@
     <string name="nav_menu_item_logout">Delogare</string>
 
     <string name="cd_logo">Animated application logo</string>
+    <!-- Backpack -->
+    <string name="backpacks_listing_title">"Your emergency backpack"</string>
+    <string name="backpack_label_main_info">The emergency backpack contains objects, food and other useful items which
+        will help you survive for at least 72 hours in a critical situation. Following the next steps you will find
+        out what does this backpack must contain, the minimum required items and choose the people responsible for
+        keeping it relevant.
+    </string>
+    <string name="backpack_add_new">Add new backpack</string>
+    <string name="backpack_new_cancel">Cancel</string>
+    <string name="backpack_new_ok">OK</string>
+    <string name="backpack_btn_reminder">Remind me later</string>
+    <string name="backpack_label_details_info">There are certain items which are recommended to have in this backpack.
+        Even if you do not have the backpack yet, store the items until you acquire one. It is recommended that
+        the backpack is waterproof or made from a resistant material.
+        The backpack is the responsibility of all the people living in the house. If you live with someone else,
+        invite the person to use this app and together make sure you always have the required items in the backpack.
+    </string>
+    <string name="backpack_categories_label">Backpack components</string>
+    <string name="backpack_designated_person">Choose person responsible</string>
+    <string name="backpack_new_name_dialog_title">Name of new backpack</string>
+    <string name="item_expiration_label">Expire at: %1$s</string>
+    <string name="no_expiration_date">No expiration date</string>
+    <string name="item_quantity_label">%1$s x</string>
+    <string name="item_btn_delete">Delete</string>
+    <string name="edit_backpack_item_name_label">Product name</string>
+    <string name="edit_backpack_item_quantity_label">Quantity</string>
+    <string name="edit_backpack_item_date_label">Expires at</string>
+    <string name="btn_item_change_new">Add item</string>
+    <string name="btn_item_change_update">Update item</string>
+    <string name="btn_item_cancel">Cancel</string>
+    <string name="backpack_category_empty">You do not have any items of this type. Please use the button below and add
+        some.</string>
+    <string name="backpack_edit_item_date_label">Click to select expiration date</string>
+    <string name="edit_backpack_item_error_date">Please enter a future expiration date!</string>
+    <string name="edit_backpack_item_error_name">Please name the product!</string>
+    <string name="edit_backpack_item_error_quantity">Please provide a quantity</string>
+    <string name="edit_backpack_item_error_quantity_value">"Please enter a valid number quantity!"</string>
+
 </resources>

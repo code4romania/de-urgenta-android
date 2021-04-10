@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/margin"
+    tools:context=".ui.main.MainActivity">
+
+    <TextView
+        android:id="@+id/info_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/backpack_label_main_info"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/backpack_label_main_info" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/backpacks_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginBottom="@dimen/margin"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/add_new_backpack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/info_label"
+        tools:itemCount="3"
+        tools:listitem="@layout/item_backpack" />
+
+    <ImageView
+        android:id="@+id/loadingIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@null"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@id/add_new_backpack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/info_label"
+        app:srcCompat="@drawable/logo_red" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/add_new_backpack"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/big_margin"
+        android:gravity="center_vertical|start"
+        android:text="@string/backpack_add_new"
+        android:textColor="@color/gray_800"
+        app:icon="@drawable/ic_plus"
+        app:iconTint="@null"
+        app:layout_constraintBottom_toTopOf="@id/remainder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Add new backpack" />
+
+    <TextView
+        android:id="@+id/remainder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/big_margin"
+        android:gravity="center_horizontal"
+        android:text="@string/backpack_designated_person"
+        android:textColor="@color/gray_200"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:text="@string/backpack_designated_person" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

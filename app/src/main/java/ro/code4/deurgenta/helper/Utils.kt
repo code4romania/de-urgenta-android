@@ -1,5 +1,6 @@
 package ro.code4.deurgenta.helper
 
+import android.animation.ObjectAnimator
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -11,8 +12,10 @@ import android.os.Bundle
 import android.util.Patterns
 import android.view.MotionEvent
 import android.view.View
+import android.view.animation.LinearInterpolator
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.ImageView
 import androidx.annotation.IdRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -109,3 +112,11 @@ fun collapseKeyboardIfFocusOutsideEditText(
             ?.hideSoftInputFromWindow(newFocusedView.windowToken, 0)
     }
 }
+
+fun ImageView.setToRotateIndefinitely(): ObjectAnimator =
+    ObjectAnimator.ofFloat(this, "rotation", 0f, 360f).apply {
+        repeatCount = ObjectAnimator.INFINITE
+        duration = 2000
+        interpolator = LinearInterpolator()
+        repeatMode = ObjectAnimator.RESTART
+    }

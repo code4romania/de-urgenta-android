@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="backpack_type_icons">
+        <item>@drawable/ic_plus</item>
+        <item>@drawable/ic_plus</item>
+        <item>@drawable/ic_plus</item>
+        <item>@drawable/ic_plus</item>
+        <item>@drawable/ic_plus</item>
+        <item>@drawable/ic_plus</item>
+    </integer-array>
+
+    <string-array name="backpack_item_types">
+        <item>Water and food</item>
+        <item>Hygiene products</item>
+        <item>First aid kit</item>
+        <item>Documents</item>
+        <item>Survival products</item>
+        <item>Miscellaneous</item>
+    </string-array>
+</resources>

@@ -1,12 +1,11 @@
 package ro.code4.deurgenta.ui.splashscreen
 
-import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.View
-import android.view.animation.LinearInterpolator
 import kotlinx.android.synthetic.main.activity_splash_screen.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import ro.code4.deurgenta.R
+import ro.code4.deurgenta.helper.setToRotateIndefinitely
 import ro.code4.deurgenta.helper.startActivityWithoutTrace
 import ro.code4.deurgenta.ui.base.BaseAnalyticsActivity
 import ro.code4.deurgenta.ui.auth.AuthActivity
@@ -27,14 +26,7 @@ class SplashScreenActivity : BaseAnalyticsActivity<SplashScreenViewModel>() {
         window.decorView.apply {
             systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
         }
-        val logoAnimator = ObjectAnimator.ofFloat(logo, "rotation", 0f, 360f)
-        with(logoAnimator) {
-            repeatCount = ObjectAnimator.INFINITE
-            repeatMode = ObjectAnimator.RESTART
-            duration = 2000
-            interpolator = LinearInterpolator()
-            start()
-        }
+        logo.setToRotateIndefinitely().start()
         viewModel.loginStatus.observe(this) { loginStatus ->
             val activity = when {
                 loginStatus.isUserLoggedIn && loginStatus.onboardCompleted -> MainActivity::class.java

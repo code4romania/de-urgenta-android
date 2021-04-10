@@ -2,6 +2,7 @@ package ro.code4.deurgenta
 
 import android.app.Application
 import android.content.Context
+import com.jakewharton.threetenabp.AndroidThreeTen
 import com.sylversky.fontreplacer.FontReplacer
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -19,6 +20,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
+        AndroidThreeTen.init(this)
         startKoin {
             androidLogger()
             androidContext(this@App)

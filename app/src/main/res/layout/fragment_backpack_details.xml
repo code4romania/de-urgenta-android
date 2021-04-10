@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/backpack_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/margin"
+        android:paddingTop="@dimen/margin"
+        android:paddingEnd="@dimen/margin">
+
+        <TextView
+            android:id="@+id/info_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/backpack_label_details_info"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/backpack_label_details_info" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/choose_person_responsible"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/big_margin"
+            android:gravity="start|center_vertical"
+            android:text="@string/backpack_designated_person"
+            android:textColor="?attr/colorPrimary"
+            app:icon="@drawable/ic_plus_inverted"
+            app:iconGravity="start"
+            app:iconTint="@null"
+            app:layout_constraintTop_toBottomOf="@id/info_label"
+            tools:text="@string/backpack_designated_person" />
+
+        <TextView
+            android:id="@+id/categories_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/big_margin"
+            android:text="@string/backpack_categories_label"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/choose_person_responsible"
+            tools:text="@string/backpack_categories_label" />
+    </LinearLayout>
+</ScrollView>
