@@ -22,11 +22,11 @@ import ro.code4.deurgenta.data.AppDatabase
 import ro.code4.deurgenta.helper.getToken
 import ro.code4.deurgenta.repositories.Repository
 import ro.code4.deurgenta.ui.home.HomeViewModel
-import ro.code4.deurgenta.ui.login.LoginFormViewModel
-import ro.code4.deurgenta.ui.login.LoginViewModel
+import ro.code4.deurgenta.ui.auth.login.LoginFormViewModel
+import ro.code4.deurgenta.ui.auth.AuthViewModel
 import ro.code4.deurgenta.ui.main.MainViewModel
 import ro.code4.deurgenta.ui.onboarding.OnboardingViewModel
-import ro.code4.deurgenta.ui.register.RegisterViewModel
+import ro.code4.deurgenta.ui.auth.register.RegisterViewModel
 import ro.code4.deurgenta.ui.splashscreen.SplashScreenViewModel
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
@@ -97,7 +97,7 @@ val dbModule = module {
 }
 
 val viewModelsModule = module {
-    viewModel { LoginViewModel() }
+    viewModel { AuthViewModel() }
     viewModel { LoginFormViewModel() }
     viewModel { RegisterViewModel() }
     viewModel { OnboardingViewModel() }

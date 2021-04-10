@@ -1,4 +1,4 @@
-package ro.code4.deurgenta.ui.login
+package ro.code4.deurgenta.ui.auth.login
 
 import android.content.SharedPreferences
 import androidx.lifecycle.LiveData

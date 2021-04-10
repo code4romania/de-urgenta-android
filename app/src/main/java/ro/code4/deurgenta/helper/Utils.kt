@@ -8,6 +8,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
+import android.util.Patterns
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -68,10 +69,13 @@ fun Context.isOnline(): Boolean {
     }
 }
 
-
 fun <T> String.fromJson(gson: Gson, clazz: Class<T>): T {
     return gson.fromJson(this, clazz)
 }
+
+fun String.isValidEmail() = !isNullOrEmpty() && Patterns.EMAIL_ADDRESS.matcher(this).matches()
+
+fun String?.isEmptyField() = isNullOrBlank()
 
 /*
  *  Hide software keyboard if user taps outside the EditText

@@ -59,6 +59,7 @@ android {
     buildTypes {
         applicationVariants.all { variant ->
             variant.buildConfigField "String", "API_URL", "\"" + getKey(variant.buildType.name, "apiUrl") + "\""
+            variant.buildConfigField "String", "TERMS_AND_CONDITIONS", "\"" + getKey(variant.buildType.name, "termsAndConditions") + "\""
 
             def productFlavor = variant.productFlavors[0] != null ? "${variant.productFlavors[0].name.capitalize()}" : ""
             def buildType = "${variant.buildType.name.capitalize()}"

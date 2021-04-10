@@ -18,6 +18,10 @@
 
     <!-- Errors -->
     <string name="error_generic">Something went wrong!</string>
+    <string name="error_field_required">This field is required!</string>
+    <string name="error_email_invalid">Email not valid!</string>
+    <string name="error_password_invalid">Password not valid!</string>
+    <string name="error_password_not_matched">Password not matched!</string>
     <string name="login_fragment_name">Login Fragment</string>
     <string name="login_form_title">Autentifica-te</string>
     <string name="email_hint">E-mail</string>
@@ -47,8 +51,11 @@
     <string name="register_label_last_name" translatable="false">Last name</string>
     <string name="register_label_email" translatable="false">Email</string>
     <string name="register_label_password" translatable="false">Password</string>
-    <string name="register_terms" translatable="false">Accept <a href='google.com'>terms and conditions</a></string>
-    <string name="register_submit_button" translatable="false">Submit</string>
+    <string name="register_terms_text" translatable="false">Accept {link}</string>
+    <string name="register_terms_link_text" translatable="false">terms and conditions</string>
+    <string name="register_submit_button" translatable="false">Submit ➔</string>
+    <string name="register_completed_title" translatable="false">Validate your account</string>
+    <string name="register_completed_message" translatable="false">An e-mail was sent to the address where you made your account blah blah please click on the link to validate the account etc.</string>
 
     <!-- Nav menu screen -->
     <string name="nav_menu_footer_donate_button_title">Donează</string>
