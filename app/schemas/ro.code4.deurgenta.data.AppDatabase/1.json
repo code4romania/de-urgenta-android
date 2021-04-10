@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "9d21e63c959edec49c6f7c0ad5d79251",
+    "identityHash": "fa14f84c0442844de19867d693bb42dd",
     "entities": [
       {
         "tableName": "address",
@@ -73,7 +73,7 @@
       },
       {
         "tableName": "backpackItems",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `backpackId` TEXT NOT NULL, `name` TEXT NOT NULL, `amount` INTEGER NOT NULL, `expiration_date` TEXT NOT NULL, `type` INTEGER NOT NULL, PRIMARY KEY(`id`), FOREIGN KEY(`backpackId`) REFERENCES `backpacks`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `backpackId` TEXT NOT NULL, `name` TEXT NOT NULL, `amount` INTEGER NOT NULL, `expiration_date` TEXT, `type` INTEGER NOT NULL, PRIMARY KEY(`id`), FOREIGN KEY(`backpackId`) REFERENCES `backpacks`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
         "fields": [
           {
             "fieldPath": "id",
@@ -103,7 +103,7 @@
             "fieldPath": "expirationDate",
             "columnName": "expiration_date",
             "affinity": "TEXT",
-            "notNull": true
+            "notNull": false
           },
           {
             "fieldPath": "type",
@@ -146,7 +146,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '9d21e63c959edec49c6f7c0ad5d79251')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'fa14f84c0442844de19867d693bb42dd')"
     ]
   }
 }

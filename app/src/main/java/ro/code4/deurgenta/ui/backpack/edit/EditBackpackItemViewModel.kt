@@ -12,12 +12,14 @@ class EditBackpackItemViewModel(
     private val repository: Repository
 ) : BaseViewModel() {
 
-    fun saveNewItem(backpackId: String, type: BackpackItemType, name: String, quantity: Int, date: ExpirationDate) {
+    fun saveNewItem(backpackId: String, type: BackpackItemType, name: String, quantity: Int, date: ExpirationDate?) {
         val newId = UUID.randomUUID().toString()
         repository.saveNewBackpackItem(
             BackpackItem(
                 newId, backpackId, name, quantity,
-                ZonedDateTime.of(date.year, date.month, date.dayOfMonth, 0, 0, 0, 0, UTCZone),
+                date?.let {
+                    ZonedDateTime.of(date.year, date.month, date.dayOfMonth, 0, 0, 0, 0, UTCZone)
+                },
                 type
             )
         )
@@ -27,13 +29,18 @@ class EditBackpackItemViewModel(
         targetBackpackItem: BackpackItem,
         name: String,
         quantity: Int,
-        date: ExpirationDate
+        date: ExpirationDate?
     ) {
         repository.updateBackpackItem(
             targetBackpackItem.copy(
                 name = name,
                 amount = quantity,
-                expirationDate = ZonedDateTime.of(date.year, date.month, date.dayOfMonth, 0, 0, 0, 0, UTCZone)
+                expirationDate = date?.let {
+                    ZonedDateTime.of(
+                        date.year, date.month, date.dayOfMonth, 0, 0, 0, 0,
+                        UTCZone
+                    )
+                }
             )
         )
     }

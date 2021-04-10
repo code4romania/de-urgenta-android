@@ -77,16 +77,9 @@
         cineva, invită-l în aplicație și asigurați-vă împreună ca aveți mereu tot ce este necesar în rucsac.
     </string>
     <string name="backpack_categories_label">Componentele rucsacului</string>
-    <string-array name="backpack_item_types">
-        <item>Apă și alimente</item>
-        <item>Articole de igienă</item>
-        <item>Trusă de prim ajutor</item>
-        <item>Documente</item>
-        <item>Articole de supraviețuire</item>
-        <item>Diverse</item>
-    </string-array>
     <string name="backpack_designated_person">Alege persoana responsabilă</string>
     <string name="item_expiration_label">Expiră la: %1$s</string>
+    <string name="no_expiration_date">Nu are dată de expirare</string>
     <string name="item_quantity_label">%1$s x</string>
     <string name="item_btn_delete">Șterge</string>
     <string name="edit_backpack_item_name_label">Nume produs</string>

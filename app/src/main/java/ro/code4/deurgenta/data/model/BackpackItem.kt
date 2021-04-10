@@ -21,7 +21,7 @@ data class BackpackItem(
     @ColumnInfo(name = COLUMN_BACKPACK_ID, index = true) val backpackId: String,
     @ColumnInfo(name = COLUMN_NAME) val name: String,
     @ColumnInfo(name = COLUMN_AMOUNT) val amount: Int,
-    @ColumnInfo(name = COLUMN_EXPIRATION_DATE) val expirationDate: ZonedDateTime,
+    @ColumnInfo(name = COLUMN_EXPIRATION_DATE) val expirationDate: ZonedDateTime?,
     @ColumnInfo(name = COLUMN_TYPE) val type: BackpackItemType
 ) : Parcelable {
 
@@ -47,9 +47,9 @@ object BackpackItemConverters {
 
     @TypeConverter
     @JvmStatic
-    fun fromDateToString(date: ZonedDateTime): String = date.toString()
+    fun fromDateToString(date: ZonedDateTime?): String? = date?.toString()
 
     @TypeConverter
     @JvmStatic
-    fun fromStringToZonedDateTime(strDate: String): ZonedDateTime = ZonedDateTime.parse(strDate)
+    fun fromStringToZonedDateTime(strDate: String?): ZonedDateTime? = strDate?.let { ZonedDateTime.parse(it) }
 }

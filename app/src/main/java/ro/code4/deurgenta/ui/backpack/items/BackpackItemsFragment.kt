@@ -3,7 +3,6 @@ package ro.code4.deurgenta.ui.backpack.items
 import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.View
-import android.view.animation.LinearInterpolator
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -14,6 +13,7 @@ import org.parceler.Parcels
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.data.model.Backpack
 import ro.code4.deurgenta.data.model.BackpackItemType
+import ro.code4.deurgenta.helper.setToRotateIndefinitely
 import ro.code4.deurgenta.ui.backpack.edit.EditBackpackItemFragment
 import ro.code4.deurgenta.ui.backpack.edit.NewItemData
 import ro.code4.deurgenta.ui.base.ViewModelFragment
@@ -80,12 +80,7 @@ class BackpackItemsFragment : ViewModelFragment<BackpackItemsViewModel>() {
     private fun displayLoading() {
         loadingIndicator.visibility = View.VISIBLE
         loadingAnimator?.cancel()
-        loadingAnimator = ObjectAnimator.ofFloat(loadingIndicator, "rotation", 0f, 360f).apply {
-            repeatCount = ObjectAnimator.INFINITE
-            duration = 2000
-            interpolator = LinearInterpolator()
-            repeatMode = ObjectAnimator.RESTART
-        }
+        loadingAnimator = loadingIndicator.setToRotateIndefinitely()
         loadingAnimator?.start()
         empty.visibility = View.GONE
         backpack_items.visibility = View.GONE

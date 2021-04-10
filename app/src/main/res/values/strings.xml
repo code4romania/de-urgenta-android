@@ -81,17 +81,10 @@
         invite the person to use this app and together make sure you always have the required items in the backpack.
     </string>
     <string name="backpack_categories_label">Backpack components</string>
-    <string-array name="backpack_item_types">
-        <item>Water and food</item>
-        <item>Hygiene products</item>
-        <item>First aid kit</item>
-        <item>Documents</item>
-        <item>Survival products</item>
-        <item>Miscellaneous</item>
-    </string-array>
     <string name="backpack_designated_person">Choose person responsible</string>
     <string name="backpack_new_name_dialog_title">Name of new backpack</string>
     <string name="item_expiration_label">Expire at: %1$s</string>
+    <string name="no_expiration_date">No expiration date</string>
     <string name="item_quantity_label">%1$s x</string>
     <string name="item_btn_delete">Delete</string>
     <string name="edit_backpack_item_name_label">Product name</string>

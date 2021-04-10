@@ -77,9 +77,9 @@ class Repository : KoinComponent {
         disposables.add(
             Completable.fromAction { db.backpackDao().saveBackpackItem(backpackItem) }
                 .subscribeOn(Schedulers.io()).subscribe({
-                    Log.i(TAG, "saveNewBackpackItem($backpackItem): Success!")
+                    Log.i(TAG, "updateNewBackpackItem($backpackItem): Success!")
                 }, {
-                    Log.e(TAG, "saveNewBackpackItem($backpackItem): Error($it)!")
+                    Log.e(TAG, "updateNewBackpackItem($backpackItem): Error($it)!")
                 })
         )
     }

@@ -6,7 +6,6 @@ import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.UnderlineSpan
 import android.view.View
-import android.view.animation.LinearInterpolator
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -16,6 +15,7 @@ import org.koin.android.viewmodel.ext.android.sharedViewModel
 import org.parceler.Parcels
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.data.model.Backpack
+import ro.code4.deurgenta.helper.setToRotateIndefinitely
 import ro.code4.deurgenta.ui.base.ViewModelFragment
 
 class BackpacksFragment : ViewModelFragment<BackpacksViewModel>() {
@@ -72,12 +72,7 @@ class BackpacksFragment : ViewModelFragment<BackpacksViewModel>() {
         loadingIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
         if (isLoading) {
             loadingAnimator?.cancel()
-            loadingAnimator = ObjectAnimator.ofFloat(loadingIndicator, "rotation", 0f, 360f).apply {
-                repeatCount = ObjectAnimator.INFINITE
-                duration = 2000
-                interpolator = LinearInterpolator()
-                repeatMode = ObjectAnimator.RESTART
-            }
+            loadingAnimator = loadingIndicator.setToRotateIndefinitely()
             loadingAnimator?.start()
         }
         backpacks_list.visibility = if (isLoading) View.GONE else View.VISIBLE

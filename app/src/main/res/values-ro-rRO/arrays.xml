@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="backpack_item_types">
+        <item>Apă și alimente</item>
+        <item>Articole de igienă</item>
+        <item>Trusă de prim ajutor</item>
+        <item>Documente</item>
+        <item>Articole de supraviețuire</item>
+        <item>Diverse</item>
+    </string-array>
+</resources>

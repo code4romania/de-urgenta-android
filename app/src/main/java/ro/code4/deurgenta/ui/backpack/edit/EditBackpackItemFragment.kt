@@ -24,9 +24,7 @@ class EditBackpackItemFragment : ViewModelFragment<EditBackpackItemViewModel>() 
     override val layout: Int
         get() = R.layout.fragment_backpack_edit_item
     override val viewModel: EditBackpackItemViewModel by viewModel()
-    private var expirationDate: ExpirationDate = LocalDate.now().let {
-        ExpirationDate(it.year, it.monthValue, it.dayOfMonth)
-    }
+    private var expirationDate: ExpirationDate? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -76,11 +74,10 @@ class EditBackpackItemFragment : ViewModelFragment<EditBackpackItemViewModel>() 
         val backpackItem: BackpackItem = Parcels.unwrap(arguments?.getParcelable(KEY_EDIT_ITEM_DATA))
         input_name.setText(backpackItem.name)
         input_quantity.setText(backpackItem.amount.toString())
-        input_date.text = displayFormatter.format(backpackItem.expirationDate)
-        expirationDate = ExpirationDate(
-            backpackItem.expirationDate.year, backpackItem.expirationDate.monthValue,
-            backpackItem.expirationDate.dayOfMonth
-        )
+        backpackItem.expirationDate?.let {
+            input_date.text = displayFormatter.format(backpackItem.expirationDate)
+            expirationDate = ExpirationDate(it.year, it.monthValue, it.dayOfMonth)
+        }
         btn_change_action.setOnClickListener {
             val name = input_name.text.toString()
             val quantity = input_quantity.text.toString()
@@ -94,8 +91,8 @@ class EditBackpackItemFragment : ViewModelFragment<EditBackpackItemViewModel>() 
     private fun isInputValid(name: String, quantity: String): Boolean {
         var checkOutcome = true
         val referenceDate = LocalDate.now()
-        val selected = LocalDate.of(expirationDate.year, expirationDate.month, expirationDate.dayOfMonth)
-        if (selected.isBefore(referenceDate) || selected.isEqual(referenceDate)) {
+        val selected = expirationDate?.let { LocalDate.of(it.year, it.month, it.dayOfMonth) }
+        if (selected != null && (selected.isBefore(referenceDate) || selected.isEqual(referenceDate))) {
             input_date_error.text = getString(R.string.edit_backpack_item_error_date)
             checkOutcome = false
         } else {

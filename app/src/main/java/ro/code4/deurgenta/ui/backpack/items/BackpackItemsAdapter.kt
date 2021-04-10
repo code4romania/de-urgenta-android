@@ -48,6 +48,7 @@ class BackpackTypeViewHolder(
 ) : RecyclerView.ViewHolder(rowView) {
 
     private val expirationString = rowView.context.getString(R.string.item_expiration_label)
+    private val noExpirationString = rowView.context.getString(R.string.no_expiration_date)
     private val quantityString = rowView.context.getString(R.string.item_quantity_label)
     private val quantity: TextView = rowView.findViewById(R.id.quantity)
     private val name: TextView = rowView.findViewById(R.id.name)
@@ -65,7 +66,7 @@ class BackpackTypeViewHolder(
         with(item) {
             this@BackpackTypeViewHolder.name.text = name
             quantity.text = String.format(quantityString, amount.toString())
-            expireDate.text = String.format(expirationString, expirationDate.format(formatter))
+            expireDate.text = String.format(expirationString, expirationDate?.format(formatter) ?: noExpirationString)
         }
     }
 
