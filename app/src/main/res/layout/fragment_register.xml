@@ -170,7 +170,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/submitButton"
                     app:layout_constraintBottom_toBottomOf="@+id/submitButton"
-                    android:layout_marginStart="16dp" />
+                    android:layout_marginStart="@dimen/margin" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
