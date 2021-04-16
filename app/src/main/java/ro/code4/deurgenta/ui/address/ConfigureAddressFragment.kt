@@ -1,6 +1,10 @@
 package ro.code4.deurgenta.ui.address
 
+import android.Manifest
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Intent
+import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
@@ -11,16 +15,14 @@ import android.widget.SearchView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
+import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
 import com.here.sdk.mapview.*
 import kotlinx.android.synthetic.main.onboarding_configure_addresses.view.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.databinding.OnboardingConfigureAddressesBinding
-import ro.code4.deurgenta.helper.MapViewUtils
-import ro.code4.deurgenta.helper.PermissionManager
-import ro.code4.deurgenta.helper.hideSoftInput
+import ro.code4.deurgenta.helper.*
 import ro.code4.deurgenta.interfaces.LocateMeCallback
 import ro.code4.deurgenta.interfaces.SaveProgressCallback
 import ro.code4.deurgenta.ui.base.ViewModelFragment
@@ -28,7 +30,8 @@ import java.util.*
 
 @SuppressLint("LongLogTag")
 class ConfigureAddressFragment : ViewModelFragment<ConfigureAddressViewModel>(),
-    PermissionManager.PermissionListener {
+    PermissionManager.PermissionListener,
+    PermissionUiCallback {
 
     override val layout: Int
         get() = R.layout.onboarding_configure_addresses
@@ -41,7 +44,6 @@ class ConfigureAddressFragment : ViewModelFragment<ConfigureAddressViewModel>(),
     private lateinit var permissionsUtils: PermissionManager
 
     private lateinit var mapViewUtils: MapViewUtils
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     lateinit var viewBinding: OnboardingConfigureAddressesBinding
 
@@ -65,30 +67,19 @@ class ConfigureAddressFragment : ViewModelFragment<ConfigureAddressViewModel>(),
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        initMapView(savedInstanceState)
-        initLocationServicesAndMapUtils()
-        handleAndroidPermissions()
-    }
-
-    private fun initMapView(savedInstanceState: Bundle?) {
         mapView = viewBinding.mapView
         mapView.onCreate(savedInstanceState)
-    }
+        permissionsUtils = PermissionManager(requireActivity(), this)
+        mapViewUtils = MapViewUtils(mapView, requireActivity(), mapViewCallback)
 
-    private fun handleAndroidPermissions() {
-        permissionsUtils =
-            PermissionManager(requireActivity(), this)
-
-        permissionsUtils.requestLocationRelatedPermissions(this)
-    }
-
-    private fun initSearchView() {
-        viewBinding.appbar.query_search.apply {
-            setOnQueryTextListener(onQueryTextListener(this@apply))
-        }
+        initMapButtonCallbacks()
     }
 
     private fun initMapButtonCallbacks() {
+        viewBinding.appbar.query_search.apply {
+            setOnQueryTextListener(onQueryTextListener(this@apply))
+        }
+
         viewBinding.saveCallback = object : SaveProgressCallback {
             override fun save() {
                 Log.d(TAG, "save address")
@@ -111,37 +102,66 @@ class ConfigureAddressFragment : ViewModelFragment<ConfigureAddressViewModel>(),
             if (grantResults.all { it == PackageManager.PERMISSION_GRANTED } && grantResults.size == permissions.size) {
                 onPermissionsGranted()
             } else {
-                onPermissionDenied()
+                checkDeniedPermissions(permissions, grantResults)
             }
         }
     }
 
-    private fun initLocationServicesAndMapUtils() {
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
-        mapViewUtils = MapViewUtils(mapView, fusedLocationClient, mapViewCallback)
+    private fun checkDeniedPermissions(permissions: Array<out String>, grantResults: IntArray) {
+        val permanentlyDenied = permissions.filterIndexed { index, s ->
+            grantResults[index] == PackageManager.PERMISSION_DENIED
+                    && !permissionsUtils.checkShouldShowRequestPermissionsRationale(s)
+        }
+
+
+        if (permanentlyDenied.isNotEmpty()) {
+            showPermissionRationale(requireActivity(), true, this)
+        } else {
+            val denied = permissions.filterIndexed { index, s ->
+                grantResults[index] == PackageManager.PERMISSION_DENIED
+                        && permissionsUtils.checkShouldShowRequestPermissionsRationale(s)
+            }
+            if (denied.isNotEmpty()) {
+                showPermissionRationale(requireActivity(), true, this)
+            }
+        }
     }
 
     private val mapViewCallback = object : MapViewUtils.MapViewCallback {
-        override fun onError(error: String) {
-            Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
+        override fun onError(error: MapViewUtils.MapDataError) {
+            if (error.errorType == MapViewUtils.MapErrorType.PERMISSION_ERROR) {
+                try {
+                    // shows the permission request settings dialog.
+                    val rae = error.exception as ResolvableApiException
+                    startIntentSenderForResult(rae.resolution.intentSender, PermissionManager.PERMISSION_CHECK_SETTINGS)
+                } catch (sie: IntentSender.SendIntentException) {
+                    Log.i(TAG, "PendingIntent unable to execute request.")
+                }
+            } else {
+                Toast.makeText(requireContext(), error.errorMessage, Toast.LENGTH_SHORT).show()
+            }
         }
 
         override fun onSuggestionError(error: String) {
             Log.d(TAG, "error loading autosuggestion results:$error")
         }
 
-        override fun onAddMarker() {
+        override fun onSuccess() {
             updateSaveButtonVisibility(View.VISIBLE)
         }
 
-        override fun suggest(suggest: String) {
+        override fun onSuccessSuggest(suggest: String) {
             Log.d(TAG, "autosuggestion text.$suggest")
         }
     }
 
     override fun onResume() {
         super.onResume()
-        mapViewUtils.onResume()
+        if (permissionsUtils.hasPermissions(Manifest.permission.ACCESS_FINE_LOCATION)) {
+            mapViewUtils.onResume()
+        } else {
+            permissionsUtils.checkPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION))
+        }
     }
 
     override fun onStop() {
@@ -168,15 +188,32 @@ class ConfigureAddressFragment : ViewModelFragment<ConfigureAddressViewModel>(),
         }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        when (requestCode) {
+            PermissionManager.PERMISSION_CHECK_SETTINGS -> when (resultCode) {
+                Activity.RESULT_OK -> {
+                    Log.i(TAG, "User agreed to make required location settings changes.")
+                    mapViewUtils.startLocationUpdates()
+                }
+                Activity.RESULT_CANCELED -> {
+                    Log.i(TAG, "User chose not to make required location settings changes.")
+                }
+            }
+        }
+    }
+
+    override fun onDialogCallback() {
+        permissionsUtils.checkPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION))
+    }
+
     override fun onPermissionsGranted() {
         Log.d(TAG, "permission granted.")
-        initMapButtonCallbacks()
-        mapViewUtils.loadLastKnownLocation(false)
-        initSearchView()
+        mapViewUtils.startLocationUpdates()
     }
 
     override fun onPermissionDenied() {
         Log.e(TAG, "Permissions denied by user, return back to the configure profile.")
+        // todo if permission was denied before notify the user, maybe one changes its mind.
         findNavController().navigate(R.id.configure_account)
     }
 

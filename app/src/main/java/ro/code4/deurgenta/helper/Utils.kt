@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.IntentSender
 import android.graphics.Rect
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
@@ -124,4 +125,9 @@ fun ImageView.setToRotateIndefinitely(): ObjectAnimator =
 fun hideSoftInput(view: View) {
     val imm = view.context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     imm.hideSoftInputFromWindow(view.windowToken, 0)
+}
+
+
+fun Fragment.startIntentSenderForResult(intent: IntentSender, requestCode: Int, bundle: Bundle? = null) {
+    startIntentSenderForResult(intent, requestCode, null, 0, 0, 0, bundle)
 }

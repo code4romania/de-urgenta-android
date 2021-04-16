@@ -110,5 +110,6 @@
     <string name="locate_me">Localizeaza-ma</string>
     <string name="search_hint">Introdu adresa</string>
     <string name="add_your_own_address">Adauga adresa ta</string>
+    <string name="permission_rationale">Location permission is needed for core functionality.</string>
 
 </resources>
