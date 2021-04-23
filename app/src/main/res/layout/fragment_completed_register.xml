@@ -1,42 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        tools:context="ro.code4.deurgenta.ui.auth.AuthActivity"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimaryLight"
-        android:padding="@dimen/margin"
-        android:clipChildren="false"
-        android:clipToPadding="false">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryLight"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    tools:context="ro.code4.deurgenta.ui.auth.AuthActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/include_toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-            android:id="@+id/mailImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_mail"
-            android:layout_marginTop="@dimen/xbig_margin" />
+        android:id="@+id/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
+        android:contentDescription="@string/register_cd_mail_icon"
+        app:layout_constraintBottom_toBottomOf="@id/registration_info"
+        app:layout_constraintEnd_toStartOf="@id/registration_info"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/registration_info"
+        app:srcCompat="@drawable/ic_mail" />
 
     <TextView
-            android:id="@+id/titleTextView"
-            style="@style/Text.Heading.Dark"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/register_completed_title"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mailImageView"
-            android:layout_marginTop="@dimen/xbig_margin" />
+        android:id="@+id/registration_info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        android:text="@string/register_completed_message"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        android:textColor="@color/gray_800"
+        app:layout_constraintStart_toEndOf="@id/icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
-    <TextView
-            android:id="@+id/messageTextView"
-            style="@style/Text.Paragraph"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/register_completed_message"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="@dimen/margin"
-            app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/to_login_screen"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin"
+        android:text="@string/register_back_to_login"
+        android:textColor="?attr/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/registration_info" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

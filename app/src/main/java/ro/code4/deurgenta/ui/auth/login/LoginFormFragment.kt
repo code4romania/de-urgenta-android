@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import com.facebook.CallbackManager
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -12,7 +13,9 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.willowtreeapps.signinwithapplebutton.SignInWithAppleConfiguration
 import com.willowtreeapps.signinwithapplebutton.SignInWithAppleResult
+import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
+import kotlinx.android.synthetic.main.include_toolbar.toolbar
 import org.koin.android.ext.android.inject
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.ui.base.ViewModelFragment
@@ -40,11 +43,12 @@ class LoginFormFragment : ViewModelFragment<LoginFormViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        callbackManager = CallbackManager.Factory.create()
-
-        view.close_btn.setOnClickListener {
-            activity?.onBackPressed()
+        btn_forgot_password.setOnClickListener {
+            // TODO handle lost password
+            Toast.makeText(requireContext(), "Your password is lost forever!", Toast.LENGTH_SHORT).show()
         }
+
+        callbackManager = CallbackManager.Factory.create()
 
         view.login_btn.setOnClickListener {
             viewModel.login()
@@ -53,7 +57,6 @@ class LoginFormFragment : ViewModelFragment<LoginFormViewModel>() {
         view.google_login.setOnClickListener {
             handleGoogleLoginClick()
         }
-
 
         setFacebookLoginListener()
         view.apple_login.setOnClickListener {
@@ -117,6 +120,11 @@ class LoginFormFragment : ViewModelFragment<LoginFormViewModel>() {
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
             Log.e("Google", " signInResult : failed code = ${e.statusCode}")
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        toolbar.title = resources.getString(R.string.login_auth_title)
     }
 
 }

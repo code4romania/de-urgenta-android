@@ -33,6 +33,15 @@
     <string name="login_button_login" translatable="false">Autentifică-te</string>
     <string name="login_title" translatable="false">Tu ți-ai făcut planul în caz de urgență?</string>
     <string name="login_subtitle" translatable="false">Hai să îl facem împreună!</string>
+    <string name="login_auth_title">Autentifică-te</string>
+    <string name="login_label_email">Email</string>
+    <string name="login_label_password">Parolă</string>
+    <string name="login_button_apple">Autentifică-te cu Apple</string>
+    <string name="login_button_google">Autentifică-te cu Google</string>
+    <string name="login_button_facebook">Autentifică-te cu Facebook</string>
+    <string name="login_divider_text">sau</string>
+    <string name="login_label_forgot_password">Ți-ai uitat parola?</string>
+    <string name="login_button_account">Intră în contul tău</string>
 
     <!-- Register -->
     <string name="register_title" translatable="false">Creeaza-ti contul</string>
@@ -42,9 +51,11 @@
     <string name="register_label_password" translatable="false">Parola</string>
     <string name="register_terms_text" translatable="false">Sunt de acord cu {link} acestei aplicatii De Urgenta. BRRRRR.</string>
     <string name="register_terms_link_text" translatable="false">termenii si conditiile</string>
-    <string name="register_submit_button" translatable="false">Mai departe ➔</string>
+    <string name="register_submit_button" translatable="false">Mai departe</string>
     <string name="register_completed_title" translatable="false">Valideaza-ti contul</string>
     <string name="register_completed_message" translatable="false">Un e-mail a fost trimis catre adresa pe care ti-ai facut contul bla bla te rugam sa apesi linkul pt validarea contului etc.</string>
+    <string name="register_back_to_login">Înapoi la autentificare</string>
+    <string name="register_cd_mail_icon">Imagine mesaj</string>
 
     <!-- Nav menu screen -->
     <string name="nav_menu_footer_donate_button_title">Donează</string>
