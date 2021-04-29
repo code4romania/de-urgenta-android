@@ -109,6 +109,15 @@
     <string name="edit_backpack_item_error_name">Introdu numele produsului!</string>
     <string name="edit_backpack_item_error_quantity">Introdu cantitatea produsului!</string>
     <string name="edit_backpack_item_error_quantity_value">"Introdu un numar pentru cantitate!"</string>
+    <string name="group_create_title">Creează-ți un grup</string>
+    <string name="group_create_info_1">În eventualitatea unui cutremur este important sa ai un protocol împreună cu cei apropiați prin care vă puteți regăsi cu ușurință. Creează un grup de prieteni, de familie sau de colegi de la birou sau școală pentru a vă seta puncte de întâlnire în caz de cutremur.</string>
+    <string name="group_create_info_2">Chiar dacă nu vei avea acces la internet în acele momente, poți folosi în continuare aplicația pentru a vedea care sunt punctele de întâlnire și pentru a identifica traseele pentru a ajunge acolo. De asemenea, poți vedea, cu permisiunea lor, traseele și adresele uzuale ale membrilor grupului tău și îi poți căuta dacă aceștia nu vin la punctul de întâlnire.</string>
+    <string name="group_create_reject">Nu vreau să creez un grup acum</string>
+    <string name="group_create_button_label">Creează un grup nou</string>
+    <string name="group_continue_button_label">Continuă</string>
+    <string name="group_create_info_title">Creează-ți grupul de prieteni</string>
+    <string name="group_name_label">Denumirea grupului</string>
+    <string name="group_name_hint">Fii creativ…</string>
 
     <!-- Configure account -->
     <string name="configure_addresses">Configureaza adresele</string>
