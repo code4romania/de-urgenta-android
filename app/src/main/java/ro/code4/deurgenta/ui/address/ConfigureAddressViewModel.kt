@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import ro.code4.deurgenta.data.model.MapAddress
 import ro.code4.deurgenta.repositories.Repository
@@ -20,6 +21,7 @@ class ConfigureAddressViewModel @Inject constructor(private val repository: Repo
     @SuppressLint("LongLogTag")
     fun saveAddress(currentAddress: MapAddress) {
         val disposable = repository.saveAddress(mapAddress = currentAddress)
+            .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe {
                 Log.d(TAG, "loading")
                 saveAddressResult.postValue(Result.Loading)

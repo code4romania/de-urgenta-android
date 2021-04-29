@@ -39,8 +39,6 @@ android {
             }
         }
         vectorDrawables.useSupportLibrary = true
-
-        ndkVersion = "21.1.6352462"
     }
 
     buildFeatures {
@@ -64,6 +62,7 @@ android {
         applicationVariants.all { variant ->
             variant.buildConfigField "String", "API_URL", "\"" + getKey(variant.buildType.name, "apiUrl") + "\""
             variant.buildConfigField "String", "TERMS_AND_CONDITIONS", "\"" + getKey(variant.buildType.name, "termsAndConditions") + "\""
+            variant.buildConfigField "double", "SEARCH_RADIUS", "50000.0"
 
             def productFlavor = variant.productFlavors[0] != null ? "${variant.productFlavors[0].name.capitalize()}" : ""
             def buildType = "${variant.buildType.name.capitalize()}"
@@ -97,7 +96,6 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    ndkVersion '20.0.5594570'
 }
 
 dependencies {

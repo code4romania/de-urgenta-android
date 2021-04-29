@@ -8,11 +8,11 @@
 
         <variable
             name="setMeetingCallback"
-            type="ro.code4.deurgenta.interfaces.ViewCallback" />
+            type="ro.code4.deurgenta.interfaces.ClickButtonCallback" />
 
         <variable
             name="addNewAddressCallback"
-            type="ro.code4.deurgenta.interfaces.ViewCallback" />
+            type="ro.code4.deurgenta.interfaces.ClickButtonCallback" />
 
         <variable
             name="homeAddress"
@@ -73,9 +73,10 @@
 
             <TextView
                 android:id="@+id/title_configure_another_address"
-                style="@style/Text.Paragraph"
+                style="@style/Text.Big"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:layout_marginTop="@dimen/xxbig_margin"
                 android:text="@string/configure_another_address_header"
                 app:layout_constraintEnd_toEndOf="@id/home_address_layout"
@@ -85,7 +86,7 @@
 
             <TextView
                 android:id="@+id/configure_another_address"
-                style="@style/Text.Content"
+                style="@style/Text.Default"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/small_margin"

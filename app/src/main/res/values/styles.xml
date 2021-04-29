@@ -61,23 +61,10 @@
         <item name="lineHeight">26sp</item>
     </style>
 
-    <style name="Text.Content">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/gray_200</item>
-    </style>
-
     <style name="Text.MenuList">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/gray_800</item>
         <item name="android:textStyle">bold</item>
-        <item name="lineHeight">24sp</item>
-    </style>
-
-    <style name="Text.OptionItem">
-        <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/gray_800</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:maxWidth">250dp</item>
         <item name="lineHeight">24sp</item>
     </style>
 

@@ -11,6 +11,7 @@ import com.here.sdk.core.*
 import com.here.sdk.core.threading.TaskHandle
 import com.here.sdk.mapview.*
 import com.here.sdk.search.*
+import ro.code4.deurgenta.BuildConfig
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.data.model.MapAddress
 
@@ -33,9 +34,14 @@ class MapViewUtils(
     private val searchEngine: SearchEngine = SearchEngine()
 
     /**
-     * Variable to check if the location searvices are enabled or not.
+     * Variable to check if the location services are enabled or not.
      */
-    private var areLocationServicesInitialized = false
+    private var wasUserLocalized = false
+
+    /**
+     * Variable to check if it has gps fix.
+     */
+    private var hasGpsFix = false
 
     /**
      * Type of location services the client is interested in using.
@@ -77,16 +83,17 @@ class MapViewUtils(
     }
 
     fun loadMapSceneForLocation(location: Location) {
-        geoCoordinates = GeoCoordinates(location.latitude, location.longitude)
-        loadMapSceneForGeoCoordinates(geoCoordinates)
+        val coordinates = GeoCoordinates(location.latitude, location.longitude)
+        loadMapSceneForGeoCoordinates(coordinates)
     }
 
-    private fun loadMapSceneForGeoCoordinates(geoCoordinates: GeoCoordinates?) {
-        if (geoCoordinates == null) {
+    private fun loadMapSceneForGeoCoordinates(coordinates: GeoCoordinates?) {
+        if (coordinates == null) {
             callback.onError(MapDataError(R.string.unknown_error, MapErrorType.UNKNOWN))
             return
         }
-
+        geoCoordinates = coordinates
+        wasUserLocalized = true
         mapView.mapScene
             .loadScene(MapScheme.NORMAL_DAY) { errorCode ->
                 if (errorCode == null) {
@@ -131,11 +138,16 @@ class MapViewUtils(
     }
 
     private fun getStreetAddress(address: Address): String {
-        return formatAddress(address)
+        val builder = StringBuilder()
+        builder.append(address.street)
+        builder.append(address.postalCode)
+        builder.append(", ")
+        builder.append(address.city)
+        return builder.toString()
     }
 
     private fun getMapViewGeoCircle(): GeoCircle {
-        return GeoCircle(geoCoordinates, 50000.0)
+        return GeoCircle(geoCoordinates, BuildConfig.SEARCH_RADIUS)
     }
 
     fun searchOnMap(
@@ -149,7 +161,7 @@ class MapViewUtils(
             return
         }
 
-        if (areLocationServicesInitialized) {
+        if (hasGpsFix) {
             queryString = query
 
             val circleBox = getMapViewGeoCircle()
@@ -166,7 +178,7 @@ class MapViewUtils(
             if (searchType == SearchType.STANDARD) {
                 callback.onError(
                     MapDataError(
-                        R.string.map_not_initialized,
+                        R.string.map_not_initialized_or_no_gps,
                         MapErrorType.NOT_INITIALIZED
                     )
                 )
@@ -186,17 +198,8 @@ class MapViewUtils(
             createAndAddMarker(searchResult)
         }
 
-        if (list.size == 1) {
-            loadMapSceneForGeoCoordinates(list[0].geoCoordinates)
-            callback.onSearchSuccess()
-        } else if (list.size > 1) {
-            callback.onError(
-                MapDataError(
-                    R.string.more_results_found,
-                    MapErrorType.MORE_RESULTS_FOUND
-                )
-            );
-        }
+        loadMapSceneForGeoCoordinates(list[0].geoCoordinates)
+        callback.onSearchSuccess()
     }
 
     private var autosuggestCallback = SuggestCallback { searchError, list ->
@@ -224,7 +227,13 @@ class MapViewUtils(
 
     fun onResume() {
         mapView.onResume()
-        startLocationUpdates()
+        callback.onLoading()
+        if (!wasUserLocalized || !hasGpsFix) {
+            loadLastKnownLocation(false)
+            startLocationUpdates()
+        } else if (wasUserLocalized) {
+            searchAddressForGeoCoordinates()
+        }
     }
 
     fun onPause() {
@@ -237,7 +246,6 @@ class MapViewUtils(
         settingsClient.checkLocationSettings(locationSettingsRequest)
             .addOnSuccessListener {
                 Log.d(TAG, "success in checking location settings.")
-                callback.onLoading()
                 fusedLocationClient.requestLocationUpdates(
                     locationRequest,
                     locationCallback,
@@ -271,7 +279,6 @@ class MapViewUtils(
                                 MapErrorType.PERMISSION_SETTING_CHANGE_UNAVAILABLE
                             )
                         )
-                        areLocationServicesInitialized = false
                     }
                 }
             }
@@ -282,6 +289,7 @@ class MapViewUtils(
         fusedLocationClient.lastLocation
             .addOnSuccessListener { location: Location? ->
                 location?.let {
+                    hasGpsFix = true
                     loadMapSceneForLocation(location)
                     if (searchAddress) {
                         searchAddressForGeoCoordinates()
@@ -304,10 +312,12 @@ class MapViewUtils(
 
     private var locationCallback = object : LocationCallback() {
         override fun onLocationResult(locationResult: LocationResult) {
-            Log.d(TAG, "location update:" + locationResult.lastLocation)
+            logD("location update:" + locationResult.lastLocation, TAG)
             super.onLocationResult(locationResult)
-            areLocationServicesInitialized = true
-            loadMapSceneForLocation(location = locationResult.lastLocation)
+            if (!hasGpsFix) {
+                hasGpsFix = true
+                loadMapSceneForLocation(location = locationResult.lastLocation)
+            }
         }
     }
 
@@ -368,7 +378,6 @@ class MapViewUtils(
         NO_RESULTS_FOUND,
         PERMISSION_SETTING_CHANGE_UNAVAILABLE,
         NOT_INITIALIZED,
-        MORE_RESULTS_FOUND,
         UNKNOWN,
     }
 

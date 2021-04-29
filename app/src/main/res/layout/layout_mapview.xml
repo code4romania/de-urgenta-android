@@ -7,11 +7,11 @@
 
         <variable
             name="locateMeCallback"
-            type="ro.code4.deurgenta.interfaces.ViewCallback" />
+            type="ro.code4.deurgenta.interfaces.ClickButtonCallback" />
 
         <variable
             name="saveAddressCallback"
-            type="ro.code4.deurgenta.interfaces.ViewCallback" />
+            type="ro.code4.deurgenta.interfaces.ClickButtonCallback" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

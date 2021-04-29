@@ -32,10 +32,10 @@ open class PermissionManager(private val activity: Activity, private val fragmen
             listener.onPermissionDenied()
             return
         }
-        checkPermissionsInternal(*permissionString)
+        checkPermissions(*permissionString)
     }
 
-    private fun checkPermissionsInternal(vararg permissionString: String) {
+    private fun checkPermissions(vararg permissionString: String) {
 
         if (fragment != null) {
             fragment.requestPermissions(permissionString, PERMISSION_REQUEST)
@@ -57,7 +57,7 @@ open class PermissionManager(private val activity: Activity, private val fragmen
 
     companion object {
         @JvmStatic
-        val PERMISSION_REQUEST = 320
+        val PERMISSION_REQUEST = 324
 
         @JvmStatic
         val PERMISSION_CHECK_SETTINGS = 320

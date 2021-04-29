@@ -11,7 +11,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.data.model.MapAddressType
 import ro.code4.deurgenta.databinding.FragmentConfigureAccountBinding
-import ro.code4.deurgenta.interfaces.ViewCallback
+import ro.code4.deurgenta.interfaces.ClickButtonCallback
 import ro.code4.deurgenta.ui.base.ViewModelFragment
 
 class ConfigureAccountFragment : ViewModelFragment<ConfigureAccountViewModel>() {
@@ -44,7 +44,7 @@ class ConfigureAccountFragment : ViewModelFragment<ConfigureAccountViewModel>() 
 
     @SuppressLint("LongLogTag")
     private fun configureCallbacks() {
-        viewBinding.callbackAddresses = object : ViewCallback {
+        viewBinding.callbackAddresses = object : ClickButtonCallback {
             override fun call() {
                 val directions = ConfigureAccountFragmentDirections.actionConfigureAddress(mapAddressType = MapAddressType.HOME, R.string.add_home_address)
                 findNavController().navigate(directions)

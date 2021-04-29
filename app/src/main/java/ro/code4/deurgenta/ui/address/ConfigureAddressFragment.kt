@@ -27,7 +27,7 @@ import ro.code4.deurgenta.R
 import ro.code4.deurgenta.data.model.MapAddressType
 import ro.code4.deurgenta.databinding.FragmentConfigureAddressBinding
 import ro.code4.deurgenta.helper.*
-import ro.code4.deurgenta.interfaces.ViewCallback
+import ro.code4.deurgenta.interfaces.ClickButtonCallback
 import ro.code4.deurgenta.ui.base.PermissionsViewModelFragment
 
 @SuppressLint("LongLogTag")
@@ -122,13 +122,17 @@ class ConfigureAddressFragment : PermissionsViewModelFragment<ConfigureAddressVi
     }
 
     private fun initCallbacks() {
-        viewBinding.saveAddressCallback = object : ViewCallback {
+        viewBinding.saveAddressCallback = object : ClickButtonCallback {
             override fun call() {
-                findNavController().navigate(R.id.save_address)
+                mapViewUtils?.getCurrentAddress()
+                    ?.let { mapAddress ->
+                        mapAddress.type = mapAddressType
+                        viewModel.saveAddress(mapAddress)
+                    }
             }
         }
 
-        viewBinding.locateMeCallback = object : ViewCallback {
+        viewBinding.locateMeCallback = object : ClickButtonCallback {
             override fun call() {
                 searchView().clearFocus()
                 setQuery("", false)
@@ -261,13 +265,6 @@ class ConfigureAddressFragment : PermissionsViewModelFragment<ConfigureAddressVi
 
     private fun updateSaveButtonVisibility(flag: Int) {
         viewBinding.mapViewLayout.saveAddress.visibility = flag
-        viewBinding.mapViewLayout.saveAddress.setOnClickListener {
-            mapViewUtils?.getCurrentAddress()
-                ?.let { mapAddress ->
-                    mapAddress.type = mapAddressType
-                    viewModel.saveAddress(mapAddress)
-                }
-        }
     }
 
     fun setQuery(query: String, submit: Boolean) {

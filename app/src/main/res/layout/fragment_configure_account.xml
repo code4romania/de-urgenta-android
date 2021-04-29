@@ -7,7 +7,7 @@
 
         <variable
             name="callbackAddresses"
-            type="ro.code4.deurgenta.interfaces.ViewCallback" />
+            type="ro.code4.deurgenta.interfaces.ClickButtonCallback" />
 
     </data>
 
@@ -76,9 +76,9 @@
                     style="@style/MenuTextView"
                     android:background="?android:attr/selectableItemBackground"
                     android:onClick="@{() -> callbackAddresses.call()}"
-                    android:padding="12dp"
+                    android:padding="@dimen/padding"
                     android:text="@string/configure_addresses"
-                    android:textAppearance="@style/Text.OptionItem"
+                    android:textAppearance="@style/Text.MenuList"
                     app:drawableStartCompat="@drawable/ic_map" />
 
                 <TextView
@@ -88,7 +88,7 @@
 
                     android:padding="@dimen/padding"
                     android:text="@string/create_your_group"
-                    android:textAppearance="@style/Text.OptionItem"
+                    android:textAppearance="@style/Text.MenuList"
                     app:drawableStartCompat="@drawable/ic_group" />
 
                 <TextView
@@ -98,7 +98,7 @@
 
                     android:padding="@dimen/padding"
                     android:text="@string/make_your_emergency_backpack"
-                    android:textAppearance="@style/Text.OptionItem"
+                    android:textAppearance="@style/Text.MenuList"
                     app:drawableStartCompat="@drawable/ic_shopping_bag" />
 
                 <TextView
@@ -106,9 +106,9 @@
                     style="@style/MenuTextView"
                     android:background="?android:attr/selectableItemBackground"
 
-                    android:padding="12dp"
+                    android:padding="@dimen/padding"
                     android:text="@string/learn_to_give_firstaid"
-                    android:textAppearance="@style/Text.OptionItem"
+                    android:textAppearance="@style/Text.MenuList"
                     app:drawableStartCompat="@drawable/ic_plus" />
 
             </LinearLayout>
