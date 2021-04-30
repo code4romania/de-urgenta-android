@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_about.*
+import ro.code4.deurgenta.BuildConfig
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.ui.base.BaseAnalyticsFragment
 
@@ -21,11 +22,11 @@ class AboutFragment : BaseAnalyticsFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        organization_facebook.setOnClickListener { takeUserTo(CODE4RO_FACEBOOK) }
-        organization_instagram.setOnClickListener { takeUserTo(CODE4RO_INSTAGRAM) }
-        organization_url.setOnClickListener { takeUserTo(CODE4RO_URL) }
-        organization_github.setOnClickListener { takeUserTo(CODE4RO_GITHUB) }
-        organization_donate.setOnClickListener { takeUserTo(CODE4RO_DONATE) }
+        organization_facebook.setOnClickListener { takeUserTo(BuildConfig.CODE4RO_FACEBOOK_URL) }
+        organization_instagram.setOnClickListener { takeUserTo(BuildConfig.CODE4RO_INSTAGRAM_URL) }
+        organization_url.setOnClickListener { takeUserTo(BuildConfig.CODE4RO_URL) }
+        organization_github.setOnClickListener { takeUserTo(BuildConfig.CODE4RO_GITHUB_URL) }
+        organization_donate.setOnClickListener { takeUserTo(BuildConfig.CODE4RO_DONATE_URL) }
     }
 
     private fun takeUserTo(url: String) {
@@ -42,11 +43,4 @@ class AboutFragment : BaseAnalyticsFragment() {
         requireActivity().title = getString(R.string.about_title)
     }
 
-    companion object {
-        const val CODE4RO_FACEBOOK = "https://www.facebook.com/code4romania/"
-        const val CODE4RO_INSTAGRAM = "https://www.instagram.com/code4romania"
-        const val CODE4RO_URL = "https://code4.ro/en"
-        const val CODE4RO_GITHUB = "https://github.com/code4romania"
-        const val CODE4RO_DONATE = "https://code4.ro/en/donate"
-    }
 }
