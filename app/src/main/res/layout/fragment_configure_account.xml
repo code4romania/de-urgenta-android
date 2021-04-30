@@ -9,6 +9,9 @@
             name="callbackAddresses"
             type="ro.code4.deurgenta.interfaces.ClickButtonCallback" />
 
+        <variable
+            name="callbackGroup"
+            type="ro.code4.deurgenta.interfaces.ClickButtonCallback" />
     </data>
 
     <ScrollView
@@ -85,7 +88,7 @@
                     android:id="@+id/create_group"
                     style="@style/MenuTextView"
                     android:background="?android:attr/selectableItemBackground"
-
+                    android:onClick="@{() -> callbackGroup.call()}"
                     android:padding="@dimen/padding"
                     android:text="@string/create_your_group"
                     android:textAppearance="@style/Text.MenuList"

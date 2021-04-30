@@ -44,11 +44,13 @@ class ConfigureAccountFragment : ViewModelFragment<ConfigureAccountViewModel>() 
 
     @SuppressLint("LongLogTag")
     private fun configureCallbacks() {
-        viewBinding.callbackAddresses = object : ClickButtonCallback {
-            override fun call() {
-                val directions = ConfigureAccountFragmentDirections.actionConfigureAddress(mapAddressType = MapAddressType.HOME, R.string.add_home_address)
-                findNavController().navigate(directions)
-            }
+        viewBinding.callbackAddresses = ClickButtonCallback {
+            val directions = ConfigureAccountFragmentDirections.actionConfigureAddress(mapAddressType = MapAddressType.HOME, R.string.add_home_address)
+            findNavController().navigate(directions)
+        }
+
+        viewBinding.callbackGroup = ClickButtonCallback {
+            findNavController().navigate(R.id.action_configure_group)
         }
     }
 }

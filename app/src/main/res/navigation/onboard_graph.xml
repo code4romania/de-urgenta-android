@@ -20,8 +20,12 @@
                 android:name="titleResourceId"
                 app:argType="integer" />
         </action>
+        <action
+            android:id="@+id/action_configure_group"
+            app:destination="@id/navigation_group" />
     </fragment>
 
     <include app:graph="@navigation/configure_addresses" />
+    <include app:graph="@navigation/navigation_group" />
 
 </navigation>
