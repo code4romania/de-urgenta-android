@@ -26,9 +26,6 @@
     <string name="login_form_title">Autentifica-te</string>
     <string name="email_hint">E-mail</string>
     <string name="password_hint">Parola</string>
-    <string name="forgot_password_text">Ti-ai uitat parola?</string>
-    <string name="login_button_text">Intra in contul tau</string>
-    <string name="login_divider_text">sau</string>
 
     <!-- Home -->
     <string name="home_title">De Urgență</string>
@@ -44,6 +41,15 @@
     <string name="login_button_login" translatable="false">Authenticate</string>
     <string name="login_title" translatable="false">Did you make your plan in case of an emergency?</string>
     <string name="login_subtitle" translatable="false">Let\'s do it together!</string>
+    <string name="login_auth_title">Sign into your account</string>
+    <string name="login_label_email">Email</string>
+    <string name="login_label_password">Password</string>
+    <string name="login_button_apple">Sign in with Apple</string>
+    <string name="login_button_google">Sign in with Google</string>
+    <string name="login_button_facebook">Sign in with Facebook</string>
+    <string name="login_divider_text">or</string>
+    <string name="login_label_forgot_password">Forgot your password?</string>
+    <string name="login_button_account">Sign in</string>
 
     <!-- Register screen -->
     <string name="register_title" translatable="false">Create your account</string>
@@ -53,9 +59,11 @@
     <string name="register_label_password" translatable="false">Password</string>
     <string name="register_terms_text" translatable="false">Accept {link}</string>
     <string name="register_terms_link_text" translatable="false">terms and conditions</string>
-    <string name="register_submit_button" translatable="false">Submit ➔</string>
+    <string name="register_submit_button" translatable="false">Submit</string>
     <string name="register_completed_title" translatable="false">Validate your account</string>
     <string name="register_completed_message" translatable="false">An e-mail was sent to the address where you made your account blah blah please click on the link to validate the account etc.</string>
+    <string name="register_back_to_login">Back to authentication</string>
+    <string name="register_cd_mail_icon">Mail icon</string>
 
     <!-- Nav menu screen -->
     <string name="nav_menu_footer_donate_button_title">Donează</string>

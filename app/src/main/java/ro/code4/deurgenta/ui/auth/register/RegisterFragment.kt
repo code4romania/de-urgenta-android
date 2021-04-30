@@ -6,6 +6,7 @@ import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import io.reactivex.disposables.Disposable
@@ -14,8 +15,8 @@ import org.koin.android.ext.android.inject
 import ro.code4.deurgenta.BuildConfig.TERMS_AND_CONDITIONS
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.databinding.FragmentRegisterBinding
-import ro.code4.deurgenta.ui.base.ViewModelFragment
 import ro.code4.deurgenta.ui.auth.AuthViewModel
+import ro.code4.deurgenta.ui.base.ViewModelFragment
 
 class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
     override val layout: Int
@@ -24,7 +25,7 @@ class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
         get() = R.string.analytics_title_register
 
     override val viewModel: RegisterViewModel by inject()
-    lateinit var authViewModel: AuthViewModel;
+    lateinit var authViewModel: AuthViewModel
     var registerRequestDisposable: Disposable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,14 +40,16 @@ class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         val binding: FragmentRegisterBinding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_register, container, false
         )
-        binding.lifecycleOwner = this;
+        binding.lifecycleOwner = this
         binding.viewmodel = viewModel
+        @Suppress("USELESS_CAST") // cast needed
+        (binding.toolbar as Toolbar).setTitle(R.string.register_title)
         return binding.root
     }
 
@@ -62,11 +65,9 @@ class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
         }
 
         termsAndConditionsSetup()
-
     }
 
     private fun showFormErrors() {
-
         val firstNameError = viewModel.getFirstNameError()
         val lastNameError = viewModel.getLastNameError()
         val emailError = viewModel.getEmailError()
