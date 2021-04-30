@@ -12,13 +12,12 @@
         android:orientation="vertical">
 
         <TextView
+            style="@style/Text.Big"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="@dimen/xbig_margin"
             android:text="@string/group_create_info_title"
-            android:textColor="@color/design_default_color_on_secondary"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textColor="@color/design_default_color_on_secondary" />
 
         <TextView
             style="@style/Input.Label"
@@ -44,9 +43,7 @@
                 android:singleLine="true"
                 android:textColor="@color/design_default_color_on_secondary"
                 android:textColorHint="@color/design_default_color_on_secondary"
-                app:backgroundTint="@color/cardview_dark_background"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:backgroundTint="@color/cardview_dark_background" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -56,11 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/big_margin"
-            android:text="@string/group_continue_button_label"
-            android:textAllCaps="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:text="@string/group_continue_button_label" />
 
     </LinearLayout>
 </ScrollView>
