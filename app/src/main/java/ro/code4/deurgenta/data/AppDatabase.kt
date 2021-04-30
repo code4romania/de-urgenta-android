@@ -15,7 +15,7 @@ import ro.code4.deurgenta.data.model.MapAddress
 
 @Database(
     entities = [Backpack::class, BackpackItem::class, MapAddress::class],
-    version = 3
+    version = 1
 )
 @TypeConverters(
     DateConverter::class,
