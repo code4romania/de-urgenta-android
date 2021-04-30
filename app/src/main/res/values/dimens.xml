@@ -8,6 +8,18 @@
     <dimen name="xsmall_margin">4dp</dimen>
     <dimen name="xxsmall_margin">2dp</dimen>
 
-     <dimen name="small_icon_size">16dp</dimen>
+    <dimen name="small_icon_size">16dp</dimen>
     <dimen name="medium_icon_size">32dp</dimen>
+
+    <!-- Text sizes-->
+    <dimen name="text_size_big">20sp</dimen>
+    <dimen name="text_size">16sp</dimen>
+    <dimen name="text_size_xxbig">40sp</dimen>
+    <dimen name="text_size_xbig">32sp</dimen>
+
+    <!-- Padding -->
+    <dimen name="padding_small">4dp</dimen>
+    <dimen name="padding_medium">8dp</dimen>
+    <dimen name="padding">12dp</dimen>
+
 </resources>

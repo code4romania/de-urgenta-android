@@ -8,12 +8,7 @@ import androidx.fragment.app.Fragment
 
 open class PermissionManager(private val activity: Activity, private val fragment: Fragment?) {
 
-    companion object {
-        @JvmStatic
-        val PERMISSION_REQUEST = 320
-    }
-
-    private fun hasPermissions(vararg permissionString: String): Boolean = permissionString.all {
+    fun hasPermissions(vararg permissionString: String): Boolean = permissionString.all {
         ContextCompat.checkSelfPermission(activity, it) == PackageManager.PERMISSION_GRANTED
     }
 
@@ -21,26 +16,26 @@ open class PermissionManager(private val activity: Activity, private val fragmen
         ContextCompat.checkSelfPermission(activity, it) == PackageManager.PERMISSION_DENIED
     }
 
-
-    fun checkPermissions(vararg permissionString: String, listener: PermissionListener) {
+    fun checkPermissions(listener: PermissionListener, permissionString: Array<String>) {
         if (hasPermissions(*permissionString)) {
             listener.onPermissionsGranted()
             return
         }
-        if (isAnyDenied(*permissionString) && checkShouldShowRequestPermissionsRationale(*permissionString)) {
-            listener.onPermissionDenied(*permissionString,
-                permissionsDenied = permissionString.filter {
-                    ContextCompat.checkSelfPermission(
-                        activity,
-                        it
-                    ) == PackageManager.PERMISSION_DENIED
-                })
-            return
-        }
-        requestPermissions(*permissionString)
+        checkIfDeniedOrRequest(permissionString, listener)
     }
 
-    fun requestPermissions(vararg permissionString: String) {
+    private fun checkIfDeniedOrRequest(
+        permissionString: Array<out String>,
+        listener: PermissionListener
+    ) {
+        if (isAnyDenied(*permissionString) && checkShouldShowRequestPermissionsRationale(*permissionString)) {
+            listener.onPermissionDenied()
+            return
+        }
+        checkPermissions(*permissionString)
+    }
+
+    private fun checkPermissions(vararg permissionString: String) {
 
         if (fragment != null) {
             fragment.requestPermissions(permissionString, PERMISSION_REQUEST)
@@ -49,18 +44,23 @@ open class PermissionManager(private val activity: Activity, private val fragmen
         }
     }
 
-
     fun checkShouldShowRequestPermissionsRationale(vararg permissionString: String): Boolean {
         return permissionString.any {
-            ActivityCompat.shouldShowRequestPermissionRationale(
-                activity,
-                it
-            )
+            ActivityCompat.shouldShowRequestPermissionRationale(activity, it)
         }
     }
 
     interface PermissionListener {
         fun onPermissionsGranted()
-        fun onPermissionDenied(vararg allPermissions: String, permissionsDenied: List<String>)
+        fun onPermissionDenied()
     }
+
+    companion object {
+        @JvmStatic
+        val PERMISSION_REQUEST = 324
+
+        @JvmStatic
+        val PERMISSION_CHECK_SETTINGS = 320
+    }
+
 }

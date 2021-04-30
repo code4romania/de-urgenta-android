@@ -10,8 +10,6 @@ import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.helper.collapseKeyboardIfFocusOutsideEditText
-import ro.code4.deurgenta.interfaces.Layout
-import ro.code4.deurgenta.interfaces.ViewModelSetter
 
 abstract class BaseActivity<out T : BaseViewModel> : AppCompatActivity(), Layout,
     ViewModelSetter<T> {

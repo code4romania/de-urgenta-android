@@ -5,10 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ro.code4.deurgenta.interfaces.Layout
-import ro.code4.deurgenta.interfaces.ViewModelSetter
+import androidx.activity.OnBackPressedCallback
 
-abstract class ViewModelFragment<out T : BaseViewModel> : BaseAnalyticsFragment(), Layout,
+abstract class ViewModelFragment<out T : BaseViewModel>() : BaseAnalyticsFragment(), Layout,
     ViewModelSetter<T> {
     lateinit var mContext: Context
     lateinit var mActivity: BaseActivity<*>
@@ -18,6 +17,14 @@ abstract class ViewModelFragment<out T : BaseViewModel> : BaseAnalyticsFragment(
         mContext = context
         mActivity = activity as BaseActivity<*>
     }
+
+    protected fun onBackPressedCallback() = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            handleOnBackPressedInternal()
+        }
+    }
+
+    open fun handleOnBackPressedInternal() = Unit
 
     override fun onCreateView(
         inflater: LayoutInflater,

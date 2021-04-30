@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="setMeetingCallback"
+            type="ro.code4.deurgenta.interfaces.ClickButtonCallback" />
+
+        <variable
+            name="addNewAddressCallback"
+            type="ro.code4.deurgenta.interfaces.ClickButtonCallback" />
+
+        <variable
+            name="homeAddress"
+            type="String" />
+
+    </data>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin">
+
+            <ImageView
+                android:id="@+id/close_save_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/big_margin"
+                android:background="@android:color/transparent"
+                android:paddingTop="@dimen/padding"
+                android:paddingBottom="@dimen/padding"
+                android:src="@drawable/ic_close"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/title_save_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_accept"
+                android:drawablePadding="@dimen/small_margin"
+                android:text="@string/save_home_address"
+                android:textColor="@color/green_400"
+
+                android:textSize="@dimen/text_size_big"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/close_save_address">
+
+            </com.google.android.material.textview.MaterialTextView>
+
+            <include
+                android:id="@+id/home_address_layout"
+                layout="@layout/layout_address_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/big_margin"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_save_address"
+                app:textItem="@{homeAddress}" />
+
+            <TextView
+                android:id="@+id/title_configure_another_address"
+                style="@style/Text.Big"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="@dimen/xxbig_margin"
+                android:text="@string/configure_another_address_header"
+                app:layout_constraintEnd_toEndOf="@id/home_address_layout"
+                app:layout_constraintStart_toStartOf="@id/home_address_layout"
+                app:layout_constraintTop_toBottomOf="@+id/home_address_layout"
+                tools:text="@string/configure_another_address_header" />
+
+            <TextView
+                android:id="@+id/configure_another_address"
+                style="@style/Text.Default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_margin"
+                android:drawablePadding="@dimen/padding_small"
+                android:text="@string/add_another_address_description"
+                app:layout_constraintEnd_toEndOf="@id/title_configure_another_address"
+                app:layout_constraintStart_toStartOf="@id/title_configure_another_address"
+                app:layout_constraintTop_toBottomOf="@+id/title_configure_another_address"
+                tools:text="@string/add_another_address_description" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/add_new_address"
+                style="@style/NoCaps.Button.WhiteRed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin"
+                android:gravity="center"
+                android:onClick="@{() -> addNewAddressCallback.call()}"
+                android:text="@string/add_new_address"
+                android:textColor="?attr/colorPrimary"
+                app:icon="@drawable/ic_plus_transparent"
+                app:iconGravity="textStart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/configure_another_address"
+                tools:text="@string/add_new_address" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/set_meeting_point"
+                style="@style/Signup.Button.Simple"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin"
+                android:gravity="center"
+                android:onClick="@{() -> setMeetingCallback.call()}"
+                android:text="@string/set_meeting_point"
+                app:icon="@drawable/ic_arrow_next"
+                app:iconGravity="textEnd"
+                app:iconTint="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_new_address"
+                app:layout_constraintVertical_bias="1"
+                tools:text="@string/set_meeting_point" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

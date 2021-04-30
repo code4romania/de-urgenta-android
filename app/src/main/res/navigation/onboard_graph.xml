@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/onboard_graph.xml"
+    app:startDestination="@id/configure_account">
+
+    <fragment
+        android:id="@+id/configure_account"
+        android:name="ro.code4.deurgenta.ui.account.ConfigureAccountFragment"
+        android:label="fragment_configure_profile">
+        <action
+            android:id="@+id/action_configure_address"
+            app:destination="@id/configure_addresses">
+
+            <argument
+                android:name="mapAddressType"
+                app:argType="ro.code4.deurgenta.data.model.MapAddressType" />
+
+            <argument
+                android:name="titleResourceId"
+                app:argType="integer" />
+        </action>
+    </fragment>
+
+    <include app:graph="@navigation/configure_addresses" />
+
+</navigation>

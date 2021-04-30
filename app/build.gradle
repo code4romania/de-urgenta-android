@@ -3,6 +3,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'org.sonarqube'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+
 // TODO: Uncomment this to enable Firebase Crashlytics
 // apply plugin: 'com.google.firebase.crashlytics'
 
@@ -60,6 +62,7 @@ android {
         applicationVariants.all { variant ->
             variant.buildConfigField "String", "API_URL", "\"" + getKey(variant.buildType.name, "apiUrl") + "\""
             variant.buildConfigField "String", "TERMS_AND_CONDITIONS", "\"" + getKey(variant.buildType.name, "termsAndConditions") + "\""
+            variant.buildConfigField "double", "SEARCH_RADIUS", getKey(variant.buildType.name, "addressSearchRadius")
 
             def productFlavor = variant.productFlavors[0] != null ? "${variant.productFlavors[0].name.capitalize()}" : ""
             def buildType = "${variant.buildType.name.capitalize()}"
@@ -93,24 +96,14 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-
-}
-
-ext {
-    retrofitVersion = '2.9.0'
-    navigationVersion = "2.3.4"
-    koinVersion = '2.0.1'
-    parcelerVersion = "1.1.13"
-    roomVersion = '2.2.6'
-    firebaseAnalyticsVersion = '18.0.2'
-    firebaseCrashlyticsVersion = '17.4.1'
-    firebaseMessagingVersion = "20.2.0"
-    firebaseConfigVersion = "19.1.4"
-    adapterDelegatesVersion = "4.2.0"
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.aar', '*.jar'], exclude : ['*mock*.jar'])
+
+    // Needed for locating the user -  todo - do it with here positioning
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.annotation:annotation:1.2.0'
@@ -126,26 +119,30 @@ dependencies {
     implementation 'me.relex:circleindicator:2.1.4'
     implementation "com.hannesdorfmann:adapterdelegates4:$adapterDelegatesVersion"
     implementation "androidx.viewpager2:viewpager2:1.0.0"
+
     // Navigation
-    implementation "androidx.navigation:navigation-fragment:$navigationVersion"
-    implementation "androidx.navigation:navigation-ui:$navigationVersion"
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-scalars:$retrofitVersion"
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
+
     // Firebase
     implementation "com.google.firebase:firebase-analytics:$firebaseAnalyticsVersion"
     implementation "com.google.firebase:firebase-crashlytics:$firebaseCrashlyticsVersion"
+
     // Koin injection
     implementation "org.koin:koin-android:$koinVersion"
     implementation "org.koin:koin-android-viewmodel:$koinVersion"
+
     // Parceler
     implementation "org.parceler:parceler-api:$parcelerVersion"
     kapt "org.parceler:parceler:$parcelerVersion"
+
     // Room
     implementation "androidx.room:room-runtime:$roomVersion"
     kapt "androidx.room:room-compiler:$roomVersion"
@@ -160,6 +157,9 @@ dependencies {
     implementation 'com.facebook.android:facebook-marketing:4.42.0'
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
     implementation 'com.willowtreeapps:signinwithapplebutton:0.3'
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
 
     implementation 'com.jakewharton.threetenabp:threetenabp:1.3.0'
 

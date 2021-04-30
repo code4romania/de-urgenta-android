@@ -82,6 +82,15 @@
         <item name="strokeWidth">0dp</item>
     </style>
 
+    <style name="NoCaps.Button.WhiteRed" parent="Signup.Button.Simple">
+        <item name="android:backgroundTint">@color/md_red_200</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="NoCaps.Button.Simple" parent="Signup.Button.Simple">
+        <item name="textAllCaps">false</item>
+    </style>
+
     <style name="NavigationView" parent="Widget.Design.NavigationView">
         <item name="itemTextAppearance">@style/Text.Paragraph</item>
         <item name="itemIconTint">@color/colorPrimary</item>
@@ -129,4 +138,7 @@
         <item name="android:orientation">vertical</item>
     </style>
 
+    <style name="AlertDialog" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <item name="colorAccent">@color/purple</item>
+    </style>
 </resources>

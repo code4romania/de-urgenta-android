@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="textHeader"
+            type="String" />
+
+        <variable
+            name="textItem"
+            type="String" />
+
+        <variable
+            name="drawableRes"
+            type="Integer" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_small">
+
+        <TextView
+            android:id="@+id/item_header_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{textHeader}"
+            android:textSize="@dimen/text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/item_address_header" />
+
+        <ImageView
+            android:id="@+id/item_image_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            app:drawableImage="@{drawableRes}"
+            app:layout_constraintBottom_toBottomOf="@+id/item_text_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/item_text_name" />
+
+        <TextView
+            android:id="@+id/item_text_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:text="@{textItem}"
+            android:textSize="@dimen/text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/item_image_id"
+            app:layout_constraintTop_toBottomOf="@+id/item_header_info"
+            tools:text="@string/item_address_content" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

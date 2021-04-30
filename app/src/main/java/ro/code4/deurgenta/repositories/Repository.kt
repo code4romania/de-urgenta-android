@@ -10,6 +10,9 @@ import org.koin.core.inject
 import retrofit2.Retrofit
 import ro.code4.deurgenta.data.AppDatabase
 import ro.code4.deurgenta.data.model.*
+import ro.code4.deurgenta.data.model.MapAddress
+import ro.code4.deurgenta.data.model.Register
+import ro.code4.deurgenta.data.model.User
 import ro.code4.deurgenta.data.model.response.LoginResponse
 import ro.code4.deurgenta.data.model.response.RegisterResponse
 import ro.code4.deurgenta.services.ApiInterface
@@ -49,7 +52,10 @@ class Repository : KoinComponent {
         )
     }
 
-    fun getItemForBackpackType(backpack: Backpack, type: BackpackItemType): Observable<List<BackpackItem>> {
+    fun getItemForBackpackType(
+        backpack: Backpack,
+        type: BackpackItemType
+    ): Observable<List<BackpackItem>> {
         return db.backpackDao().getItemsForType(backpack.id, type)
     }
 
@@ -84,5 +90,12 @@ class Repository : KoinComponent {
         )
     }
     // BACKPACK related code only end
+
+    fun saveAddress(mapAddress: MapAddress): Completable {
+        return Completable
+            .fromAction {
+                db.addressDao().save(mapAddress)
+            }.subscribeOn(Schedulers.io())
+    }
 }
 

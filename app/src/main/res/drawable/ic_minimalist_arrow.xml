@@ -5,8 +5,13 @@
     android:viewportWidth="24"
     android:viewportHeight="24">
 
-    <path
-        android:pathData="M18,4 L10,12 L18,20"
-        android:strokeWidth="2"
-        android:strokeColor="#000000" />
+    <group
+        android:rotation="0"
+        android:scaleY="-1"
+        android:translateY="24.0">
+        <path
+            android:pathData="M18,4 L10,12 L18,20"
+            android:strokeWidth="2"
+            android:strokeColor="#000000" />
+    </group>
 </vector>
