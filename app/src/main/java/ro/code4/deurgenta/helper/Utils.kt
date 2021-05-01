@@ -18,10 +18,12 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.annotation.IdRes
+import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.gson.Gson
+import org.threeten.bp.format.DateTimeFormatter
 
 fun Activity.startActivityWithoutTrace(activity: Class<*>) {
     startActivity(Intent(this, activity))
@@ -131,3 +133,13 @@ fun hideSoftInput(view: View) {
 fun Fragment.startIntentSenderForResult(intent: IntentSender, requestCode: Int, bundle: Bundle? = null) {
     startIntentSenderForResult(intent, requestCode, null, 0, 0, 0, bundle)
 }
+
+fun Fragment.updateActivityTitle(newTitle: String) {
+    requireActivity().title = newTitle
+}
+
+fun Fragment.updateActivityTitle(@StringRes titleId: Int) {
+    requireActivity().title = getString(titleId)
+}
+
+val dateFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd MMM yyyy")

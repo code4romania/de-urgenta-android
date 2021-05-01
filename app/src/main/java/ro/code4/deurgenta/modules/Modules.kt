@@ -33,6 +33,8 @@ import ro.code4.deurgenta.ui.auth.AuthViewModel
 import ro.code4.deurgenta.ui.main.MainViewModel
 import ro.code4.deurgenta.ui.onboarding.OnboardingViewModel
 import ro.code4.deurgenta.ui.auth.register.RegisterViewModel
+import ro.code4.deurgenta.ui.courses.CoursesFilterViewModel
+import ro.code4.deurgenta.ui.courses.CoursesViewModel
 import ro.code4.deurgenta.ui.splashscreen.SplashScreenViewModel
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
@@ -116,7 +118,8 @@ val viewModelsModule = module {
     viewModel { ConfigureAddressViewModel(get())}
     viewModel { SaveAddressViewModel(get())}
     viewModel { HomeViewModel() }
-
+    viewModel { CoursesFilterViewModel(get()) }
+    viewModel { CoursesViewModel(get()) }
 }
 
 val analyticsModule = module {

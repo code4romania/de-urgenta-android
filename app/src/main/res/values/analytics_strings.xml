@@ -7,4 +7,8 @@
     <string name="analytics_title_backpack" translatable="false">Your emergency backpack</string>
     <string name="analytics_title_group" translatable="false">Group</string>
     <string name="analytics_title_about" translatable="false">About</string>
+    <string name="analytics_title_courses_info" translatable="false">Courses Info</string>
+    <string name="analytics_title_courses_filtering" translatable="false">Courses Filtering</string>
+    <string name="analytics_title_courses_listing" translatable="false">Courses Listing</string>
+    <string name="analytics_title_courses_details" translatable="false">Course Details</string>
 </resources>

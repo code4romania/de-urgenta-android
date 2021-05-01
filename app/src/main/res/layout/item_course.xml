@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/small_margin"
+    android:paddingBottom="@dimen/small_margin">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:textStyle="bold"
+        tools:text="Curs de prim ajutor de baza" />
+
+    <TextView
+        android:id="@+id/provider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/big_margin"
+        android:layout_marginTop="@dimen/big_margin"
+        android:drawablePadding="@dimen/small_margin"
+        android:gravity="center_vertical"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+        app:drawableStartCompat="@drawable/ic_provider"
+        tools:text="Crucea rosie Romana" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/big_margin"
+        android:layout_marginTop="@dimen/small_margin"
+        android:drawablePadding="@dimen/small_margin"
+        android:gravity="center_vertical"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+        app:drawableStartCompat="@drawable/ic_calendar"
+        tools:text="Crucea rosie Romana" />
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/big_margin"
+        android:layout_marginTop="@dimen/small_margin"
+        android:drawablePadding="@dimen/small_margin"
+        android:gravity="center_vertical"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+        app:drawableStartCompat="@drawable/ic_location_big"
+        tools:text="Crucea rosie Romana" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/big_margin"
+        android:layout_marginTop="@dimen/big_margin"
+        android:layout_marginEnd="@dimen/big_margin"
+        android:text="@string/courses_to_details"
+        tools:text="Details" />
+</LinearLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_courses"
+    app:startDestination="@id/coursesFilterFragment">
+
+    <fragment
+        android:id="@+id/coursesFilterFragment"
+        android:name="ro.code4.deurgenta.ui.courses.CoursesFilteringFragment"
+        tools:layout="@layout/fragment_courses_filter">
+        <action
+            android:id="@+id/action_coursesFilter_to_coursesListing"
+            app:destination="@id/coursesListingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/coursesListingFragment"
+        android:name="ro.code4.deurgenta.ui.courses.CoursesListingFragment"
+        tools:layout="@layout/fragment_courses_listing">
+        <action
+            android:id="@+id/action_coursesListing_to_courseDetails"
+            app:destination="@id/courseDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/courseDetailsFragment"
+        android:name="ro.code4.deurgenta.ui.courses.CourseDetailsFragment"
+        tools:layout="@layout/fragment_courses_details" />
+
+</navigation>
