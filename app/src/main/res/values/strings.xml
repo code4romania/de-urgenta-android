@@ -77,7 +77,7 @@
     <string name="nav_menu_item_settings">Setări</string>
     <string name="nav_menu_item_logout">Delogare</string>
 
-    <string name="cd_logo">Animated application logo</string>
+    <string name="cd_logo_animated">Animated application logo</string>
     <!-- Backpack -->
     <string name="backpacks_listing_title">"Your emergency backpack"</string>
     <string name="backpack_label_main_info">The emergency backpack contains objects, food and other useful items which
@@ -181,4 +181,26 @@
     <string name="about_cd_url">Link to organization icon</string>
     <string name="about_cd_github">Github icon</string>
 
+    <!-- Courses -->
+    <string name="courses_title">Learn first aid</string>
+    <string name="courses_btn_to_filter">See courses</string>
+    <string name="courses_label_type">Select course type</string>
+    <string name="courses_label_location">Select city</string>
+    <string name="courses_btn_to_listing">See available courses</string>
+    <string name="courses_selection_name">Select course</string>
+    <string name="courses_error_missing_connection">There is no internet connection. Please check your network settings.
+    </string>
+    <string name="courses_btn_retry">Retry</string>
+    <string name="courses_no_selection">Select the city and the type of the course!</string>
+    <string name="courses_empty">There are no courses available for the requested type and/or city.</string>
+    <string name="courses_to_details">Details and registering</string>
+    <string name="courses_register_action">Register!</string>
+    <string name="courses_description">It is very important to help others in an emergency situation. There are
+        two types of first aid courses that you can do. The first it\'s called "Prim ajutor calificat" and it\'s
+        a type of course that can only be done at Inspectoratul județean pentru Situații de urgență. The second type
+        it\s the prim-ajutor course, which you could do at organizations like Societatea natională de Cruce Roșie or
+        other courses providers. There are also courses for being prepared in case of an emergency. The first
+        aid certifications must be renewed at different time intervals. De urgență helps you choose a course suited
+        for you and also reminds you to renew your certifications when it expires.</string>
+    <string name="courses_no_register_option">There is no app capable of showing this url!</string>
 </resources>

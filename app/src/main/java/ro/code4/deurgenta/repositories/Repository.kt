@@ -1,5 +1,6 @@
 package ro.code4.deurgenta.repositories
 
+import android.annotation.SuppressLint
 import android.util.Log
 import io.reactivex.Completable
 import io.reactivex.Observable
@@ -10,13 +11,13 @@ import org.koin.core.inject
 import retrofit2.Retrofit
 import ro.code4.deurgenta.data.AppDatabase
 import ro.code4.deurgenta.data.model.*
-import ro.code4.deurgenta.data.model.MapAddress
-import ro.code4.deurgenta.data.model.Register
-import ro.code4.deurgenta.data.model.User
 import ro.code4.deurgenta.data.model.response.LoginResponse
 import ro.code4.deurgenta.data.model.response.RegisterResponse
 import ro.code4.deurgenta.services.ApiInterface
 import ro.code4.deurgenta.services.BackpackInterface
+import ro.code4.deurgenta.services.CoursesApi
+import java.util.*
+import java.util.concurrent.TimeUnit
 
 class Repository : KoinComponent {
 
@@ -33,6 +34,7 @@ class Repository : KoinComponent {
     private val backpackInterface: BackpackInterface by lazy {
         retrofit.create(BackpackInterface::class.java)
     }
+    private val coursesApi: CoursesApi by lazy { retrofit.create(CoursesApi::class.java) }
     private val disposables: CompositeDisposable = CompositeDisposable()
 
     fun login(user: User): Observable<LoginResponse> = apiInterface.login(user)
@@ -89,6 +91,7 @@ class Repository : KoinComponent {
                 })
         )
     }
+
     // BACKPACK related code only end
 
     fun saveAddress(mapAddress: MapAddress): Completable {
@@ -97,5 +100,23 @@ class Repository : KoinComponent {
                 db.addressDao().save(mapAddress)
             }.subscribeOn(Schedulers.io())
     }
+
+    // COURSES related code start
+    @SuppressLint("CheckResult")
+    fun fetchFilterOptions(): Observable<List<CourseFilterValues>> {
+        //return db.coursesDao().getFilterOptions().delay(1, TimeUnit.SECONDS)
+        // use this until the backend is available
+        return Observable.just(tempCourses.map { CourseFilterValues(it.type, it.location) })
+            .delay(1, TimeUnit.SECONDS)
+    }
+
+    fun fetchCoursesFor(type: String, city: String): Observable<List<Course>> {
+        return Observable.just(tempCourses.filter {
+            it.type == type && it.location.toLowerCase(Locale.getDefault())
+                .contains(city.toLowerCase(Locale.getDefault()))
+        }).delay(1, TimeUnit.SECONDS)
+    }
+    // COURSES related code end
 }
+
 

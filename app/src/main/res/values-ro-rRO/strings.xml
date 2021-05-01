@@ -70,7 +70,7 @@
     <string name="nav_menu_item_logout">Delogare</string>
 
     <!-- Splashscreen -->
-    <string name="cd_logo">Sigla aplicației animată</string>
+    <string name="cd_logo_animated">Sigla aplicației animată</string>
     <!-- Backpack -->
     <string name="backpacks_listing_title">Rucsacul pentru urgențe</string>
     <string name="backpack_new_name_dialog_title">Numele noului rucsac</string>
@@ -165,4 +165,29 @@
     <string name="about_cd_url">Sigla legătură către organizație</string>
     <string name="about_cd_github">Sigla Github</string>
 
+
+    <!-- Courses -->
+    <string name="courses_title">Învață să dai primul ajutor</string>
+    <string name="courses_btn_to_filter">Vezi cursurile</string>
+    <string name="courses_label_type">Selectează tipul de curs</string>
+    <string name="courses_label_location">Selectează orașul</string>
+    <string name="courses_btn_to_listing">Vezi cursuri disponibile</string>
+    <string name="courses_selection_name">Selectează cursul</string>
+    <string name="courses_error_missing_connection">Nu există o conexiune la internet, vă rugăm să verificați
+        conexiunea.
+    </string>
+    <string name="courses_btn_retry">Reîncearcă</string>
+    <string name="courses_no_selection">Selectează orașul dorit si tipul de curs!</string>
+    <string name="courses_empty">Nu există nici un curs pentru tipul și/sau orașul cerut.</string>
+    <string name="courses_to_details">Detalii și înscriere</string>
+    <string name="courses_register_action">Înscrie-te!</string>
+    <string name="courses_description">Este foarte important să îi ajuți pe cei din jur într-o situație de
+        urgență. Există două tipuri de cursuri de prim ajutor pe care le poți face. Primul se numește "Prim
+        ajutor calificat" și este un tip de curs pe care îl poți face doar la Inspectoratul județean pentru Situații de
+        urgență. Al doilea este cel de prim-ajutor, pe care îl poți face la organizații precum Societatea
+        națională de Cruce Roșie sau alți furnizori de cursuri. Există de asemenea și cursuri de pregătire în
+        caz de dezastre. Certificările de prim ajutor threbui reînnoite la intervale diferite de timp, De
+        urgență te ajută să alegi un curs potrivit pentru tine și te va anunța când certificarea ta expiră
+        pentru a reînnoi cursul.</string>
+    <string name="courses_no_register_option">Nu există nici o aplicație capabilă să arate această legătură!</string>
 </resources>
