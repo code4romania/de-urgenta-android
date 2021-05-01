@@ -13,4 +13,6 @@
     <color name="gray_200">#c1c1c1</color>
     <color name="green_400">#34D399</color>
     <color name="md_red_200">#EF9A9A</color>
+    <color name="light_green_accent">#64DD17</color>
+    <color name="blue_dark">#0000FF</color>
 </resources>

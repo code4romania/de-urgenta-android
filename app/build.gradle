@@ -14,6 +14,10 @@ static def getKey(String env, String key) {
     return props[key] ?: ""
 }
 
+static def asString(String field) {
+    return "\"${field}\""
+}
+
 androidExtensions {
     experimental true
 }
@@ -60,9 +64,19 @@ android {
 
     buildTypes {
         applicationVariants.all { variant ->
-            variant.buildConfigField "String", "API_URL", "\"" + getKey(variant.buildType.name, "apiUrl") + "\""
-            variant.buildConfigField "String", "TERMS_AND_CONDITIONS", "\"" + getKey(variant.buildType.name, "termsAndConditions") + "\""
+            variant.buildConfigField "String", "API_URL", asString(getKey(variant.buildType.name, "apiUrl"))
+            variant.buildConfigField "String", "TERMS_AND_CONDITIONS",
+                    asString(getKey(variant.buildType.name, "termsAndConditions"))
             variant.buildConfigField "double", "SEARCH_RADIUS", getKey(variant.buildType.name, "addressSearchRadius")
+            variant.buildConfigField "String", "CODE4RO_URL", asString(getKey(variant.buildType.name, "code4roUrl"))
+            variant.buildConfigField "String", "CODE4RO_FACEBOOK_URL",
+                    asString(getKey(variant.buildType.name, "code4roFacebookUrl"))
+            variant.buildConfigField "String", "CODE4RO_INSTAGRAM_URL",
+                    asString(getKey(variant.buildType.name, "code4roInstagramUrl"))
+            variant.buildConfigField "String", "CODE4RO_GITHUB_URL",
+                    asString(getKey(variant.buildType.name, "code4roGithubUrl"))
+            variant.buildConfigField "String", "CODE4RO_DONATE_URL",
+                    asString(getKey(variant.buildType.name, "code4roDonateUrl"))
 
             def productFlavor = variant.productFlavors[0] != null ? "${variant.productFlavors[0].name.capitalize()}" : ""
             def buildType = "${variant.buildType.name.capitalize()}"
@@ -99,7 +113,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.aar', '*.jar'], exclude : ['*mock*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.aar', '*.jar'], exclude: ['*mock*.jar'])
 
     // Needed for locating the user -  todo - do it with here positioning
     implementation 'com.google.android.gms:play-services-location:18.0.0'
