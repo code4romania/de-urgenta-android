@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/margin"
+        android:paddingTop="@dimen/big_margin"
+        android:paddingEnd="@dimen/margin">
+
+        <TextView
+            android:id="@+id/app_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_app_description"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/separator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/big_margin"
+            android:background="@color/border"
+            app:layout_constraintTop_toBottomOf="@id/app_description" />
+
+        <TextView
+            android:id="@+id/created_by_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/big_margin"
+            android:gravity="center"
+            android:text="@string/about_created_by"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/separator" />
+
+        <ImageView
+            android:id="@+id/organization_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin"
+            android:contentDescription="@string/about_cd_organization"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/created_by_label"
+            app:srcCompat="@drawable/logo_code4" />
+
+        <!-- TODO use proper vector images for facebook, instagram, github -->
+        <ImageButton
+            android:id="@+id/organization_facebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/xxbig_margin"
+            android:background="@null"
+            android:contentDescription="@string/about_cd_facebook"
+            android:tint="@color/blue_dark"
+            app:layout_constraintEnd_toStartOf="@id/organization_instagram"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/organization_logo"
+            app:srcCompat="@drawable/ic_link" />
+
+        <ImageButton
+            android:id="@+id/organization_instagram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/xxbig_margin"
+            android:background="@null"
+            android:contentDescription="@string/about_cd_instagram"
+            android:tint="@color/blue_dark"
+            app:layout_constraintEnd_toStartOf="@id/organization_url"
+            app:layout_constraintStart_toEndOf="@id/organization_facebook"
+            app:layout_constraintTop_toBottomOf="@id/organization_logo"
+            app:srcCompat="@drawable/ic_link" />
+
+        <ImageButton
+            android:id="@+id/organization_url"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/xxbig_margin"
+            android:background="@null"
+            android:contentDescription="@string/about_cd_url"
+            android:tint="@color/blue_dark"
+            app:layout_constraintEnd_toStartOf="@id/organization_github"
+            app:layout_constraintStart_toEndOf="@id/organization_instagram"
+            app:layout_constraintTop_toBottomOf="@id/organization_logo"
+            app:srcCompat="@drawable/ic_link" />
+
+        <ImageButton
+            android:id="@+id/organization_github"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/xxbig_margin"
+            android:background="@null"
+            android:contentDescription="@string/about_cd_github"
+            android:tint="@color/blue_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/organization_url"
+            app:layout_constraintTop_toBottomOf="@id/organization_logo"
+            app:srcCompat="@drawable/ic_link" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/organization_donate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/big_margin"
+            android:layout_marginBottom="@dimen/big_margin"
+            android:backgroundTint="@color/light_green_accent"
+            android:minWidth="@dimen/min_width_donate"
+            android:text="@string/about_donate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/organization_facebook" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

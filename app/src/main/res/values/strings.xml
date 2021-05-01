@@ -167,4 +167,18 @@
     <string name="unknown_error" translatable="false">Unknown</string>
     <string name="item_address_header" translatable="false">address_title</string>
     <string name="item_address_content" translatable="false">address_name</string>
+    
+    <!-- About -->
+    <string name="about_title">About the app</string>
+    <string name="about_app_description">This is the description of this very important app. This will most likely be
+        longer than this current text!</string>
+    <string name="about_created_by">Application designed, developed and managed by</string>
+    <string name="about_donate">Donate</string>
+    <string name="about_no_url_handler">There is no application that can handle this url!</string>
+    <string name="about_cd_organization">Code for România organization icon</string>
+    <string name="about_cd_facebook">Facebook icon</string>
+    <string name="about_cd_instagram">Instagram icon</string>
+    <string name="about_cd_url">Link to organization icon</string>
+    <string name="about_cd_github">Github icon</string>
+
 </resources>
