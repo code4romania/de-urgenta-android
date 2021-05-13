@@ -190,4 +190,8 @@
         urgență te ajută să alegi un curs potrivit pentru tine și te va anunța când certificarea ta expiră
         pentru a reînnoi cursul.</string>
     <string name="courses_no_register_option">Nu există nici o aplicație capabilă să arate această legătură!</string>
+    <string name="change_password">Schimbă parola</string>
+    <string name="terms_conditions">Termeni și condiții</string>
+    <string name="report_problem">Raportează o problemă</string>
+    <string name="delete_account">Șterge contul</string>
 </resources>

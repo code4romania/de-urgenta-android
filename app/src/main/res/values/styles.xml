@@ -150,4 +150,13 @@
     <style name="AlertDialog" parent="Theme.MaterialComponents.Light.Dialog.Alert">
         <item name="colorAccent">@color/purple</item>
     </style>
+
+    <style name="Settings">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/gray_800</item>
+        <item name="android:textSize">@dimen/text_size</item>
+        <item name="lineHeight">24sp</item>
+        <item name="android:padding">@dimen/padding</item>
+    </style>
 </resources>
