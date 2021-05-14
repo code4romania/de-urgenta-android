@@ -32,7 +32,9 @@ Uses [Fastlane](https://fastlane.tools/) for automating builds & releases.
 
 Uses the MVVM architectural pattern.
 
-Swagger docs for the API are available [here](#).
+### API endpoints
+
+[Swagger](https://api.deurgenta.hostmysite.ro/swagger/index.html)
 
 ## Repos and projects
 
