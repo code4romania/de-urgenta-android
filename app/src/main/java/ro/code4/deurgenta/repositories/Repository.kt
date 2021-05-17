@@ -37,9 +37,9 @@ class Repository : KoinComponent {
     private val coursesApi: CoursesApi by lazy { retrofit.create(CoursesApi::class.java) }
     private val disposables: CompositeDisposable = CompositeDisposable()
 
-    fun login(user: User): Observable<LoginResponse> = apiInterface.login(user)
-
     fun register(data: Register): Observable<RegisterResponse> = apiInterface.register(data)
+
+    fun login(user: User): Observable<LoginResponse> = apiInterface.login(user)
 
     // BACKPACK related code only start
     // TODO actually connect backpack related calls to the backend

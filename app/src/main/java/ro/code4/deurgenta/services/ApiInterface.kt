@@ -9,9 +9,9 @@ import ro.code4.deurgenta.data.model.response.LoginResponse
 import ro.code4.deurgenta.data.model.response.RegisterResponse
 
 interface ApiInterface {
-    @POST("")
-    fun login(@Body user: User): Observable<LoginResponse>
-
-    @POST("register")
+    @POST("auth/register")
     fun register(@Body data: Register): Observable<RegisterResponse>
+
+    @POST("auth/login")
+    fun login(@Body user: User): Observable<LoginResponse>
 }

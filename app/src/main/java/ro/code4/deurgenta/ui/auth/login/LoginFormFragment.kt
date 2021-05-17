@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.Observer
 import com.facebook.CallbackManager
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
+import com.google.android.material.snackbar.Snackbar
 import com.willowtreeapps.signinwithapplebutton.SignInWithAppleConfiguration
 import com.willowtreeapps.signinwithapplebutton.SignInWithAppleResult
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -18,6 +20,7 @@ import kotlinx.android.synthetic.main.fragment_login.view.*
 import kotlinx.android.synthetic.main.include_toolbar.toolbar
 import org.koin.android.ext.android.inject
 import ro.code4.deurgenta.R
+import ro.code4.deurgenta.helper.startActivityWithoutTrace
 import ro.code4.deurgenta.ui.base.ViewModelFragment
 
 class LoginFormFragment : ViewModelFragment<LoginFormViewModel>() {
@@ -51,7 +54,11 @@ class LoginFormFragment : ViewModelFragment<LoginFormViewModel>() {
         callbackManager = CallbackManager.Factory.create()
 
         view.login_btn.setOnClickListener {
-            viewModel.login()
+            login_btn.isEnabled = false
+
+            val email = username.text.toString()
+            val password = password.text.toString()
+            viewModel.login(email, password)
         }
 
         view.google_login.setOnClickListener {
@@ -69,7 +76,8 @@ class LoginFormFragment : ViewModelFragment<LoginFormViewModel>() {
         ) { result ->
             when (result) {
                 is SignInWithAppleResult.Success -> {
-                    viewModel.login()
+                    // TODO: set auth token
+                    viewModel.onSuccessfulLogin()
                 }
                 is SignInWithAppleResult.Failure -> {
                     // Handle failure
@@ -80,11 +88,17 @@ class LoginFormFragment : ViewModelFragment<LoginFormViewModel>() {
             }
         }
 
+        loginUserObservable()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        toolbar.title = resources.getString(R.string.login_auth_title)
     }
 
     private fun setFacebookLoginListener() {
         view?.facebook_login?.setOnClickListener {
-            viewModel.login()
+            // TODO: initiate Facebook login
         }
     }
 
@@ -113,8 +127,8 @@ class LoginFormFragment : ViewModelFragment<LoginFormViewModel>() {
 
     private fun handleGoogleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
+            // TODO: use sign in result
             val account = completedTask.getResult(ApiException::class.java)
-            viewModel.login()
         } catch (e: ApiException) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
@@ -122,9 +136,22 @@ class LoginFormFragment : ViewModelFragment<LoginFormViewModel>() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        toolbar.title = resources.getString(R.string.login_auth_title)
-    }
+    private fun loginUserObservable() {
+        viewModel.loggedIn().observe(viewLifecycleOwner, Observer {
+            it.handle(
+                onSuccess = { activity ->
+                    activity?.let(::startActivityWithoutTrace)
+                },
+                onFailure = { error ->
+                    // TODO: display some friendlier errors
+                    Snackbar.make(login_btn, "Error: ${error.message}", Snackbar.LENGTH_LONG).show()
 
+                    login_btn.isEnabled = true
+                },
+                onLoading = {
+                    Snackbar.make(login_btn, "Loading", Snackbar.LENGTH_INDEFINITE).show()
+                }
+            )
+        })
+    }
 }
