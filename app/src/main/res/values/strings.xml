@@ -207,6 +207,4 @@
     <string name="terms_conditions">Termeni și condiții</string>
     <string name="report_problem">Raportează o problemă</string>
     <string name="delete_account">Șterge contul</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

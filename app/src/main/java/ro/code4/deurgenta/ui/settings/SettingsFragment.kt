@@ -14,17 +14,12 @@ import retrofit2.http.HTTP
 import ro.code4.deurgenta.BuildConfig
 import ro.code4.deurgenta.R
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SettingsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SettingsFragment : Fragment() {
 
     private val contactEmailUri by lazy {
         Uri.fromParts(    "mailto",
             BuildConfig.SUPPORT_EMAIL,
-            null    )
+            null)
     }
 
     override fun onCreateView(

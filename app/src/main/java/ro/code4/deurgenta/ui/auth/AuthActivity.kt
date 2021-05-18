@@ -12,6 +12,7 @@ import ro.code4.deurgenta.ui.base.BaseAnalyticsActivity
 import ro.code4.deurgenta.ui.auth.login.LoginFormFragment
 import ro.code4.deurgenta.ui.auth.register.RegisterCompletedFragment
 import ro.code4.deurgenta.ui.auth.register.RegisterFragment
+import ro.code4.deurgenta.ui.main.MainActivity
 
 class AuthActivity : BaseAnalyticsActivity<AuthViewModel>() {
 

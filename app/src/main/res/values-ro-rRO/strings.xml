@@ -18,6 +18,14 @@
 
     <!-- Errors -->
     <string name="error_generic">A apărut o problemă!</string>
+    <string name="error_field_required">Acest câmp este obligatoriu!</string>
+    <string name="error_email_invalid">Email-ul nu este valid!</string>
+    <string name="error_password_invalid">Parola nu este validă!</string>
+    <string name="error_password_not_matched">Parola nu se potrivește!</string>
+    <string name="login_fragment_name">Fragment de autentificare</string>
+    <string name="login_form_title">Autentifică-te</string>
+    <string name="email_hint">E-mail</string>
+    <string name="password_hint">Parola</string>
 
     <!-- Home -->
     <string name="home_title">De Urgență</string>
