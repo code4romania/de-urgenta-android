@@ -38,15 +38,6 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         report_problem.setOnClickListener {reportProblemClicked(it)}
-    /* report_problem.setOnClickListener {
-            Intent(Intent.ACTION_SEND).apply {
-                // The intent does not have a URI, so declare the "text/plain" MIME type
-                type = "text/html"
-                putExtra(Intent.EXTRA_EMAIL, arrayOf("jan@example.com")) // recipients
-                putExtra(Intent.EXTRA_SUBJECT, "Email subject")
-                putExtra(Intent.EXTRA_TEXT, "Email message text")
-            }
-        }*/
     }
 
     private fun reportProblemClicked(view: View?) {
@@ -57,7 +48,7 @@ class SettingsFragment : Fragment() {
         startActivity(
                 Intent.createChooser(
                         emailIntent,
-                        "Send email via"
+                        getString(R.string.report_problem)
                 )
         )
 

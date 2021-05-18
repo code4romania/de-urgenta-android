@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -12,6 +13,12 @@
         android:text="@string/change_password"
         android:textAppearance="@style/Settings"/>
 
+    <View
+        android:id="@+id/separator_change_password"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/border" />
+
     <TextView
         android:id="@+id/terms_conditions"
         style="@style/Settings"
@@ -19,12 +26,24 @@
         android:text="@string/terms_conditions"
         android:textAppearance="@style/Settings"/>
 
+    <View
+        android:id="@+id/separator_terms_conditions"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/border" />
+
     <TextView
         android:id="@+id/report_problem"
         style="@style/Settings"
         android:background="?android:attr/selectableItemBackground"
         android:text="@string/report_problem"
         android:textAppearance="@style/Settings"/>
+
+    <View
+        android:id="@+id/separator_report_problem"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/border" />
 
     <TextView
         android:id="@+id/delete_account"
