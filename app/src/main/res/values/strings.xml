@@ -203,8 +203,8 @@
         aid certifications must be renewed at different time intervals. De urgență helps you choose a course suited
         for you and also reminds you to renew your certifications when it expires.</string>
     <string name="courses_no_register_option">There is no app capable of showing this url!</string>
-    <string name="change_password">Schimbă parola</string>
-    <string name="terms_conditions">Termeni și condiții</string>
-    <string name="report_problem">Raportează o problemă</string>
-    <string name="delete_account">Șterge contul</string>
+    <string name="change_password">Change password</string>
+    <string name="terms_conditions">Terms and conditions</string>
+    <string name="report_problem">Report a problem</string>
+    <string name="delete_account">Delete your account</string>
 </resources>
