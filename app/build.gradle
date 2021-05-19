@@ -77,6 +77,7 @@ android {
                     asString(getKey(variant.buildType.name, "code4roGithubUrl"))
             variant.buildConfigField "String", "CODE4RO_DONATE_URL",
                     asString(getKey(variant.buildType.name, "code4roDonateUrl"))
+            variant.buildConfigField "String", "SUPPORT_EMAIL", asString(getKey(variant.buildType.name, "supportEmail"))
 
             def productFlavor = variant.productFlavors[0] != null ? "${variant.productFlavors[0].name.capitalize()}" : ""
             def buildType = "${variant.buildType.name.capitalize()}"

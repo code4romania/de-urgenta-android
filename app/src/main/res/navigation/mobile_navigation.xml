@@ -27,6 +27,10 @@
             app:destination="@id/navigation_courses" />
     </fragment>
 
+    <fragment
+        android:id="@+id/nav_item_settings"
+        android:name="ro.code4.deurgenta.ui.settings.SettingsFragment"/>
+
     <include app:graph="@navigation/navigation_courses" />
 
 </navigation>
