@@ -6,11 +6,10 @@ import retrofit2.http.POST
 import ro.code4.deurgenta.data.model.Register
 import ro.code4.deurgenta.data.model.User
 import ro.code4.deurgenta.data.model.response.LoginResponse
-import ro.code4.deurgenta.data.model.response.RegisterResponse
 
 interface ApiInterface {
     @POST("auth/register")
-    fun register(@Body data: Register): Observable<RegisterResponse>
+    fun register(@Body data: Register): Observable<String>
 
     @POST("auth/login")
     fun login(@Body user: User): Observable<LoginResponse>

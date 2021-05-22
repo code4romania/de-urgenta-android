@@ -12,7 +12,6 @@ import retrofit2.Retrofit
 import ro.code4.deurgenta.data.AppDatabase
 import ro.code4.deurgenta.data.model.*
 import ro.code4.deurgenta.data.model.response.LoginResponse
-import ro.code4.deurgenta.data.model.response.RegisterResponse
 import ro.code4.deurgenta.services.ApiInterface
 import ro.code4.deurgenta.services.BackpackInterface
 import ro.code4.deurgenta.services.CoursesApi
@@ -37,7 +36,7 @@ class Repository : KoinComponent {
     private val coursesApi: CoursesApi by lazy { retrofit.create(CoursesApi::class.java) }
     private val disposables: CompositeDisposable = CompositeDisposable()
 
-    fun register(data: Register): Observable<RegisterResponse> = apiInterface.register(data)
+    fun register(data: Register): Observable<String> = apiInterface.register(data)
 
     fun login(user: User): Observable<LoginResponse> = apiInterface.login(user)
 
