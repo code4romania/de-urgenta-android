@@ -8,7 +8,7 @@
             android:id="@+id/nav_item_groups"
             android:title="@string/nav_menu_item_groups" />
         <item
-            android:id="@+id/nav_item_backpack"
+            android:id="@+id/nav_item_backpacks"
             android:title="@string/nav_menu_item_backpack" />
         <item
             android:id="@+id/nav_item_courses"

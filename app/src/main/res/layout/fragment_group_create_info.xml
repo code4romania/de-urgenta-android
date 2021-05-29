@@ -12,14 +12,6 @@
         android:orientation="vertical">
 
         <TextView
-            style="@style/Text.Big"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/xbig_margin"
-            android:text="@string/group_create_info_title"
-            android:textColor="@color/design_default_color_on_secondary" />
-
-        <TextView
             style="@style/Input.Label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

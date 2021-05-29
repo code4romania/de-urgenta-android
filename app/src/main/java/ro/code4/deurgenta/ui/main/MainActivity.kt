@@ -17,8 +17,8 @@ import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.helper.startActivityWithoutTrace
-import ro.code4.deurgenta.ui.base.BaseActivity
 import ro.code4.deurgenta.ui.auth.AuthActivity
+import ro.code4.deurgenta.ui.base.BaseActivity
 
 class MainActivity : BaseActivity<MainViewModel>() {
     override val layout: Int
@@ -39,7 +39,8 @@ class MainActivity : BaseActivity<MainViewModel>() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_item_backpack, R.id.nav_item_courses, R.id.nav_item_about, R.id.nav_item_settings
+                R.id.nav_home, R.id.nav_item_groups, R.id.nav_item_backpacks, R.id.nav_item_courses,
+                R.id.nav_item_about, R.id.nav_item_settings
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
