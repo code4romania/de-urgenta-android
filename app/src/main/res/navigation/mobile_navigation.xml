@@ -13,10 +13,27 @@
 
     <fragment
         android:id="@+id/nav_item_backpack"
-        android:name="ro.code4.deurgenta.ui.backpack.BackpackNavHostFragment" />
-    <fragment
-        android:id="@+id/nav_item_about"
-        android:name="ro.code4.deurgenta.ui.about.AboutFragment" />
+        android:name="ro.code4.deurgenta.ui.backpack.main.BackpacksFragment"
+        tools:layout="@layout/fragment_backpacks">
+        <action
+            android:id="@+id/action_backpacks_to_home"
+            app:popUpTo="@id/nav_home"
+            app:popUpToInclusive="false" />
+        
+        <action
+            android:id="@+id/action_backpacks_to_newBackpackDialog"
+            app:destination="@id/newBackpackDialogFragment" />
+
+        <action
+            android:id="@+id/action_backpacks_to_backpackDetails"
+            app:destination="@id/navigation_backpack" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/newBackpackDialogFragment"
+        android:name="ro.code4.deurgenta.ui.backpack.main.AddBackpackDialogFragment" />
+
+    <include app:graph="@navigation/navigation_backpack" />
 
     <fragment
         android:id="@+id/nav_item_courses"
@@ -27,10 +44,16 @@
             app:destination="@id/navigation_courses" />
     </fragment>
 
+    <include app:graph="@navigation/navigation_courses" />
+
     <fragment
         android:id="@+id/nav_item_settings"
-        android:name="ro.code4.deurgenta.ui.settings.SettingsFragment"/>
+        android:name="ro.code4.deurgenta.ui.settings.SettingsFragment"
+        tools:layout="@layout/fragment_settings" />
 
-    <include app:graph="@navigation/navigation_courses" />
+    <fragment
+        android:id="@+id/nav_item_about"
+        android:name="ro.code4.deurgenta.ui.about.AboutFragment"
+        tools:layout="@layout/fragment_about" />
 
 </navigation>

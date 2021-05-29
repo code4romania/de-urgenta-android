@@ -28,7 +28,7 @@ class BackpacksFragment : ViewModelFragment<BackpacksViewModel>() {
         BackpacksAdapter(requireContext()) {
             if (it !== Backpack.EMPTY) {
                 findNavController().navigate(
-                    R.id.action_backpackMainFragment_to_backpackDetailsFragment,
+                    R.id.action_backpacks_to_backpackDetails,
                     bundleOf(BackpackDetailsFragment.KEY_BACKPACK to Parcels.wrap(it))
                 )
             }
@@ -41,14 +41,14 @@ class BackpacksFragment : ViewModelFragment<BackpacksViewModel>() {
         viewModel.fetchBackpacks()
 
         add_new_backpack.setOnClickListener {
-            findNavController().navigate(R.id.action_backpackMainFragment_to_newBackpackDialogFragment)
+            findNavController().navigate(R.id.action_backpacks_to_newBackpackDialog)
         }
 
         with(remainder) {
             val underlineAction = SpannableString(getString(R.string.backpack_btn_reminder))
             underlineAction.setSpan(UnderlineSpan(), 0, underlineAction.length, Spanned.SPAN_INCLUSIVE_INCLUSIVE)
             text = underlineAction
-            setOnClickListener { findNavController().navigate(R.id.action_backpackMainFragment_to_homeFragment) }
+            setOnClickListener { findNavController().navigate(R.id.action_backpacks_to_home) }
         }
         with(backpacks_list) {
             layoutManager = LinearLayoutManager(requireContext())

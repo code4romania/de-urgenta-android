@@ -29,7 +29,7 @@ class BackpackItemsFragment : ViewModelFragment<BackpackItemsViewModel>() {
     private val itemsAdapter: BackpackItemsAdapter by lazy {
         BackpackItemsAdapter(requireContext(), {
             findNavController().navigate(
-                R.id.action_backpackCategoryFragment_to_editBackpackItemFragment,
+                R.id.action_backpackItems_to_editBackpackItem,
                 bundleOf(
                     EditBackpackItemFragment.KEY_REQUEST_TYPE to EditBackpackItemFragment.TYPE_EDIT_ITEM,
                     EditBackpackItemFragment.KEY_EDIT_ITEM_DATA to Parcels.wrap(it)
@@ -46,7 +46,7 @@ class BackpackItemsFragment : ViewModelFragment<BackpackItemsViewModel>() {
 
         change_contents.setOnClickListener {
             findNavController().navigate(
-                R.id.action_backpackCategoryFragment_to_editBackpackItemFragment,
+                R.id.action_backpackItems_to_editBackpackItem,
                 bundleOf(
                     EditBackpackItemFragment.KEY_REQUEST_TYPE to EditBackpackItemFragment.TYPE_NEW_ITEM,
                     EditBackpackItemFragment.KEY_NEW_ITEM_DATA to Parcels.wrap(NewItemData(backpack.id, type))

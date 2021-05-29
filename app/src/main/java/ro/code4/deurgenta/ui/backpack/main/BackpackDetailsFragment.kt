@@ -58,7 +58,7 @@ class BackpackDetailsFragment : ViewModelFragment<BackpackDetailsViewModel>() {
                 )
                 setOnClickListener {
                     findNavController().navigate(
-                        R.id.action_backpackDetailsFragment_to_backpackCategoryFragment, bundleOf(
+                        R.id.action_backpackDetails_to_backpackItems, bundleOf(
                             BackpackItemsFragment.KEY_BACKPACK to Parcels.wrap(backpack),
                             BackpackItemsFragment.KEY_ITEM_TYPE to Parcels.wrap(type)
                         )
