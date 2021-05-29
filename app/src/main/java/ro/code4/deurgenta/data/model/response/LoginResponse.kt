@@ -1,10 +1,12 @@
 package ro.code4.deurgenta.data.model.response
 
 import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
 
 class LoginResponse {
     @Expose
-    @SerializedName("access_token")
-    lateinit var accessToken: String
+    lateinit var token: String
+    @Expose
+    var success: Boolean = false
+    @Expose
+    lateinit var errors: Array<String>
 }

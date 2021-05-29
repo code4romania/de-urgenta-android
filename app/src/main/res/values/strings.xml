@@ -61,8 +61,8 @@
     <string name="register_terms_link_text" translatable="false">terms and conditions</string>
     <string name="register_submit_button" translatable="false">Submit</string>
     <string name="register_completed_title" translatable="false">Validate your account</string>
-    <string name="register_completed_message" translatable="false">An e-mail was sent to the address where you made your account blah blah please click on the link to validate the account etc.</string>
-    <string name="register_back_to_login">Back to authentication</string>
+    <string name="register_completed_message" translatable="false">An e-mail with a confirmation link was sent to the address you registered for your account. Please click on the link to validate the account, then proceed to login.</string>
+    <string name="register_back_to_login">Back to login screen</string>
     <string name="register_cd_mail_icon">Mail icon</string>
 
     <!-- Nav menu screen -->
