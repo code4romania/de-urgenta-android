@@ -61,7 +61,7 @@
     <string name="register_terms_link_text" translatable="false">termenii si conditiile</string>
     <string name="register_submit_button" translatable="false">Mai departe</string>
     <string name="register_completed_title" translatable="false">Valideaza-ti contul</string>
-    <string name="register_completed_message" translatable="false">Un e-mail a fost trimis catre adresa pe care ti-ai facut contul bla bla te rugam sa apesi linkul pt validarea contului etc.</string>
+    <string name="register_completed_message" translatable="false">Un e-mail cu linkul de validare a fost trimis pe adresa cu care ți-ai făcut contul. Te rugăm să apeși pe link și apoi să te loghezi.</string>
     <string name="register_back_to_login">Înapoi la autentificare</string>
     <string name="register_cd_mail_icon">Imagine mesaj</string>
 
