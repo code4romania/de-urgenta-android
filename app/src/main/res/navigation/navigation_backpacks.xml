@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_backpacks"
+    app:startDestination="@id/backpackDetailsFragment">
+
+    <fragment
+        android:id="@+id/backpackDetailsFragment"
+        android:name="ro.code4.deurgenta.ui.backpack.main.BackpackDetailsFragment"
+        tools:layout="@layout/fragment_backpack_details">
+        <action
+            android:id="@+id/action_backpackDetails_to_backpackItems"
+            app:destination="@id/backpackItemsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/backpackItemsFragment"
+        android:name="ro.code4.deurgenta.ui.backpack.items.BackpackItemsFragment"
+        tools:layout="@layout/fragment_backpack_items">
+        <action
+            android:id="@+id/action_backpackItems_to_editBackpackItem"
+            app:destination="@id/editBackpackItemFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editBackpackItemFragment"
+        android:name="ro.code4.deurgenta.ui.backpack.edit.EditBackpackItemFragment"
+        tools:layout="@layout/fragment_backpack_edit_item" />
+
+</navigation>

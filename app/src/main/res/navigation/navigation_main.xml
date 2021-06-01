@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="ro.code4.deurgenta.ui.home.HomeFragment"
+        app:defaultNavHost="true"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_item_groups"
+        android:name="ro.code4.deurgenta.ui.group.GroupCreateLandingFragment"
+        tools:layout="@layout/fragment_group_create_landing">
+        <action
+            android:id="@+id/action_groupLanding_to_groupCreateInfo"
+            app:destination="@id/navigation_groups" />
+    </fragment>
+
+    <include app:graph="@navigation/navigation_groups" />
+
+    <fragment
+        android:id="@+id/nav_item_backpacks"
+        android:name="ro.code4.deurgenta.ui.backpack.main.BackpacksFragment"
+        tools:layout="@layout/fragment_backpacks">
+        <action
+            android:id="@+id/action_backpacks_to_home"
+            app:popUpTo="@id/nav_home"
+            app:popUpToInclusive="false" />
+        
+        <action
+            android:id="@+id/action_backpacks_to_newBackpackDialog"
+            app:destination="@id/newBackpackDialogFragment" />
+
+        <action
+            android:id="@+id/action_backpacks_to_backpackDetails"
+            app:destination="@id/navigation_backpacks" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/newBackpackDialogFragment"
+        android:name="ro.code4.deurgenta.ui.backpack.main.AddBackpackDialogFragment" />
+
+    <include app:graph="@navigation/navigation_backpacks" />
+
+    <fragment
+        android:id="@+id/nav_item_courses"
+        android:name="ro.code4.deurgenta.ui.courses.CoursesInfoFragment"
+        tools:layout="@layout/fragment_courses_info">
+        <action
+            android:id="@+id/action_coursesInfo_to_coursesFiltering"
+            app:destination="@id/navigation_courses" />
+    </fragment>
+
+    <include app:graph="@navigation/navigation_courses" />
+
+    <fragment
+        android:id="@+id/nav_item_settings"
+        android:name="ro.code4.deurgenta.ui.settings.SettingsFragment"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/nav_item_about"
+        android:name="ro.code4.deurgenta.ui.about.AboutFragment"
+        tools:layout="@layout/fragment_about" />
+
+</navigation>

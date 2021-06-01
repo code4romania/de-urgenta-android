@@ -5,6 +5,7 @@ import android.view.View
 import androidx.core.widget.addTextChangedListener
 import kotlinx.android.synthetic.main.fragment_group_create_info.*
 import ro.code4.deurgenta.R
+import ro.code4.deurgenta.helper.updateActivityTitle
 import ro.code4.deurgenta.ui.base.BaseAnalyticsFragment
 
 class GroupCreateInfoFragment : BaseAnalyticsFragment(R.layout.fragment_group_create_info) {
@@ -23,5 +24,10 @@ class GroupCreateInfoFragment : BaseAnalyticsFragment(R.layout.fragment_group_cr
 
             // TODO: create new group with the given name
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        updateActivityTitle(R.string.group_create_info_title)
     }
 }

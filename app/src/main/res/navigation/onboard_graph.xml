@@ -22,10 +22,10 @@
         </action>
         <action
             android:id="@+id/action_configure_group"
-            app:destination="@id/navigation_group" />
+            app:destination="@id/navigation_groups" />
     </fragment>
 
     <include app:graph="@navigation/configure_addresses" />
-    <include app:graph="@navigation/navigation_group" />
+    <include app:graph="@navigation/navigation_groups" />
 
 </navigation>
