@@ -11,7 +11,7 @@ import java.util.*
 class BackpacksViewModel(private val repository: Repository) : BaseViewModel() {
 
     private val _uiModel = MutableLiveData<BackpacksUIModel>()
-    var uiModel: LiveData<BackpacksUIModel> = _uiModel
+    val uiModel: LiveData<BackpacksUIModel> = _uiModel
 
     fun fetchBackpacks() {
         _uiModel.value = Loading
