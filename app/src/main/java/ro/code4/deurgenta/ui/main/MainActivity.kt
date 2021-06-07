@@ -1,5 +1,7 @@
 package ro.code4.deurgenta.ui.main
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.core.view.GravityCompat
@@ -16,6 +18,7 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import ro.code4.deurgenta.R
+import ro.code4.deurgenta.helper.deleteToken
 import ro.code4.deurgenta.helper.startActivityWithoutTrace
 import ro.code4.deurgenta.ui.auth.AuthActivity
 import ro.code4.deurgenta.ui.base.BaseActivity

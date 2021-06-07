@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.util.Log
 import io.reactivex.Completable
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import org.koin.core.KoinComponent
@@ -12,9 +13,9 @@ import retrofit2.Retrofit
 import ro.code4.deurgenta.data.AppDatabase
 import ro.code4.deurgenta.data.model.*
 import ro.code4.deurgenta.data.model.response.LoginResponse
-import ro.code4.deurgenta.services.ApiInterface
-import ro.code4.deurgenta.services.BackpackInterface
-import ro.code4.deurgenta.services.CoursesApi
+import ro.code4.deurgenta.services.AuthService
+import ro.code4.deurgenta.services.BackpackService
+import ro.code4.deurgenta.services.CourseService
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -25,24 +26,41 @@ class Repository : KoinComponent {
         val TAG = Repository::class.java.simpleName
     }
 
-    private val retrofit: Retrofit by inject()
     private val db: AppDatabase by inject()
-    private val apiInterface: ApiInterface by lazy {
-        retrofit.create(ApiInterface::class.java)
+    private val backpackDao by lazy { db.backpackDao() }
+
+    private val retrofit: Retrofit by inject()
+    private val authService: AuthService by lazy {
+        retrofit.create(AuthService::class.java)
     }
-    private val backpackInterface: BackpackInterface by lazy {
-        retrofit.create(BackpackInterface::class.java)
+    private val backpackService: BackpackService by lazy {
+        retrofit.create(BackpackService::class.java)
     }
-    private val coursesApi: CoursesApi by lazy { retrofit.create(CoursesApi::class.java) }
+    private val courseService: CourseService by lazy { retrofit.create(CourseService::class.java) }
+
     private val disposables: CompositeDisposable = CompositeDisposable()
 
-    fun register(data: Register): Observable<String> = apiInterface.register(data)
+    fun register(data: Register): Observable<String> = authService.register(data)
 
-    fun login(user: User): Observable<LoginResponse> = apiInterface.login(user)
+    fun login(user: User): Observable<LoginResponse> = authService.login(user)
 
     // BACKPACK related code only start
-    // TODO actually connect backpack related calls to the backend
-    fun getBackpacks(): Observable<List<Backpack>> = db.backpackDao().getAllBackpacks()
+    // Based on https://developer.android.com/jetpack/guide#persist-data
+
+    fun getBackpacks(): Single<List<Backpack>> {
+        val observableDb = backpackDao.getAllBackpacks()
+        val observableApi = backpackService.getBackpacks()
+        return Single.zip(
+            observableDb,
+            observableApi.onErrorReturnItem(emptyList()))
+            { backpacksDb, backpacksApi ->
+                val areAllBackpacksInDb = backpacksDb.containsAll(backpacksApi)
+                if (!areAllBackpacksInDb) {
+                    backpackDao.saveBackpack(*backpacksApi.toTypedArray())
+                }
+                backpacksApi
+            }
+    }
 
     fun saveNewBackpack(backpack: Backpack) {
         disposables.add(
@@ -56,8 +74,8 @@ class Repository : KoinComponent {
     fun getItemForBackpackType(
         backpack: Backpack,
         type: BackpackItemType
-    ): Observable<List<BackpackItem>> {
-        return db.backpackDao().getItemsForType(backpack.id, type)
+    ): Single<List<BackpackItem>> {
+        return backpackDao.getItemsForType(backpack.id, type)
     }
 
     fun deleteBackpackItem(itemId: String) {

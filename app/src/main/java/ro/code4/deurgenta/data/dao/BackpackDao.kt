@@ -1,7 +1,7 @@
 package ro.code4.deurgenta.data.dao
 
 import androidx.room.*
-import io.reactivex.Observable
+import io.reactivex.Single
 import ro.code4.deurgenta.data.model.Backpack
 import ro.code4.deurgenta.data.model.BackpackItem
 import ro.code4.deurgenta.data.model.BackpackItemType
@@ -10,13 +10,13 @@ import ro.code4.deurgenta.data.model.BackpackItemType
 interface BackpackDao {
 
     @Query("SELECT * FROM backpacks")
-    fun getAllBackpacks(): Observable<List<Backpack>>
+    fun getAllBackpacks(): Single<List<Backpack>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun saveBackpack(vararg backpack: Backpack)
 
     @Query("SELECT * FROM backpackItems WHERE backpackId=:backpackId AND type=:type")
-    fun getItemsForType(backpackId: String, type: BackpackItemType): Observable<List<BackpackItem>>
+    fun getItemsForType(backpackId: String, type: BackpackItemType): Single<List<BackpackItem>>
 
     @Query("DELETE FROM backpackItems WHERE id=:itemId")
     fun deleteItem(itemId: String)
