@@ -1,20 +1,11 @@
 package ro.code4.deurgenta.ui.auth.login
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.facebook.CallbackManager
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
 import com.google.android.material.snackbar.Snackbar
-import com.willowtreeapps.signinwithapplebutton.SignInWithAppleConfiguration
-import com.willowtreeapps.signinwithapplebutton.SignInWithAppleResult
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
 import kotlinx.android.synthetic.main.include_toolbar.toolbar
@@ -30,11 +21,13 @@ class LoginFormFragment : ViewModelFragment<LoginFormViewModel>() {
     }
 
     private lateinit var callbackManager: CallbackManager
+    /*
     private val appleLoginConfig = SignInWithAppleConfiguration(
         clientId = "ro.code5.deurgenta.ui.login",
         redirectUri = "www.deurgenta.ro/callback",
         scope = "name email"
     )
+    */
 
     override val layout: Int
         get() = R.layout.fragment_login
@@ -61,6 +54,7 @@ class LoginFormFragment : ViewModelFragment<LoginFormViewModel>() {
             viewModel.login(email, password)
         }
 
+        /* Commenting for now as they are not included in MVP
         view.google_login.setOnClickListener {
             handleGoogleLoginClick()
         }
@@ -87,6 +81,7 @@ class LoginFormFragment : ViewModelFragment<LoginFormViewModel>() {
                 }
             }
         }
+        */
 
         loginUserObservable()
     }
@@ -96,6 +91,7 @@ class LoginFormFragment : ViewModelFragment<LoginFormViewModel>() {
         toolbar.title = resources.getString(R.string.login_auth_title)
     }
 
+    /* Commenting for now as they are not included in MVP
     private fun setFacebookLoginListener() {
         view?.facebook_login?.setOnClickListener {
             // TODO: initiate Facebook login
@@ -135,6 +131,7 @@ class LoginFormFragment : ViewModelFragment<LoginFormViewModel>() {
             Log.e("Google", " signInResult : failed code = ${e.statusCode}")
         }
     }
+    */
 
     private fun loginUserObservable() {
         viewModel.loggedIn().observe(viewLifecycleOwner, Observer {
