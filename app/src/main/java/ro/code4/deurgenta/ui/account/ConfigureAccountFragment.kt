@@ -54,8 +54,7 @@ class ConfigureAccountFragment : ViewModelFragment<ConfigureAccountViewModel>() 
         }
 
         viewBinding.callbackBackpack = ClickButtonCallback {
-            // TODO
-            // findNavController().navigate(R.id.action_configure_backpack)
+            findNavController().navigate(R.id.action_configure_backpack)
         }
     }
 }
