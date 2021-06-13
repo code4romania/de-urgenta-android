@@ -12,6 +12,11 @@
         <variable
             name="callbackGroup"
             type="ro.code4.deurgenta.interfaces.ClickButtonCallback" />
+
+        <variable
+            name="callbackBackpack"
+            type="ro.code4.deurgenta.interfaces.ClickButtonCallback" />
+
     </data>
 
     <ScrollView
@@ -98,7 +103,7 @@
                     android:id="@+id/make_backpack"
                     style="@style/MenuTextView"
                     android:background="?android:attr/selectableItemBackground"
-
+                    android:onClick="@{() -> callbackBackpack.call()}"
                     android:padding="@dimen/padding"
                     android:text="@string/make_your_emergency_backpack"
                     android:textAppearance="@style/Text.MenuList"

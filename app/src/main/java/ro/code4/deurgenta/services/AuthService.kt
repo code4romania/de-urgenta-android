@@ -7,7 +7,7 @@ import ro.code4.deurgenta.data.model.Register
 import ro.code4.deurgenta.data.model.User
 import ro.code4.deurgenta.data.model.response.LoginResponse
 
-interface ApiInterface {
+interface AuthService {
     @POST("auth/register")
     fun register(@Body data: Register): Observable<String>
 

@@ -6,6 +6,7 @@ import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.UnderlineSpan
 import android.view.View
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -15,6 +16,7 @@ import org.koin.android.viewmodel.ext.android.sharedViewModel
 import org.parceler.Parcels
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.data.model.Backpack
+import ro.code4.deurgenta.helper.logE
 import ro.code4.deurgenta.helper.setToRotateIndefinitely
 import ro.code4.deurgenta.ui.base.ViewModelFragment
 
@@ -58,7 +60,10 @@ class BackpacksFragment : ViewModelFragment<BackpacksViewModel>() {
 
         viewModel.uiModel.observe(viewLifecycleOwner) {
             when (it) {
-                is Error -> TODO()
+                is Error -> {
+                    logE(it.throwable.toString())
+                    Toast.makeText(activity, "Error while fetching backpacks", Toast.LENGTH_SHORT).show()
+                }
                 Loading -> setAsLoading(true)
                 is Success -> {
                     setAsLoading(false)

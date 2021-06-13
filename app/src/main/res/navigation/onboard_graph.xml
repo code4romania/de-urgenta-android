@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/onboard_graph.xml"
+    android:id="@+id/onboard_graph"
     app:startDestination="@id/configure_account">
 
     <fragment
@@ -23,9 +23,12 @@
         <action
             android:id="@+id/action_configure_group"
             app:destination="@id/navigation_groups" />
+        <action
+            android:id="@+id/action_configure_backpack"
+            app:destination="@id/configure_backpacks" />
     </fragment>
 
     <include app:graph="@navigation/configure_addresses" />
     <include app:graph="@navigation/navigation_groups" />
-
+    <include app:graph="@navigation/configure_backpacks" />
 </navigation>
