@@ -58,7 +58,14 @@ class Repository : KoinComponent {
                 if (!areAllBackpacksInDb) {
                     backpackDao.saveBackpack(*backpacksApi.toTypedArray())
                 }
-                backpacksApi
+                // No data loaded from back end
+                if (backpacksApi.isEmpty()) {
+                    // Return cached backpacks
+                    backpacksDb
+                } else {
+                    // Return the fresher data
+                    backpacksApi
+                }
             }
     }
 
