@@ -8,6 +8,7 @@ import android.content.IntentSender
 import android.graphics.Rect
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Patterns
@@ -17,6 +18,7 @@ import android.view.animation.LinearInterpolator
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
@@ -24,6 +26,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.gson.Gson
 import org.threeten.bp.format.DateTimeFormatter
+import ro.code4.deurgenta.R
 
 fun Activity.startActivityWithoutTrace(activity: Class<*>) {
     startActivity(Intent(this, activity))
@@ -129,6 +132,14 @@ fun hideSoftInput(view: View) {
     imm.hideSoftInputFromWindow(view.windowToken, 0)
 }
 
+fun Activity.takeUserTo(url: String) {
+    val outIntent = Intent(Intent.ACTION_VIEW).apply { data = Uri.parse(url) }
+    if (this.packageManager.resolveActivity(outIntent, 0) != null) {
+        this.startActivity(outIntent)
+    } else {
+        Toast.makeText(this, R.string.about_no_url_handler, Toast.LENGTH_SHORT).show()
+    }
+}
 
 fun Fragment.startIntentSenderForResult(intent: IntentSender, requestCode: Int, bundle: Bundle? = null) {
     startIntentSenderForResult(intent, requestCode, null, 0, 0, 0, bundle)

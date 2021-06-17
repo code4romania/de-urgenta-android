@@ -119,6 +119,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/btn_forgot_password" />
 
+            <!-- Commenting for now as they are not included in MVP
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -187,6 +188,9 @@
                 android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/facebook_login" />
+
+             -->
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
