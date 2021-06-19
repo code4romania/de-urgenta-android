@@ -4,13 +4,14 @@ import io.reactivex.Single
 import retrofit2.http.*
 import ro.code4.deurgenta.data.model.Backpack
 import ro.code4.deurgenta.data.model.BackpackItem
+import ro.code4.deurgenta.data.model.CreateNewBackpack
 
 interface BackpackService {
     @GET("backpacks")
     fun getBackpacks(): Single<List<Backpack>>
 
     @POST("backpack")
-    fun saveNewBackpack(@Body name: String): Single<Backpack>
+    fun saveNewBackpack(@Body data: CreateNewBackpack): Single<Backpack>
 
     @DELETE("backpack/{backpackId}")
     fun deleteBackpack(@Path("backpackId") backpackId: String)

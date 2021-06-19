@@ -1,7 +1,6 @@
 package ro.code4.deurgenta.repositories
 
 import android.annotation.SuppressLint
-import android.util.Log
 import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
@@ -13,6 +12,8 @@ import retrofit2.Retrofit
 import ro.code4.deurgenta.data.AppDatabase
 import ro.code4.deurgenta.data.model.*
 import ro.code4.deurgenta.data.model.response.LoginResponse
+import ro.code4.deurgenta.helper.logE
+import ro.code4.deurgenta.helper.logI
 import ro.code4.deurgenta.services.AuthService
 import ro.code4.deurgenta.services.BackpackService
 import ro.code4.deurgenta.services.CourseService
@@ -20,11 +21,6 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 
 class Repository : KoinComponent {
-
-    companion object {
-        @JvmStatic
-        val TAG = Repository::class.java.simpleName
-    }
 
     private val db: AppDatabase by inject()
     private val backpackDao by lazy { db.backpackDao() }
@@ -69,13 +65,9 @@ class Repository : KoinComponent {
             }
     }
 
-    fun saveNewBackpack(backpack: Backpack) {
-        disposables.add(
-            Completable.fromAction { db.backpackDao().saveBackpack(backpack) }
-                .subscribeOn(Schedulers.io()).subscribe({
-                    Log.i(TAG, "saveNewBackpack($backpack)")
-                }, { Log.e(TAG, "saveNewBackpack($backpack): Error($it)!") })
-        )
+    fun saveNewBackpack(name: String): Single<Unit> {
+        return backpackService.saveNewBackpack(CreateNewBackpack(name))
+            .map { db.backpackDao().saveBackpack(it) }
     }
 
     fun getItemForBackpackType(
@@ -89,8 +81,8 @@ class Repository : KoinComponent {
         disposables.add(
             Completable.fromAction { db.backpackDao().deleteItem(itemId) }
                 .subscribeOn(Schedulers.io()).subscribe({
-                    Log.i(TAG, "deleteBackpackItem($itemId)")
-                }, { Log.e(TAG, "deleteBackpackItem($itemId): Error($it)!") })
+                    logI("deleteBackpackItem($itemId)")
+                }, { logE("deleteBackpackItem($itemId): Error($it)!") })
         )
     }
 
@@ -98,9 +90,9 @@ class Repository : KoinComponent {
         disposables.add(
             Completable.fromAction { db.backpackDao().saveBackpackItem(backpackItem) }
                 .subscribeOn(Schedulers.io()).subscribe({
-                    Log.i(TAG, "saveNewBackpackItem($backpackItem): Success!")
+                    logI("saveNewBackpackItem($backpackItem): Success!")
                 }, {
-                    Log.e(TAG, "saveNewBackpackItem($backpackItem): Error($it)!")
+                    logE("saveNewBackpackItem($backpackItem): Error($it)!")
                 })
         )
     }
@@ -109,9 +101,9 @@ class Repository : KoinComponent {
         disposables.add(
             Completable.fromAction { db.backpackDao().saveBackpackItem(backpackItem) }
                 .subscribeOn(Schedulers.io()).subscribe({
-                    Log.i(TAG, "updateNewBackpackItem($backpackItem): Success!")
+                    logI("updateNewBackpackItem($backpackItem): Success!")
                 }, {
-                    Log.e(TAG, "updateNewBackpackItem($backpackItem): Error($it)!")
+                    logE("updateNewBackpackItem($backpackItem): Error($it)!")
                 })
         )
     }
