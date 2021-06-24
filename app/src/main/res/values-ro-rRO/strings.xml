@@ -50,6 +50,24 @@
     <string name="login_divider_text">sau</string>
     <string name="login_label_forgot_password">Ți-ai uitat parola?</string>
     <string name="login_button_account">Intră în contul tău</string>
+    <string name="reset_password_title">Resetează parola</string>
+    <string name="reset_password_email">Email-ul asociat contului</string>
+    <string name="reset_password_email_hint">Introdu email-ul</string>
+    <string name="reset_password_new_password">Noua parolă</string>
+    <string name="reset_password_confirm_password">Confirmă noua parolă</string>
+    <string name="reset_password_btn">Resetează parola</string>
+    <string name="reset_password_dialog_btn_success">Mergi la autentificare</string>
+    <string name="reset_password_dialog_btn_failure">Reîncercă</string>
+    <string name="reset_password_invalid_email">Introdu un email valid!</string>
+    <string name="reset_password_different_passwords">Parolele nu sunt identice!</string>
+    <string name="reset_password_password_too_short">The password must be at least 8 characters!</string>
+    <string name="reset_password_success">Cererea de resetare a parolei a fost recepționată. Un email cu un
+        link de finalizare a resetării parolei a fost trimis către email-ul indicat. După urmarea acelui link vă
+        puteți conecta in aplicație cu noile date de autentificare.
+    </string>
+    <string name="reset_password_failure">Cererea the resetare a parolei a eșuat. Te rugăm
+        să încerci din nou.</string>
+    <string name="reset_password_loading">Procesăm cererea de resetare a parolei…</string>
 
     <!-- Register -->
     <string name="register_title" translatable="false">Creeaza-ti contul</string>
@@ -159,7 +177,7 @@
     <string name="operation_in_progress">Operatiune in desfasurare.</string>
     <string name="no_results_found">Niciun rezultat gasit.</string>
     <string name="more_results_found">Mai multe rezultate gasite. Te rog baga o adresa unica.</string>
-    
+
     <!-- About -->
     <string name="about_title">Despre aplicație</string>
     <string name="about_app_description">Aceasta este descrierea acestei aplicații foarte importante. În mod normal
