@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
-import com.facebook.CallbackManager
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
@@ -20,7 +19,7 @@ class LoginFormFragment : ViewModelFragment<LoginFormViewModel>() {
         private const val RC_SIGN_IN = 7
     }
 
-    private lateinit var callbackManager: CallbackManager
+    //private lateinit var callbackManager: CallbackManager
     /*
     private val appleLoginConfig = SignInWithAppleConfiguration(
         clientId = "ro.code5.deurgenta.ui.login",
@@ -44,7 +43,7 @@ class LoginFormFragment : ViewModelFragment<LoginFormViewModel>() {
             Toast.makeText(requireContext(), "Your password is lost forever!", Toast.LENGTH_SHORT).show()
         }
 
-        callbackManager = CallbackManager.Factory.create()
+        //callbackManager = CallbackManager.Factory.create()
 
         view.login_btn.setOnClickListener {
             login_btn.isEnabled = false
