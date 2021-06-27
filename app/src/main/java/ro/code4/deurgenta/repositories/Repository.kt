@@ -65,9 +65,11 @@ class Repository : KoinComponent {
             }
     }
 
-    fun saveNewBackpack(name: String): Single<Unit> {
-        return backpackService.saveNewBackpack(CreateNewBackpack(name))
-            .map { db.backpackDao().saveBackpack(it) }
+    fun saveNewBackpack(name: String): Single<Backpack> {
+        return backpackService.saveNewBackpack(CreateNewBackpack(name)).map {
+            db.backpackDao().saveBackpack(it)
+            return@map it
+        }
     }
 
     fun getItemForBackpackType(

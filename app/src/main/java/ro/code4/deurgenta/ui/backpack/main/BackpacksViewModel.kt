@@ -20,7 +20,7 @@ class BackpacksViewModel(private val repository: Repository) : BaseViewModel() {
             repository.getBackpacks()
                 .subscribeOn(Schedulers.io())
                 .subscribe(
-                    { backpacks -> _uiModel.postValue(Success(backpacks)) },
+                    { backpacks -> _uiModel.postValue(BackpacksFetched(backpacks)) },
                     { error -> _uiModel.postValue(Error(error)) }
             )
         )
@@ -31,8 +31,13 @@ class BackpacksViewModel(private val repository: Repository) : BaseViewModel() {
             repository.saveNewBackpack(name)
                 .subscribeOn(Schedulers.io())
                 .subscribe(
-                    { fetchBackpacks() },
-                    { logE("Error while saving new backpack: $it") }
+                    { backpack -> _uiModel.postValue(BackpackAdded(backpack)) },
+                    { error ->
+                        run {
+                            logE("Error while saving new backpack: $error")
+                            _uiModel.postValue(Error(error))
+                        }
+                    }
                 )
         )
     }
@@ -41,7 +46,9 @@ class BackpacksViewModel(private val repository: Repository) : BaseViewModel() {
 
 sealed class BackpacksUIModel
 
-class Success(val backpacks: List<Backpack>) : BackpacksUIModel()
+class BackpacksFetched(val backpacks: List<Backpack>) : BackpacksUIModel()
+
+class BackpackAdded(val backpack: Backpack) : BackpacksUIModel()
 
 class Error(val throwable: Throwable) : BackpacksUIModel()
 
