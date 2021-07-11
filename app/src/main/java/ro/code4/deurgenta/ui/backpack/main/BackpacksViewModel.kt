@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import io.reactivex.schedulers.Schedulers
 import ro.code4.deurgenta.data.model.Backpack
+import ro.code4.deurgenta.helper.logE
 import ro.code4.deurgenta.repositories.Repository
 import ro.code4.deurgenta.ui.base.BaseViewModel
-import java.util.*
 
 class BackpacksViewModel(private val repository: Repository) : BaseViewModel() {
 
@@ -14,28 +14,41 @@ class BackpacksViewModel(private val repository: Repository) : BaseViewModel() {
     val uiModel: LiveData<BackpacksUIModel> = _uiModel
 
     fun fetchBackpacks() {
-        _uiModel.value = Loading
+        _uiModel.postValue(Loading)
 
         disposables.add(
             repository.getBackpacks()
                 .subscribeOn(Schedulers.io())
                 .subscribe(
-                    { backpacks -> _uiModel.postValue(Success(backpacks)) },
+                    { backpacks -> _uiModel.postValue(BackpacksFetched(backpacks)) },
                     { error -> _uiModel.postValue(Error(error)) }
             )
         )
     }
 
     fun saveNewBackpack(name: String) {
-        val id = UUID.randomUUID().toString()
-        repository.saveNewBackpack(Backpack(id, name))
+        disposables.add(
+            repository.saveNewBackpack(name)
+                .subscribeOn(Schedulers.io())
+                .subscribe(
+                    { backpack -> _uiModel.postValue(BackpackAdded(backpack)) },
+                    { error ->
+                        run {
+                            logE("Error while saving new backpack: $error")
+                            _uiModel.postValue(Error(error))
+                        }
+                    }
+                )
+        )
     }
 
 }
 
 sealed class BackpacksUIModel
 
-class Success(val backpacks: List<Backpack>) : BackpacksUIModel()
+class BackpacksFetched(val backpacks: List<Backpack>) : BackpacksUIModel()
+
+class BackpackAdded(val backpack: Backpack) : BackpacksUIModel()
 
 class Error(val throwable: Throwable) : BackpacksUIModel()
 
