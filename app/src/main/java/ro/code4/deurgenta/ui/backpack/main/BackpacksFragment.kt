@@ -65,9 +65,15 @@ class BackpacksFragment : ViewModelFragment<BackpacksViewModel>() {
                     Toast.makeText(activity, "Error while fetching backpacks", Toast.LENGTH_SHORT).show()
                 }
                 Loading -> setAsLoading(true)
-                is Success -> {
+                is BackpacksFetched -> {
                     setAsLoading(false)
                     backpacksAdapter.submitList(it.backpacks)
+                }
+                is BackpackAdded -> {
+                    setAsLoading(false)
+                    val currentBackpacks = ArrayList(backpacksAdapter.currentList)
+                    currentBackpacks.add(it.backpack)
+                    backpacksAdapter.submitList(currentBackpacks)
                 }
             }
         }
