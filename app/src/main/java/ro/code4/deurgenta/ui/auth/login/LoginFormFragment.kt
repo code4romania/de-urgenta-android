@@ -2,7 +2,6 @@ package ro.code4.deurgenta.ui.auth.login
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -11,6 +10,7 @@ import kotlinx.android.synthetic.main.include_toolbar.toolbar
 import org.koin.android.ext.android.inject
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.helper.startActivityWithoutTrace
+import ro.code4.deurgenta.ui.auth.reset.ResetPasswordFragment
 import ro.code4.deurgenta.ui.base.ViewModelFragment
 
 class LoginFormFragment : ViewModelFragment<LoginFormViewModel>() {
@@ -39,8 +39,10 @@ class LoginFormFragment : ViewModelFragment<LoginFormViewModel>() {
         super.onViewCreated(view, savedInstanceState)
 
         btn_forgot_password.setOnClickListener {
-            // TODO handle lost password
-            Toast.makeText(requireContext(), "Your password is lost forever!", Toast.LENGTH_SHORT).show()
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.auth_container, ResetPasswordFragment.newInstance())
+                .addToBackStack(null)
+                .commit()
         }
 
         //callbackManager = CallbackManager.Factory.create()

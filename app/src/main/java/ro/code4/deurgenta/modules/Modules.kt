@@ -5,6 +5,8 @@ import androidx.preference.PreferenceManager
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -19,25 +21,29 @@ import ro.code4.deurgenta.App
 import ro.code4.deurgenta.BuildConfig.API_URL
 import ro.code4.deurgenta.BuildConfig.DEBUG
 import ro.code4.deurgenta.data.AppDatabase
+import ro.code4.deurgenta.helper.SchedulersProvider
+import ro.code4.deurgenta.helper.SchedulersProviderImpl
 import ro.code4.deurgenta.helper.getToken
+import ro.code4.deurgenta.repositories.AccountRepository
+import ro.code4.deurgenta.repositories.AccountRepositoryImpl
 import ro.code4.deurgenta.repositories.Repository
+import ro.code4.deurgenta.services.AccountService
 import ro.code4.deurgenta.ui.address.ConfigureAddressViewModel
 import ro.code4.deurgenta.ui.address.SaveAddressViewModel
+import ro.code4.deurgenta.ui.auth.AuthViewModel
+import ro.code4.deurgenta.ui.auth.login.LoginFormViewModel
+import ro.code4.deurgenta.ui.auth.reset.ResetPasswordViewModel
+import ro.code4.deurgenta.ui.auth.register.RegisterViewModel
 import ro.code4.deurgenta.ui.backpack.edit.EditBackpackItemViewModel
 import ro.code4.deurgenta.ui.backpack.items.BackpackItemsViewModel
 import ro.code4.deurgenta.ui.backpack.main.BackpackDetailsViewModel
 import ro.code4.deurgenta.ui.backpack.main.BackpacksViewModel
-import ro.code4.deurgenta.ui.home.HomeViewModel
-import ro.code4.deurgenta.ui.auth.login.LoginFormViewModel
-import ro.code4.deurgenta.ui.auth.AuthViewModel
-import ro.code4.deurgenta.ui.main.MainViewModel
-import ro.code4.deurgenta.ui.onboarding.OnboardingViewModel
-import ro.code4.deurgenta.ui.auth.register.RegisterViewModel
 import ro.code4.deurgenta.ui.courses.CoursesFilterViewModel
 import ro.code4.deurgenta.ui.courses.CoursesViewModel
+import ro.code4.deurgenta.ui.home.HomeViewModel
+import ro.code4.deurgenta.ui.main.MainViewModel
+import ro.code4.deurgenta.ui.onboarding.OnboardingViewModel
 import ro.code4.deurgenta.ui.splashscreen.SplashScreenViewModel
-import java.util.concurrent.Executors
-import java.util.concurrent.TimeUnit
 
 val gson: Gson by lazy {
     val gsonBuilder = GsonBuilder()
@@ -94,9 +100,12 @@ val apiModule = module {
             .client(get<OkHttpClient>())
             .build()
     }
+    single<AccountService> { get<Retrofit>().create(AccountService::class.java) }
     single {
         Repository()
     }
+    single<AccountRepository> { AccountRepositoryImpl(get()) }
+    single<SchedulersProvider> { SchedulersProviderImpl() }
 }
 
 val dbModule = module {
@@ -107,6 +116,7 @@ val dbModule = module {
 val viewModelsModule = module {
     viewModel { AuthViewModel() }
     viewModel { LoginFormViewModel() }
+    viewModel { ResetPasswordViewModel(get(), get()) }
     viewModel { RegisterViewModel() }
     viewModel { OnboardingViewModel() }
     viewModel { MainViewModel() }
@@ -115,8 +125,8 @@ val viewModelsModule = module {
     viewModel { BackpackDetailsViewModel() }
     viewModel { BackpackItemsViewModel(get()) }
     viewModel { EditBackpackItemViewModel(get()) }
-    viewModel { ConfigureAddressViewModel(get())}
-    viewModel { SaveAddressViewModel(get())}
+    viewModel { ConfigureAddressViewModel(get()) }
+    viewModel { SaveAddressViewModel(get()) }
     viewModel { HomeViewModel() }
     viewModel { CoursesFilterViewModel(get()) }
     viewModel { CoursesViewModel(get()) }

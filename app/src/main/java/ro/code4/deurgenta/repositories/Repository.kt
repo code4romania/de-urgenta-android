@@ -14,7 +14,7 @@ import ro.code4.deurgenta.data.model.*
 import ro.code4.deurgenta.data.model.response.LoginResponse
 import ro.code4.deurgenta.helper.logE
 import ro.code4.deurgenta.helper.logI
-import ro.code4.deurgenta.services.AuthService
+import ro.code4.deurgenta.services.AccountService
 import ro.code4.deurgenta.services.BackpackService
 import ro.code4.deurgenta.services.CourseService
 import java.util.*
@@ -26,8 +26,8 @@ class Repository : KoinComponent {
     private val backpackDao by lazy { db.backpackDao() }
 
     private val retrofit: Retrofit by inject()
-    private val authService: AuthService by lazy {
-        retrofit.create(AuthService::class.java)
+    private val accountService: AccountService by lazy {
+        retrofit.create(AccountService::class.java)
     }
     private val backpackService: BackpackService by lazy {
         retrofit.create(BackpackService::class.java)
@@ -36,9 +36,9 @@ class Repository : KoinComponent {
 
     private val disposables: CompositeDisposable = CompositeDisposable()
 
-    fun register(data: Register): Observable<String> = authService.register(data)
+    fun register(data: Register): Observable<String> = accountService.register(data)
 
-    fun login(user: User): Observable<LoginResponse> = authService.login(user)
+    fun login(user: User): Observable<LoginResponse> = accountService.login(user)
 
     // BACKPACK related code only start
     // Based on https://developer.android.com/jetpack/guide#persist-data

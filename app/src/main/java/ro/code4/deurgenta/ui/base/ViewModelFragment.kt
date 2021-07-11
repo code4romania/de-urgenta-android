@@ -10,12 +10,12 @@ import androidx.activity.OnBackPressedCallback
 abstract class ViewModelFragment<out T : BaseViewModel>() : BaseAnalyticsFragment(), Layout,
     ViewModelSetter<T> {
     lateinit var mContext: Context
-    lateinit var mActivity: BaseActivity<*>
+    //lateinit var mActivity: BaseActivity<*>
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mContext = context
-        mActivity = activity as BaseActivity<*>
+        //mActivity = activity as BaseActivity<*>
     }
 
     protected fun onBackPressedCallback() = object : OnBackPressedCallback(true) {
@@ -35,6 +35,7 @@ abstract class ViewModelFragment<out T : BaseViewModel>() : BaseAnalyticsFragmen
     }
 
     fun showDefaultErrorSnackBar(view: View) {
-        mActivity.showDefaultErrorSnackBar(view)
+        TODO("This wasn't used and was disabled to enable testing. Will be refactored.")
+        //mActivity.showDefaultErrorSnackBar(view)
     }
 }

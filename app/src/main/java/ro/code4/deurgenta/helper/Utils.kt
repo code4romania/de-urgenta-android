@@ -25,6 +25,8 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.gson.Gson
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 import org.threeten.bp.format.DateTimeFormatter
 import ro.code4.deurgenta.R
 
@@ -154,3 +156,11 @@ fun Fragment.updateActivityTitle(@StringRes titleId: Int) {
 }
 
 val dateFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd MMM yyyy")
+
+operator fun CompositeDisposable.plusAssign(disposable: Disposable) {
+    this.add(disposable)
+}
+
+fun View.visibleGiven(condition: Boolean) {
+    visibility = if (condition) View.VISIBLE else View.GONE
+}
