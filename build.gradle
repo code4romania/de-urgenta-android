@@ -2,35 +2,36 @@
 buildscript {
 
     ext {
-        kotlin_version = "1.4.32"
+        kotlinVersion = '1.5.21'
         retrofitVersion = '2.9.0'
-        navigationVersion = "2.3.4"
+        navigationVersion = '2.3.4'
         koinVersion = '2.0.1'
-        parcelerVersion = "1.1.13"
-        roomVersion = '2.2.6'
-        firebaseAnalyticsVersion = '18.0.2'
-        firebaseCrashlyticsVersion = '17.4.1'
-        firebaseMessagingVersion = "20.2.0"
-        firebaseConfigVersion = "19.1.4"
-        adapterDelegatesVersion = "4.2.0"
-        glideVersion = "4.9.0"
-        navigationVersion = "2.3.4"
+        parcelerVersion = '1.1.13'
+        roomVersion = '2.3.0'
+        firebaseAnalyticsVersion = '19.0.0'
+        firebaseCrashlyticsVersion = '18.2.1'
+        firebaseMessagingVersion = '20.2.0'
+        firebaseConfigVersion = '19.1.4'
+        adapterDelegatesVersion = '4.2.0'
+        glideVersion = '4.9.0'
+        navigationVersion = '2.3.5'
     }
 
     repositories {
         google()
         jcenter()
-        maven { url "https://plugins.gradle.org/m2/" }
+        mavenCentral()
     }
+
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.google.gms:google-services:4.3.5'
-        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.5.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath 'com.google.gms:google-services:4.3.10'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.7.1'
         classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.0"
-        // NOTE: Do not place your application dependencies here; they belong
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
 
+        // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
@@ -39,6 +40,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        mavenCentral()
         maven { url 'https://jitpack.io' }
     }
 }
