@@ -126,7 +126,6 @@ android {
 }
 
 
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.aar', '*.jar'], exclude: ['*mock*.jar'])
 
@@ -159,9 +158,9 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-scalars:$retrofitVersion"
 
-    // Firebase
-    implementation "com.google.firebase:firebase-analytics:$firebaseAnalyticsVersion"
-    implementation "com.google.firebase:firebase-crashlytics:$firebaseCrashlyticsVersion"
+    implementation platform("com.google.firebase:firebase-bom:$firebaseVersion")
+    implementation "com.google.firebase:firebase-analytics-ktx"
+    implementation "com.google.firebase:firebase-crashlytics-ktx"
 
     // Koin injection
     implementation "io.insert-koin:koin-core:$koinVersion"
