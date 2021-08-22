@@ -1,9 +1,9 @@
 package ro.code4.deurgenta.ui.main
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
+import android.widget.LinearLayout
 import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -12,15 +12,12 @@ import androidx.navigation.ui.NavigationUI.onNavDestinationSelected
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.analytics.FirebaseAnalytics
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.nav_footer_main.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import ro.code4.deurgenta.BuildConfig
 import ro.code4.deurgenta.R
-import ro.code4.deurgenta.helper.deleteToken
 import ro.code4.deurgenta.helper.startActivityWithoutTrace
 import ro.code4.deurgenta.helper.takeUserTo
 import ro.code4.deurgenta.ui.auth.AuthActivity
@@ -34,11 +31,14 @@ class MainActivity : BaseActivity<MainViewModel>() {
     override val viewModel: MainViewModel by viewModel()
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navView: NavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setSupportActionBar(toolbar)
-
+        setSupportActionBar(findViewById(R.id.toolbar))
+        drawerLayout = findViewById(R.id.drawerLayout)
+        navView = findViewById(R.id.navView)
         navController = findNavController(R.id.nav_host_fragment)
 
         // Passing each menu ID as a set of Ids because each
@@ -74,7 +74,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
             }
         }
 
-        nav_footer_donate_button.setOnClickListener {
+        findViewById<LinearLayout>(R.id.nav_footer).setOnClickListener {
             takeUserTo(BuildConfig.CODE4RO_DONATE_URL)
         }
 

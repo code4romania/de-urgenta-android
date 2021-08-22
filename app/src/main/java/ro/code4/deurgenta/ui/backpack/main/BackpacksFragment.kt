@@ -11,48 +11,47 @@ import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_backpacks.*
+import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import org.koin.android.viewmodel.ext.android.sharedViewModel
-import org.parceler.Parcels
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.data.model.Backpack
+import ro.code4.deurgenta.databinding.FragmentBackpacksBinding
 import ro.code4.deurgenta.helper.logE
 import ro.code4.deurgenta.helper.setToRotateIndefinitely
-import ro.code4.deurgenta.ui.base.ViewModelFragment
+import ro.code4.deurgenta.ui.base.BaseFragment
 
-class BackpacksFragment : ViewModelFragment<BackpacksViewModel>() {
+class BackpacksFragment : BaseFragment(R.layout.fragment_backpacks) {
+
     override val screenName: Int
         get() = R.string.analytics_title_backpack
-    override val layout: Int
-        get() = R.layout.fragment_backpacks
-    override val viewModel: BackpacksViewModel by sharedViewModel(from = { requireParentFragment() })
+    private val viewModel: BackpacksViewModel by sharedViewModel(from = { requireParentFragment() })
     private val backpacksAdapter: BackpacksAdapter by lazy {
         BackpacksAdapter(requireContext()) {
             if (it !== Backpack.EMPTY) {
                 findNavController().navigate(
                     R.id.action_backpacks_to_backpackDetails,
-                    bundleOf(BackpackDetailsFragment.KEY_BACKPACK to Parcels.wrap(it))
+                    bundleOf(BackpackDetailsFragment.KEY_BACKPACK to it)
                 )
             }
         }
     }
     private var loadingAnimator: ObjectAnimator? = null
+    private val binding: FragmentBackpacksBinding by viewBinding(FragmentBackpacksBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.fetchBackpacks()
 
-        add_new_backpack.setOnClickListener {
+        binding.addNewBackpack.setOnClickListener {
             findNavController().navigate(R.id.action_backpacks_to_newBackpackDialog)
         }
-
-        with(remainder) {
+        with(binding.remainder) {
             val underlineAction = SpannableString(getString(R.string.backpack_btn_reminder))
             underlineAction.setSpan(UnderlineSpan(), 0, underlineAction.length, Spanned.SPAN_INCLUSIVE_INCLUSIVE)
             text = underlineAction
             setOnClickListener { findNavController().navigate(R.id.action_backpacks_to_home) }
         }
-        with(backpacks_list) {
+        with(binding.backpacksList) {
             layoutManager = LinearLayoutManager(requireContext())
             addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
             adapter = backpacksAdapter
@@ -80,13 +79,13 @@ class BackpacksFragment : ViewModelFragment<BackpacksViewModel>() {
     }
 
     private fun setAsLoading(isLoading: Boolean) {
-        loadingIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
+        binding.loadingIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
         if (isLoading) {
             loadingAnimator?.cancel()
-            loadingAnimator = loadingIndicator.setToRotateIndefinitely()
+            loadingAnimator = binding.loadingIndicator.setToRotateIndefinitely()
             loadingAnimator?.start()
         }
-        backpacks_list.visibility = if (isLoading) View.GONE else View.VISIBLE
+        binding.backpacksList.visibility = if (isLoading) View.GONE else View.VISIBLE
     }
 
     override fun onResume() {

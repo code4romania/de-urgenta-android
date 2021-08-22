@@ -7,23 +7,23 @@ import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_backpack_items.*
+import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import org.koin.android.viewmodel.ext.android.viewModel
-import org.parceler.Parcels
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.data.model.Backpack
 import ro.code4.deurgenta.data.model.BackpackItemType
+import ro.code4.deurgenta.databinding.FragmentBackpackItemsBinding
 import ro.code4.deurgenta.helper.setToRotateIndefinitely
 import ro.code4.deurgenta.ui.backpack.edit.EditBackpackItemFragment
 import ro.code4.deurgenta.ui.backpack.edit.NewItemData
-import ro.code4.deurgenta.ui.base.ViewModelFragment
+import ro.code4.deurgenta.ui.base.BaseFragment
 
-class BackpackItemsFragment : ViewModelFragment<BackpackItemsViewModel>() {
+class BackpackItemsFragment : BaseFragment(R.layout.fragment_backpack_items) {
+
     override val screenName: Int
         get() = R.string.app_name
-    override val layout: Int
-        get() = R.layout.fragment_backpack_items
-    override val viewModel: BackpackItemsViewModel by viewModel()
+    private val viewModel: BackpackItemsViewModel by viewModel()
+    private val binding: FragmentBackpackItemsBinding by viewBinding(FragmentBackpackItemsBinding::bind)
     private lateinit var backpack: Backpack
     private lateinit var type: BackpackItemType
     private val itemsAdapter: BackpackItemsAdapter by lazy {
@@ -32,7 +32,7 @@ class BackpackItemsFragment : ViewModelFragment<BackpackItemsViewModel>() {
                 R.id.action_backpackItems_to_editBackpackItem,
                 bundleOf(
                     EditBackpackItemFragment.KEY_REQUEST_TYPE to EditBackpackItemFragment.TYPE_EDIT_ITEM,
-                    EditBackpackItemFragment.KEY_EDIT_ITEM_DATA to Parcels.wrap(it)
+                    EditBackpackItemFragment.KEY_EDIT_ITEM_DATA to it
                 )
             )
         }, { itemId -> viewModel.deleteItem(itemId) })
@@ -41,20 +41,22 @@ class BackpackItemsFragment : ViewModelFragment<BackpackItemsViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        backpack = Parcels.unwrap(arguments?.getParcelable(KEY_BACKPACK))
-        type = Parcels.unwrap(arguments?.getParcelable(KEY_ITEM_TYPE))
+        backpack = arguments?.getParcelable(KEY_BACKPACK)
+            ?: error("A backpack reference must be provided to show it items!")
+        type = arguments?.getParcelable(KEY_ITEM_TYPE)
+            ?: error("A reference to the type of backpack items must be provided!")
 
-        change_contents.setOnClickListener {
+        binding.changeContents.setOnClickListener {
             findNavController().navigate(
                 R.id.action_backpackItems_to_editBackpackItem,
                 bundleOf(
                     EditBackpackItemFragment.KEY_REQUEST_TYPE to EditBackpackItemFragment.TYPE_NEW_ITEM,
-                    EditBackpackItemFragment.KEY_NEW_ITEM_DATA to Parcels.wrap(NewItemData(backpack.id, type))
+                    EditBackpackItemFragment.KEY_NEW_ITEM_DATA to NewItemData(backpack.id, type)
                 )
             )
         }
 
-        with(backpack_items) {
+        with(binding.backpackItems) {
             layoutManager = LinearLayoutManager(requireContext())
             addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.HORIZONTAL))
             adapter = itemsAdapter
@@ -78,26 +80,26 @@ class BackpackItemsFragment : ViewModelFragment<BackpackItemsViewModel>() {
     }
 
     private fun displayLoading() {
-        loadingIndicator.visibility = View.VISIBLE
+        binding.loadingIndicator.visibility = View.VISIBLE
         loadingAnimator?.cancel()
-        loadingAnimator = loadingIndicator.setToRotateIndefinitely()
+        loadingAnimator = binding.loadingIndicator.setToRotateIndefinitely()
         loadingAnimator?.start()
-        empty.visibility = View.GONE
-        backpack_items.visibility = View.GONE
+        binding.empty.visibility = View.GONE
+        binding.backpackItems.visibility = View.GONE
     }
 
     private fun displayEmpty() {
-        loadingIndicator.visibility = View.GONE
+        binding.loadingIndicator.visibility = View.GONE
         loadingAnimator?.cancel()
-        empty.visibility = View.VISIBLE
-        backpack_items.visibility = View.GONE
+        binding.empty.visibility = View.VISIBLE
+        binding.backpackItems.visibility = View.GONE
     }
 
     private fun displayItems() {
-        loadingIndicator.visibility = View.GONE
+        binding.loadingIndicator.visibility = View.GONE
         loadingAnimator?.cancel()
-        empty.visibility = View.GONE
-        backpack_items.visibility = View.VISIBLE
+        binding.empty.visibility = View.GONE
+        binding.backpackItems.visibility = View.VISIBLE
     }
 
     override fun onResume() {

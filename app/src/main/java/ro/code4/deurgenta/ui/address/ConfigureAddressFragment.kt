@@ -21,7 +21,6 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.gms.common.api.ResolvableApiException
 import com.here.sdk.mapview.MapView
 import com.here.sdk.search.Suggestion
-import kotlinx.android.synthetic.main.layout_mapview.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.data.model.MapAddressType
@@ -272,10 +271,10 @@ class ConfigureAddressFragment : PermissionsViewModelFragment<ConfigureAddressVi
     }
 
     private fun setAsLoading(isLoading: Boolean) {
-        mapLoadingIndicator?.visibility = if (isLoading) View.VISIBLE else View.GONE
+        viewBinding.mapViewLayout.mapLoadingIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
         if (isLoading) {
             loadingAnimator?.cancel()
-            loadingAnimator = mapLoadingIndicator.setToRotateIndefinitely()
+            loadingAnimator = viewBinding.mapViewLayout.mapLoadingIndicator.setToRotateIndefinitely()
             loadingAnimator?.start()
         }
     }

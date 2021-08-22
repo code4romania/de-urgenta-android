@@ -1,42 +1,37 @@
 package ro.code4.deurgenta.ui.backpack.main
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.fragment_backpack_details.*
+import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import org.koin.android.viewmodel.ext.android.viewModel
-import org.parceler.Parcels
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.data.model.Backpack
 import ro.code4.deurgenta.data.model.BackpackItemType
+import ro.code4.deurgenta.databinding.FragmentBackpackDetailsBinding
 import ro.code4.deurgenta.ui.backpack.items.BackpackItemsFragment
-import ro.code4.deurgenta.ui.base.ViewModelFragment
+import ro.code4.deurgenta.ui.base.BaseFragment
 
-class BackpackDetailsFragment : ViewModelFragment<BackpackDetailsViewModel>() {
+class BackpackDetailsFragment : BaseFragment(R.layout.fragment_backpack_details) {
+
     override val screenName: Int
         get() = R.string.app_name
-    override val layout: Int
-        get() = R.layout.fragment_backpacks
-    override val viewModel: BackpackDetailsViewModel by viewModel()
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_backpack_details, container, false)
-    }
+    private val viewModel: BackpackDetailsViewModel by viewModel()
+    private val binding: FragmentBackpackDetailsBinding by viewBinding(FragmentBackpackDetailsBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val backpack: Backpack = Parcels.unwrap(arguments?.getParcelable(KEY_BACKPACK))
+        val backpack: Backpack = arguments?.getParcelable(KEY_BACKPACK)
+            ?: error("A backpack reference must be provided to show its details!")
         requireActivity().title = backpack.name
 
         buildBackpackUI(backpack)
 
-        choose_person_responsible.setOnClickListener {
+        binding.choosePersonResponsible.setOnClickListener {
             Toast.makeText(requireContext(), "Not implemented yet!", Toast.LENGTH_SHORT).show()
         }
     }
@@ -48,7 +43,8 @@ class BackpackDetailsFragment : ViewModelFragment<BackpackDetailsViewModel>() {
         BackpackItemType.values().forEachIndexed { index, type ->
             val entryView = requireActivity().layoutInflater.inflate(
                 R.layout.item_backpack_item_type,
-                backpack_content, false
+                binding.backpackContent,
+                false
             ) as TextView
             with(entryView) {
                 text = descriptions[index]
@@ -59,13 +55,13 @@ class BackpackDetailsFragment : ViewModelFragment<BackpackDetailsViewModel>() {
                 setOnClickListener {
                     findNavController().navigate(
                         R.id.action_backpackDetails_to_backpackItems, bundleOf(
-                            BackpackItemsFragment.KEY_BACKPACK to Parcels.wrap(backpack),
-                            BackpackItemsFragment.KEY_ITEM_TYPE to Parcels.wrap(type)
+                            BackpackItemsFragment.KEY_BACKPACK to backpack,
+                            BackpackItemsFragment.KEY_ITEM_TYPE to type
                         )
                     )
                 }
             }
-            backpack_content.addView(entryView)
+            binding.backpackContent.addView(entryView)
         }
         typedIcons.recycle()
     }

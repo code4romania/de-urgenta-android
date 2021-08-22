@@ -3,25 +3,28 @@ package ro.code4.deurgenta.ui.group
 import android.os.Bundle
 import android.view.View
 import androidx.core.widget.addTextChangedListener
-import kotlinx.android.synthetic.main.fragment_group_create_info.*
+import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import ro.code4.deurgenta.R
+import ro.code4.deurgenta.databinding.FragmentGroupCreateInfoBinding
 import ro.code4.deurgenta.helper.updateActivityTitle
-import ro.code4.deurgenta.ui.base.BaseAnalyticsFragment
+import ro.code4.deurgenta.ui.base.BaseFragment
 
-class GroupCreateInfoFragment : BaseAnalyticsFragment(R.layout.fragment_group_create_info) {
-    override val screenName: Int = R.string.analytics_title_group
+class GroupCreateInfoFragment : BaseFragment(R.layout.fragment_group_create_info) {
+
+    override val screenName: Int
+        get() = R.string.analytics_title_group
+    private val binding: FragmentGroupCreateInfoBinding by viewBinding(FragmentGroupCreateInfoBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        input_group_name.addTextChangedListener {
+        binding.inputGroupName.addTextChangedListener {
             // Allow submission only if name is not blank
-            button_create_new_group_continue.isEnabled = !it.isNullOrEmpty()
+            binding.buttonCreateNewGroupContinue.isEnabled = !it.isNullOrEmpty()
         }
 
-        button_create_new_group_continue.setOnClickListener {
-            val name = input_group_name.text.toString()
-
+        binding.buttonCreateNewGroupContinue.setOnClickListener {
+            val name = binding.inputGroupName.text.toString()
             // TODO: create new group with the given name
         }
     }

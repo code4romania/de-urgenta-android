@@ -2,31 +2,27 @@ package ro.code4.deurgenta.ui.group
 
 import android.graphics.Paint
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.fragment_group_create_landing.*
+import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import ro.code4.deurgenta.R
+import ro.code4.deurgenta.databinding.FragmentGroupCreateLandingBinding
 import ro.code4.deurgenta.helper.updateActivityTitle
-import ro.code4.deurgenta.ui.base.BaseAnalyticsFragment
+import ro.code4.deurgenta.ui.base.BaseFragment
 
-class GroupCreateLandingFragment : BaseAnalyticsFragment() {
-    override val screenName: Int = R.string.analytics_title_group
+class GroupCreateLandingFragment : BaseFragment(R.layout.fragment_group_create_landing) {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_group_create_landing, container, false)
-    }
+    override val screenName: Int
+        get() = R.string.analytics_title_group
+    private val binding: FragmentGroupCreateLandingBinding by viewBinding(FragmentGroupCreateLandingBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        button_reject_new_group.paintFlags = button_reject_new_group.paintFlags or Paint.UNDERLINE_TEXT_FLAG
-        button_reject_new_group.setOnClickListener {
-            findNavController().navigateUp()
-        }
+        binding.buttonRejectNewGroup.paintFlags = binding.buttonRejectNewGroup.paintFlags or Paint.UNDERLINE_TEXT_FLAG
+        binding.buttonRejectNewGroup.setOnClickListener { findNavController().navigateUp() }
 
-        button_create_new_group.setOnClickListener {
+        binding.buttonCreateNewGroup.setOnClickListener {
             findNavController().navigate(R.id.action_groupLanding_to_groupCreateInfo)
         }
     }

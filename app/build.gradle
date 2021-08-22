@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-parcelize'
 apply plugin: 'org.sonarqube'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 
@@ -16,10 +16,6 @@ static def getKey(String env, String key) {
 
 static def asString(String field) {
     return "\"${field}\""
-}
-
-androidExtensions {
-    experimental true
 }
 
 android {
@@ -46,6 +42,7 @@ android {
 
     buildFeatures {
         dataBinding true
+        viewBinding true
     }
 
     sourceSets {
@@ -149,7 +146,7 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
 
-
+    implementation "com.github.Zhuinden:fragmentviewbindingdelegate-kt:$viewBindingDelegateVersion"
     implementation platform("com.squareup.okhttp3:okhttp-bom:4.9.0")
     implementation "com.squareup.okhttp3:okhttp"
     implementation "com.squareup.okhttp3:logging-interceptor"
@@ -166,10 +163,6 @@ dependencies {
     implementation "io.insert-koin:koin-core:$koinVersion"
     implementation "io.insert-koin:koin-android:$koinVersion"
     implementation "io.insert-koin:koin-android-viewmodel:$koinVersion"
-
-    // Parceler
-    implementation "org.parceler:parceler-api:$parcelerVersion"
-    kapt "org.parceler:parceler:$parcelerVersion"
 
     // Room
     implementation "androidx.room:room-runtime:$roomVersion"

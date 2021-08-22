@@ -1,7 +1,7 @@
 package ro.code4.deurgenta.data.model
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 /**
  * Possible address types:
