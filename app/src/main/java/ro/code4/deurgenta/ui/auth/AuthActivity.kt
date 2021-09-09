@@ -38,7 +38,7 @@ class AuthActivity : BaseAnalyticsActivity<AuthViewModel>() {
             R.id.auth_container,
             AuthFragment(),
             isPrimaryNavigationFragment = true,
-            tag = "authFragment"
+            tag = null
         )
     }
 
