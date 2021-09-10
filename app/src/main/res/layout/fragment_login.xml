@@ -6,7 +6,7 @@
     android:background="@color/white">
 
     <include
-        android:id="@+id/toolbar"
+        android:id="@+id/includedToolbar"
         layout="@layout/include_toolbar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -17,7 +17,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
+        app:layout_constraintTop_toBottomOf="@id/includedToolbar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -118,81 +118,6 @@
                 android:textAllCaps="false"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/btn_forgot_password" />
-
-            <!-- Commenting for now as they are not included in MVP
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#D1D5DB"
-                app:layout_constraintBottom_toBottomOf="@id/label_alternative"
-                app:layout_constraintTop_toTopOf="@id/label_alternative" />
-
-            <TextView
-                android:id="@+id/label_alternative"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/big_margin"
-                android:background="@color/white"
-                android:paddingStart="@dimen/small_margin"
-                android:paddingEnd="@dimen/small_margin"
-                android:text="@string/login_divider_text"
-                android:textColor="#6B7280"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/login_btn" />
-
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/apple_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/big_margin"
-                android:text="@string/login_button_apple"
-                android:textAllCaps="false"
-                app:backgroundTint="@color/design_default_color_on_secondary"
-                app:icon="@drawable/ic_apple"
-                app:iconGravity="textStart"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/label_alternative" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/google_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin"
-                android:text="@string/login_button_google"
-                android:textAllCaps="false"
-                app:backgroundTint="#4386F5"
-                app:icon="@drawable/ic_google"
-                app:iconGravity="textStart"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/apple_login" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/facebook_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin"
-                android:text="@string/login_button_facebook"
-                android:textAllCaps="false"
-                app:backgroundTint="@color/com_facebook_button_background_color_pressed"
-                app:icon="@drawable/ic_facebook"
-                app:iconGravity="textStart"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/google_login" />
-
-            <com.willowtreeapps.signinwithapplebutton.view.SignInWithAppleButton
-                android:id="@+id/sign_in_with_apple_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/facebook_login" />
-
-             -->
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

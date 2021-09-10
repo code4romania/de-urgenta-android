@@ -6,11 +6,9 @@ import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import io.reactivex.disposables.Disposable
-import kotlinx.android.synthetic.main.fragment_register.*
 import org.koin.android.ext.android.inject
 import ro.code4.deurgenta.BuildConfig.TERMS_AND_CONDITIONS
 import ro.code4.deurgenta.R
@@ -19,14 +17,16 @@ import ro.code4.deurgenta.ui.auth.AuthViewModel
 import ro.code4.deurgenta.ui.base.ViewModelFragment
 
 class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
+
     override val layout: Int
         get() = R.layout.fragment_register
     override val screenName: Int
         get() = R.string.analytics_title_register
 
     override val viewModel: RegisterViewModel by inject()
-    lateinit var authViewModel: AuthViewModel
-    var registerRequestDisposable: Disposable? = null
+    private lateinit var authViewModel: AuthViewModel
+    private lateinit var binding: FragmentRegisterBinding
+    private var registerRequestDisposable: Disposable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,15 +41,11 @@ class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        val binding: FragmentRegisterBinding = DataBindingUtil.inflate(
-            inflater,
-            R.layout.fragment_register, container, false
-        )
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_register, container, false)
         binding.lifecycleOwner = this
         binding.viewmodel = viewModel
         @Suppress("USELESS_CAST") // cast needed
-        (binding.toolbar as Toolbar).setTitle(R.string.register_title)
+        binding.includedToolbar.toolbar.setTitle(R.string.register_title)
         return binding.root
     }
 
@@ -60,10 +56,9 @@ class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
     }
 
     private fun clickListenersSetup() {
-        submitButton.setOnClickListener {
+        binding.submitButton.setOnClickListener {
             viewModel.register()
         }
-
         termsAndConditionsSetup()
     }
 
@@ -74,12 +69,21 @@ class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
         val passwordError = viewModel.getPasswordError()
         val termsError = viewModel.getTermsError()
 
-        if (!termsError.isNullOrBlank()) termsCheckBox.error = termsError
-        if (!passwordError.isNullOrBlank()) passwordEditText.error = passwordError
-        if (!emailError.isNullOrBlank()) emailEditText.error = emailError
-        if (!lastNameError.isNullOrBlank()) lastNameEditText.error = lastNameError
-        if (!firstNameError.isNullOrBlank()) firstNameEditText.error = firstNameError
-
+        if (!termsError.isNullOrBlank()) {
+            binding.termsCheckBox.error = termsError
+        }
+        if (!passwordError.isNullOrBlank()) {
+            binding.passwordEditText.error = passwordError
+        }
+        if (!emailError.isNullOrBlank()) {
+            binding.emailEditText.error = emailError
+        }
+        if (!lastNameError.isNullOrBlank()) {
+            binding.lastNameEditText.error = lastNameError
+        }
+        if (!firstNameError.isNullOrBlank()) {
+            binding.firstNameEditText.error = firstNameError
+        }
     }
 
     private fun registerObservable() {
@@ -108,12 +112,11 @@ class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
         val termsLinkText = getString(R.string.register_terms_link_text)
         val termsLinkHtml = "<a href='$termsLink'>$termsLinkText</a>"
         val termsText = getString(R.string.register_terms_text).replace("{link}", termsLinkHtml)
-        termsTextView.text = Html.fromHtml(termsText);
-        termsTextView.isClickable = true;
-        termsTextView.movementMethod = LinkMovementMethod.getInstance();
-
-        termsCheckBox.setOnClickListener {
-            termsCheckBox.error = null
+        binding.termsTextView.text = Html.fromHtml(termsText)
+        binding.termsTextView.isClickable = true;
+        binding.termsTextView.movementMethod = LinkMovementMethod.getInstance()
+        binding.termsCheckBox.setOnClickListener {
+            binding.termsCheckBox.error = null
         }
     }
 
@@ -121,5 +124,4 @@ class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
         super.onDestroyView()
         registerRequestDisposable?.dispose()
     }
-
 }

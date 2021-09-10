@@ -5,37 +5,37 @@ import android.os.Bundle
 import android.os.Parcelable
 import android.view.View
 import androidx.navigation.fragment.findNavController
-import kotlinx.android.parcel.Parcelize
-import kotlinx.android.synthetic.main.fragment_backpack_edit_item.*
+import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
+import kotlinx.parcelize.Parcelize
 import org.koin.android.viewmodel.ext.android.viewModel
-import org.parceler.Parcels
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.data.model.BackpackItem
 import ro.code4.deurgenta.data.model.BackpackItemType
-import ro.code4.deurgenta.ui.base.ViewModelFragment
+import ro.code4.deurgenta.databinding.FragmentBackpackEditItemBinding
+import ro.code4.deurgenta.ui.base.BaseFragment
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Locale
 
-class EditBackpackItemFragment : ViewModelFragment<EditBackpackItemViewModel>() {
+class EditBackpackItemFragment : BaseFragment(R.layout.fragment_backpack_edit_item) {
     override val screenName: Int
         get() = R.string.app_name
-    override val layout: Int
-        get() = R.layout.fragment_backpack_edit_item
-    override val viewModel: EditBackpackItemViewModel by viewModel()
+    private val viewModel: EditBackpackItemViewModel by viewModel()
+    private val binding: FragmentBackpackEditItemBinding by viewBinding(FragmentBackpackEditItemBinding::bind)
     private var expirationDate: ExpirationDate? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btn_cancel_add_item.setOnClickListener { findNavController().popBackStack() }
-        input_date.setOnClickListener {
+        binding.btnCancelAddItem.setOnClickListener { findNavController().popBackStack() }
+        binding.inputDate.setOnClickListener {
             val calendar = Calendar.getInstance()
             DatePickerDialog(
                 requireContext(),
                 { _, year, month, dayOfMonth ->
                     calendar.set(year, month, dayOfMonth)
-                    input_date.text = formatter.format(calendar.time)
+                    binding.inputDate.text = formatter.format(calendar.time)
                     expirationDate = ExpirationDate(year, month + 1, dayOfMonth)
                 },
                 calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)
@@ -43,7 +43,7 @@ class EditBackpackItemFragment : ViewModelFragment<EditBackpackItemViewModel>() 
         }
 
         val requestType = arguments?.getInt(KEY_REQUEST_TYPE) ?: error(
-            "The edit fragment must have a valid request type"
+            "A type must be provided to edit a backpack item content!"
         )
         when (requestType) {
             TYPE_NEW_ITEM -> handleAddNewItem()
@@ -53,11 +53,12 @@ class EditBackpackItemFragment : ViewModelFragment<EditBackpackItemViewModel>() 
     }
 
     private fun handleAddNewItem() {
-        btn_change_action.text = getString(R.string.btn_item_change_new)
-        btn_change_action.setOnClickListener {
-            val newItemData: NewItemData = Parcels.unwrap(arguments?.getParcelable(KEY_NEW_ITEM_DATA))
-            val nameInput = input_name.text.toString()
-            val quantityInput = input_quantity.text.toString()
+        binding.btnChangeAction.text = getString(R.string.btn_item_change_new)
+        binding.btnChangeAction.setOnClickListener {
+            val newItemData: NewItemData = arguments?.getParcelable(KEY_NEW_ITEM_DATA)
+                ?: error("Must provided a backpack id and type of item to add new items!")
+            val nameInput = binding.inputName.text.toString()
+            val quantityInput = binding.inputQuantity.text.toString()
             if (isInputValid(nameInput, quantityInput)) {
                 viewModel.saveNewItem(
                     newItemData.backpackId,
@@ -70,17 +71,18 @@ class EditBackpackItemFragment : ViewModelFragment<EditBackpackItemViewModel>() 
     }
 
     private fun handleUpdateItem() {
-        btn_change_action.text = getString(R.string.btn_item_change_update)
-        val backpackItem: BackpackItem = Parcels.unwrap(arguments?.getParcelable(KEY_EDIT_ITEM_DATA))
-        input_name.setText(backpackItem.name)
-        input_quantity.setText(backpackItem.amount.toString())
+        binding.btnChangeAction.text = getString(R.string.btn_item_change_update)
+        val backpackItem: BackpackItem = arguments?.getParcelable(KEY_EDIT_ITEM_DATA)
+            ?: error("Must provided a backpack id and type of item to change an item!")
+        binding.inputName.setText(backpackItem.name)
+        binding.inputQuantity.setText(backpackItem.amount.toString())
         backpackItem.expirationDate?.let {
-            input_date.text = displayFormatter.format(backpackItem.expirationDate)
+            binding.inputDate.text = displayFormatter.format(backpackItem.expirationDate)
             expirationDate = ExpirationDate(it.year, it.monthValue, it.dayOfMonth)
         }
-        btn_change_action.setOnClickListener {
-            val name = input_name.text.toString()
-            val quantity = input_quantity.text.toString()
+        binding.btnChangeAction.setOnClickListener {
+            val name = binding.inputName.text.toString()
+            val quantity = binding.inputQuantity.text.toString()
             if (isInputValid(name, quantity)) {
                 viewModel.updateBackpackItem(backpackItem, name, quantity.toInt(), expirationDate)
                 findNavController().popBackStack()
@@ -93,28 +95,28 @@ class EditBackpackItemFragment : ViewModelFragment<EditBackpackItemViewModel>() 
         val referenceDate = LocalDate.now()
         val selected = expirationDate?.let { LocalDate.of(it.year, it.month, it.dayOfMonth) }
         if (selected != null && (selected.isBefore(referenceDate) || selected.isEqual(referenceDate))) {
-            input_date_error.text = getString(R.string.edit_backpack_item_error_date)
+            binding.inputDateError.text = getString(R.string.edit_backpack_item_error_date)
             checkOutcome = false
         } else {
-            input_date_error.text = ""
+            binding.inputDateError.text = ""
         }
         if (name.isEmpty()) {
-            input_name_layout.error = getString(R.string.edit_backpack_item_error_name)
+            binding.inputNameLayout.error = getString(R.string.edit_backpack_item_error_name)
             checkOutcome = false
         } else {
-            input_name_layout.error = ""
+            binding.inputNameLayout.error = ""
         }
         if (quantity.isEmpty()) {
-            input_quantity_layout.error = getString(R.string.edit_backpack_item_error_quantity)
+            binding.inputQuantityLayout.error = getString(R.string.edit_backpack_item_error_quantity)
             checkOutcome = false
         } else {
-            input_quantity_layout.error = ""
+            binding.inputQuantityLayout.error = ""
         }
         if (kotlin.runCatching { quantity.toInt() }.isFailure) {
-            input_quantity_layout.error = getString(R.string.edit_backpack_item_error_quantity)
+            binding.inputQuantityLayout.error = getString(R.string.edit_backpack_item_error_quantity)
             checkOutcome = false
         } else {
-            input_quantity_layout.error = ""
+            binding.inputQuantityLayout.error = ""
         }
         return checkOutcome
     }

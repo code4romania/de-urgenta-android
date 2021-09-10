@@ -2,11 +2,8 @@ package ro.code4.deurgenta.modules
 
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
-import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import java.util.concurrent.Executors
-import java.util.concurrent.TimeUnit
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -28,12 +25,14 @@ import ro.code4.deurgenta.repositories.AccountRepository
 import ro.code4.deurgenta.repositories.AccountRepositoryImpl
 import ro.code4.deurgenta.repositories.Repository
 import ro.code4.deurgenta.services.AccountService
+import ro.code4.deurgenta.services.AnalyticsService
+import ro.code4.deurgenta.services.FirebaseAnalyticsService
 import ro.code4.deurgenta.ui.address.ConfigureAddressViewModel
 import ro.code4.deurgenta.ui.address.SaveAddressViewModel
 import ro.code4.deurgenta.ui.auth.AuthViewModel
 import ro.code4.deurgenta.ui.auth.login.LoginFormViewModel
-import ro.code4.deurgenta.ui.auth.reset.ResetPasswordViewModel
 import ro.code4.deurgenta.ui.auth.register.RegisterViewModel
+import ro.code4.deurgenta.ui.auth.reset.ResetPasswordViewModel
 import ro.code4.deurgenta.ui.backpack.edit.EditBackpackItemViewModel
 import ro.code4.deurgenta.ui.backpack.items.BackpackItemsViewModel
 import ro.code4.deurgenta.ui.backpack.main.BackpackDetailsViewModel
@@ -44,6 +43,8 @@ import ro.code4.deurgenta.ui.home.HomeViewModel
 import ro.code4.deurgenta.ui.main.MainViewModel
 import ro.code4.deurgenta.ui.onboarding.OnboardingViewModel
 import ro.code4.deurgenta.ui.splashscreen.SplashScreenViewModel
+import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
 
 val gson: Gson by lazy {
     val gsonBuilder = GsonBuilder()
@@ -133,5 +134,5 @@ val viewModelsModule = module {
 }
 
 val analyticsModule = module {
-    single { FirebaseAnalytics.getInstance(get()) }
+    single<AnalyticsService> { FirebaseAnalyticsService(get()) }
 }

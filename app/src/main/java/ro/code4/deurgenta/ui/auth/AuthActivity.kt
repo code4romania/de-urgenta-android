@@ -1,17 +1,16 @@
 package ro.code4.deurgenta.ui.auth
 
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_auth.*
-import kotlinx.android.synthetic.main.fragment_auth.*
-import kotlinx.android.synthetic.main.fragment_register.*
+import android.widget.Button
+import android.widget.FrameLayout
 import org.koin.android.viewmodel.ext.android.viewModel
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.helper.replaceFragment
 import ro.code4.deurgenta.helper.startActivityWithoutTrace
-import ro.code4.deurgenta.ui.base.BaseAnalyticsActivity
 import ro.code4.deurgenta.ui.auth.login.LoginFormFragment
 import ro.code4.deurgenta.ui.auth.register.RegisterCompletedFragment
 import ro.code4.deurgenta.ui.auth.register.RegisterFragment
+import ro.code4.deurgenta.ui.base.BaseAnalyticsActivity
 
 class AuthActivity : BaseAnalyticsActivity<AuthViewModel>() {
 
@@ -21,10 +20,11 @@ class AuthActivity : BaseAnalyticsActivity<AuthViewModel>() {
         get() = R.string.analytics_title_login
 
     override val viewModel: AuthViewModel by viewModel()
+    private lateinit var authContainer: FrameLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        authContainer = findViewById(R.id.auth_container)
         if (savedInstanceState == null) {
             showAuthFragment()
         }
@@ -77,7 +77,7 @@ class AuthActivity : BaseAnalyticsActivity<AuthViewModel>() {
                     activity?.let(::startActivityWithoutTrace)
                 },
                 onFailure = { error ->
-                    showDefaultErrorSnackBar(auth_container)
+                    showDefaultErrorSnackBar(authContainer)
                 }
             )
         })
@@ -90,7 +90,7 @@ class AuthActivity : BaseAnalyticsActivity<AuthViewModel>() {
                     showRegistrationCompletedFragment()
                 },
                 onFailure = { error ->
-                    showDefaultErrorSnackBar(submitButton)
+                    showDefaultErrorSnackBar(authContainer)
                 }
             )
         })

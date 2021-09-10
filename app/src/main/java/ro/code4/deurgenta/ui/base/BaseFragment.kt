@@ -11,13 +11,13 @@ import ro.code4.deurgenta.analytics.ParamKey
 import ro.code4.deurgenta.interfaces.AnalyticsScreenName
 import ro.code4.deurgenta.services.AnalyticsService
 
-abstract class BaseAnalyticsFragment : Fragment, AnalyticsScreenName {
+/**
+ * The base class for all fragments in the application, with the exception(for now) of fragments that currently use
+ * data binding or require additional features(like system permissions).
+ */
+abstract class BaseFragment(@LayoutRes layoutId: Int) : Fragment(layoutId), AnalyticsScreenName {
 
     private val analyticsService: AnalyticsService by inject()
-
-    protected constructor() : super()
-
-    protected constructor(@LayoutRes contentLayoutId: Int) : super(contentLayoutId)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
