@@ -22,8 +22,8 @@ If you would like to suggest new functionality, open an Issue and mark it as a _
 
 ## Built with
 
-* Android Studio 4.1
-* Android SDK 30
+* Android Studio 2020.3.1
+* Android SDK 31
 * Kotlin
 * RxJava, Retrofit2
 * [Koin](https://insert-koin.io/)
