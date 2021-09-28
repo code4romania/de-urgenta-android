@@ -5,7 +5,7 @@ import android.view.View
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.DialogFragment
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.databinding.FragmentResetPasswordBinding
 import ro.code4.deurgenta.ui.auth.reset.FieldValidationStatus.EmailNotValid

@@ -1,7 +1,7 @@
 package ro.code4.deurgenta.repositories
 
-import org.threeten.bp.ZonedDateTime
 import ro.code4.deurgenta.data.model.Course
+import java.time.ZonedDateTime
 
 // TODO remove this when the backend is available!
 val tempCourses = listOf(

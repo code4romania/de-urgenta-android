@@ -1,8 +1,7 @@
 package ro.code4.deurgenta.services
 
-import io.reactivex.Completable
-import io.reactivex.Observable
-import io.reactivex.Single
+import io.reactivex.rxjava3.core.Completable
+import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.Body
 import retrofit2.http.POST
 import ro.code4.deurgenta.data.model.Register

@@ -5,11 +5,11 @@ import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import org.koin.android.ext.android.inject
+import ro.code4.deurgenta.analytics.AnalyticsService
 import ro.code4.deurgenta.analytics.Event
 import ro.code4.deurgenta.analytics.Param
 import ro.code4.deurgenta.analytics.ParamKey
 import ro.code4.deurgenta.interfaces.AnalyticsScreenName
-import ro.code4.deurgenta.services.AnalyticsService
 
 abstract class BaseAnalyticsFragment : Fragment, AnalyticsScreenName {
 

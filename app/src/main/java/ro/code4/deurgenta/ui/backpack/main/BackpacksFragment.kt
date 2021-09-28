@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
-import org.koin.android.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.data.model.Backpack
 import ro.code4.deurgenta.databinding.FragmentBackpacksBinding
@@ -24,7 +24,7 @@ class BackpacksFragment : BaseFragment(R.layout.fragment_backpacks) {
 
     override val screenName: Int
         get() = R.string.analytics_title_backpack
-    private val viewModel: BackpacksViewModel by sharedViewModel(from = { requireParentFragment() })
+    private val viewModel: BackpacksViewModel by sharedViewModel()
     private val backpacksAdapter: BackpacksAdapter by lazy {
         BackpacksAdapter(requireContext()) {
             if (it !== Backpack.EMPTY) {

@@ -7,15 +7,15 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import kotlinx.parcelize.Parcelize
-import org.koin.android.viewmodel.ext.android.viewModel
-import org.threeten.bp.LocalDate
-import org.threeten.bp.format.DateTimeFormatter
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.data.model.BackpackItem
 import ro.code4.deurgenta.data.model.BackpackItemType
 import ro.code4.deurgenta.databinding.FragmentBackpackEditItemBinding
 import ro.code4.deurgenta.ui.base.BaseFragment
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.Calendar
 import java.util.Locale
 

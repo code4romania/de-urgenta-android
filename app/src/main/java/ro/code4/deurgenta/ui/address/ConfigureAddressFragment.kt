@@ -21,7 +21,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.gms.common.api.ResolvableApiException
 import com.here.sdk.mapview.MapView
 import com.here.sdk.search.Suggestion
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.data.model.MapAddressType
 import ro.code4.deurgenta.databinding.FragmentConfigureAddressBinding

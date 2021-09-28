@@ -4,9 +4,10 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
-import org.koin.core.inject
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.data.model.Register
 import ro.code4.deurgenta.helper.Result
@@ -16,7 +17,7 @@ import ro.code4.deurgenta.helper.isValidEmail
 import ro.code4.deurgenta.repositories.Repository
 import ro.code4.deurgenta.ui.base.BaseViewModel
 
-class RegisterViewModel : BaseViewModel() {
+class RegisterViewModel : BaseViewModel(), KoinComponent {
 
     private val app: Application by inject()
     private val repository: Repository by inject()

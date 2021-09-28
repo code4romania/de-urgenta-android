@@ -25,10 +25,10 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.gson.Gson
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
-import org.threeten.bp.format.DateTimeFormatter
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
 import ro.code4.deurgenta.R
+import java.time.format.DateTimeFormatter
 
 fun Activity.startActivityWithoutTrace(activity: Class<*>) {
     startActivity(Intent(this, activity))

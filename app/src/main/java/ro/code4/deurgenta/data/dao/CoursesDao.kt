@@ -2,7 +2,7 @@ package ro.code4.deurgenta.data.dao
 
 import androidx.room.Dao
 import androidx.room.Query
-import io.reactivex.Observable
+import io.reactivex.rxjava3.core.Observable
 import ro.code4.deurgenta.data.model.CourseFilterValues
 
 @Dao

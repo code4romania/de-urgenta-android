@@ -1,9 +1,8 @@
 package ro.code4.deurgenta.ui.auth
 
 import android.os.Bundle
-import android.widget.Button
 import android.widget.FrameLayout
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.helper.replaceFragment
 import ro.code4.deurgenta.helper.startActivityWithoutTrace

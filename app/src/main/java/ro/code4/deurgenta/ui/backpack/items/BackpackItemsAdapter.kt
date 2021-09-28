@@ -9,9 +9,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import org.threeten.bp.format.DateTimeFormatter
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.data.model.BackpackItem
+import java.time.format.DateTimeFormatter
 
 
 class BackpackItemsAdapter(

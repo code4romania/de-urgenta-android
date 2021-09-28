@@ -1,17 +1,10 @@
-package ro.code4.deurgenta.services
+package ro.code4.deurgenta.analytics
 
 import android.content.Context
 import android.os.Bundle
 import com.google.firebase.analytics.FirebaseAnalytics
-import ro.code4.deurgenta.analytics.Event
-import ro.code4.deurgenta.analytics.Param
 import ro.code4.deurgenta.helper.logD
 import ro.code4.deurgenta.helper.logW
-
-interface AnalyticsService {
-
-    fun logEvent(event: Event, vararg params: Param)
-}
 
 class FirebaseAnalyticsService(context: Context) : AnalyticsService {
 

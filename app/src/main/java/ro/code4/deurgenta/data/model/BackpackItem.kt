@@ -3,8 +3,7 @@ package ro.code4.deurgenta.data.model
 import android.os.Parcelable
 import androidx.room.*
 import kotlinx.parcelize.Parcelize
-import org.threeten.bp.ZonedDateTime
-
+import java.time.ZonedDateTime
 
 @Entity(
     tableName = BackpackItem.TABLE_NAME, foreignKeys = [

@@ -1,4 +1,4 @@
-package ro.code4.deurgenta.modules
+package ro.code4.deurgenta.di
 
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
@@ -8,15 +8,15 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
-import org.koin.android.viewmodel.dsl.viewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
-import ro.code4.deurgenta.App
 import ro.code4.deurgenta.BuildConfig.API_URL
 import ro.code4.deurgenta.BuildConfig.DEBUG
+import ro.code4.deurgenta.analytics.AnalyticsService
 import ro.code4.deurgenta.data.AppDatabase
 import ro.code4.deurgenta.helper.SchedulersProvider
 import ro.code4.deurgenta.helper.SchedulersProviderImpl
@@ -25,8 +25,7 @@ import ro.code4.deurgenta.repositories.AccountRepository
 import ro.code4.deurgenta.repositories.AccountRepositoryImpl
 import ro.code4.deurgenta.repositories.Repository
 import ro.code4.deurgenta.services.AccountService
-import ro.code4.deurgenta.services.AnalyticsService
-import ro.code4.deurgenta.services.FirebaseAnalyticsService
+import ro.code4.deurgenta.analytics.FirebaseAnalyticsService
 import ro.code4.deurgenta.ui.address.ConfigureAddressViewModel
 import ro.code4.deurgenta.ui.address.SaveAddressViewModel
 import ro.code4.deurgenta.ui.auth.AuthViewModel
@@ -51,10 +50,6 @@ val gson: Gson by lazy {
     gsonBuilder.excludeFieldsWithoutExposeAnnotation().create()
 }
 
-val appModule = module {
-    single { App.instance }
-}
-
 val apiModule = module {
     single<SharedPreferences> { PreferenceManager.getDefaultSharedPreferences(androidContext()) }
     single {
@@ -72,33 +67,29 @@ val apiModule = module {
     }
 
     single {
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.level =
-            if (DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
-        interceptor
+        HttpLoggingInterceptor().apply {
+            level = if (DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
+        }
     }
 
     single {
-        val httpClient = OkHttpClient.Builder()
-        httpClient.readTimeout(10, TimeUnit.SECONDS)
-        httpClient.writeTimeout(10, TimeUnit.SECONDS)
-        httpClient.connectTimeout(10, TimeUnit.SECONDS)
-        get<Interceptor?>()?.let {
-            httpClient.addInterceptor(it)
+        with(OkHttpClient.Builder()) {
+            readTimeout(10, TimeUnit.SECONDS)
+            writeTimeout(10, TimeUnit.SECONDS)
+            connectTimeout(10, TimeUnit.SECONDS)
+            addInterceptor(get<Interceptor>())
+            addInterceptor(get<HttpLoggingInterceptor>())
+            build()
         }
-        get<HttpLoggingInterceptor?>()?.let {
-            httpClient.addInterceptor(it)
-        }
-        httpClient.build()
     }
 
     single {
         Retrofit.Builder()
             .baseUrl(API_URL)
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create(gson))
-            .client(get<OkHttpClient>())
+            .client(get())
             .build()
     }
     single<AccountService> { get<Retrofit>().create(AccountService::class.java) }

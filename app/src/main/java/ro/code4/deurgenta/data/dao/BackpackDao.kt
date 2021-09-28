@@ -1,7 +1,7 @@
 package ro.code4.deurgenta.data.dao
 
 import androidx.room.*
-import io.reactivex.Single
+import io.reactivex.rxjava3.core.Single
 import ro.code4.deurgenta.data.model.Backpack
 import ro.code4.deurgenta.data.model.BackpackItem
 import ro.code4.deurgenta.data.model.BackpackItemType
