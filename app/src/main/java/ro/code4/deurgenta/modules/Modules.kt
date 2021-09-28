@@ -8,7 +8,7 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
-import org.koin.android.viewmodel.dsl.viewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
@@ -72,24 +72,20 @@ val apiModule = module {
     }
 
     single {
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.level =
-            if (DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
-        interceptor
+        HttpLoggingInterceptor().apply {
+            level = if (DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
+        }
     }
 
     single {
-        val httpClient = OkHttpClient.Builder()
-        httpClient.readTimeout(10, TimeUnit.SECONDS)
-        httpClient.writeTimeout(10, TimeUnit.SECONDS)
-        httpClient.connectTimeout(10, TimeUnit.SECONDS)
-        get<Interceptor?>()?.let {
-            httpClient.addInterceptor(it)
+        with(OkHttpClient.Builder()) {
+            readTimeout(10, TimeUnit.SECONDS)
+            writeTimeout(10, TimeUnit.SECONDS)
+            connectTimeout(10, TimeUnit.SECONDS)
+            addInterceptor(get<Interceptor>())
+            addInterceptor(get<HttpLoggingInterceptor>())
+            build()
         }
-        get<HttpLoggingInterceptor?>()?.let {
-            httpClient.addInterceptor(it)
-        }
-        httpClient.build()
     }
 
     single {

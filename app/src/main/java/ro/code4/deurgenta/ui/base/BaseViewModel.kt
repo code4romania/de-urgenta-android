@@ -6,7 +6,7 @@ import androidx.databinding.PropertyChangeRegistry
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
-import org.koin.core.KoinComponent
+import org.koin.core.component.KoinComponent
 import ro.code4.deurgenta.helper.SingleLiveEvent
 
 abstract class BaseViewModel : ViewModel(), KoinComponent, Observable {

@@ -1,6 +1,6 @@
 package ro.code4.deurgenta.ui.onboarding
 
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.ui.base.BaseAnalyticsActivity
 

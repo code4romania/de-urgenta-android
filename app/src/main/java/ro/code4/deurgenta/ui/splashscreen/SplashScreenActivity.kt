@@ -3,7 +3,7 @@ package ro.code4.deurgenta.ui.splashscreen
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.helper.setToRotateIndefinitely
 import ro.code4.deurgenta.helper.startActivityWithoutTrace

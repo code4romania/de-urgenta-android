@@ -9,12 +9,12 @@ import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.koin.android.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import ro.code4.deurgenta.R
 
 class AddBackpackDialogFragment : DialogFragment() {
 
-    private val viewModel: BackpacksViewModel by sharedViewModel(from = { requireParentFragment() })
+    private val viewModel: BackpacksViewModel by sharedViewModel()
     private lateinit var inputView: EditText
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

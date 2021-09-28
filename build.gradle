@@ -4,7 +4,7 @@ buildscript {
     ext {
         kotlinVersion = "1.5.31"
         retrofitVersion = "2.9.0"
-        koinVersion = "2.0.1"
+        koinVersion = "3.1.2"
         roomVersion = "2.3.0"
         navigationVersion = "2.4.0-alpha09"
         firebaseVersion = "28.3.1"

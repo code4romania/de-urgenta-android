@@ -4,7 +4,7 @@ import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
-import org.koin.core.inject
+import org.koin.core.component.inject
 import ro.code4.deurgenta.data.model.User
 import ro.code4.deurgenta.helper.*
 import ro.code4.deurgenta.repositories.Repository

@@ -2,7 +2,7 @@ package ro.code4.deurgenta.ui.onboarding
 
 import android.app.Application
 import android.content.SharedPreferences
-import org.koin.core.inject
+import org.koin.core.component.inject
 import ro.code4.deurgenta.helper.completedOnboarding
 import ro.code4.deurgenta.ui.base.BaseViewModel
 

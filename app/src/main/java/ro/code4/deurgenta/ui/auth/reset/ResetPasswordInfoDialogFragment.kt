@@ -12,7 +12,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.fragment.app.DialogFragment
 import androidx.transition.TransitionManager
-import org.koin.android.viewmodel.ext.android.getViewModel
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.helper.Status.Error
 import ro.code4.deurgenta.helper.Status.Loading
