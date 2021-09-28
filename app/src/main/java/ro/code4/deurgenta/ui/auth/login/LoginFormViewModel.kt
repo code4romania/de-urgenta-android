@@ -1,11 +1,9 @@
 package ro.code4.deurgenta.ui.auth.login
 
 import android.content.SharedPreferences
-import android.util.Log
 import androidx.lifecycle.LiveData
-import com.google.gson.Gson
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
 import org.koin.core.inject
 import ro.code4.deurgenta.data.model.User
 import ro.code4.deurgenta.helper.*

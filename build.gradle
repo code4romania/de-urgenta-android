@@ -9,6 +9,8 @@ buildscript {
         navigationVersion = "2.4.0-alpha09"
         firebaseVersion = "28.3.1"
         viewBindingDelegateVersion = "1.0.0"
+        rxJavaVersion = "3.1.1"
+        rxAndroidVersion = "3.0.0"
     }
 
     repositories {

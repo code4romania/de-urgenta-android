@@ -4,8 +4,7 @@ import android.annotation.SuppressLint
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import ro.code4.deurgenta.data.model.MapAddress
 import ro.code4.deurgenta.repositories.Repository
 import ro.code4.deurgenta.ui.base.BaseViewModel

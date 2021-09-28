@@ -1,6 +1,6 @@
 package ro.code4.deurgenta.repositories
 
-import io.reactivex.Completable
+import io.reactivex.rxjava3.core.Completable
 import ro.code4.deurgenta.data.model.requests.ResetPasswordRequest
 import ro.code4.deurgenta.services.AccountService
 

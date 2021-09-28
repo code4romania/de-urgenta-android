@@ -5,7 +5,7 @@ import androidx.databinding.Observable.OnPropertyChangedCallback
 import androidx.databinding.PropertyChangeRegistry
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 import org.koin.core.KoinComponent
 import ro.code4.deurgenta.helper.SingleLiveEvent
 
