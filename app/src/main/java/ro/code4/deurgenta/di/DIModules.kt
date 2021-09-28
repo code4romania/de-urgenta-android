@@ -1,4 +1,4 @@
-package ro.code4.deurgenta.modules
+package ro.code4.deurgenta.di
 
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
@@ -14,9 +14,9 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
-import ro.code4.deurgenta.App
 import ro.code4.deurgenta.BuildConfig.API_URL
 import ro.code4.deurgenta.BuildConfig.DEBUG
+import ro.code4.deurgenta.analytics.AnalyticsService
 import ro.code4.deurgenta.data.AppDatabase
 import ro.code4.deurgenta.helper.SchedulersProvider
 import ro.code4.deurgenta.helper.SchedulersProviderImpl
@@ -25,8 +25,7 @@ import ro.code4.deurgenta.repositories.AccountRepository
 import ro.code4.deurgenta.repositories.AccountRepositoryImpl
 import ro.code4.deurgenta.repositories.Repository
 import ro.code4.deurgenta.services.AccountService
-import ro.code4.deurgenta.services.AnalyticsService
-import ro.code4.deurgenta.services.FirebaseAnalyticsService
+import ro.code4.deurgenta.analytics.FirebaseAnalyticsService
 import ro.code4.deurgenta.ui.address.ConfigureAddressViewModel
 import ro.code4.deurgenta.ui.address.SaveAddressViewModel
 import ro.code4.deurgenta.ui.auth.AuthViewModel
@@ -49,10 +48,6 @@ import java.util.concurrent.TimeUnit
 val gson: Gson by lazy {
     val gsonBuilder = GsonBuilder()
     gsonBuilder.excludeFieldsWithoutExposeAnnotation().create()
-}
-
-val appModule = module {
-    single { App.instance }
 }
 
 val apiModule = module {
@@ -94,7 +89,7 @@ val apiModule = module {
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create(gson))
-            .client(get<OkHttpClient>())
+            .client(get())
             .build()
     }
     single<AccountService> { get<Retrofit>().create(AccountService::class.java) }

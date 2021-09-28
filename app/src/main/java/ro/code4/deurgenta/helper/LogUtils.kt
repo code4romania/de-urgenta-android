@@ -17,13 +17,15 @@ fun Any.logI(message: String, tag: String? = null) = Log.i(buildTag(this::class.
 
 fun Any.logW(message: String, tag: String? = null) = Log.w(buildTag(this::class.java.name, tag), message)
 
-fun Any.logW(message: String, error: Throwable, tag: String? = null) = Log.w(buildTag(this::class.java.name, tag), message, error)
+fun Any.logW(message: String, error: Throwable, tag: String? = null) =
+    Log.w(buildTag(this::class.java.name, tag), message, error)
 
 fun Any.logE(message: String, tag: String? = null) = Log.e(buildTag(this::class.java.name, tag), message)
 
-fun Any.logE(message: String, error: Throwable, tag: String? = null) = Log.e(buildTag(this::class.java.name, tag), message, error)
+fun Any.logE(message: String, error: Throwable, tag: String? = null) =
+    Log.e(buildTag(this::class.java.name, tag), message, error)
 
 private fun buildTag(className: String?, tag: String?): String = when {
-    !className.isNullOrEmpty() -> className!!
+    !className.isNullOrEmpty() -> className
     else -> tag ?: "ro.code4.deurgenta.default"
 }
