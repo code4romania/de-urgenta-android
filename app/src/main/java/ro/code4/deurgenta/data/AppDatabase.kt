@@ -8,15 +8,20 @@ import androidx.room.TypeConverters
 import ro.code4.deurgenta.data.dao.AddressDao
 import ro.code4.deurgenta.data.dao.BackpackDao
 import ro.code4.deurgenta.data.dao.CoursesDao
+import ro.code4.deurgenta.data.dao.GroupDao
 import ro.code4.deurgenta.data.helper.DateConverter
 import ro.code4.deurgenta.data.model.Backpack
 import ro.code4.deurgenta.data.model.BackpackItem
 import ro.code4.deurgenta.data.model.BackpackItemConverters
 import ro.code4.deurgenta.data.model.Course
+import ro.code4.deurgenta.data.model.Group
 import ro.code4.deurgenta.data.model.MapAddress
 
 @Database(
-    entities = [Backpack::class, BackpackItem::class, Course::class, MapAddress::class], version = 1
+    entities = [
+        Backpack::class, BackpackItem::class, Course::class, MapAddress::class, Group::class
+    ],
+    version = 2
 )
 @TypeConverters(
     DateConverter::class,
@@ -29,6 +34,8 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun backpackDao(): BackpackDao
 
     abstract fun coursesDao(): CoursesDao
+
+    abstract fun groupDao(): GroupDao
 
     companion object {
         @JvmStatic
