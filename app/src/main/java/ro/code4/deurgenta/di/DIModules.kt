@@ -14,18 +14,21 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
+import retrofit2.create
 import ro.code4.deurgenta.BuildConfig.API_URL
 import ro.code4.deurgenta.BuildConfig.DEBUG
 import ro.code4.deurgenta.analytics.AnalyticsService
+import ro.code4.deurgenta.analytics.FirebaseAnalyticsService
 import ro.code4.deurgenta.data.AppDatabase
 import ro.code4.deurgenta.helper.SchedulersProvider
 import ro.code4.deurgenta.helper.SchedulersProviderImpl
 import ro.code4.deurgenta.helper.getToken
 import ro.code4.deurgenta.repositories.AccountRepository
 import ro.code4.deurgenta.repositories.AccountRepositoryImpl
+import ro.code4.deurgenta.repositories.GroupRepository
 import ro.code4.deurgenta.repositories.Repository
 import ro.code4.deurgenta.services.AccountService
-import ro.code4.deurgenta.analytics.FirebaseAnalyticsService
+import ro.code4.deurgenta.services.GroupService
 import ro.code4.deurgenta.ui.address.ConfigureAddressViewModel
 import ro.code4.deurgenta.ui.address.SaveAddressViewModel
 import ro.code4.deurgenta.ui.auth.AuthViewModel
@@ -38,6 +41,7 @@ import ro.code4.deurgenta.ui.backpack.main.BackpackDetailsViewModel
 import ro.code4.deurgenta.ui.backpack.main.BackpacksViewModel
 import ro.code4.deurgenta.ui.courses.CoursesFilterViewModel
 import ro.code4.deurgenta.ui.courses.CoursesViewModel
+import ro.code4.deurgenta.ui.group.CreateGroupViewModel
 import ro.code4.deurgenta.ui.home.HomeViewModel
 import ro.code4.deurgenta.ui.main.MainViewModel
 import ro.code4.deurgenta.ui.onboarding.OnboardingViewModel
@@ -93,10 +97,12 @@ val apiModule = module {
             .build()
     }
     single<AccountService> { get<Retrofit>().create(AccountService::class.java) }
+    single<GroupService> { get<Retrofit>().create() }
     single {
         Repository()
     }
     single<AccountRepository> { AccountRepositoryImpl(get()) }
+    single { GroupRepository(get(), get<AppDatabase>().groupDao()) }
     single<SchedulersProvider> { SchedulersProviderImpl() }
 }
 
@@ -122,6 +128,7 @@ val viewModelsModule = module {
     viewModel { HomeViewModel() }
     viewModel { CoursesFilterViewModel(get()) }
     viewModel { CoursesViewModel(get()) }
+    viewModel { CreateGroupViewModel(get()) }
 }
 
 val analyticsModule = module {

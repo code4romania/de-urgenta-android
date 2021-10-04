@@ -6,6 +6,7 @@ import androidx.databinding.PropertyChangeRegistry
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
 import org.koin.core.component.KoinComponent
 import ro.code4.deurgenta.helper.SingleLiveEvent
 
@@ -42,4 +43,6 @@ abstract class BaseViewModel : ViewModel(), KoinComponent, Observable {
         }
         mCallbacks!!.remove(callback)
     }
+
+    protected fun Disposable.connect() = disposables.add(this)
 }
