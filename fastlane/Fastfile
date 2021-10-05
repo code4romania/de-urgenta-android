@@ -26,6 +26,18 @@ platform :android do
     gradle(task: "assemble", build_type:"Debug")
   end
 
+  desc "Build & deploy app for internal testing in Firebase"
+  lane :dev_firebase do
+    gradle(task: "clean")
+    gradle(task: "assemble", build_type:"Debug")
+    firebase_app_distribution(
+      app: ENV["FIREBASE_APP_ID"],
+      firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"],
+      groups: "android_test",
+      release_notes: "#{last_git_commit[:message]}"
+      )
+  end
+
   desc "Submit a new Prod Build to Beta in Google Play"
   lane :beta do
     gradle(task: "clean")

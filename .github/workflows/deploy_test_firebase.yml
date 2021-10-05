@@ -1,0 +1,28 @@
+name: Distribute Test Version to Firebase
+
+on:
+  push:
+    branches: [ develop ]
+
+jobs:
+  distribute:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+          token: ${{ secrets.ACTION_TOKEN }}
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.7'
+      - name: install firebase tool
+        run: |
+          yarn global add firebase-tools
+      - name: setup fastlane
+        run: gem install bundler && bundle install
+      - name: Upload to Firebase
+        run: bundle exec fastlane android dev_firebase
+        env:
+          FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
+          FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}

@@ -9,7 +9,7 @@ app/app.iml
 
 build/
 
-Vote Monitor.iml
+*.iml
 
 google-services.json
 

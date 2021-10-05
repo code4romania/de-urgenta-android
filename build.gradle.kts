@@ -11,8 +11,19 @@ allprojects {
     }
 }
 
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath ("com.google.firebase:firebase-appdistribution-gradle:2.2.0")
+    }
+}
+
 tasks {
     register<Delete>("clean") {
         delete(rootProject.buildDir)
     }
 }
+
