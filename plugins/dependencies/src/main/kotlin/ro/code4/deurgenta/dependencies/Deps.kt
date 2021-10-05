@@ -1,0 +1,97 @@
+package ro.code4.deurgenta.dependencies
+
+private object Versions {
+    const val kotlin = "1.5.31"
+
+    // Plugins
+    const val versionsPlugin = "0.39.0"
+    const val androidTools = "7.0.2"
+    const val googleServices = "4.3.10"
+    const val crashlytics = "2.7.1"
+    const val sonarqube = "3.0"
+
+    // AndroidX libraries
+    const val room = "2.3.0"
+    const val navigation = "2.4.0-alpha09"
+    const val appcompat = "1.3.1"
+    const val annotations = "1.2.0"
+    const val prefsKtx = "1.1.1"
+    const val coreKtx = "1.6.0"
+    const val constraintLayout = "2.1.1"
+    const val lifecycleExtensions = "2.2.0"
+    const val viewpager2 = "1.0.0"
+    const val fragmentTesting = "1.4.0-alpha09"
+
+    // Third party Libraries
+    const val desugar = "1.1.5"
+    const val retrofit = "2.9.0"
+    const val koin = "3.1.2"
+    const val firebaseBom = "28.3.1"
+    const val viewBindingDelegate = "1.0.0"
+    const val rxJava = "3.1.1"
+    const val rxAndroid = "3.0.0"
+    const val googlePlayServices = "18.0.0"
+    const val material = "1.5.0-alpha03"
+    const val circleindicator = "2.1.6"
+    const val okhttp = "4.9.0"
+
+    // Test Libraries
+    const val junit = "4.13.2"
+    const val mockk = "1.11.0"
+    const val testCore = "2.1.0"
+    const val testExtJunit = "1.1.3"
+    const val espressoCore = "3.4.0"
+}
+
+object Libs {
+    val googlePlayServicesLocation = "com.google.android.gms:play-services-location:${Versions.googlePlayServices}"
+    val desugar = "com.android.tools:desugar_jdk_libs:${Versions.desugar}"
+    val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
+    val annotations = "androidx.annotation:annotation:${Versions.annotations}"
+    val prefsKtx = "androidx.preference:preference-ktx:${Versions.prefsKtx}"
+    val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
+    val material = "com.google.android.material:material:${Versions.material}"
+    val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+    val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycleExtensions}"
+    val rxJava = "io.reactivex.rxjava3:rxjava:${Versions.rxJava}"
+    val rxAndroid = "io.reactivex.rxjava3:rxandroid:${Versions.rxAndroid}"
+    val circleindicator = "me.relex:circleindicator:${Versions.circleindicator}"
+    val viewpager2 = "androidx.viewpager2:viewpager2:${Versions.viewpager2}"
+    val fragmentTesting = "androidx.fragment:fragment-testing:${Versions.fragmentTesting}"
+    val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+    val navigationUiKtx = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
+    val viewBindingDelegate = "com.github.Zhuinden:fragmentviewbindingdelegate-kt:${Versions.viewBindingDelegate}"
+    val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
+    val okhttpLogging = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
+    val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    val retrofitGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    val retrofitRxjava3 = "com.squareup.retrofit2:adapter-rxjava3:${Versions.retrofit}"
+    val retrofitScalars = "com.squareup.retrofit2:converter-scalars:${Versions.retrofit}"
+    val firebaseBom = "com.google.firebase:firebase-bom:${Versions.firebaseBom}"
+    val firebaseAnalytics = "com.google.firebase:firebase-analytics-ktx"
+    val firebaseCrashlytics = "com.google.firebase:firebase-crashlytics-ktx"
+    val koinCore = "io.insert-koin:koin-core:${Versions.koin}"
+    val koinAndroid = "io.insert-koin:koin-android:${Versions.koin}"
+    val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
+    val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
+    val roomKtx = "androidx.room:room-ktx:${Versions.room}"
+    val roomRxjava3 = "androidx.room:room-rxjava3:${Versions.room}"
+    val junit = "junit:junit:${Versions.junit}"
+    val mockk = "io.mockk:mockk:${Versions.mockk}"
+    val testCore = "androidx.arch.core:core-testing:${Versions.testCore}"
+    val testExtJunit = "androidx.test.ext:junit-ktx:${Versions.testExtJunit}"
+    val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
+    val roomTest = "androidx.room:room-testing:${Versions.room}"
+    val koinTest = "io.insert-koin:koin-test:${Versions.koin}"
+    val mockkAndroid = "io.mockk:mockk-android:${Versions.mockk}"
+}
+
+object Plugins {
+    const val androidTools = "com.android.tools.build:gradle:${Versions.androidTools}"
+    const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
+    const val versions = "com.github.ben-manes:gradle-versions-plugin:${Versions.versionsPlugin}"
+    const val googleServices = "com.google.gms:google-services:${Versions.googleServices}"
+    const val crashlytics = "com.google.firebase:firebase-crashlytics-gradle:${Versions.crashlytics}"
+    const val sonarqube = "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:${Versions.sonarqube}"
+    const val navigationSafeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}"
+}
