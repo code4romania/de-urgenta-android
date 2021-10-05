@@ -11,6 +11,7 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
 // TODO: Uncomment this to enable Firebase Crashlytics
 //     id("com.google.firebase.crashlytics")
+    id("com.google.firebase.appdistribution")
 }
 
 val roomSchemaDir = "$projectDir/schemas"
@@ -105,6 +106,10 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+
+    packagingOptions {
+        exclude("META-INF/DEPENDENCIES")
     }
 }
 
