@@ -1,7 +1,7 @@
 package ro.code4.deurgenta.ui.main
 
 import android.os.Bundle
-import android.widget.LinearLayout
+import android.widget.Button
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
@@ -61,7 +61,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
             val handled = onNavDestinationSelected(item, navController)
 
             if (handled) {
-                drawerLayout.closeDrawer(navView)
+                drawerLayout.closeDrawer(findViewById(R.id.side_navigation))
                 true
             } else {
                 when (item.itemId) {
@@ -74,7 +74,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
             }
         }
 
-        findViewById<LinearLayout>(R.id.nav_footer).setOnClickListener {
+        findViewById<Button>(R.id.nav_footer_donate_button).setOnClickListener {
             takeUserTo(BuildConfig.CODE4RO_DONATE_URL)
         }
 

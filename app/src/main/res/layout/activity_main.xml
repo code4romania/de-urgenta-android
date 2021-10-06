@@ -13,25 +13,67 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navView"
-        style="@style/NavigationView"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/side_navigation"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:layout_marginTop="@dimen/margin"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/main_menu">
+        android:background="@color/colorPrimaryLight"
+        android:fitsSystemWindows="true">
 
-
-        <include
-            android:id="@+id/nav_footer"
-            layout="@layout/nav_footer_main"
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navView"
+            style="@style/NavigationView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:gravity="center" />
-    </com.google.android.material.navigation.NavigationView>
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/small_margin"
+            app:elevation="0dp"
+            app:headerLayout="@layout/nav_header_main"
+            app:layout_constraintBottom_toTopOf="@+id/nav_footer_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:menu="@menu/main_menu" />
 
+        <TextView
+            android:id="@+id/nav_footer_description"
+            style="@style/Text.Default"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_marginEnd="@dimen/margin"
+            android:layout_marginBottom="@dimen/small_margin"
+            android:text="@string/nav_menu_footer_description"
+            app:layout_constraintBottom_toTopOf="@id/nav_footer_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/nav_footer_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/medium_icon_size"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_marginEnd="@dimen/margin"
+            android:layout_marginBottom="@dimen/small_margin"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/accessibility_logo"
+            android:src="@drawable/logo_code4"
+            app:layout_constraintBottom_toTopOf="@id/nav_footer_donate_button"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/nav_footer_donate_button"
+            style="@style/Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_marginEnd="@dimen/margin"
+            android:layout_marginBottom="@dimen/small_margin"
+            android:backgroundTint="@color/green_400"
+            android:text="@string/nav_menu_footer_donate_button_title"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.drawerlayout.widget.DrawerLayout>
