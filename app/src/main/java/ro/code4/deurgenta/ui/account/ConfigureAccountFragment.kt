@@ -8,11 +8,14 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import ro.code4.deurgenta.BuildConfig
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.data.model.MapAddressType
 import ro.code4.deurgenta.databinding.FragmentConfigureAccountBinding
+import ro.code4.deurgenta.helper.startActivityWithoutTrace
 import ro.code4.deurgenta.interfaces.ClickButtonCallback
 import ro.code4.deurgenta.ui.base.ViewModelFragment
+import ro.code4.deurgenta.ui.main.MainActivity
 
 class ConfigureAccountFragment : ViewModelFragment<ConfigureAccountViewModel>() {
 
@@ -55,6 +58,13 @@ class ConfigureAccountFragment : ViewModelFragment<ConfigureAccountViewModel>() 
 
         viewBinding.callbackBackpack = ClickButtonCallback {
             findNavController().navigate(R.id.action_configure_backpack)
+        }
+
+        if (BuildConfig.DEBUG) {
+            // TODO only for testing, to be removed when onboarding implementation is complete
+            viewBinding.skipOnboarding.setOnClickListener {
+                startActivityWithoutTrace(MainActivity::class.java)
+            }
         }
     }
 }

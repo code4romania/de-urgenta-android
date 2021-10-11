@@ -120,6 +120,15 @@
                     app:drawableStartCompat="@drawable/ic_plus" />
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/skip_onboarding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="@string/skip_onboarding"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>
