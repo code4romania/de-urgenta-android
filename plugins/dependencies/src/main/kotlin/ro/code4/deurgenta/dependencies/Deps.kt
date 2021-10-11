@@ -9,6 +9,7 @@ private object Versions {
     const val googleServices = "4.3.10"
     const val crashlytics = "2.7.1"
     const val sonarqube = "3.0"
+    const val firebaseAppDistrib = "2.2.0"
 
     // AndroidX libraries
     const val room = "2.3.0"
@@ -94,4 +95,5 @@ object Plugins {
     const val crashlytics = "com.google.firebase:firebase-crashlytics-gradle:${Versions.crashlytics}"
     const val sonarqube = "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:${Versions.sonarqube}"
     const val navigationSafeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}"
+    const val firebaseAppDistribution = "com.google.firebase:firebase-appdistribution-gradle:${Versions.firebaseAppDistrib}"
 }
