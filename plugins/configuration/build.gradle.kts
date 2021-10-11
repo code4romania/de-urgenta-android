@@ -24,6 +24,7 @@ dependencies {
     implementation(Plugins.crashlytics)
     implementation(Plugins.sonarqube)
     implementation(Plugins.navigationSafeArgs)
+    implementation (Plugins.firebaseAppDistribution)
     implementation("ro.code4.deurgenta.plugins:dependencies:SNAPSHOT")
 }
 

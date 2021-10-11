@@ -16,9 +16,6 @@ buildscript {
         google()
         mavenCentral()
     }
-    dependencies {
-        classpath ("com.google.firebase:firebase-appdistribution-gradle:2.2.0")
-    }
 }
 
 tasks {
