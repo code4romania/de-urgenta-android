@@ -224,4 +224,6 @@
     <string name="terms_conditions">Terms and conditions</string>
     <string name="report_problem">Report a problem</string>
     <string name="delete_account">Delete your account</string>
+
+    <string name="skip_onboarding">skip onboarding</string>
 </resources>
