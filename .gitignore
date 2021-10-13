@@ -11,7 +11,7 @@ build/
 
 *.iml
 
-google-services.json
+app/google-services.json
 
 # fastlane
 fastlane/report.xml

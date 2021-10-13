@@ -9,8 +9,7 @@ plugins {
     id("configuration")
     id("org.sonarqube")
     id("androidx.navigation.safeargs.kotlin")
-// TODO: Uncomment this to enable Firebase Crashlytics
-//     id("com.google.firebase.crashlytics")
+    id("com.google.firebase.crashlytics")
     id("com.google.firebase.appdistribution")
 }
 
@@ -166,5 +165,4 @@ dependencies {
     androidTestImplementation(Libs.testCore)
 }
 
-// TODO: Uncomment this to enable FirebaseAnalytics and Crashlytics
-// apply(plugin = "com.google.gms.google-services")
+apply(plugin = "com.google.gms.google-services")
