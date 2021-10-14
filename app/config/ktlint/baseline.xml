@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<baseline version="1.0">
+	<file name="src/androidTest/java/ro/code4/deurgenta/ui/auth/login/ResetPasswordFragmentTest.kt">
+		<error line="3" column="1" source="import-ordering" />
+		<error line="131" column="1" source="indent" />
+		<error line="150" column="1" source="indent" />
+		<error line="173" column="1" source="indent" />
+		<error line="193" column="1" source="indent" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/App.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="7" column="1" source="no-wildcard-imports" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/analytics/AnalyticsService.kt">
+		<error line="8" column="1" source="no-consecutive-blank-lines" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/analytics/Event.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/analytics/FirebaseAnalyticsService.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/data/AppDatabase.kt">
+		<error line="54" column="29" source="comment-spacing" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/data/dao/AddressDao.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/data/dao/BackpackDao.kt">
+		<error line="3" column="1" source="no-wildcard-imports" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/data/dao/CoursesDao.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/data/helper/DateConverter.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="4" column="1" source="no-wildcard-imports" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/data/model/BackpackItem.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="4" column="1" source="no-wildcard-imports" />
+		<error line="9" column="41" source="indent" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/data/model/BackpackItemType.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/data/model/Course.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="4" column="1" source="no-wildcard-imports" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/data/model/MapAddressType.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/data/model/Register.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/data/model/requests/ResetPasswordRequest.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/helper/BindingAdapters.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/helper/LogUtils.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/helper/MapViewUtils.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="9" column="1" source="no-wildcard-imports" />
+		<error line="10" column="1" source="no-wildcard-imports" />
+		<error line="12" column="1" source="no-wildcard-imports" />
+		<error line="13" column="1" source="no-wildcard-imports" />
+		<error line="73" column="74" source="no-semi" />
+		<error line="118" column="1" source="no-consecutive-blank-lines" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/helper/PermissionManager.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="65" column="1" source="no-blank-line-before-rbrace" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/helper/PermissionUiUtils.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="25" column="1" source="no-blank-line-before-rbrace" />
+		<error line="26" column="13" source="indent" />
+		<error line="36" column="13" source="indent" />
+		<error line="37" column="1" source="no-blank-line-before-rbrace" />
+		<error line="51" column="1" source="no-blank-line-before-rbrace" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/helper/PreferenceManager.kt">
+		<error line="40" column="1" source="no-consecutive-blank-lines" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/helper/Resource.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="3" column="1" source="no-wildcard-imports" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/helper/Result.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="11" column="1" source="no-consecutive-blank-lines" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/helper/SchedulersProvider.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/helper/SingleLiveEvent.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="11" column="1" source="no-consecutive-blank-lines" />
+		<error line="38" column="23" source="indent" />
+		<error line="38" column="29" source="indent" />
+		<error line="42" column="9" source="indent" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/helper/Utils.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="44" column="28" source="parameter-list-wrapping" />
+		<error line="71" column="13" source="comment-spacing" />
+		<error line="107" column="54" source="indent" />
+		<error line="108" column="1" source="indent" />
+		<error line="108" column="46" source="indent" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/interfaces/ClickButtonCallback.kt">
+		<error line="3" column="1" source="no-consecutive-blank-lines" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/interfaces/ConfigureCallback.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/interfaces/ExcludeFromCodeCoverage.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/interfaces/LocateMeCallback.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="3" column="1" source="no-consecutive-blank-lines" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/interfaces/SaveProgressCallback.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="3" column="1" source="no-consecutive-blank-lines" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/repositories/AccountRepository.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/repositories/Repository.kt">
+		<error line="13" column="1" source="no-wildcard-imports" />
+		<error line="20" column="1" source="no-wildcard-imports" />
+		<error line="51" column="56" source="indent" />
+		<error line="52" column="1" source="indent" />
+		<error line="52" column="13" source="curly-spacing" />
+		<error line="53" column="1" source="indent" />
+		<error line="54" column="1" source="indent" />
+		<error line="55" column="1" source="indent" />
+		<error line="56" column="1" source="indent" />
+		<error line="57" column="1" source="indent" />
+		<error line="58" column="1" source="indent" />
+		<error line="59" column="1" source="indent" />
+		<error line="60" column="1" source="indent" />
+		<error line="61" column="1" source="indent" />
+		<error line="62" column="1" source="indent" />
+		<error line="63" column="1" source="indent" />
+		<error line="64" column="1" source="indent" />
+		<error line="65" column="1" source="indent" />
+		<error line="125" column="9" source="comment-spacing" />
+		<error line="132" column="32" source="indent" />
+		<error line="135" column="9" source="indent" />
+		<error line="140" column="1" source="no-consecutive-blank-lines" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/repositories/TempCourses.kt">
+		<error line="16" column="1" source="indent" />
+		<error line="27" column="1" source="indent" />
+		<error line="38" column="1" source="indent" />
+		<error line="49" column="1" source="indent" />
+		<error line="60" column="1" source="indent" />
+		<error line="71" column="1" source="indent" />
+		<error line="82" column="1" source="indent" />
+		<error line="93" column="1" source="indent" />
+		<error line="104" column="1" source="indent" />
+		<error line="115" column="1" source="indent" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/about/AboutFragment.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/account/ConfigureAccountViewModel.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/address/ConfigureAddressFragment.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="28" column="1" source="no-wildcard-imports" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/address/ConfigureAddressViewModel.kt">
+		<error line="3" column="1" source="import-ordering" />
+		<error line="34" column="1" source="no-blank-line-before-rbrace" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/address/SaveAddressFragment.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/address/SaveAddressViewModel.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/auth/AuthActivity.kt">
+		<error line="102" column="34" source="no-semi" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/auth/AuthViewModel.kt">
+		<error line="35" column="1" source="no-blank-line-before-rbrace" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/auth/login/LoginFormFragment.kt">
+		<error line="47" column="38" source="indent" />
+		<error line="47" column="57" source="indent" />
+		<error line="61" column="9" source="indent" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/auth/login/LoginFormViewModel.kt">
+		<error line="9" column="1" source="no-wildcard-imports" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/auth/register/RegisterCompletedFragment.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/auth/register/RegisterFragment.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="116" column="49" source="no-semi" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/auth/register/RegisterViewModel.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="3" column="1" source="import-ordering" />
+		<error line="27" column="1" source="no-consecutive-blank-lines" />
+		<error line="34" column="1" source="no-consecutive-blank-lines" />
+		<error line="69" column="1" source="no-blank-line-before-rbrace" />
+		<error line="87" column="1" source="indent" />
+		<error line="88" column="1" source="indent" />
+		<error line="89" column="1" source="indent" />
+		<error line="90" column="1" source="indent" />
+		<error line="143" column="1" source="no-blank-line-before-rbrace" />
+		<error line="144" column="1" source="no-consecutive-blank-lines" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/auth/reset/FieldValidator.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/auth/reset/ResetPasswordFragment.kt">
+		<error line="93" column="1" source="no-consecutive-blank-lines" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/auth/reset/ResetPasswordInfoDialogFragment.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/backpack/edit/EditBackpackItemViewModel.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="9" column="1" source="no-wildcard-imports" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/backpack/items/BackpackItemsAdapter.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="16" column="1" source="no-consecutive-blank-lines" />
+		<error line="41" column="1" source="no-blank-line-before-rbrace" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/backpack/items/BackpackItemsFragment.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/backpack/items/BackpackItemsUIModel.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/backpack/items/BackpackItemsViewModel.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/backpack/main/AddBackpackDialogFragment.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="24" column="1" source="indent" />
+		<error line="25" column="1" source="indent" />
+		<error line="26" column="1" source="indent" />
+		<error line="27" column="1" source="indent" />
+		<error line="29" column="1" source="indent" />
+		<error line="30" column="1" source="indent" />
+		<error line="31" column="1" source="indent" />
+		<error line="33" column="1" source="indent" />
+		<error line="34" column="1" source="indent" />
+		<error line="35" column="1" source="indent" />
+		<error line="36" column="1" source="indent" />
+		<error line="37" column="1" source="indent" />
+		<error line="38" column="1" source="indent" />
+		<error line="39" column="1" source="indent" />
+		<error line="40" column="1" source="indent" />
+		<error line="41" column="1" source="indent" />
+		<error line="42" column="1" source="indent" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/backpack/main/BackpackDetailsFragment.kt">
+		<error line="57" column="70" source="indent" />
+		<error line="74" column="1" source="no-consecutive-blank-lines" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/backpack/main/BackpackDetailsViewModel.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="8" column="31" source="colon-spacing" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/backpack/main/BackpacksAdapter.kt">
+		<error line="30" column="1" source="no-blank-line-before-rbrace" />
+		<error line="38" column="1" source="indent" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/backpack/main/BackpacksViewModel.kt">
+		<error line="25" column="1" source="indent" />
+		<error line="44" column="1" source="no-blank-line-before-rbrace" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/base/BaseActivity.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="14" column="53" source="indent" />
+		<error line="14" column="74" source="indent" />
+		<error line="24" column="42" source="indent" />
+		<error line="24" column="47" source="indent" />
+		<error line="26" column="9" source="indent" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/base/BaseAnalyticsActivity.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="10" column="9" source="comment-spacing" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/base/BaseFragment.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/base/BaseViewModel.kt">
+		<error line="28" column="1" source="no-consecutive-blank-lines" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/base/PermissionsViewModelFragment.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="10" column="69" source="indent" />
+		<error line="11" column="42" source="indent" />
+		<error line="47" column="1" source="indent" />
+		<error line="47" column="21" source="chain-wrapping" />
+		<error line="55" column="1" source="indent" />
+		<error line="55" column="25" source="chain-wrapping" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/base/ViewModelFragment.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="10" column="60" source="indent" />
+		<error line="10" column="85" source="indent" />
+		<error line="13" column="5" source="comment-spacing" />
+		<error line="18" column="9" source="comment-spacing" />
+		<error line="39" column="9" source="comment-spacing" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/base/ViewModelSetter.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/courses/CourseDetailsFragment.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/courses/CoursesAdapter.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="30" column="1" source="no-blank-line-before-rbrace" />
+		<error line="60" column="1" source="no-blank-line-before-rbrace" />
+		<error line="71" column="1" source="no-blank-line-before-rbrace" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/courses/CoursesFilterViewModel.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/courses/CoursesFilteringFragment.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="54" column="65" source="indent" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/courses/CoursesInfoFragment.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/courses/CoursesListingFragment.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/home/HomeFragment.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="7" column="19" source="colon-spacing" />
+		<error line="11" column="46" source="no-semi" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/home/HomeViewModel.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/main/MainActivity.kt">
+		<error line="50" column="15" source="indent" />
+		<error line="81" column="46" source="indent" />
+		<error line="81" column="51" source="indent" />
+		<error line="83" column="9" source="indent" />
+		<error line="103" column="1" source="no-consecutive-blank-lines" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/main/MainViewModel.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="21" column="1" source="no-blank-line-before-rbrace" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/onboarding/OnboardingActivity.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/onboarding/OnboardingViewModel.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/settings/SettingsFragment.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/splashscreen/SplashScreenActivity.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/main/java/ro/code4/deurgenta/ui/splashscreen/SplashScreenViewModel.kt">
+		<error line="5" column="1" source="no-wildcard-imports" />
+	</file>
+	<file name="src/sharedTest/java/ro/code4/deurgenta/utils/TestSchedulersProvider.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="1" column="1" source="final-newline" />
+	</file>
+	<file name="src/test/java/ro/code4/deurgenta/repositories/AccountRepositoryTest.kt">
+		<error line="1" column="1" source="final-newline" />
+		<error line="3" column="1" source="import-ordering" />
+	</file>
+	<file name="src/test/java/ro/code4/deurgenta/ui/auth/reset/ResetPasswordViewModelTest.kt">
+		<error line="3" column="1" source="import-ordering" />
+	</file>
+	<file name="src/test/java/ro/code4/deurgenta/utils/LiveDataUtils.kt">
+		<error line="1" column="1" source="final-newline" />
+	</file>
+</baseline>

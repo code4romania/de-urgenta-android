@@ -1,5 +1,5 @@
-import java.util.Properties
 import ro.code4.deurgenta.dependencies.Libs
+import java.util.Properties
 
 plugins {
     id("com.android.application")
@@ -11,6 +11,8 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
     id("com.google.firebase.crashlytics")
     id("com.google.firebase.appdistribution")
+    id("io.gitlab.arturbosch.detekt")
+    id("org.jlleitschuh.gradle.ktlint")
 }
 
 val roomSchemaDir = "$projectDir/schemas"
@@ -92,7 +94,8 @@ android {
     }
 
     lint {
-        baselineFile = file("lint-baseline.xml")
+        baselineFile = rootProject.file("app/lint-baseline.xml")
+        lintConfig = rootProject.file(".lint/config.xml")
         isWarningsAsErrors = true
         isAbortOnError = true
     }

@@ -1,0 +1,26 @@
+name: Validate
+
+on:
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Check gradle wrapper
+        uses: gradle/wrapper-validation-action@v1
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+      - name: Run Detekt
+        run: ./gradlew detekt
+      - name: Run Android Linter
+        run: ./gradlew lint --stacktrace
+      - name: Run Kotlin Linter
+        run: ./gradlew ktlintCheck
+      - name: Generate Dependency Updates
+        run: ./gradlew dU

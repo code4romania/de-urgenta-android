@@ -10,6 +10,8 @@ private object Versions {
     const val crashlytics = "2.7.1"
     const val sonarqube = "3.0"
     const val firebaseAppDistrib = "2.2.0"
+    const val detekt = "1.18.1"
+    const val ktlint = "10.2.0"
 
     // AndroidX libraries
     const val room = "2.3.0"
@@ -96,4 +98,6 @@ object Plugins {
     const val sonarqube = "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:${Versions.sonarqube}"
     const val navigationSafeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}"
     const val firebaseAppDistribution = "com.google.firebase:firebase-appdistribution-gradle:${Versions.firebaseAppDistrib}"
+    const val detekt = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${Versions.detekt}"
+    const val ktlint = "org.jlleitschuh.gradle:ktlint-gradle:${Versions.ktlint}"
 }
