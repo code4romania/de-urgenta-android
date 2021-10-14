@@ -1,5 +1,5 @@
-import java.util.Properties
 import ro.code4.deurgenta.dependencies.Libs
+import java.util.Properties
 
 plugins {
     id("com.android.application")
@@ -9,9 +9,10 @@ plugins {
     id("configuration")
     id("org.sonarqube")
     id("androidx.navigation.safeargs.kotlin")
-// TODO: Uncomment this to enable Firebase Crashlytics
-//     id("com.google.firebase.crashlytics")
+    id("com.google.firebase.crashlytics")
     id("com.google.firebase.appdistribution")
+    id("io.gitlab.arturbosch.detekt")
+    id("org.jlleitschuh.gradle.ktlint")
 }
 
 val roomSchemaDir = "$projectDir/schemas"
@@ -93,7 +94,8 @@ android {
     }
 
     lint {
-        baselineFile = file("lint-baseline.xml")
+        baselineFile = rootProject.file("app/lint-baseline.xml")
+        lintConfig = rootProject.file(".lint/config.xml")
         isWarningsAsErrors = true
         isAbortOnError = true
     }
@@ -166,5 +168,4 @@ dependencies {
     androidTestImplementation(Libs.testCore)
 }
 
-// TODO: Uncomment this to enable FirebaseAnalytics and Crashlytics
-// apply(plugin = "com.google.gms.google-services")
+apply(plugin = "com.google.gms.google-services")

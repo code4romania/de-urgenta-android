@@ -25,6 +25,8 @@ dependencies {
     implementation(Plugins.sonarqube)
     implementation(Plugins.navigationSafeArgs)
     implementation (Plugins.firebaseAppDistribution)
+    implementation (Plugins.detekt)
+    implementation (Plugins.ktlint)
     implementation("ro.code4.deurgenta.plugins:dependencies:SNAPSHOT")
 }
 

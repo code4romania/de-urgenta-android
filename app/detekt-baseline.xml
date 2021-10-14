@@ -1,0 +1,133 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>ComplexMethod:ResetPasswordFragment.kt$ResetPasswordFragment$override fun onViewCreated(view: View, savedInstanceState: Bundle?)</ID>
+    <ID>EmptyDefaultConstructor:ViewModelFragment.kt$ViewModelFragment$()</ID>
+    <ID>ForbiddenComment:GroupCreateInfoFragment.kt$GroupCreateInfoFragment$// TODO: process create states</ID>
+    <ID>ForbiddenComment:LoginFormFragment.kt$LoginFormFragment$// TODO: display some friendlier errors</ID>
+    <ID>ForbiddenComment:SplashScreenViewModel.kt$SplashScreenViewModel$// TODO: currently, there's no way to refresh the token</ID>
+    <ID>MagicNumber:BackpackItemType.kt$BackpackItemType.Documents$4</ID>
+    <ID>MagicNumber:BackpackItemType.kt$BackpackItemType.FirstAid$3</ID>
+    <ID>MagicNumber:BackpackItemType.kt$BackpackItemType.Misc$6</ID>
+    <ID>MagicNumber:BackpackItemType.kt$BackpackItemType.Survival$5</ID>
+    <ID>MagicNumber:DIModules.kt$10</ID>
+    <ID>MagicNumber:FieldValidator.kt$PasswordFieldValidator$8</ID>
+    <ID>MagicNumber:MapAddressType.kt$MapAddressType.GYM$4</ID>
+    <ID>MagicNumber:MapAddressType.kt$MapAddressType.OTHER$5</ID>
+    <ID>MagicNumber:MapAddressType.kt$MapAddressType.SCHOOL$3</ID>
+    <ID>MagicNumber:MapViewUtils.kt$MapViewUtils$10</ID>
+    <ID>MagicNumber:MapViewUtils.kt$MapViewUtils$1000</ID>
+    <ID>MagicNumber:MapViewUtils.kt$MapViewUtils$5</ID>
+    <ID>MagicNumber:RegisterViewModel.kt$RegisterViewModel$5</ID>
+    <ID>MagicNumber:TempCourses.kt$100</ID>
+    <ID>MagicNumber:TempCourses.kt$13</ID>
+    <ID>MagicNumber:TempCourses.kt$14</ID>
+    <ID>MagicNumber:TempCourses.kt$17</ID>
+    <ID>MagicNumber:TempCourses.kt$19</ID>
+    <ID>MagicNumber:TempCourses.kt$31</ID>
+    <ID>MagicNumber:TempCourses.kt$56</ID>
+    <ID>MagicNumber:TempCourses.kt$61</ID>
+    <ID>MagicNumber:TempCourses.kt$70</ID>
+    <ID>MagicNumber:Utils.kt$2000</ID>
+    <ID>MagicNumber:Utils.kt$360f</ID>
+    <ID>MaxLineLength:BackpackItemsAdapter.kt$&lt;no name provided&gt;$.</ID>
+    <ID>MaxLineLength:ConfigureAccountFragment.kt$ConfigureAccountFragment$val directions = ConfigureAccountFragmentDirections.actionConfigureAddress(mapAddressType = MapAddressType.HOME, R.string.add_home_address)</ID>
+    <ID>NewLineAtEndOfFile:AboutFragment.kt$ro.code4.deurgenta.ui.about.AboutFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:AccountRepository.kt$ro.code4.deurgenta.repositories.AccountRepository.kt</ID>
+    <ID>NewLineAtEndOfFile:AccountRepositoryTest.kt$ro.code4.deurgenta.repositories.AccountRepositoryTest.kt</ID>
+    <ID>NewLineAtEndOfFile:AddBackpackDialogFragment.kt$ro.code4.deurgenta.ui.backpack.main.AddBackpackDialogFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:AddressDao.kt$ro.code4.deurgenta.data.dao.AddressDao.kt</ID>
+    <ID>NewLineAtEndOfFile:App.kt$ro.code4.deurgenta.App.kt</ID>
+    <ID>NewLineAtEndOfFile:BackpackDetailsViewModel.kt$ro.code4.deurgenta.ui.backpack.main.BackpackDetailsViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:BackpackItem.kt$ro.code4.deurgenta.data.model.BackpackItem.kt</ID>
+    <ID>NewLineAtEndOfFile:BackpackItemType.kt$ro.code4.deurgenta.data.model.BackpackItemType.kt</ID>
+    <ID>NewLineAtEndOfFile:BackpackItemsAdapter.kt$ro.code4.deurgenta.ui.backpack.items.BackpackItemsAdapter.kt</ID>
+    <ID>NewLineAtEndOfFile:BackpackItemsFragment.kt$ro.code4.deurgenta.ui.backpack.items.BackpackItemsFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:BackpackItemsUIModel.kt$ro.code4.deurgenta.ui.backpack.items.BackpackItemsUIModel.kt</ID>
+    <ID>NewLineAtEndOfFile:BackpackItemsViewModel.kt$ro.code4.deurgenta.ui.backpack.items.BackpackItemsViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseActivity.kt$ro.code4.deurgenta.ui.base.BaseActivity.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseAnalyticsActivity.kt$ro.code4.deurgenta.ui.base.BaseAnalyticsActivity.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseFragment.kt$ro.code4.deurgenta.ui.base.BaseFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:BindingAdapters.kt$ro.code4.deurgenta.helper.BindingAdapters.kt</ID>
+    <ID>NewLineAtEndOfFile:ConfigureAccountViewModel.kt$ro.code4.deurgenta.ui.account.ConfigureAccountViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:ConfigureAddressFragment.kt$ro.code4.deurgenta.ui.address.ConfigureAddressFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:ConfigureCallback.kt$ro.code4.deurgenta.interfaces.ConfigureCallback.kt</ID>
+    <ID>NewLineAtEndOfFile:Course.kt$ro.code4.deurgenta.data.model.Course.kt</ID>
+    <ID>NewLineAtEndOfFile:CourseDetailsFragment.kt$ro.code4.deurgenta.ui.courses.CourseDetailsFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:CoursesAdapter.kt$ro.code4.deurgenta.ui.courses.CoursesAdapter.kt</ID>
+    <ID>NewLineAtEndOfFile:CoursesDao.kt$ro.code4.deurgenta.data.dao.CoursesDao.kt</ID>
+    <ID>NewLineAtEndOfFile:CoursesFilterViewModel.kt$ro.code4.deurgenta.ui.courses.CoursesFilterViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:CoursesFilteringFragment.kt$ro.code4.deurgenta.ui.courses.CoursesFilteringFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:CoursesInfoFragment.kt$ro.code4.deurgenta.ui.courses.CoursesInfoFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:CoursesListingFragment.kt$ro.code4.deurgenta.ui.courses.CoursesListingFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:DateConverter.kt$ro.code4.deurgenta.data.helper.DateConverter.kt</ID>
+    <ID>NewLineAtEndOfFile:EditBackpackItemViewModel.kt$ro.code4.deurgenta.ui.backpack.edit.EditBackpackItemViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:Event.kt$ro.code4.deurgenta.analytics.Event.kt</ID>
+    <ID>NewLineAtEndOfFile:ExcludeFromCodeCoverage.kt$ro.code4.deurgenta.interfaces.ExcludeFromCodeCoverage.kt</ID>
+    <ID>NewLineAtEndOfFile:FieldValidator.kt$ro.code4.deurgenta.ui.auth.reset.FieldValidator.kt</ID>
+    <ID>NewLineAtEndOfFile:FirebaseAnalyticsService.kt$ro.code4.deurgenta.analytics.FirebaseAnalyticsService.kt</ID>
+    <ID>NewLineAtEndOfFile:HomeFragment.kt$ro.code4.deurgenta.ui.home.HomeFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:HomeViewModel.kt$ro.code4.deurgenta.ui.home.HomeViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:LiveDataUtils.kt$ro.code4.deurgenta.utils.LiveDataUtils.kt</ID>
+    <ID>NewLineAtEndOfFile:LocateMeCallback.kt$ro.code4.deurgenta.interfaces.LocateMeCallback.kt</ID>
+    <ID>NewLineAtEndOfFile:LogUtils.kt$ro.code4.deurgenta.helper.LogUtils.kt</ID>
+    <ID>NewLineAtEndOfFile:MainViewModel.kt$ro.code4.deurgenta.ui.main.MainViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:MapAddressType.kt$ro.code4.deurgenta.data.model.MapAddressType.kt</ID>
+    <ID>NewLineAtEndOfFile:MapViewUtils.kt$ro.code4.deurgenta.helper.MapViewUtils.kt</ID>
+    <ID>NewLineAtEndOfFile:OnboardingActivity.kt$ro.code4.deurgenta.ui.onboarding.OnboardingActivity.kt</ID>
+    <ID>NewLineAtEndOfFile:OnboardingViewModel.kt$ro.code4.deurgenta.ui.onboarding.OnboardingViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:PermissionManager.kt$ro.code4.deurgenta.helper.PermissionManager.kt</ID>
+    <ID>NewLineAtEndOfFile:PermissionUiUtils.kt$ro.code4.deurgenta.helper.PermissionUiUtils.kt</ID>
+    <ID>NewLineAtEndOfFile:PermissionsViewModelFragment.kt$ro.code4.deurgenta.ui.base.PermissionsViewModelFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:Register.kt$ro.code4.deurgenta.data.model.Register.kt</ID>
+    <ID>NewLineAtEndOfFile:RegisterCompletedFragment.kt$ro.code4.deurgenta.ui.auth.register.RegisterCompletedFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:RegisterFragment.kt$ro.code4.deurgenta.ui.auth.register.RegisterFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:RegisterViewModel.kt$ro.code4.deurgenta.ui.auth.register.RegisterViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:ResetPasswordInfoDialogFragment.kt$ro.code4.deurgenta.ui.auth.reset.ResetPasswordInfoDialogFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:ResetPasswordRequest.kt$ro.code4.deurgenta.data.model.requests.ResetPasswordRequest.kt</ID>
+    <ID>NewLineAtEndOfFile:Resource.kt$ro.code4.deurgenta.helper.Resource.kt</ID>
+    <ID>NewLineAtEndOfFile:Result.kt$ro.code4.deurgenta.helper.Result.kt</ID>
+    <ID>NewLineAtEndOfFile:SaveAddressFragment.kt$ro.code4.deurgenta.ui.address.SaveAddressFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:SaveAddressViewModel.kt$ro.code4.deurgenta.ui.address.SaveAddressViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:SaveProgressCallback.kt$ro.code4.deurgenta.interfaces.SaveProgressCallback.kt</ID>
+    <ID>NewLineAtEndOfFile:SchedulersProvider.kt$ro.code4.deurgenta.helper.SchedulersProvider.kt</ID>
+    <ID>NewLineAtEndOfFile:SettingsFragment.kt$ro.code4.deurgenta.ui.settings.SettingsFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:SingleLiveEvent.kt$ro.code4.deurgenta.helper.SingleLiveEvent.kt</ID>
+    <ID>NewLineAtEndOfFile:SplashScreenActivity.kt$ro.code4.deurgenta.ui.splashscreen.SplashScreenActivity.kt</ID>
+    <ID>NewLineAtEndOfFile:Utils.kt$ro.code4.deurgenta.helper.Utils.kt</ID>
+    <ID>NewLineAtEndOfFile:ViewModelFragment.kt$ro.code4.deurgenta.ui.base.ViewModelFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:ViewModelSetter.kt$ro.code4.deurgenta.ui.base.ViewModelSetter.kt</ID>
+    <ID>ReturnCount:FieldValidator.kt$EmailFieldValidator$override fun validate(input: String): FieldValidationStatus</ID>
+    <ID>ReturnCount:RegisterViewModel.kt$RegisterViewModel$fun getEmailError(): String?</ID>
+    <ID>ReturnCount:RegisterViewModel.kt$RegisterViewModel$fun getPasswordError(): String?</ID>
+    <ID>ReturnCount:Utils.kt$fun Context.isOnline(): Boolean</ID>
+    <ID>SpreadOperator:PermissionManager.kt$PermissionManager$(*permissionString)</ID>
+    <ID>SpreadOperator:Repository.kt$Repository$(*backpacksApi.toTypedArray())</ID>
+    <ID>SwallowedException:ConfigureAddressFragment.kt$ConfigureAddressFragment.&lt;no name provided&gt;$catch (sie: IntentSender.SendIntentException) { logI(TAG, "PendingIntent unable to execute request.") }</ID>
+    <ID>TooGenericExceptionThrown:RegisterFragment.kt$RegisterFragment$throw Exception("Invalid Activity")</ID>
+    <ID>TooManyFunctions:ConfigureAddressFragment.kt$ConfigureAddressFragment : PermissionsViewModelFragment</ID>
+    <ID>TooManyFunctions:MapViewUtils.kt$MapViewUtils</ID>
+    <ID>TooManyFunctions:PreferenceManager.kt$ro.code4.deurgenta.helper.PreferenceManager.kt</ID>
+    <ID>TooManyFunctions:RegisterViewModel.kt$RegisterViewModel : BaseViewModelKoinComponent</ID>
+    <ID>TooManyFunctions:Repository.kt$Repository : KoinComponent</ID>
+    <ID>TooManyFunctions:Utils.kt$ro.code4.deurgenta.helper.Utils.kt</ID>
+    <ID>UnusedPrivateMember:CreateNewBackpack.kt$CreateNewBackpack$@field:Expose private val name: String</ID>
+    <ID>UnusedPrivateMember:MainActivity.kt$MainActivity$private val firebaseAnalytics: FirebaseAnalytics by inject()</ID>
+    <ID>UnusedPrivateMember:Repository.kt$Repository$private val courseService: CourseService by lazy { retrofit.create(CourseService::class.java) }</ID>
+    <ID>UnusedPrivateMember:ViewModelFragment.kt$ViewModelFragment$view: View</ID>
+    <ID>WildcardImport:App.kt$import ro.code4.deurgenta.di.*</ID>
+    <ID>WildcardImport:BackpackDao.kt$import androidx.room.*</ID>
+    <ID>WildcardImport:BackpackItem.kt$import androidx.room.*</ID>
+    <ID>WildcardImport:ConfigureAddressFragment.kt$import ro.code4.deurgenta.helper.*</ID>
+    <ID>WildcardImport:Course.kt$import androidx.room.*</ID>
+    <ID>WildcardImport:LoginFormViewModel.kt$import ro.code4.deurgenta.helper.*</ID>
+    <ID>WildcardImport:MapViewUtils.kt$import com.google.android.gms.location.*</ID>
+    <ID>WildcardImport:MapViewUtils.kt$import com.here.sdk.core.*</ID>
+    <ID>WildcardImport:MapViewUtils.kt$import com.here.sdk.mapview.*</ID>
+    <ID>WildcardImport:MapViewUtils.kt$import com.here.sdk.search.*</ID>
+    <ID>WildcardImport:Repository.kt$import ro.code4.deurgenta.data.model.*</ID>
+    <ID>WildcardImport:Resource.kt$import ro.code4.deurgenta.helper.Status.*</ID>
+    <ID>WildcardImport:SplashScreenViewModel.kt$import ro.code4.deurgenta.helper.*</ID>
+  </CurrentIssues>
+</SmellBaseline>

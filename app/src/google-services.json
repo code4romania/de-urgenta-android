@@ -1,0 +1,23 @@
+{
+  "project_info": {
+    "project_number": "123",
+    "project_id": "de-urgenta-mocked",
+    "storage_bucket": "de-urgenta-mocked.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "mocked",
+        "android_client_info": {
+          "package_name": "ro.code4.deurgenta"
+        }
+      },
+      "api_key": [
+        {
+          "current_key": "mocked"
+        }
+      ]
+    }
+  ],
+  "configuration_version": "1"
+}
