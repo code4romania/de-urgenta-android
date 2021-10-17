@@ -34,6 +34,16 @@ Uses [Fastlane](https://fastlane.tools/) for automating builds & releases.
 
 Uses the MVVM architectural pattern.
 
+To check and fix formatting issues you can use the following commands: 
+
+- `./gradlew ktlintCheck`
+- `./gradlew detekt`
+- `./gradlew lint`
+
+To generate dependency updates, you can run the following command:
+
+- `./gradlew dU`
+
 ### API endpoints
 
 [Swagger](https://api.deurgenta.hostmysite.ro/swagger/index.html)

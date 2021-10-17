@@ -12,14 +12,13 @@ jobs:
       - name: Decode google-services.json
         env:
           FIREBASE_SETTINGS: ${{ secrets.FIREBASE_SETTINGS }}
-        run: echo FIREBASE_SETTINGS > $GITHUB_WORKSPACE/app/src/google-services.json
+        run: echo "$FIREBASE_SETTINGS" > $GITHUB_WORKSPACE/app/src/google-services.json
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7.2
-      - name: install firebase tool
-        run: |
-          yarn global add firebase-tools
-      - name: setup fastlane
+      - name: Install Firebase tool
+        run: yarn global add firebase-tools
+      - name: Setup Fastlane
         run:  gem install bundler && bundle install
       - name: Upload to Firebase
         run: bundle exec fastlane android dev_firebase
