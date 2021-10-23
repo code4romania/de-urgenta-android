@@ -6,7 +6,7 @@
     <!-- General -->
     <string name="loading_label">Loading…</string>
 
-    <!--    Permissions-->
+    <!-- Permissions-->
     <string name="permission_permanently_denied_title">Permission needed</string>
     <string name="permission_permanently_denied_msg">To use this function, you have to change the app permissions. Please open the Settings menu and grant access to the requested permissions.</string>
     <string name="permission_permanently_denied_settings_button">Settings</string>
@@ -15,6 +15,7 @@
     <string name="permission_denied_msg">To use this function we need your permission to access the storage.</string>
     <string name="permission_denied_ok_button">OK</string>
     <string name="permission_denied_cancel_button">Cancel</string>
+    <string name="permission_rationale">Location permission is needed for core functionality.</string>
 
     <!-- Errors -->
     <string name="error_generic">Something went wrong!</string>
@@ -23,18 +24,18 @@
     <string name="error_password_invalid">Password not valid!</string>
     <string name="error_password_not_matched">Password not matched!</string>
     <string name="login_fragment_name">Login Fragment</string>
-    <string name="login_form_title">Autentifica-te</string>
-    <string name="email_hint">E-mail</string>
-    <string name="password_hint">Parola</string>
+    <string name="login_form_title">Login</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
 
     <!-- Home -->
     <string name="home_title">De Urgență</string>
-    <string name="home_header_title">Bine ai revenit.</string>
+    <string name="home_header_title">Welcome back.</string>
     <string name="home_header_description">This is a small text to welcome the user back in the app and excite him to do something to be more prepared.</string>
-    <string name="home_menu_item_address">Adrese și trasee</string>
-    <string name="home_menu_item_group">Grupul de urgență</string>
-    <string name="home_menu_item_backpack">Rucsacul de urgență</string>
-    <string name="home_menu_item_courses">Cursuri și info utile</string>
+    <string name="home_menu_item_address">Addresses and routes</string>
+    <string name="home_menu_item_group">Emergency groups</string>
+    <string name="home_menu_item_backpack">Emergency backpacks</string>
+    <string name="home_menu_item_courses">Courses and useful info</string>
 
     <!-- Login screen -->
     <string name="login_button_signup" translatable="false">Sign up</string>
@@ -89,23 +90,26 @@
     <string name="nav_menu_item_address">Addresses and routes</string>
     <string name="nav_menu_item_groups">Emergency groups</string>
     <string name="nav_menu_item_backpack">Emergency backpacks</string>
-    <string name="nav_menu_item_courses">Courses and helpful info</string>
+    <string name="nav_menu_item_courses">Courses and useful info</string>
     <string name="nav_menu_item_profile">My profile</string>
     <string name="nav_menu_item_about">About</string>
     <string name="nav_menu_item_settings">Settings</string>
     <string name="nav_menu_item_logout">Logout</string>
 
+    <!-- Splashscreen -->
     <string name="cd_logo_animated">Animated application logo</string>
-    <!-- Backpack -->
-    <string name="backpacks_listing_title">"Your emergency backpack"</string>
+
+    <!-- Backpacks -->
+    <string name="backpacks_listing_title">Your emergency backpack</string>
+    <string name="backpack_new_name_dialog_title">Name of new backpack</string>
+    <string name="backpack_new_cancel">Cancel</string>
+    <string name="backpack_new_ok">OK</string>
     <string name="backpack_label_main_info">The emergency backpack contains objects, food and other useful items which
         will help you survive for at least 72 hours in a critical situation. Following the next steps you will find
         out what does this backpack must contain, the minimum required items and choose the people responsible for
         keeping it relevant.
     </string>
     <string name="backpack_add_new">Add new backpack</string>
-    <string name="backpack_new_cancel">Cancel</string>
-    <string name="backpack_new_ok">OK</string>
     <string name="backpack_btn_reminder">Remind me later</string>
     <string name="backpack_label_details_info">There are certain items which are recommended to have in this backpack.
         Even if you do not have the backpack yet, store the items until you acquire one. It is recommended that
@@ -115,7 +119,6 @@
     </string>
     <string name="backpack_categories_label">Backpack components</string>
     <string name="backpack_designated_person">Choose person responsible</string>
-    <string name="backpack_new_name_dialog_title">Name of new backpack</string>
     <string name="item_expiration_label">Expire at: %1$s</string>
     <string name="no_expiration_date">No expiration date</string>
     <string name="item_quantity_label">%1$s x</string>
@@ -134,7 +137,7 @@
     <string name="edit_backpack_item_error_quantity">Please provide a quantity</string>
     <string name="edit_backpack_item_error_quantity_value">"Please enter a valid number quantity!"</string>
 
-    <!-- Group -->
+    <!-- Groups -->
     <string name="group_create_title">Create a group</string>
     <string name="group_create_info_1">În eventualitatea unui cutremur este important sa ai un protocol împreună cu cei apropiați prin care vă puteți regăsi cu ușurință. Creează un grup de prieteni, de familie sau de colegi de la birou sau școală pentru a vă seta puncte de întâlnire în caz de cutremur.</string>
     <string name="group_create_info_2">Chiar dacă nu vei avea acces la internet în acele momente, poți folosi în continuare aplicația pentru a vedea care sunt punctele de întâlnire și pentru a identifica traseele pentru a ajunge acolo. De asemenea, poți vedea, cu permisiunea lor, traseele și adresele uzuale ale membrilor grupului tău și îi poți căuta dacă aceștia nu vin la punctul de întâlnire.</string>
@@ -157,7 +160,6 @@
     <string name="search_hint">enter your address</string>
 
     <!-- Configure addresses -->
-    <string name="configure_addresses_save_address" translatable="false">Save Address Fragment</string>
     <string name="title_home_address">Home Address</string>
     <string name="add_home_address">Add your home address</string>
     <string name="add_new_address">Add a new address</string>
@@ -175,22 +177,11 @@
     <string name="address_error_location_type">Failed to retrieve location types, please try again!</string>
     <string name="address_location_pick">Pick</string>
 
-    <!-- Permissions -->
-    <string name="permission_rationale">Location permission is needed for core functionality.</string>
-
     <!-- Map and location related  -->
     <string name="map_not_initialized_or_no_gps">Map not initialized or no gps fix</string>
     <string name="operation_in_progress">Operation in progress</string>
     <string name="no_results_found">No results found</string>
     <string name="more_results_found">More addresses found. Please enter an unique address.</string>
-
-    <!-- non translatable-->
-    <string name="resolution_required" translatable="false">Resolution required</string>
-    <string name="choose_address_type" translatable="false">Choose address type</string>
-    <string name="settings_change_unavailable" translatable="false">Settings Change</string>
-    <string name="unknown_error" translatable="false">Unknown</string>
-    <string name="item_address_header" translatable="false">address_title</string>
-    <string name="item_address_content" translatable="false">address_name</string>
 
     <!-- About -->
     <string name="about_title">About the app</string>
@@ -227,10 +218,24 @@
         aid certifications must be renewed at different time intervals. De urgență helps you choose a course suited
         for you and also reminds you to renew your certifications when it expires.</string>
     <string name="courses_no_register_option">There is no app capable of showing this url!</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
     <string name="change_password">Change password</string>
     <string name="terms_conditions">Terms and conditions</string>
     <string name="report_problem">Report a problem</string>
     <string name="delete_account">Delete your account</string>
 
+    <!-- only for testing -->
     <string name="skip_onboarding">skip onboarding</string>
+
+    <!-- non translatable-->
+    <string name="configure_addresses_save_address" translatable="false">Save Address Fragment</string>
+    <string name="resolution_required" translatable="false">Resolution required</string>
+    <string name="choose_address_type" translatable="false">Choose address type</string>
+    <string name="settings_change_unavailable" translatable="false">Settings Change</string>
+    <string name="unknown_error" translatable="false">Unknown</string>
+    <string name="item_address_header" translatable="false">address_title</string>
+    <string name="item_address_content" translatable="false">address_name</string>
+
 </resources>

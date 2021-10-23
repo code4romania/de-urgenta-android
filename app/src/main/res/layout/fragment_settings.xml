@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -8,51 +9,32 @@
     android:paddingTop="@dimen/big_margin"
     android:paddingEnd="@dimen/margin">
 
-
     <TextView
         android:id="@+id/change_password"
-        style="@style/Settings"
+        style="@style/MenuTextView"
+        android:textAppearance="@style/Text.MenuList"
         android:background="?android:attr/selectableItemBackground"
-        android:text="@string/change_password"
-        android:textAppearance="@style/Settings"/>
-
-    <View
-        android:id="@+id/separator_change_password"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/border" />
+        android:text="@string/change_password"/>
 
     <TextView
         android:id="@+id/terms_conditions"
-        style="@style/Settings"
+        style="@style/MenuTextView"
+        android:textAppearance="@style/Text.MenuList"
         android:background="?android:attr/selectableItemBackground"
-        android:text="@string/terms_conditions"
-        android:textAppearance="@style/Settings"/>
-
-    <View
-        android:id="@+id/separator_terms_conditions"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/border" />
+        android:text="@string/terms_conditions"/>
 
     <TextView
         android:id="@+id/report_problem"
-        style="@style/Settings"
+        style="@style/MenuTextView"
+        android:textAppearance="@style/Text.MenuList"
         android:background="?android:attr/selectableItemBackground"
-        android:text="@string/report_problem"
-        android:textAppearance="@style/Settings"/>
-
-    <View
-        android:id="@+id/separator_report_problem"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/border" />
+        android:text="@string/report_problem"/>
 
     <TextView
         android:id="@+id/delete_account"
-        style="@style/Settings"
+        style="@style/MenuTextView"
+        android:textAppearance="@style/Text.MenuList"
         android:background="?android:attr/selectableItemBackground"
-        android:text="@string/delete_account"
-        android:textAppearance="@style/Settings"/>
+        android:text="@string/delete_account"/>
 
 </LinearLayout>

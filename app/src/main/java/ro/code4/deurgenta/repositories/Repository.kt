@@ -130,8 +130,8 @@ class Repository : KoinComponent {
 
     fun fetchCoursesFor(type: String, city: String): Observable<List<Course>> {
         return Observable.just(tempCourses.filter {
-            it.type == type && it.location.toLowerCase(Locale.getDefault())
-                .contains(city.toLowerCase(Locale.getDefault()))
+            it.type == type && it.location.lowercase(Locale.getDefault())
+                .contains(city.lowercase(Locale.getDefault()))
         }).delay(1, TimeUnit.SECONDS)
     }
     // COURSES related code end

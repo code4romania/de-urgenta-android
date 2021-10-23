@@ -48,7 +48,7 @@
 
         <TextView
             android:id="@+id/nav_footer_description"
-            style="@style/Text.Default"
+            style="@style/Text.Dark"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin"
@@ -74,15 +74,11 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/nav_footer_donate_button"
-            style="@style/Text"
+            style="@style/Button.Green"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_marginEnd="@dimen/margin"
             android:layout_marginBottom="@dimen/small_margin"
             android:backgroundTint="@color/green_400"
             android:text="@string/nav_menu_footer_donate_button_title"
-            android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

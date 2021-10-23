@@ -24,8 +24,8 @@
             style="@style/Text.Heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/small_margin"
-            android:layout_marginEnd="@dimen/small_margin"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_marginEnd="@dimen/margin"
             android:layout_marginBottom="@dimen/xxbig_margin"
             android:gravity="center"
             android:text="@string/login_title"
@@ -35,11 +35,7 @@
 
     <com.google.android.material.button.MaterialButton
             android:id="@+id/signupButton"
-            style="@style/Signup.Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/small_margin"
-            android:layout_marginEnd="@dimen/small_margin"
+            style="@style/Button.InvertedColors"
             android:layout_marginBottom="@dimen/big_margin"
             android:text="@string/login_button_signup"
             app:layout_constraintBottom_toTopOf="@+id/loginButton"
@@ -48,9 +44,7 @@
 
     <com.google.android.material.button.MaterialButton
             android:id="@+id/loginButton"
-            style="@style/Signup.Button.Simple"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Button"
             android:layout_marginBottom="@dimen/big_margin"
             android:text="@string/login_button_login"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -5,7 +5,6 @@
     tools:context="ro.code4.deurgenta.ui.auth.AuthActivity">
 
     <data>
-
         <import type="android.view.View" />
 
         <variable
@@ -22,24 +21,25 @@
             layout="@layout/include_toolbar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?attr/actionBarSize"
             android:background="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/includedToolbar">
+            app:layout_constraintTop_toBottomOf="@id/includedToolbar"
+            android:fillViewport="true">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clipChildren="false"
-                android:clipToPadding="false"
-                android:padding="@dimen/margin">
+                android:clipToPadding="false">
 
                 <LinearLayout
                     android:id="@+id/firstNameLayout"
-                    style="@style/Input.Layout"
+                    style="@style/Input_Layout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -59,15 +59,13 @@
 
                 <LinearLayout
                     android:id="@+id/lastNameLayout"
-                    style="@style/Input.Layout"
+                    style="@style/Input_Layout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/firstNameLayout">
 
                     <TextView
                         style="@style/Input.Label"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:labelFor="@id/lastNameEditText"
                         android:text="@string/register_label_last_name" />
 
@@ -82,15 +80,13 @@
 
                 <LinearLayout
                     android:id="@+id/emailLayout"
-                    style="@style/Input.Layout"
+                    style="@style/Input_Layout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/lastNameLayout">
 
                     <TextView
                         style="@style/Input.Label"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:labelFor="@id/emailEditText"
                         android:text="@string/register_label_email" />
 
@@ -105,15 +101,13 @@
 
                 <LinearLayout
                     android:id="@+id/passwordLayout"
-                    style="@style/Input.Layout"
+                    style="@style/Input_Layout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/emailLayout">
 
                     <TextView
                         style="@style/Input.Label"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:labelFor="@id/passwordEditText"
                         android:text="@string/register_label_password" />
 
@@ -128,8 +122,10 @@
 
                 <LinearLayout
                     android:id="@+id/termsLayout"
-                    style="@style/Input.Layout"
+                    style="@style/Input_Layout"
                     android:orientation="horizontal"
+                    android:layout_marginStart="@dimen/margin"
+                    android:layout_marginEnd="@dimen/margin"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/passwordLayout">
@@ -149,13 +145,11 @@
 
                 </LinearLayout>
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/submitButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/Button"
                     android:layout_marginTop="@dimen/margin"
                     android:enabled="@{viewmodel.isSubmitEnabled}"
-                    android:padding="@dimen/margin"
                     android:text="@string/register_submit_button"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

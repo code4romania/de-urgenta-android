@@ -10,6 +10,7 @@
 
     <dimen name="small_icon_size">16dp</dimen>
     <dimen name="medium_icon_size">32dp</dimen>
+    <dimen name="big_icon_size">64dp</dimen>
     <dimen name="minimum_touch_size">48dp</dimen>
 
     <!-- Text sizes-->

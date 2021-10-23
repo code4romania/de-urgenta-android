@@ -8,17 +8,10 @@
     <ImageView
         android:id="@+id/logo"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/medium_icon_size"
+        android:layout_height="@dimen/big_icon_size"
         android:layout_margin="@dimen/margin"
         android:adjustViewBounds="true"
         android:contentDescription="@string/accessibility_logo"
         android:src="@drawable/logo_red" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textAppearance="?attr/textAppearanceHeadline5"
-        android:textColor="@color/colorPrimary"
-        android:textStyle="bold" />
 </LinearLayout>
