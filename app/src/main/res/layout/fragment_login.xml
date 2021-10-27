@@ -118,6 +118,27 @@
                 android:textAllCaps="false"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/btn_forgot_password" />
+
+            <!-- TODO remove this for final release -->
+            <TextView
+                android:id="@+id/skip_to_main"
+                app:layout_constraintTop_toBottomOf="@id/login_btn"
+                android:text="Skip to main"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/big_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <!-- TODO remove this for final release -->
+            <TextView
+                android:id="@+id/skip_to_onboarding"
+                app:layout_constraintTop_toBottomOf="@id/skip_to_main"
+                android:text="Skip to onboarding"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/big_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
