@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/onboard_graph"
     app:startDestination="@id/configure_account">
 
@@ -25,10 +26,45 @@
             app:destination="@id/navigation_groups" />
         <action
             android:id="@+id/action_configure_backpack"
-            app:destination="@id/configure_backpacks" />
+            app:destination="@id/backpacksFragment" />
+        <action
+            android:id="@+id/action_configure_courses"
+            app:destination="@id/coursesInfoFragment" />
     </fragment>
 
     <include app:graph="@navigation/configure_addresses" />
     <include app:graph="@navigation/navigation_groups" />
-    <include app:graph="@navigation/configure_backpacks" />
+
+    <fragment
+        android:id="@+id/backpacksFragment"
+        android:name="ro.code4.deurgenta.ui.backpack.main.BackpacksFragment"
+        tools:layout="@layout/fragment_backpacks">
+
+        <action
+            android:id="@+id/action_backpacks_to_newBackpackDialog"
+            app:destination="@id/newBackpackDialogFragment" />
+        <action
+            android:id="@+id/action_backpacks_to_home"
+            app:popUpTo="@id/onboard_graph"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_backpacks_to_backpackDetails"
+            app:destination="@id/backpack_setup" />
+    </fragment>
+    <dialog
+        android:id="@+id/newBackpackDialogFragment"
+        android:name="ro.code4.deurgenta.ui.backpack.main.AddBackpackDialogFragment"
+        android:label="AddBackpackDialogFragment"
+        tools:layout="@layout/dialog_new_backpack" />
+
+    <include app:graph="@navigation/backpack_setup" />
+    <include app:graph="@navigation/navigation_courses" />
+    <fragment
+        android:id="@+id/coursesInfoFragment"
+        android:name="ro.code4.deurgenta.ui.courses.CoursesInfoFragment"
+        android:label="CoursesInfoFragment" >
+        <action
+            android:id="@+id/action_coursesInfo_to_coursesFiltering"
+            app:destination="@id/navigation_courses" />
+    </fragment>
 </navigation>

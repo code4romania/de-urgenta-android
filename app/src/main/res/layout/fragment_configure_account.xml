@@ -17,6 +17,9 @@
             name="callbackBackpack"
             type="ro.code4.deurgenta.interfaces.ClickButtonCallback" />
 
+        <variable
+            name="callbackCourses"
+            type="ro.code4.deurgenta.interfaces.ClickButtonCallback" />
     </data>
 
     <ScrollView
@@ -113,7 +116,7 @@
                     android:id="@+id/learn_firstaid"
                     style="@style/MenuTextView"
                     android:background="?android:attr/selectableItemBackground"
-
+                    android:onClick="@{() -> callbackCourses.call()}"
                     android:padding="@dimen/padding"
                     android:text="@string/learn_to_give_firstaid"
                     android:textAppearance="@style/Text.MenuList"

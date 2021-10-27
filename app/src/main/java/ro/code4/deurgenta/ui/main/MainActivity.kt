@@ -45,7 +45,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_item_groups, R.id.nav_item_backpacks, R.id.nav_item_courses,
+                R.id.nav_item_home, R.id.nav_item_groups, R.id.nav_item_backpacks, R.id.nav_item_courses,
                 R.id.nav_item_about, R.id.nav_item_settings
             ), drawerLayout
         )
@@ -55,7 +55,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
         // This needs to be set after `setupWithNavController`
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_menu)
 
-        navView.setCheckedItem(R.id.nav_home)
+        navView.setCheckedItem(R.id.nav_item_home)
 
         navView.setNavigationItemSelectedListener { item ->
             val handled = onNavDestinationSelected(item, navController)

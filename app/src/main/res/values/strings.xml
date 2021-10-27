@@ -85,6 +85,7 @@
     <!-- Nav menu screen -->
     <string name="nav_menu_footer_donate_button_title">Donate</string>
     <string name="nav_menu_footer_description">Application designed, developed and managed by</string>
+    <string name="nav_menu_item_home">Home</string>
     <string name="nav_menu_item_address">Addresses and routes</string>
     <string name="nav_menu_item_groups">Emergency groups</string>
     <string name="nav_menu_item_backpack">Emergency backpacks</string>

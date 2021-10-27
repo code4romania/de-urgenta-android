@@ -2,15 +2,17 @@ package ro.code4.deurgenta.ui.auth.login
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import org.koin.android.ext.android.inject
+import ro.code4.deurgenta.BuildConfig
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.databinding.FragmentLoginBinding
 import ro.code4.deurgenta.helper.startActivityWithoutTrace
 import ro.code4.deurgenta.ui.auth.reset.ResetPasswordFragment
 import ro.code4.deurgenta.ui.base.BaseFragment
+import ro.code4.deurgenta.ui.main.MainActivity
+import ro.code4.deurgenta.ui.onboarding.OnboardingActivity
 
 class LoginFormFragment : BaseFragment(R.layout.fragment_login) {
 
@@ -36,6 +38,16 @@ class LoginFormFragment : BaseFragment(R.layout.fragment_login) {
             viewModel.login(email, password)
         }
         loginUserObservable()
+
+        // TODO only for testing, to be removed for the final release
+        if (BuildConfig.DEBUG) {
+            binding.skipToMain.setOnClickListener {
+                startActivityWithoutTrace(MainActivity::class.java)
+            }
+            binding.skipToOnboarding.setOnClickListener {
+                startActivityWithoutTrace(OnboardingActivity::class.java)
+            }
+        }
     }
 
     override fun onResume() {
@@ -44,7 +56,7 @@ class LoginFormFragment : BaseFragment(R.layout.fragment_login) {
     }
 
     private fun loginUserObservable() {
-        viewModel.loggedIn().observe(viewLifecycleOwner, Observer {
+        viewModel.loggedIn().observe(viewLifecycleOwner) {
             it.handle(
                 onSuccess = { activity ->
                     activity?.let(::startActivityWithoutTrace)
@@ -58,6 +70,6 @@ class LoginFormFragment : BaseFragment(R.layout.fragment_login) {
                     Snackbar.make(binding.loginBtn, "Loading", Snackbar.LENGTH_INDEFINITE).show()
                 }
             )
-        })
+        }
     }
 }

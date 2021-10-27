@@ -86,6 +86,7 @@
     <!-- Nav menu screen -->
     <string name="nav_menu_footer_donate_button_title">Donează</string>
     <string name="nav_menu_footer_description">Soluție proiectată, dezvoltată și administrată de</string>
+    <string name="nav_menu_item_home">Acasă</string>
     <string name="nav_menu_item_address">Adrese și trasee</string>
     <string name="nav_menu_item_groups">Grupuri de urgență</string>
     <string name="nav_menu_item_backpack">Rucsacul de urgență</string>

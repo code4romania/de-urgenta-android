@@ -3,13 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_item_home">
 
     <fragment
-        android:id="@+id/nav_home"
+        android:id="@+id/nav_item_home"
         android:name="ro.code4.deurgenta.ui.home.HomeFragment"
         app:defaultNavHost="true"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_nav_item_backpacks"
+            app:destination="@id/nav_item_backpacks" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_item_groups"
+            app:destination="@id/nav_item_groups" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_item_courses"
+            app:destination="@id/nav_item_courses" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_item_groups"
@@ -21,6 +31,26 @@
     </fragment>
 
     <include app:graph="@navigation/navigation_groups" />
+
+    <fragment
+        android:id="@+id/nav_item_backpacks"
+        android:name="ro.code4.deurgenta.ui.backpack.main.BackpacksFragment"
+        tools:layout="@layout/fragment_backpacks">
+        <action
+            android:id="@+id/action_backpacks_to_newBackpackDialog"
+            app:destination="@id/newBackpackDialogFragment" />
+        <action
+            android:id="@+id/action_backpacks_to_backpackDetails"
+            app:destination="@id/backpack_setup" />
+    </fragment>
+
+    <include app:graph="@navigation/backpack_setup" />
+
+    <dialog
+        android:id="@+id/newBackpackDialogFragment"
+        android:name="ro.code4.deurgenta.ui.backpack.main.AddBackpackDialogFragment"
+        android:label="AddBackpackDialogFragment"
+        tools:layout="@layout/dialog_new_backpack" />
 
     <fragment
         android:id="@+id/nav_item_courses"
