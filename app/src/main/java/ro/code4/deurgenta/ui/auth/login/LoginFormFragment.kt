@@ -2,7 +2,6 @@ package ro.code4.deurgenta.ui.auth.login
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import org.koin.android.ext.android.inject
@@ -57,7 +56,7 @@ class LoginFormFragment : BaseFragment(R.layout.fragment_login) {
     }
 
     private fun loginUserObservable() {
-        viewModel.loggedIn().observe(viewLifecycleOwner, Observer {
+        viewModel.loggedIn().observe(viewLifecycleOwner) {
             it.handle(
                 onSuccess = { activity ->
                     activity?.let(::startActivityWithoutTrace)
@@ -71,6 +70,6 @@ class LoginFormFragment : BaseFragment(R.layout.fragment_login) {
                     Snackbar.make(binding.loginBtn, "Loading", Snackbar.LENGTH_INDEFINITE).show()
                 }
             )
-        })
+        }
     }
 }

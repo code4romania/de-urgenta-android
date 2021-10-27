@@ -23,6 +23,26 @@
     <include app:graph="@navigation/navigation_groups" />
 
     <fragment
+        android:id="@+id/nav_item_backpacks"
+        android:name="ro.code4.deurgenta.ui.backpack.main.BackpacksFragment"
+        tools:layout="@layout/fragment_backpacks">
+        <action
+            android:id="@+id/action_backpacks_to_newBackpackDialog"
+            app:destination="@id/newBackpackDialogFragment" />
+        <action
+            android:id="@+id/action_backpacks_to_backpackDetails"
+            app:destination="@id/backpack_setup" />
+    </fragment>
+
+    <include app:graph="@navigation/backpack_setup" />
+
+    <dialog
+        android:id="@+id/newBackpackDialogFragment"
+        android:name="ro.code4.deurgenta.ui.backpack.main.AddBackpackDialogFragment"
+        android:label="AddBackpackDialogFragment"
+        tools:layout="@layout/dialog_new_backpack" />
+
+    <fragment
         android:id="@+id/nav_item_courses"
         android:name="ro.code4.deurgenta.ui.courses.CoursesInfoFragment"
         tools:layout="@layout/fragment_courses_info">
