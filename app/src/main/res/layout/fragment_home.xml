@@ -63,6 +63,7 @@
             android:text="@string/home_header_description" />
 
         <include
+            android:id="@+id/home_actions"
             layout="@layout/home_menu_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
