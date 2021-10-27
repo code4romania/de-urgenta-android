@@ -60,6 +60,10 @@ class ConfigureAccountFragment : ViewModelFragment<ConfigureAccountViewModel>() 
             findNavController().navigate(R.id.action_configure_backpack)
         }
 
+        viewBinding.callbackCourses = ClickButtonCallback {
+            findNavController().navigate(R.id.action_configure_courses)
+        }
+
         if (BuildConfig.DEBUG) {
             // TODO only for testing, to be removed when onboarding implementation is complete
             viewBinding.skipOnboarding.setOnClickListener {
