@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/configure_account"
-        android:name="ro.code4.deurgenta.ui.account.ConfigureAccountFragment"
+        android:name="ro.code4.deurgenta.ui.onboarding.OnboardingConfigureFragment"
         android:label="fragment_configure_profile">
         <action
             android:id="@+id/action_configure_address"
