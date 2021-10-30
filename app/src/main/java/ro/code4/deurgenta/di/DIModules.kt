@@ -27,8 +27,11 @@ import ro.code4.deurgenta.repositories.AccountRepository
 import ro.code4.deurgenta.repositories.AccountRepositoryImpl
 import ro.code4.deurgenta.repositories.GroupRepository
 import ro.code4.deurgenta.repositories.Repository
+import ro.code4.deurgenta.repositories.UserRepository
 import ro.code4.deurgenta.services.AccountService
 import ro.code4.deurgenta.services.GroupService
+import ro.code4.deurgenta.services.UserService
+import ro.code4.deurgenta.ui.address.AddressTypeViewModel
 import ro.code4.deurgenta.ui.address.ConfigureAddressViewModel
 import ro.code4.deurgenta.ui.address.SaveAddressViewModel
 import ro.code4.deurgenta.ui.auth.AuthViewModel
@@ -96,12 +99,12 @@ val apiModule = module {
             .client(get())
             .build()
     }
-    single<AccountService> { get<Retrofit>().create(AccountService::class.java) }
+    single<AccountService> { get<Retrofit>().create() }
     single<GroupService> { get<Retrofit>().create() }
-    single {
-        Repository()
-    }
+    single<UserService> { get<Retrofit>().create() }
+    single { Repository() }
     single<AccountRepository> { AccountRepositoryImpl(get()) }
+    single { UserRepository(get<AppDatabase>().userDao(), get()) }
     single { GroupRepository(get(), get<AppDatabase>().groupDao()) }
     single<SchedulersProvider> { SchedulersProviderImpl() }
 }
@@ -125,6 +128,7 @@ val viewModelsModule = module {
     viewModel { EditBackpackItemViewModel(get()) }
     viewModel { ConfigureAddressViewModel(get()) }
     viewModel { SaveAddressViewModel(get()) }
+    viewModel { AddressTypeViewModel(get(), get()) }
     viewModel { HomeViewModel() }
     viewModel { CoursesFilterViewModel(get()) }
     viewModel { CoursesViewModel(get()) }

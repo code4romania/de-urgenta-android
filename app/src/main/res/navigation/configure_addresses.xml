@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/configure_addresses"
     app:startDestination="@id/create_addresses">
 
@@ -50,7 +51,15 @@
                 android:defaultValue="false"
                 app:argType="boolean" />
         </action>
+        <action
+            android:id="@+id/action_navigate_save_address_to_addressTypeFragment"
+            app:destination="@id/addressTypeFragment" />
 
     </fragment>
+    <fragment
+        android:id="@+id/addressTypeFragment"
+        android:name="ro.code4.deurgenta.ui.address.AddressTypeFragment"
+        tools:layout="@layout/fragment_address_type"
+        android:label="@string/address_title_new_type" />
 
 </navigation>

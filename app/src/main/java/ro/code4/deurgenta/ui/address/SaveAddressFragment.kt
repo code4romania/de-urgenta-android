@@ -10,6 +10,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.data.model.MapAddress
 import ro.code4.deurgenta.databinding.FragmentSaveAddressBinding
+import ro.code4.deurgenta.interfaces.ClickButtonCallback
 import ro.code4.deurgenta.ui.base.ViewModelFragment
 
 class SaveAddressFragment : ViewModelFragment<SaveAddressViewModel>() {
@@ -55,6 +56,9 @@ class SaveAddressFragment : ViewModelFragment<SaveAddressViewModel>() {
             viewLifecycleOwner,
             onBackPressedCallback()
         )
+        viewBinding.addNewAddressCallback = ClickButtonCallback {
+            findNavController().navigate(SaveAddressFragmentDirections.actionNavigateSaveAddressToAddressTypeFragment())
+        }
     }
 
     override fun handleOnBackPressedInternal() {

@@ -168,6 +168,12 @@
     your saved addresses and your meeting point. </string>
     <string name="configure_another_address_header">Configure another address</string>
     <string name="save_home_address">Your home address was saved successfully.</string>
+    <string name="address_title_new_type">Configure another address</string>
+    <string name="address_label_type_selector">Pick address type</string>
+    <string name="address_btn_start_address_setup">Continue</string>
+    <string name="address_cd_btn_retry_for_location">Retry location type fetching</string>
+    <string name="address_error_location_type">Failed to retrieve location types, please try again!</string>
+    <string name="address_location_pick">Pick</string>
 
     <!-- Permissions -->
     <string name="permission_rationale">Location permission is needed for core functionality.</string>

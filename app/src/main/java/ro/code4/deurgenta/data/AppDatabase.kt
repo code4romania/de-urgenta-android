@@ -9,17 +9,19 @@ import ro.code4.deurgenta.data.dao.AddressDao
 import ro.code4.deurgenta.data.dao.BackpackDao
 import ro.code4.deurgenta.data.dao.CoursesDao
 import ro.code4.deurgenta.data.dao.GroupDao
+import ro.code4.deurgenta.data.dao.UserDao
 import ro.code4.deurgenta.data.helper.DateConverter
 import ro.code4.deurgenta.data.model.Backpack
 import ro.code4.deurgenta.data.model.BackpackItem
 import ro.code4.deurgenta.data.model.BackpackItemConverters
 import ro.code4.deurgenta.data.model.Course
 import ro.code4.deurgenta.data.model.Group
+import ro.code4.deurgenta.data.model.LocationType
 import ro.code4.deurgenta.data.model.MapAddress
 
 @Database(
     entities = [
-        Backpack::class, BackpackItem::class, Course::class, MapAddress::class, Group::class
+        Backpack::class, BackpackItem::class, Course::class, MapAddress::class, Group::class, LocationType::class
     ],
     version = 2
 )
@@ -29,6 +31,9 @@ import ro.code4.deurgenta.data.model.MapAddress
     MapAddress.MapAddressConverters::class
 )
 abstract class AppDatabase : RoomDatabase() {
+
+    abstract fun userDao(): UserDao
+
     abstract fun addressDao(): AddressDao
 
     abstract fun backpackDao(): BackpackDao
@@ -50,9 +55,7 @@ abstract class AppDatabase : RoomDatabase() {
                             context.applicationContext,
                             AppDatabase::class.java,
                             "database"
-                        )
-                            //.addMigrations(*Migrations.ALL)
-                            .build()
+                        ).build() // .addMigrations(*Migrations.ALL)
                     }
                 }
             }

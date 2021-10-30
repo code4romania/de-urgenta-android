@@ -13,4 +13,5 @@
     <string name="analytics_title_courses_filtering" translatable="false">Courses Filtering</string>
     <string name="analytics_title_courses_listing" translatable="false">Courses Listing</string>
     <string name="analytics_title_courses_details" translatable="false">Course Details</string>
+    <string name="analytics_title_address_type" translatable="false">Address type</string>
 </resources>

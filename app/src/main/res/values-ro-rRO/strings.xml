@@ -169,6 +169,13 @@
     </string>
     <string name="configure_another_address_header">Configureaza alta adresa.</string>
     <string name="save_home_address">Adresa ta de domiciliu a fost salvata cu success.</string>
+    <string name="address_title_new_type">Configurează o altă adresă</string>
+    <string name="address_label_type_selector">Alege tipul adresei</string>
+    <string name="address_btn_start_address_setup">Continuă</string>
+    <string name="address_cd_btn_retry_for_location">Reîncercă afișarea locațiilor</string>
+    <string name="address_error_location_type">Tipurile de locații nu au putut fi încărcate. Te rugăm să
+        încerci din nou!</string>
+    <string name="address_location_pick">Alege</string>
 
     <!-- Permissions -->
     <string name="permission_rationale">Localizarea necesitate permisiune deoarece este functionalitatea de baza.</string>
