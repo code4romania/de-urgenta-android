@@ -19,8 +19,8 @@ import com.google.android.material.textfield.TextInputLayout
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
-import io.reactivex.Completable
-import io.reactivex.subjects.CompletableSubject
+import io.reactivex.rxjava3.core.Completable
+import io.reactivex.rxjava3.subjects.CompletableSubject
 import java.io.IOException
 import org.hamcrest.Description
 import org.hamcrest.Matcher

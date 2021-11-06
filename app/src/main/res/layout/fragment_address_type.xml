@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/included_toolbar"
+        layout="@layout/include_toolbar" />
+
+    <TextView
+        android:id="@+id/address_label_new_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:paddingHorizontal="@dimen/margin"
+        android:text="@string/address_label_type_selector"
+        android:textAppearance="?attr/textAppearanceListItem"
+        app:layout_constraintTop_toBottomOf="@id/included_toolbar" />
+
+    <FrameLayout
+        android:id="@+id/location_type_selector_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/big_margin"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginEnd="@dimen/big_margin"
+        android:background="@drawable/outline_spinner"
+        android:minHeight="?attr/listPreferredItemHeightSmall"
+        app:layout_constraintEnd_toStartOf="@id/loading_indicator"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/address_label_new_type">
+
+        <Spinner
+            android:id="@+id/location_type_selector"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:minHeight="@dimen/minimum_touch_size"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </FrameLayout>
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/loading_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/big_margin"
+        android:indeterminate="true"
+        app:layout_constraintBottom_toBottomOf="@id/location_type_selector_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/location_type_selector_layout"
+        app:layout_constraintTop_toTopOf="@id/location_type_selector_layout" />
+
+    <TextView
+        android:id="@+id/label_retry"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin"
+        android:text="@string/address_error_location_type"
+        android:textColor="?attr/colorError"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toStartOf="@id/btn_retry"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/location_type_selector_layout" />
+
+    <ImageButton
+        android:id="@+id/btn_retry"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin"
+        android:background="@null"
+        android:contentDescription="@string/address_cd_btn_retry_for_location"
+        app:layout_constraintBottom_toBottomOf="@id/label_retry"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/label_retry"
+        app:layout_constraintTop_toTopOf="@id/label_retry"
+        app:srcCompat="@drawable/ic_refresh" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/retry_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="btn_retry,label_retry"
+        tools:visibility="visible" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_start_address_setup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        android:layout_marginBottom="@dimen/margin"
+        android:enabled="false"
+        android:text="@string/address_btn_start_address_setup"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
