@@ -8,6 +8,7 @@ import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import ro.code4.deurgenta.BuildConfig
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.databinding.FragmentSettingsBinding
+import ro.code4.deurgenta.helper.updateActivityTitle
 import ro.code4.deurgenta.ui.base.BaseFragment
 
 class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
@@ -26,5 +27,10 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
             val emailIntent = Intent(Intent.ACTION_SENDTO, contactEmailUri)
             startActivity(Intent.createChooser(emailIntent, getString(R.string.report_problem)))
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        updateActivityTitle(R.string.settings_title)
     }
 }

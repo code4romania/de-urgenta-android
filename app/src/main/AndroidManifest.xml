@@ -26,6 +26,9 @@
         <meta-data
             android:name="com.here.sdk.access_key_secret"
             android:value="0t2NliJouoOxhri_2o1oYyPrlc1v8hbh1jjssf1xq3ZSAiBscXnl-h-ZtfrOBeE8ztusqTzXxLidrgQTo9775w" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
         <activity
             android:name="ro.code4.deurgenta.ui.auth.AuthActivity"

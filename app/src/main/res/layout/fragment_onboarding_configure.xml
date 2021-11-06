@@ -12,17 +12,31 @@
         android:paddingTop="@dimen/margin"
         android:paddingBottom="@dimen/margin">
 
+        <ImageView
+            android:id="@+id/logo_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/logo_red"
+            android:layout_marginStart="@dimen/big_margin"
+            android:layout_marginTop="@dimen/margin"
+            android:layout_marginEnd="@dimen/big_margin"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:contentDescription="@string/accessibility_logo" />
+
         <TextView
             android:id="@+id/onboarding_title"
+            style="@style/Text.Heading.Dark"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin"
             android:layout_marginEnd="@dimen/margin"
+            android:layout_marginTop="@dimen/big_margin"
             android:text="@string/create_your_account"
-            android:textAppearance="?attr/textAppearanceHeadline5"
+            android:textAppearance="?attr/textAppearanceHeadline4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/logo_view" />
 
         <include
             android:id="@+id/onboardingActions"

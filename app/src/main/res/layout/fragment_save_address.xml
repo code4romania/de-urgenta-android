@@ -73,7 +73,7 @@
 
             <TextView
                 android:id="@+id/title_configure_another_address"
-                style="@style/Text.Big"
+                style="@style/Text.SectionHeading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
@@ -86,7 +86,7 @@
 
             <TextView
                 android:id="@+id/configure_another_address"
-                style="@style/Text.Default"
+                style="@style/Text.Paragraph"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/small_margin"
@@ -99,7 +99,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/add_new_address"
-                style="@style/NoCaps.Button.WhiteRed"
+                style="@style/Button.WhiteRed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin"
@@ -116,7 +116,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/set_meeting_point"
-                style="@style/Signup.Button.Simple"
+                style="@style/Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin"
