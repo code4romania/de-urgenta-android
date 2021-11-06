@@ -149,11 +149,11 @@
     <!-- Configure account -->
     <string name="configure_addresses">Configureaza adresele</string>
     <string name="create_your_account">Creaza-ti contul</string>
-    <string name="create_your_group">Configureaza-ti grupul</string>
+    <string name="configure_group">Configureaza-ti grupul</string>
     <string name="save_address">Salveaza adresa</string>
     <string name="enter_your_address">Introdu adresa</string>
-    <string name="make_your_emergency_backpack">Fa-ti rucascul de urgenta</string>
-    <string name="learn_to_give_firstaid">Invata sa dai primul ajutor.</string>
+    <string name="configure_backpack">Fa-ti rucascul de urgenta</string>
+    <string name="configure_courses">Invata sa dai primul ajutor.</string>
     <string name="locate_me">Localizeaza-ma</string>
     <string name="search_hint">Introdu adresa</string>
 

@@ -147,12 +147,12 @@
 
     <!-- Configure account -->
     <string name="configure_addresses">Configure Addresses</string>
+    <string name="configure_group">Create your group</string>
+    <string name="configure_backpack">Make your emergency backpack</string>
+    <string name="configure_courses">Learn how to give first aid</string>
     <string name="create_your_account">Configure your account</string>
-    <string name="create_your_group">Create your group</string>
     <string name="save_address">Save Address</string>
     <string name="enter_your_address">Enter your address</string>
-    <string name="make_your_emergency_backpack">Make your emergency backpack</string>
-    <string name="learn_to_give_firstaid">Learn how to give first aid</string>
     <string name="locate_me">Locate me</string>
     <string name="search_hint">enter your address</string>
 

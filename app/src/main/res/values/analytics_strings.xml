@@ -1,6 +1,7 @@
 <resources>
     <string name="analytics_title_splash" translatable="false">Splash screen</string>
     <string name="analytics_title_onboarding" translatable="false">Onboarding</string>
+    <string name="analytics_title_onboarding_setup" translatable="false">Onboarding setup</string>
     <string name="analytics_title_register" translatable="false">Register</string>
     <string name="analytics_title_reset_password" translatable="false">Reset password</string>
     <string name="analytics_title_login" translatable="false">Login</string>

@@ -18,14 +18,14 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding.homeActions) {
-            homeMenuAddress.setOnClickListener { /* TODO not yet available */ }
-            homeMenuGroup.setOnClickListener {
+            configureAddress.setOnClickListener { /* TODO not yet available */ }
+            configureGroup.setOnClickListener {
                 findNavController().navigate(HomeFragmentDirections.actionNavHomeToNavItemGroups())
             }
-            homeMenuBagpack.setOnClickListener {
+            configureBackpack.setOnClickListener {
                 findNavController().navigate(HomeFragmentDirections.actionNavHomeToNavItemBackpacks())
             }
-            homeMenuCourses.setOnClickListener {
+            configureCourses.setOnClickListener {
                 findNavController().navigate(HomeFragmentDirections.actionNavHomeToNavItemCourses())
             }
         }
