@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "46cc22afbc920ab51ecd665014b31d86",
+    "identityHash": "317c5fc5c2a55f6c87b7fd9ba2281d97",
     "entities": [
       {
         "tableName": "backpacks",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `name` TEXT, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `name` TEXT, `numberOfContributors` INTEGER NOT NULL, `maxNumberOfContributors` INTEGER NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -19,6 +19,18 @@
             "columnName": "name",
             "affinity": "TEXT",
             "notNull": false
+          },
+          {
+            "fieldPath": "numberOfContributors",
+            "columnName": "numberOfContributors",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "maxNumberOfContributors",
+            "columnName": "maxNumberOfContributors",
+            "affinity": "INTEGER",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -32,7 +44,7 @@
       },
       {
         "tableName": "backpackItems",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `backpackId` TEXT NOT NULL, `name` TEXT NOT NULL, `amount` INTEGER NOT NULL, `expiration_date` TEXT, `type` INTEGER NOT NULL, PRIMARY KEY(`id`), FOREIGN KEY(`backpackId`) REFERENCES `backpacks`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `backpackId` TEXT NOT NULL, `name` TEXT NOT NULL, `amount` INTEGER NOT NULL, `expiration_date` TEXT, `type` INTEGER NOT NULL, `version` INTEGER NOT NULL, PRIMARY KEY(`id`), FOREIGN KEY(`backpackId`) REFERENCES `backpacks`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
         "fields": [
           {
             "fieldPath": "id",
@@ -67,6 +79,12 @@
           {
             "fieldPath": "type",
             "columnName": "type",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "version",
+            "columnName": "version",
             "affinity": "INTEGER",
             "notNull": true
           }
@@ -293,7 +311,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '46cc22afbc920ab51ecd665014b31d86')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '317c5fc5c2a55f6c87b7fd9ba2281d97')"
     ]
   }
 }

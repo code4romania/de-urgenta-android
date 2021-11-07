@@ -27,25 +27,29 @@ class BackpackItemsFragment : BaseFragment(R.layout.fragment_backpack_items) {
     private lateinit var backpack: Backpack
     private lateinit var type: BackpackItemType
     private val itemsAdapter: BackpackItemsAdapter by lazy {
-        BackpackItemsAdapter(requireContext(), {
-            findNavController().navigate(
-                R.id.action_backpackItems_to_editBackpackItem,
-                bundleOf(
-                    EditBackpackItemFragment.KEY_REQUEST_TYPE to EditBackpackItemFragment.TYPE_EDIT_ITEM,
-                    EditBackpackItemFragment.KEY_EDIT_ITEM_DATA to it
+        BackpackItemsAdapter(
+            context = requireContext(),
+            itemSelectedHandler = {
+                findNavController().navigate(
+                    R.id.action_backpackItems_to_editBackpackItem,
+                    bundleOf(
+                        EditBackpackItemFragment.KEY_REQUEST_TYPE to EditBackpackItemFragment.TYPE_EDIT_ITEM,
+                        EditBackpackItemFragment.KEY_EDIT_ITEM_DATA to it
+                    )
                 )
-            )
-        }, { itemId -> viewModel.deleteItem(itemId) })
+            },
+            itemDeletedHandler = { itemId -> viewModel.deleteItem(itemId) }
+        )
     }
     private var loadingAnimator: ObjectAnimator? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         backpack = arguments?.getParcelable(KEY_BACKPACK)
-            ?: error("A backpack reference must be provided to show it items!")
+            ?: error("A backpack reference must be provided to show its items!")
         type = arguments?.getParcelable(KEY_ITEM_TYPE)
             ?: error("A reference to the type of backpack items must be provided!")
-
+        viewModel.fetchAndRefreshItemsFor(backpack, type)
         binding.changeContents.setOnClickListener {
             findNavController().navigate(
                 R.id.action_backpackItems_to_editBackpackItem,
@@ -61,8 +65,6 @@ class BackpackItemsFragment : BaseFragment(R.layout.fragment_backpack_items) {
             addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.HORIZONTAL))
             adapter = itemsAdapter
         }
-
-        viewModel.fetchItemsForType(backpack, type)
         viewModel.uiModel.observe(viewLifecycleOwner) { model ->
             when (model) {
                 Loading -> displayLoading()

@@ -8,7 +8,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.data.model.Backpack
 import ro.code4.deurgenta.data.model.BackpackItemType
@@ -20,7 +19,6 @@ class BackpackDetailsFragment : BaseFragment(R.layout.fragment_backpack_details)
 
     override val screenName: Int
         get() = R.string.app_name
-    private val viewModel: BackpackDetailsViewModel by viewModel()
     private val binding: FragmentBackpackDetailsBinding by viewBinding(FragmentBackpackDetailsBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -54,7 +52,8 @@ class BackpackDetailsFragment : BaseFragment(R.layout.fragment_backpack_details)
                 )
                 setOnClickListener {
                     findNavController().navigate(
-                        R.id.action_backpackDetails_to_backpackItems, bundleOf(
+                        R.id.action_backpackDetails_to_backpackItems,
+                        bundleOf(
                             BackpackItemsFragment.KEY_BACKPACK to backpack,
                             BackpackItemsFragment.KEY_ITEM_TYPE to type
                         )
@@ -70,5 +69,3 @@ class BackpackDetailsFragment : BaseFragment(R.layout.fragment_backpack_details)
         const val KEY_BACKPACK = "key_backpack"
     }
 }
-
-

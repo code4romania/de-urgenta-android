@@ -11,20 +11,20 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.data.model.BackpackItem
+import java.time.ZoneId
 import java.time.format.DateTimeFormatter
-
 
 class BackpackItemsAdapter(
     context: Context,
     private val itemSelectedHandler: (BackpackItem) -> Unit,
-    private val deleteItemRequested: (String) -> Unit
+    private val itemDeletedHandler: (String) -> Unit
 ) : ListAdapter<BackpackItem, BackpackTypeViewHolder>(diffCallback) {
 
     private val inflater = LayoutInflater.from(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BackpackTypeViewHolder {
         val rowView = inflater.inflate(R.layout.item_backpack_item, parent, false)
-        return BackpackTypeViewHolder(rowView, itemSelectedHandler, deleteItemRequested)
+        return BackpackTypeViewHolder(rowView, itemSelectedHandler, itemDeletedHandler)
     }
 
     override fun onBindViewHolder(holder: BackpackTypeViewHolder, position: Int) {
@@ -71,6 +71,8 @@ class BackpackTypeViewHolder(
     }
 
     companion object {
+        private val UTCZone = ZoneId.of("Europe/Bucharest")
         private val formatter = DateTimeFormatter.ofPattern("dd MMM yyyy")
+            .withZone(UTCZone)
     }
 }

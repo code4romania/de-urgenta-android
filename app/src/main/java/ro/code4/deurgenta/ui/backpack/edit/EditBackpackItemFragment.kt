@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Parcelable
 import android.view.View
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import kotlinx.parcelize.Parcelize
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -12,9 +13,11 @@ import ro.code4.deurgenta.R
 import ro.code4.deurgenta.data.model.BackpackItem
 import ro.code4.deurgenta.data.model.BackpackItemType
 import ro.code4.deurgenta.databinding.FragmentBackpackEditItemBinding
+import ro.code4.deurgenta.helper.setToRotateIndefinitely
 import ro.code4.deurgenta.ui.base.BaseFragment
 import java.text.SimpleDateFormat
 import java.time.LocalDate
+import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.Calendar
 import java.util.Locale
@@ -43,13 +46,58 @@ class EditBackpackItemFragment : BaseFragment(R.layout.fragment_backpack_edit_it
         }
 
         val requestType = arguments?.getInt(KEY_REQUEST_TYPE) ?: error(
-            "A type must be provided to edit a backpack item content!"
+            "A request type must be provided to edit a backpack item content!"
         )
         when (requestType) {
             TYPE_NEW_ITEM -> handleAddNewItem()
             TYPE_EDIT_ITEM -> handleUpdateItem()
             else -> error("Unknown request type: $requestType")
         }
+
+        viewModel.requestStatus.observe(viewLifecycleOwner) { status ->
+            when (status) {
+                BackpackItemEditStatus.NotInitiated -> {
+                    // default ui
+                }
+                BackpackItemEditStatus.InProgress -> {
+                    binding.loadingIndicator.apply {
+                        visibility = View.VISIBLE
+                        setToRotateIndefinitely().start()
+                    }
+                    updateUiAvailability(shouldBeAvailable = false)
+                }
+                BackpackItemEditStatus.Succeeded -> {
+                    binding.loadingIndicator.visibility = View.GONE
+                    updateUiAvailability(shouldBeAvailable = true)
+                    findNavController().popBackStack()
+                }
+                BackpackItemEditStatus.Failed -> {
+                    binding.loadingIndicator.visibility = View.GONE
+                    updateUiAvailability(shouldBeAvailable = true)
+                    showInfoSnack()
+                }
+                else -> {
+                    /* ignored, null Java enum */
+                }
+            }
+        }
+    }
+
+    private fun updateUiAvailability(shouldBeAvailable: Boolean) {
+        binding.btnCancelAddItem.isEnabled = shouldBeAvailable
+        binding.btnChangeAction.isEnabled = shouldBeAvailable
+    }
+
+    private fun showInfoSnack() {
+        val requestType = arguments?.getInt(KEY_REQUEST_TYPE) ?: error(
+            "A request type must be provided to edit a backpack item content!"
+        )
+        val message = when (requestType) {
+            TYPE_NEW_ITEM -> getString(R.string.edit_backpack_error_new_item)
+            TYPE_EDIT_ITEM -> getString(R.string.edit_backpack_error_update_item)
+            else -> error("Unknown request type: $requestType")
+        }
+        Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG).show()
     }
 
     private fun handleAddNewItem() {
@@ -65,7 +113,6 @@ class EditBackpackItemFragment : BaseFragment(R.layout.fragment_backpack_edit_it
                     newItemData.backpackItemType,
                     nameInput, quantityInput.toInt(), expirationDate
                 )
-                findNavController().popBackStack()
             }
         }
     }
@@ -85,7 +132,6 @@ class EditBackpackItemFragment : BaseFragment(R.layout.fragment_backpack_edit_it
             val quantity = binding.inputQuantity.text.toString()
             if (isInputValid(name, quantity)) {
                 viewModel.updateBackpackItem(backpackItem, name, quantity.toInt(), expirationDate)
-                findNavController().popBackStack()
             }
         }
     }
@@ -130,7 +176,9 @@ class EditBackpackItemFragment : BaseFragment(R.layout.fragment_backpack_edit_it
         const val KEY_EDIT_ITEM_DATA = "key_edit_item_data"
 
         val formatter = SimpleDateFormat("dd MMMM yyyy", Locale.ENGLISH)
+        private val UTCZone = ZoneId.of("Europe/Bucharest")
         val displayFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd MMMM yyyy", Locale.ENGLISH)
+            .withZone(UTCZone)
     }
 }
 
