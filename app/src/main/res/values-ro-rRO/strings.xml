@@ -132,10 +132,15 @@
     <string name="backpack_category_empty">Nu ai salvat nici un produs în această categorie. Te rugăm să folosesti
         butonul de ma jos ca să adaugi produsele dorite.</string>
     <string name="backpack_edit_item_date_label">Apasă pentru a selecta data expirării</string>
+    <string name="backpack_btn_add_items">Adaugă articole</string>
     <string name="edit_backpack_item_error_date">Introdu o dată viitoare!</string>
     <string name="edit_backpack_item_error_name">Introdu numele produsului!</string>
     <string name="edit_backpack_item_error_quantity">Introdu cantitatea produsului!</string>
     <string name="edit_backpack_item_error_quantity_value">"Introdu un numar pentru cantitate!"</string>
+    <string name="edit_backpack_error_new_item">Am întâmpinat o eroare la salvarea articolului. Te rugăm să încerci din
+        nou!</string>
+    <string name="edit_backpack_error_update_item">Am întâmpinat o eroare la actualizarea articolului. Te rugăm să
+        încerci din nou!</string>
 
     <!-- Groups -->
     <string name="group_create_title">Creează-ți un grup</string>

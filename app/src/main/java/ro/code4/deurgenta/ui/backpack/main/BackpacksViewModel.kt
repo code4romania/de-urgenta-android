@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import io.reactivex.rxjava3.schedulers.Schedulers
 import ro.code4.deurgenta.data.model.Backpack
 import ro.code4.deurgenta.helper.logE
-import ro.code4.deurgenta.repositories.Repository
+import ro.code4.deurgenta.repositories.BackpacksRepository
 import ro.code4.deurgenta.ui.base.BaseViewModel
 
-class BackpacksViewModel(private val repository: Repository) : BaseViewModel() {
+class BackpacksViewModel(private val repository: BackpacksRepository) : BaseViewModel() {
 
     private val _uiModel = MutableLiveData<BackpacksUIModel>()
     val uiModel: LiveData<BackpacksUIModel> = _uiModel
@@ -22,7 +22,7 @@ class BackpacksViewModel(private val repository: Repository) : BaseViewModel() {
                 .subscribe(
                     { backpacks -> _uiModel.postValue(BackpacksFetched(backpacks)) },
                     { error -> _uiModel.postValue(Error(error)) }
-            )
+                )
         )
     }
 

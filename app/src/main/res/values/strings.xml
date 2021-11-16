@@ -132,10 +132,13 @@
     <string name="backpack_category_empty">You do not have any items of this type. Please use the button below and add
         some.</string>
     <string name="backpack_edit_item_date_label">Click to select expiration date</string>
+    <string name="backpack_btn_add_items">Add more items</string>
     <string name="edit_backpack_item_error_date">Please enter a future expiration date!</string>
     <string name="edit_backpack_item_error_name">Please name the product!</string>
     <string name="edit_backpack_item_error_quantity">Please provide a quantity</string>
     <string name="edit_backpack_item_error_quantity_value">"Please enter a valid number quantity!"</string>
+    <string name="edit_backpack_error_new_item">There was an error while saving the item. Please try again!</string>
+    <string name="edit_backpack_error_update_item">There was an error while updating the item! Please try again!</string>
 
     <!-- Groups -->
     <string name="group_create_title">Create a group</string>

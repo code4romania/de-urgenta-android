@@ -25,10 +25,12 @@ import ro.code4.deurgenta.helper.SchedulersProviderImpl
 import ro.code4.deurgenta.helper.getToken
 import ro.code4.deurgenta.repositories.AccountRepository
 import ro.code4.deurgenta.repositories.AccountRepositoryImpl
+import ro.code4.deurgenta.repositories.BackpacksRepository
 import ro.code4.deurgenta.repositories.GroupRepository
 import ro.code4.deurgenta.repositories.Repository
 import ro.code4.deurgenta.repositories.UserRepository
 import ro.code4.deurgenta.services.AccountService
+import ro.code4.deurgenta.services.BackpackService
 import ro.code4.deurgenta.services.GroupService
 import ro.code4.deurgenta.services.UserService
 import ro.code4.deurgenta.ui.address.AddressTypeViewModel
@@ -40,7 +42,6 @@ import ro.code4.deurgenta.ui.auth.register.RegisterViewModel
 import ro.code4.deurgenta.ui.auth.reset.ResetPasswordViewModel
 import ro.code4.deurgenta.ui.backpack.edit.EditBackpackItemViewModel
 import ro.code4.deurgenta.ui.backpack.items.BackpackItemsViewModel
-import ro.code4.deurgenta.ui.backpack.main.BackpackDetailsViewModel
 import ro.code4.deurgenta.ui.backpack.main.BackpacksViewModel
 import ro.code4.deurgenta.ui.courses.CoursesFilterViewModel
 import ro.code4.deurgenta.ui.courses.CoursesViewModel
@@ -102,7 +103,9 @@ val apiModule = module {
     single<AccountService> { get<Retrofit>().create() }
     single<GroupService> { get<Retrofit>().create() }
     single<UserService> { get<Retrofit>().create() }
+    single<BackpackService> { get<Retrofit>().create() }
     single { Repository() }
+    single { BackpacksRepository(get<AppDatabase>().backpackDao(), get()) }
     single<AccountRepository> { AccountRepositoryImpl(get()) }
     single { UserRepository(get<AppDatabase>().userDao(), get()) }
     single { GroupRepository(get(), get<AppDatabase>().groupDao()) }
@@ -123,7 +126,6 @@ val viewModelsModule = module {
     viewModel { MainViewModel() }
     viewModel { SplashScreenViewModel(get()) }
     viewModel { BackpacksViewModel(get()) }
-    viewModel { BackpackDetailsViewModel() }
     viewModel { BackpackItemsViewModel(get()) }
     viewModel { EditBackpackItemViewModel(get()) }
     viewModel { ConfigureAddressViewModel(get()) }

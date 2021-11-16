@@ -1,12 +1,17 @@
 package ro.code4.deurgenta.data.model
 
 import android.os.Parcelable
-import androidx.room.*
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverter
 import kotlinx.parcelize.Parcelize
 import java.time.ZonedDateTime
 
 @Entity(
-    tableName = BackpackItem.TABLE_NAME, foreignKeys = [
+    tableName = BackpackItem.TABLE_NAME,
+    foreignKeys = [
         ForeignKey(
             entity = Backpack::class,
             parentColumns = [Backpack.COLUMN_ID],
@@ -21,7 +26,8 @@ data class BackpackItem(
     @ColumnInfo(name = COLUMN_NAME) val name: String,
     @ColumnInfo(name = COLUMN_AMOUNT) val amount: Int,
     @ColumnInfo(name = COLUMN_EXPIRATION_DATE) val expirationDate: ZonedDateTime?,
-    @ColumnInfo(name = COLUMN_TYPE) val type: BackpackItemType
+    @ColumnInfo(name = COLUMN_TYPE) val type: BackpackItemType,
+    @ColumnInfo(name = COLUMN_VERSION) val version: Int
 ) : Parcelable {
 
     companion object {
@@ -32,6 +38,7 @@ data class BackpackItem(
         const val COLUMN_AMOUNT = "amount"
         const val COLUMN_EXPIRATION_DATE = "expiration_date"
         const val COLUMN_TYPE = "type"
+        const val COLUMN_VERSION = "version"
     }
 }
 
