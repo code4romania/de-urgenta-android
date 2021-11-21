@@ -44,6 +44,10 @@ To generate dependency updates, you can run the following command:
 
 - `./gradlew dU`
 
+### UI design
+
+[Figma](https://www.figma.com/file/d6n3MPVRWbL5jP2NmvW96b/De_Urgenta?node-id=1466%3A530)
+
 ### API endpoints
 
 [Swagger](https://api.deurgenta.hostmysite.ro/swagger/index.html)
