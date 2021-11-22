@@ -23,7 +23,7 @@
         </action>
         <action
             android:id="@+id/action_configure_group"
-            app:destination="@id/navigation_groups" />
+            app:destination="@id/groupCreateLandingFragment" />
         <action
             android:id="@+id/action_configure_backpack"
             app:destination="@id/backpacksFragment" />
@@ -66,5 +66,14 @@
         <action
             android:id="@+id/action_coursesInfo_to_coursesFiltering"
             app:destination="@id/navigation_courses" />
+    </fragment>
+    <fragment
+        android:id="@+id/groupCreateLandingFragment"
+        android:name="ro.code4.deurgenta.ui.group.GroupCreateLandingFragment"
+        tools:layout="@layout/fragment_group_create_landing"
+        android:label="GroupCreateLandingFragment" >
+        <action
+            android:id="@+id/action_groupLanding_to_groupCreateInfo"
+            app:destination="@id/navigation_groups" />
     </fragment>
 </navigation>

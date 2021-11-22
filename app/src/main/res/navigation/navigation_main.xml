@@ -9,7 +9,7 @@
         android:id="@+id/nav_item_home"
         android:name="ro.code4.deurgenta.ui.home.HomeFragment"
         app:defaultNavHost="true"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_nav_home_to_nav_item_backpacks"
             app:destination="@id/nav_item_backpacks" />
@@ -19,15 +19,6 @@
         <action
             android:id="@+id/action_nav_home_to_nav_item_courses"
             app:destination="@id/nav_item_courses" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/nav_item_groups"
-        android:name="ro.code4.deurgenta.ui.group.GroupCreateLandingFragment"
-        tools:layout="@layout/fragment_group_create_landing">
-        <action
-            android:id="@+id/action_groupLanding_to_groupCreateInfo"
-            app:destination="@id/navigation_groups" />
     </fragment>
 
     <include app:graph="@navigation/navigation_groups" />
@@ -73,4 +64,12 @@
         android:name="ro.code4.deurgenta.ui.about.AboutFragment"
         tools:layout="@layout/fragment_about" />
 
+    <fragment
+        android:id="@+id/nav_item_groups"
+        android:name="ro.code4.deurgenta.ui.group.listing.GroupsListingFragment"
+        tools:layout="@layout/fragment_groups_listing">
+        <action
+            android:id="@+id/action_groupsListing_to_createNewGroup"
+            app:destination="@id/navigation_groups" />
+    </fragment>
 </navigation>

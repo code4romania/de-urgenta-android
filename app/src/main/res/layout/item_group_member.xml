@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?attr/listPreferredItemHeightSmall"
+    android:paddingStart="@dimen/margin"
+    tools:ignore="RtlSymmetry">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/member_profile_outline"
+        android:layout_width="@dimen/medium_icon_size_with_padding"
+        android:layout_height="@dimen/medium_icon_size_with_padding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_outline" />
+
+    <!-- TODO use actual photo, just a gray background for now -->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/member_profile"
+        android:layout_width="@dimen/medium_icon_size"
+        android:layout_height="@dimen/medium_icon_size"
+        app:layout_constraintBottom_toBottomOf="@id/member_profile_outline"
+        app:layout_constraintEnd_toEndOf="@id/member_profile_outline"
+        app:layout_constraintStart_toStartOf="@id/member_profile_outline"
+        app:layout_constraintTop_toTopOf="@id/member_profile_outline"
+        app:srcCompat="@drawable/gray_placeholder" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/member_profile_badge"
+        android:layout_width="@dimen/small_icon_size"
+        android:layout_height="@dimen/small_icon_size"
+        app:layout_constraintBottom_toBottomOf="@id/member_profile"
+        app:layout_constraintEnd_toEndOf="@id/member_profile"
+        app:srcCompat="@drawable/ic_badge_set" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/member_profile_outline"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/member_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceListItem"
+            tools:text="John Doe" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_exit_group"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/group_exit"
+            android:textAllCaps="false"
+            android:textAppearance="?attr/textAppearanceListItemSecondary"
+            android:textColor="@color/gray_200" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
