@@ -40,4 +40,9 @@ class GroupRepository(
                 }
             }
     }
+
+    fun deleteMemberFromGroup(group: Group, groupMember: GroupMember): Completable {
+        return groupService.deleteMemberFromGroup(group.id, groupMember.id)
+            .doOnComplete { groupDao.deleteMemberFromGroup(group, groupMember) }
+    }
 }

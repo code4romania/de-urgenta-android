@@ -71,5 +71,16 @@
         <action
             android:id="@+id/action_groupsListing_to_createNewGroup"
             app:destination="@id/navigation_groups" />
+        <action
+            android:id="@+id/action_groupsListing_to_editGroup"
+            app:destination="@id/editGroupFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editGroupFragment"
+        android:name="ro.code4.deurgenta.ui.group.edit.EditGroupFragment"
+        tools:layout="@layout/fragment_edit_group" >
+        <argument
+            android:name="group"
+            app:argType="ro.code4.deurgenta.data.model.Group" />
     </fragment>
 </navigation>

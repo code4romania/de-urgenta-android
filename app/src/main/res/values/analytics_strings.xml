@@ -16,4 +16,5 @@
     <string name="analytics_title_courses_details" translatable="false">Course Details</string>
     <string name="analytics_title_address_type" translatable="false">Address type</string>
     <string name="analytics_title_groups_listing" translatable="false">My groups</string>
+    <string name="analytics_title_groups_edit" translatable="false">Edit groups</string>
 </resources>

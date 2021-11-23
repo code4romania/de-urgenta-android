@@ -46,6 +46,7 @@ import ro.code4.deurgenta.ui.backpack.main.BackpacksViewModel
 import ro.code4.deurgenta.ui.courses.CoursesFilterViewModel
 import ro.code4.deurgenta.ui.courses.CoursesViewModel
 import ro.code4.deurgenta.ui.group.CreateGroupViewModel
+import ro.code4.deurgenta.ui.group.edit.EditGroupViewModel
 import ro.code4.deurgenta.ui.group.listing.GroupsListingViewModel
 import ro.code4.deurgenta.ui.home.HomeViewModel
 import ro.code4.deurgenta.ui.main.MainViewModel
@@ -137,6 +138,7 @@ val viewModelsModule = module {
     viewModel { CoursesViewModel(get()) }
     viewModel { CreateGroupViewModel(get()) }
     viewModel { GroupsListingViewModel(get(), get()) }
+    viewModel { EditGroupViewModel(get(), get()) }
 }
 
 val analyticsModule = module {

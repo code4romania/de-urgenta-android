@@ -1,7 +1,9 @@
 package ro.code4.deurgenta.services
 
+import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
@@ -20,4 +22,7 @@ interface GroupService {
 
     @GET("group/{groupId}/members")
     fun getMembersOfGroup(@Path("groupId") groupId: String): Single<List<GetGroupMembersResponse>>
+
+    @DELETE("/group/{groupId}/member/{userId}")
+    fun deleteMemberFromGroup(@Path("groupId") groupId: String, @Path("memberId") memberId: String): Completable
 }

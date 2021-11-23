@@ -26,7 +26,7 @@ class GroupsListingFragment : BaseFragment(R.layout.fragment_groups_listing) {
             onGroupOpened = viewModel::showMembersFor,
             onGroupClosed = viewModel::hideMembersFor,
             onGroupEdit = {
-                Toast.makeText(requireContext(), "Not implemented!", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(GroupsListingFragmentDirections.actionGroupsListingToEditGroup(it))
             },
             onGroupExit = { _, _ ->
                 Toast.makeText(requireContext(), "Not implemented!", Toast.LENGTH_SHORT).show()

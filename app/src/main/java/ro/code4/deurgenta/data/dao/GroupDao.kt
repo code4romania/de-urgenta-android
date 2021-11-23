@@ -1,6 +1,7 @@
 package ro.code4.deurgenta.data.dao
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -12,6 +13,8 @@ import ro.code4.deurgenta.data.model.GroupMember
 import ro.code4.deurgenta.data.model.GroupWithMembers
 import ro.code4.deurgenta.data.model.GroupsAndMembersRefs
 
+// to please detekt, we could create another dao for GroupMember but keeping it here for simplicity for now!
+@Suppress("TooManyFunctions")
 @Dao
 interface GroupDao {
     @Query("SELECT * FROM `groups`")
@@ -38,7 +41,19 @@ interface GroupDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun saveMembersRefs(groupMembersRefs: List<GroupsAndMembersRefs>)
 
+    @Delete
+    fun deleteMembersRef(groupMembersRef: GroupsAndMembersRefs)
+
     @Transaction
     @Query("SELECT * FROM groups WHERE id=:groupId")
     fun listMembers(groupId: String): Observable<List<GroupWithMembers>>
+
+    @Delete
+    fun deleteGroupMember(groupMember: GroupMember)
+
+    @Transaction
+    fun deleteMemberFromGroup(group: Group, groupMember: GroupMember) {
+        deleteMembersRef(GroupsAndMembersRefs(group.id, groupMember.id))
+        deleteGroupMember(groupMember)
+    }
 }

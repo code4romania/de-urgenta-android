@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "50cb7c9a595624800aa33baeb1489e0d",
+    "identityHash": "df5c17b8ac3a50d983f4ea020a478a05",
     "entities": [
       {
         "tableName": "backpacks",
@@ -369,14 +369,23 @@
           ],
           "autoGenerate": false
         },
-        "indices": [],
+        "indices": [
+          {
+            "name": "index_groupsMemberRefs_memberId",
+            "unique": false,
+            "columnNames": [
+              "memberId"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_groupsMemberRefs_memberId` ON `${TABLE_NAME}` (`memberId`)"
+          }
+        ],
         "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '50cb7c9a595624800aa33baeb1489e0d')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'df5c17b8ac3a50d983f4ea020a478a05')"
     ]
   }
 }

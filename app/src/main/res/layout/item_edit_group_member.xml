@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?attr/listPreferredItemHeightSmall"
+    android:paddingHorizontal="@dimen/margin"
+    tools:ignore="RtlSymmetry">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/member_profile_outline"
+        android:layout_width="@dimen/medium_icon_size_with_padding"
+        android:layout_height="@dimen/medium_icon_size_with_padding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_red" />
+
+    <!-- Just a gray background for now -->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/member_profile"
+        android:layout_width="@dimen/medium_icon_size"
+        android:layout_height="@dimen/medium_icon_size"
+        app:layout_constraintBottom_toBottomOf="@id/member_profile_outline"
+        app:layout_constraintEnd_toEndOf="@id/member_profile_outline"
+        app:layout_constraintStart_toStartOf="@id/member_profile_outline"
+        app:layout_constraintTop_toTopOf="@id/member_profile_outline"
+        app:srcCompat="@drawable/gray_placeholder" />
+
+    <TextView
+        android:id="@+id/member_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_eliminate_member"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/member_profile"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="John Doe" />
+
+    <ImageButton
+        android:id="@+id/btn_eliminate_member"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:contentDescription="@string/group_cd_remove_member"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_delete" />
+</androidx.constraintlayout.widget.ConstraintLayout>
