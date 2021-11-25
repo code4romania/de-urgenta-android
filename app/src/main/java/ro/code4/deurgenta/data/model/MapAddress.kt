@@ -11,7 +11,7 @@ import kotlinx.parcelize.Parcelize
     tableName = MapAddress.TABLE_NAME
 )
 @Parcelize
-data class MapAddress @JvmOverloads constructor(
+data class MapAddress constructor(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = COLUMN_ID)
     val id: Long = 0,

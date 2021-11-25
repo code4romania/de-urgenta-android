@@ -7,6 +7,7 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.create
 import org.gradle.kotlin.dsl.findByType
 import java.io.File
+import java.util.Locale
 import java.util.Properties
 
 class ConfigurationPlugin : Plugin<Project> {
@@ -28,8 +29,9 @@ class ConfigurationPlugin : Plugin<Project> {
                                 getValue(variantName, it.sourceProperty).escape(it.type)
                             )
                         }
-                        val productFlavor = productFlavors.firstOrNull()?.name?.capitalize().orEmpty()
-                        val buildType = variantName.capitalize()
+                        val productFlavor =
+                            productFlavors.firstOrNull()?.name?.capitalize(Locale.getDefault()).orEmpty()
+                        val buildType = variantName.capitalize(Locale.getDefault())
                         tasks.named(
                             "compile${productFlavor}${buildType}UnitTestSources"
                         ).dependsOn("merge${productFlavor}${buildType}Assets")
@@ -47,5 +49,6 @@ class ConfigurationPlugin : Plugin<Project> {
         }
 
     private fun getValue(env: String, key: String) = getProperties(env)[key]?.toString().orEmpty()
+
     private fun String.escape(type: String) = if (type == "String") """"$this"""" else this
 }

@@ -15,9 +15,6 @@ plugins {
     id("org.jlleitschuh.gradle.ktlint")
 }
 
-val roomSchemaDir = "$projectDir/schemas"
-val sharedTestsFolder = "src/sharedTest/java"
-
 variantConfigFields {
     addField("apiUrl", "API_URL", "String")
     addField("termsAndConditions", "TERMS_AND_CONDITIONS", "String")
@@ -44,7 +41,7 @@ android {
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments += mapOf(
-                    "room.schemaLocation" to roomSchemaDir,
+                    "room.schemaLocation" to "$projectDir/schemas",
                     "room.incremental" to "true",
                     "room.expandProjection" to "true"
                 )
@@ -59,12 +56,12 @@ android {
     }
 
     sourceSets {
+        val sharedTestsFolder = "src/sharedTest/java"
         named("test") {
             java.srcDir(sharedTestsFolder)
         }
         named("androidTest") {
             java.srcDir(sharedTestsFolder)
-            assets.srcDir(files(roomSchemaDir))
         }
     }
 
@@ -81,11 +78,11 @@ android {
     }
 
     buildTypes {
-        named("debug") {
+        debug {
             isMinifyEnabled = false
             manifestPlaceholders += mapOf("enableCrashReporting" to false)
         }
-        named("release") {
+        release {
             isMinifyEnabled = false
             signingConfig = signingConfigs["fastlane"]
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
@@ -111,7 +108,9 @@ android {
     }
 
     packagingOptions {
-        exclude("META-INF/DEPENDENCIES")
+        resources {
+            excludes.add("META-INF/DEPENDENCIES")
+        }
     }
 }
 
@@ -128,11 +127,15 @@ dependencies {
     implementation(Libs.coreKtx)
     implementation(Libs.material)
     implementation(Libs.constraintLayout)
-    implementation(Libs.lifecycleExtensions)
+    implementation(Libs.lifecycleViewModelKtx)
+    implementation(Libs.lifecycleLivedataKtx)
+    implementation(Libs.lifecycleRuntimeKtx)
+    implementation(Libs.lifecycleCommonJava8)
+    implementation(Libs.lifecycleReactiveStreamsKtx)
     implementation(Libs.rxJava)
     implementation(Libs.rxAndroid)
-    implementation(Libs.circleindicator)
     implementation(Libs.viewpager2)
+    implementation(Libs.fragment)
     debugImplementation(Libs.fragmentTesting)
     implementation(Libs.navigationFragmentKtx)
     implementation(Libs.navigationUiKtx)
@@ -156,6 +159,7 @@ dependencies {
     // Unit tests
     testImplementation(Libs.junit)
     testImplementation(Libs.mockk)
+    testImplementation(Libs.mockkAgentJvm)
     testImplementation(Libs.testCore)
 
     // Instrumented tests
@@ -165,6 +169,7 @@ dependencies {
     // needs the dex opener for version lower than P
     androidTestImplementation(Libs.koinTest)
     androidTestImplementation(Libs.mockkAndroid)
+    androidTestImplementation(Libs.mockkAgentJvm)
     androidTestImplementation(Libs.testCore)
 }
 

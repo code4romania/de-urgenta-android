@@ -25,14 +25,16 @@ class DependenciesUpdaterPlugin : Plugin<Project> {
             }
 
             checkForGradleUpdate = true
-            outputFormatter = "json"
+            outputFormatter = "plain,json"
             outputDir = "build/dependencyUpdates"
             reportfileName = "report"
         }
     }
 
     private fun isNonStable(version: String): Boolean {
-        val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.toUpperCase(Locale.US).contains(it) }
+        val stableKeyword = listOf("RELEASE", "FINAL", "GA", "RC", "BETA").any {
+            version.toUpperCase(Locale.US).contains(it)
+        }
         val regex = "^[0-9,.v-]+(-r)?$".toRegex()
         val isStable = stableKeyword || regex.matches(version)
         return !isStable
