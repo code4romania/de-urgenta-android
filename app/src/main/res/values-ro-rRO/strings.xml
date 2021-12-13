@@ -152,6 +152,22 @@
     <string name="group_create_info_title">Creează-ți grupul de prieteni</string>
     <string name="group_name_label">Denumirea grupului</string>
     <string name="group_name_hint">Fii creativ…</string>
+    <string name="group_title_listing">Grupurile mele</string>
+    <string name="group_btn_create_new">Adaugă un nou grup</string>
+    <string name="group_btn_add_new_member">Adaugă membru nou în grup</string>
+    <string name="group_exit">(Ieși din grup)</string>
+    <string name="group_error_listing">Eroare la afișarea grupurilor: %1$s</string>
+    <string name="group_cd_people_icon">Iconiță pentru un grup de persoane</string>
+    <string name="group_cd_edit_group_icon">Buton pentru a edita un grup</string>
+    <string name="group_cd_more_icon">Buton pentru a arăta membrii grupului</string>
+    <string name="group_cd_add_person_icon">Iconiță adaugă o persoană</string>
+    <string name="group_loading_members">Încărcăm membrii grupului…</string>
+    <string name="group_edit_max_members_notice">Grupul tău are numărul maxim de membri!</string>
+    <string name="group_edit_error_members">Eroare la încărcarea grupurilor: %1$s</string>
+    <string name="group_cd_remove_member">Buton șterge un membru din grup</string>
+    <string name="group_edit_remove_member_info">Ești sigur că vrei să ștergi această persoană din grup?</string>
+    <string name="group_edit_dialog_ok">OK</string>
+    <string name="group_edit_dialog_cancel">Anulează</string>
 
     <!-- Configure account -->
     <string name="configure_addresses">Configureaza adresele</string>

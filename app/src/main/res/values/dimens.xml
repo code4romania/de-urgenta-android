@@ -10,8 +10,10 @@
 
     <dimen name="small_icon_size">16dp</dimen>
     <dimen name="medium_icon_size">32dp</dimen>
+    <dimen name="medium_icon_size_with_padding">40dp</dimen>
     <dimen name="big_icon_size">64dp</dimen>
     <dimen name="minimum_touch_size">48dp</dimen>
+    <dimen name="profile_corner_radius">16dp</dimen>
 
     <!-- Text sizes-->
     <dimen name="text_size_big">20sp</dimen>

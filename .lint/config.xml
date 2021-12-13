@@ -15,4 +15,5 @@
     <!-- Remove this if we can find another method to get text from editexts -->
     <issue id="DuplicateIncludedIds" severity="ignore" />
     <issue id="SyntheticAccessor" severity="ignore" />
+    <issue id="Overdraw" severity="ignore" />
 </lint>

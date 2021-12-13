@@ -150,6 +150,22 @@
     <string name="group_create_info_title">Create your group of friends</string>
     <string name="group_name_label">Group name</string>
     <string name="group_name_hint">Be creative…</string>
+    <string name="group_title_listing">My groups</string>
+    <string name="group_btn_create_new">Add new group</string>
+    <string name="group_btn_add_new_member">Add new member to group</string>
+    <string name="group_exit">(Exit group)</string>
+    <string name="group_error_listing">Error when retrieving groups: %1$s</string>
+    <string name="group_cd_people_icon">Icon for a group of people</string>
+    <string name="group_cd_edit_group_icon">Button for editing a group of people</string>
+    <string name="group_cd_more_icon">Button to show members of a group</string>
+    <string name="group_cd_add_person_icon">Icon for add person</string>
+    <string name="group_loading_members">Loading members…</string>
+    <string name="group_edit_max_members_notice">Your group has the maximum number of members!</string>
+    <string name="group_edit_error_members">Error when retrieving group members: %1$s</string>
+    <string name="group_cd_remove_member">Button to remove a member from a group</string>
+    <string name="group_edit_remove_member_info">Are you sure you want to remove this person from the group?</string>
+    <string name="group_edit_dialog_ok">OK</string>
+    <string name="group_edit_dialog_cancel">Cancel</string>
 
     <!-- Configure account -->
     <string name="configure_addresses">Configure Addresses</string>

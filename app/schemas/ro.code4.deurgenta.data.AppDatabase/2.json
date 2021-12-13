@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "317c5fc5c2a55f6c87b7fd9ba2281d97",
+    "identityHash": "df5c17b8ac3a50d983f4ea020a478a05",
     "entities": [
       {
         "tableName": "backpacks",
@@ -233,7 +233,7 @@
       },
       {
         "tableName": "groups",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `numberOfMembers` INTEGER NOT NULL, `adminId` TEXT NOT NULL, `adminFirstName` TEXT, `adminLastName` TEXT, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `numberOfMembers` INTEGER NOT NULL, `maxNumberOfMembers` INTEGER NOT NULL, `isUserAdmin` INTEGER NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -254,22 +254,60 @@
             "notNull": true
           },
           {
-            "fieldPath": "adminId",
-            "columnName": "adminId",
+            "fieldPath": "maxNumberOfMembers",
+            "columnName": "maxNumberOfMembers",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isCurrentUserAdmin",
+            "columnName": "isUserAdmin",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "groupMembers",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `firstName` TEXT NOT NULL, `lastName` TEXT NOT NULL, `isGroupAdmin` INTEGER NOT NULL, `hasValidCertification` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
             "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "adminFirstName",
-            "columnName": "adminFirstName",
+            "fieldPath": "firstName",
+            "columnName": "firstName",
             "affinity": "TEXT",
-            "notNull": false
+            "notNull": true
           },
           {
-            "fieldPath": "adminLastName",
-            "columnName": "adminLastName",
+            "fieldPath": "lastName",
+            "columnName": "lastName",
             "affinity": "TEXT",
-            "notNull": false
+            "notNull": true
+          },
+          {
+            "fieldPath": "isGroupAdmin",
+            "columnName": "isGroupAdmin",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hasValidCertification",
+            "columnName": "hasValidCertification",
+            "affinity": "INTEGER",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -306,12 +344,48 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "groupsMemberRefs",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`groupId` TEXT NOT NULL, `memberId` TEXT NOT NULL, PRIMARY KEY(`groupId`, `memberId`))",
+        "fields": [
+          {
+            "fieldPath": "groupId",
+            "columnName": "groupId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "memberId",
+            "columnName": "memberId",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "groupId",
+            "memberId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_groupsMemberRefs_memberId",
+            "unique": false,
+            "columnNames": [
+              "memberId"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_groupsMemberRefs_memberId` ON `${TABLE_NAME}` (`memberId`)"
+          }
+        ],
+        "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '317c5fc5c2a55f6c87b7fd9ba2281d97')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'df5c17b8ac3a50d983f4ea020a478a05')"
     ]
   }
 }

@@ -16,12 +16,15 @@ import ro.code4.deurgenta.data.model.BackpackItem
 import ro.code4.deurgenta.data.model.BackpackItemConverters
 import ro.code4.deurgenta.data.model.Course
 import ro.code4.deurgenta.data.model.Group
+import ro.code4.deurgenta.data.model.GroupMember
+import ro.code4.deurgenta.data.model.GroupsAndMembersRefs
 import ro.code4.deurgenta.data.model.LocationType
 import ro.code4.deurgenta.data.model.MapAddress
 
 @Database(
     entities = [
-        Backpack::class, BackpackItem::class, Course::class, MapAddress::class, Group::class, LocationType::class
+        Backpack::class, BackpackItem::class, Course::class, MapAddress::class, Group::class,
+        GroupMember::class, LocationType::class, GroupsAndMembersRefs::class
     ],
     version = 2
 )
