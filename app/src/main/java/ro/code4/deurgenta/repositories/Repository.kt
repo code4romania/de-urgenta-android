@@ -12,19 +12,22 @@ import ro.code4.deurgenta.data.AppDatabase
 import ro.code4.deurgenta.data.model.Course
 import ro.code4.deurgenta.data.model.CourseFilterValues
 import ro.code4.deurgenta.data.model.MapAddress
+import ro.code4.deurgenta.data.model.MapAddressType
 import ro.code4.deurgenta.data.model.Register
 import ro.code4.deurgenta.data.model.User
+import ro.code4.deurgenta.data.model.requests.SaveUserLocationRequest
 import ro.code4.deurgenta.data.model.response.LoginResponse
 import ro.code4.deurgenta.services.AccountService
 import ro.code4.deurgenta.services.CourseService
-import java.util.*
+import ro.code4.deurgenta.services.UserService
+import java.util.Locale
 import java.util.concurrent.TimeUnit
 
 class Repository : KoinComponent {
 
     private val db: AppDatabase by inject()
-
     private val retrofit: Retrofit by inject()
+    private val userService: UserService by inject()
     private val accountService: AccountService by lazy {
         retrofit.create(AccountService::class.java)
     }
@@ -38,10 +41,25 @@ class Repository : KoinComponent {
     fun login(user: User): Observable<LoginResponse> = accountService.login(user)
 
     fun saveAddress(mapAddress: MapAddress): Completable {
-        return Completable
-            .fromAction {
-                db.addressDao().save(mapAddress)
-            }.subscribeOn(Schedulers.io())
+        val request = SaveUserLocationRequest(
+            address = mapAddress.fullAddress,
+            latitude = mapAddress.latitude,
+            longitude = mapAddress.longitude,
+            type = mapAddress.type.id
+        )
+        return userService.saveLocation(request).flatMapCompletable { response ->
+            Completable.fromAction {
+                db.addressDao().save(
+                    MapAddress(
+                        id = response.id,
+                        latitude = response.latitude,
+                        longitude = response.longitude,
+                        fullAddress = response.address,
+                        type = MapAddressType.from(response.type)
+                    )
+                )
+            }
+        }.subscribeOn(Schedulers.io())
     }
 
     // COURSES related code start
