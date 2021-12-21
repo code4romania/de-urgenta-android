@@ -12,9 +12,10 @@ import kotlinx.parcelize.Parcelize
 )
 @Parcelize
 data class MapAddress constructor(
-    @PrimaryKey(autoGenerate = true)
+
     @ColumnInfo(name = COLUMN_ID)
-    val id: Long = 0,
+    @PrimaryKey
+    val id: String = "",
 
     @ColumnInfo(name = COLUMN_LATITUDE)
     val latitude: Double,
